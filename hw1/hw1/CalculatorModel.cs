@@ -8,29 +8,18 @@ namespace WindowsCalculator
 {
     public class CalculatorModel
     {
-        public const char SPACE = ' ';
-        public const char WAITING = '?';
-        public const char DOT = '.';
-        public const char ADDITION = '+';
-        public const char SUBSTRACT = '-';
-        public const char MULTIPLY = '*';
-        public const char DIVISION = '/';
-        public const char EQUAL = '=';
-        public const string NONE = "";
-        public const string ZERO_STRING = "0";
-        public const double ZERO = 0;
         public CalculatorModel()
         {
             Clear();
         }
         // The action after user click any number button
-        public void ClickNumberButton(int number)
+        public void ProcessNumber(int number)
         {
-            if (_numberBuffer == NONE || (_textBoxString == ZERO_STRING && !_haveDot))
+            if (_numberBuffer == Constants.NONE || (_textBoxString == Constants.ZERO_STRING && !_haveDot))
             {
-                _textBoxString = NONE;
+                _textBoxString = Constants.NONE;
             }
-            if (_theOperator == WAITING)
+            if (_theOperator == Constants.WAITING)
             {
                 Clear();
             }
@@ -41,20 +30,20 @@ namespace WindowsCalculator
         // reset everything
         public void Clear()
         {
-            _textBoxString = NONE;
+            _numberBuffer = _textBoxString = Constants.ZERO_STRING;
             _haveFirstNumber = false;
             _haveSecondNumber = false;
             _haveDot = false;
-            _theOperator = SPACE;
+            _theOperator = Constants.SPACE;
         }
 
         // clear error
         public void ClearError()
         {
-            if (_haveFirstNumber && _theOperator != WAITING)
+            if (_haveFirstNumber && _theOperator != Constants.WAITING)
             {
-                _textBoxString = NONE;
-                ClickNumberButton((int)ZERO);
+                _textBoxString = Constants.NONE;
+                ProcessNumber(Constants.ZERO);
             }
         }
 
@@ -65,15 +54,15 @@ namespace WindowsCalculator
             {
                 return;
             }
-            if (_theOperator == WAITING)
+            _haveDot = true;
+            if (_theOperator == Constants.WAITING)
             {
                 Clear();
-                _numberBuffer = _textBoxString = ZERO_STRING + DOT;
+                _numberBuffer = _textBoxString = Constants.ZERO_STRING + Constants.DOT;
                 return;
             }
-            _haveDot = true;
-            _numberBuffer += DOT;
-            _textBoxString += DOT;
+            _numberBuffer += Constants.DOT;
+            _textBoxString += Constants.DOT;
         }
 
         // process calculation
@@ -90,45 +79,45 @@ namespace WindowsCalculator
         {
             switch (arithmeticOperator)
             {
-                case ADDITION:
+                case Constants.ADDITION:
                     return (_firstNumber + _secondNumber);
-                case SUBSTRACT:
+                case Constants.SUBSTRACT:
                     return (_firstNumber - _secondNumber);
-                case MULTIPLY:
+                case Constants.MULTIPLY:
                     return (_firstNumber * _secondNumber);
-                case DIVISION:
+                case Constants.DIVISION:
                     return (_firstNumber / _secondNumber);
                 default:
-                    return ZERO;
+                    return Constants.ZERO_DOUBLE;
             }
         }
 
         // The action after user click any arithmetic operator
         public void ClickOperatorButton(char arithmetic) 
         {
-            if ((!_haveFirstNumber && _numberBuffer != NONE) || (!_haveSecondNumber && _numberBuffer == NONE))
+            if ((!_haveFirstNumber && _numberBuffer != Constants.NONE) || (!_haveSecondNumber && _numberBuffer == Constants.NONE))
             {
                 _theOperator = arithmetic;
             }
             LoadNumber();
-            _numberBuffer = NONE;
+            _numberBuffer = Constants.NONE;
             if (_haveFirstNumber && _haveSecondNumber)
             {
                 ProcessCalculation(_theOperator);
-                _theOperator = arithmetic == EQUAL ? WAITING : arithmetic;
+                _theOperator = arithmetic == Constants.EQUAL ? Constants.WAITING : arithmetic;
             }
         }
 
         // Load number into memory
         private void LoadNumber()
         {
-            if (!_haveFirstNumber && _numberBuffer != NONE)
+            if (!_haveFirstNumber && _numberBuffer != Constants.NONE)
             {
                 _firstNumber = Double.Parse(_numberBuffer);
                 _haveFirstNumber = true;
                 _haveDot = false;
             }
-            else if (!_haveSecondNumber && _numberBuffer != NONE)
+            else if (!_haveSecondNumber && _numberBuffer != Constants.NONE)
             {
                 _secondNumber = Double.Parse(_numberBuffer);
                 _haveSecondNumber = true;

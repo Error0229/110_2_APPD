@@ -9,125 +9,146 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsCalculator
-{
+{    
     public partial class CalculatorForm : Form
     { 
-        private CalculatorModel model;
+        private CalculatorModel _model;
         public CalculatorForm(CalculatorModel model)
         {
-            this.model = model;
+            this._model = model;
             InitializeComponent();
+            _resultBox.Text = model.Text;
         }
-        private void CalculatorFormLoad(object sender, EventArgs e)
+
+        // Load form
+        private void LoadCalculatorForm(object sender, EventArgs e)
         {
         }
 
-        private void button0_Click(object sender, EventArgs e)
+        // click 0
+        private void ButtonZeroClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(0);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.ZERO);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // click 1
+        private void ButtonOneClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(1);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.ONE);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // click 2
+        private void ButtonTwoClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(2);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.TWO);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        // click 3
+        private void ButtonThreeClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(3);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.THREE);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        // click 4
+        private void ButtonFourClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(4);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.FOUR);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        // click 5
+        private void ButtonFiveClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(5);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.FIVE);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        // click 6
+        private void ButtonSixClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(6);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.SIX);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        // click 7
+        private void ButtonSevenClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(7);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.SEVEN);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        // click 8
+        private void ButtonEightClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(8);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.EIGHT);
+            _resultBox.Text = _model.Text;
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        // click 9
+        private void ButtonNineClick(object sender, EventArgs e)
         {
-            model.ClickNumberButton(9);
-            resultBox.Text = model.Text;
+            _model.ProcessNumber(Constants.NINE);
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonDot_Click(object sender, EventArgs e)
+        // click .
+        private void ButtonDotClick(object sender, EventArgs e)
         {
-            model.ClickDot();
-            resultBox.Text = model.Text;
+            _model.ClickDot();
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonEqual_Click(object sender, EventArgs e)
+        // click =
+        private void ButtonEqualClick(object sender, EventArgs e)
         {
-            model.ClickOperatorButton('=');
-            resultBox.Text = model.Text;
+            _model.ClickOperatorButton(Constants.EQUAL);
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonDivide_Click(object sender, EventArgs e)
+        // click /
+        private void ButtonDivideClick(object sender, EventArgs e)
         {
-            model.ClickOperatorButton('/');
-            resultBox.Text = model.Text;
+            _model.ClickOperatorButton(Constants.DIVISION);
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonMultiply_Click(object sender, EventArgs e)
+        // click *
+        private void ButtonMultiplyClick(object sender, EventArgs e)
         {
-            model.ClickOperatorButton('*');
-            resultBox.Text = model.Text;
+            _model.ClickOperatorButton(Constants.MULTIPLY);
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonSubstract_Click(object sender, EventArgs e)
+        // click -
+        private void ButtonSubstractClick(object sender, EventArgs e)
         {
-            model.ClickOperatorButton('-');
-            resultBox.Text = model.Text;
+            _model.ClickOperatorButton(Constants.SUBSTRACT);
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonPlus_Click(object sender, EventArgs e)
+        // click +
+        private void ButtonPlusClick(object sender, EventArgs e)
         {
-            model.ClickOperatorButton('+');
-            resultBox.Text = model.Text;
+            _model.ClickOperatorButton(Constants.ADDITION);
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        // click C
+        private void ButtonClearClick(object sender, EventArgs e)
         {
-            model.Clear();
-            resultBox.Text = model.Text;
+            _model.Clear();
+            _resultBox.Text = _model.Text;
         }
 
-        private void buttonClearError_Click(object sender, EventArgs e)
+        // click CE
+        private void ButtonClearErrorClick(object sender, EventArgs e)
         {
-            model.ClearError();
-            resultBox.Text = model.Text;
+            _model.ClearError();
+            _resultBox.Text = _model.Text;
         }
     }
 }
