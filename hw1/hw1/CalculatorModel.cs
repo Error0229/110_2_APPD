@@ -9,24 +9,55 @@ namespace WindowsCalculator
     public class CalculatorModel
     {
         public const char SPACE = ' ';
+        public const char WAITING = '?';
         public const char DOT = '.';
         public const char ADDITION = '+';
         public const char SUBSTRACT = '-';
         public const char MULTIPLY = '*';
         public const char DIVISION = '/';
         public const char EQUAL = '=';
-        
-        public CalculatorModel() 
+        public const string NONE = "";
+        public const string ZERO_STRING = "0";
+        public const double ZERO = 0;
+        public CalculatorModel()
         {
-            _haveNumber = false;
-            _haveDot = false;
+            Clear();
         }
         // The action after user click any number button
         public void ClickNumberButton(int number)
         {
-            _textBoxString += number.ToString() + SPACE;
+            if (_numberBuffer == NONE || (_textBoxString == ZERO_STRING && !_haveDot))
+            {
+                _textBoxString = NONE;
+            }
+            if (_theOperator == WAITING)
+            {
+                Clear();
+            }
+            _textBoxString += number.ToString();
             _numberBuffer += number.ToString();
         }
+
+        // reset everything
+        public void Clear()
+        {
+            _textBoxString = NONE;
+            _haveFirstNumber = false;
+            _haveSecondNumber = false;
+            _haveDot = false;
+            _theOperator = SPACE;
+        }
+
+        // clear error
+        public void ClearError()
+        {
+            if (_haveFirstNumber && _theOperator != WAITING)
+            {
+                _textBoxString = NONE;
+                ClickNumberButton((int)ZERO);
+            }
+        }
+
         // The action after user click '.' button
         public void ClickDot()
         {
@@ -34,32 +65,82 @@ namespace WindowsCalculator
             {
                 return;
             }
+            if (_theOperator == WAITING)
+            {
+                Clear();
+                _numberBuffer = _textBoxString = ZERO_STRING + DOT;
+                return;
+            }
+            _haveDot = true;
             _numberBuffer += DOT;
+            _textBoxString += DOT;
         }
-        public void Calculate(char arithmeticOperator)
-        {
 
+        // process calculation
+        public void ProcessCalculation(char arithmeticOperator)
+        {
+            var result = Calculate(arithmeticOperator);
+            _textBoxString = result.ToString();
+            _firstNumber = result;
+            _haveSecondNumber = false;
         }
+
+        // calculate the result
+        public double Calculate(char arithmeticOperator)
+        {
+            switch (arithmeticOperator)
+            {
+                case ADDITION:
+                    return (_firstNumber + _secondNumber);
+                case SUBSTRACT:
+                    return (_firstNumber - _secondNumber);
+                case MULTIPLY:
+                    return (_firstNumber * _secondNumber);
+                case DIVISION:
+                    return (_firstNumber / _secondNumber);
+                default:
+                    return ZERO;
+            }
+        }
+
         // The action after user click any arithmetic operator
         public void ClickOperatorButton(char arithmetic) 
         {
-            if (_haveNumber)
+            if ((!_haveFirstNumber && _numberBuffer != NONE) || (!_haveSecondNumber && _numberBuffer == NONE))
             {
-                _secondNumber = Double.Parse(_numberBuffer);
-                Calculate(arithmetic);
-                return; 
+                _theOperator = arithmetic;
             }
-            else
+            LoadNumber();
+            _numberBuffer = NONE;
+            if (_haveFirstNumber && _haveSecondNumber)
+            {
+                ProcessCalculation(_theOperator);
+                _theOperator = arithmetic == EQUAL ? WAITING : arithmetic;
+            }
+        }
+
+        // Load number into memory
+        private void LoadNumber()
+        {
+            if (!_haveFirstNumber && _numberBuffer != NONE)
             {
                 _firstNumber = Double.Parse(_numberBuffer);
-                _haveNumber = true;
+                _haveFirstNumber = true;
+                _haveDot = false;
             }
-            
+            else if (!_haveSecondNumber && _numberBuffer != NONE)
+            {
+                _secondNumber = Double.Parse(_numberBuffer);
+                _haveSecondNumber = true;
+                _haveDot = false;
+            }
         }
+
         private string _textBoxString;
         private string _numberBuffer;
         private char _theOperator;
-        private bool _haveNumber;
+        private bool _haveFirstNumber;
+        private bool _haveSecondNumber;
         private bool _haveDot;
         private double _firstNumber;
         private double _secondNumber;

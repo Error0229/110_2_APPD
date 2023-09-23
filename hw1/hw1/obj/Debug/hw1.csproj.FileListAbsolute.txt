@@ -1,0 +1,10 @@
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\bin\Debug\WindowsCalculator.exe.config
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\bin\Debug\WindowsCalculator.exe
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\bin\Debug\WindowsCalculator.pdb
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\hw1.csproj.AssemblyReference.cache
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\WindowsCalculator.CalculatorForm.resources
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\WindowsCalculator.Properties.Resources.resources
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\hw1.csproj.GenerateResource.cache
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\hw1.csproj.CoreCompileInputs.cache
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\WindowsCalculator.exe
+C:\Users\Tim\Desktop\110_2_APPD\hw1\hw1\obj\Debug\WindowsCalculator.pdb
