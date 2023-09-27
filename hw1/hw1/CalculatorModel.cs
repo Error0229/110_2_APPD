@@ -23,6 +23,10 @@ namespace WindowsCalculator
             {
                 Clear();
             }
+            if (_numberBuffer == Constants.ZERO_STRING)
+            {
+                _numberBuffer = _textBoxString = Constants.NONE;
+            }
             _textBoxString += number.ToString();
             _numberBuffer += number.ToString();
         }
@@ -77,6 +81,7 @@ namespace WindowsCalculator
         // calculate the result
         public double Calculate(char arithmeticOperator)
         {
+            _lastOperator = arithmeticOperator;
             switch (arithmeticOperator)
             {
                 case Constants.ADDITION:
@@ -95,6 +100,11 @@ namespace WindowsCalculator
         // The action after user click any arithmetic operator
         public void ClickOperatorButton(char arithmetic) 
         {
+            if (_theOperator == Constants.WAITING && arithmetic == Constants.EQUAL)
+            {
+                ProcessCalculation(_lastOperator);
+                return;
+            }
             if ((!_haveFirstNumber && _numberBuffer != Constants.NONE) || (!_haveSecondNumber && _numberBuffer == Constants.NONE))
             {
                 _theOperator = arithmetic;
@@ -133,6 +143,7 @@ namespace WindowsCalculator
         private bool _haveDot;
         private double _firstNumber;
         private double _secondNumber;
+        private char _lastOperator;
 
         public string Text
         { 
