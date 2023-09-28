@@ -1,0 +1,10 @@
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\bin\Debug\hw2.exe.config
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\bin\Debug\hw2.exe
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\bin\Debug\hw2.pdb
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.csproj.AssemblyReference.cache
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.PowerPoint.resources
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.Properties.Resources.resources
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.csproj.GenerateResource.cache
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.csproj.CoreCompileInputs.cache
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.exe
+C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\obj\Debug\hw2.pdb
