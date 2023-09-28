@@ -38,7 +38,7 @@ namespace WindowPowerPoint
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.說明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.關於ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteShape = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteShape = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShapeInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ShapeGridView)).BeginInit();
@@ -48,6 +48,7 @@ namespace WindowPowerPoint
             // 
             // ShapeGridView
             // 
+            this.ShapeGridView.AllowUserToAddRows = false;
             this.ShapeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ShapeGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DeleteShape,
@@ -55,22 +56,25 @@ namespace WindowPowerPoint
             this.ShapeInfo});
             this.ShapeGridView.Location = new System.Drawing.Point(19, 82);
             this.ShapeGridView.Name = "ShapeGridView";
+            this.ShapeGridView.ReadOnly = true;
             this.ShapeGridView.RowHeadersVisible = false;
             this.ShapeGridView.RowHeadersWidth = 51;
             this.ShapeGridView.RowTemplate.Height = 24;
-            this.ShapeGridView.Size = new System.Drawing.Size(230, 791);
+            this.ShapeGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ShapeGridView.Size = new System.Drawing.Size(287, 791);
             this.ShapeGridView.TabIndex = 0;
             this.ShapeGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShapeGridView_CellContentClick);
             // 
             // ShapeComboBox
             // 
+            this.ShapeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ShapeComboBox.FormattingEnabled = true;
             this.ShapeComboBox.Items.AddRange(new object[] {
             "矩形",
             "線"});
-            this.ShapeComboBox.Location = new System.Drawing.Point(128, 31);
+            this.ShapeComboBox.Location = new System.Drawing.Point(160, 32);
             this.ShapeComboBox.Name = "ShapeComboBox";
-            this.ShapeComboBox.Size = new System.Drawing.Size(121, 24);
+            this.ShapeComboBox.Size = new System.Drawing.Size(146, 24);
             this.ShapeComboBox.TabIndex = 1;
             // 
             // ButtonInsertShape
@@ -89,9 +93,9 @@ namespace WindowPowerPoint
             this.GroupView.Controls.Add(this.ButtonInsertShape);
             this.GroupView.Controls.Add(this.ShapeGridView);
             this.GroupView.Controls.Add(this.ShapeComboBox);
-            this.GroupView.Location = new System.Drawing.Point(1033, 33);
+            this.GroupView.Location = new System.Drawing.Point(1465, 43);
             this.GroupView.Name = "GroupView";
-            this.GroupView.Size = new System.Drawing.Size(265, 879);
+            this.GroupView.Size = new System.Drawing.Size(326, 879);
             this.GroupView.TabIndex = 3;
             this.GroupView.TabStop = false;
             this.GroupView.Text = "資料顯示";
@@ -119,7 +123,7 @@ namespace WindowPowerPoint
             this.說明ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1310, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1803, 30);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -128,7 +132,7 @@ namespace WindowPowerPoint
             this.說明ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.關於ToolStripMenuItem});
             this.說明ToolStripMenuItem.Name = "說明ToolStripMenuItem";
-            this.說明ToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.說明ToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.說明ToolStripMenuItem.Text = "說明";
             // 
             // 關於ToolStripMenuItem
@@ -139,30 +143,39 @@ namespace WindowPowerPoint
             // 
             // DeleteShape
             // 
+            this.DeleteShape.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DeleteShape.FillWeight = 45.72192F;
             this.DeleteShape.HeaderText = "刪除";
             this.DeleteShape.MinimumWidth = 6;
             this.DeleteShape.Name = "DeleteShape";
-            this.DeleteShape.Width = 50;
+            this.DeleteShape.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.DeleteShape.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteShape.Text = "刪除";
             // 
             // ShapeType
             // 
+            this.ShapeType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ShapeType.FillWeight = 45.72192F;
             this.ShapeType.HeaderText = "形狀";
             this.ShapeType.MinimumWidth = 6;
             this.ShapeType.Name = "ShapeType";
-            this.ShapeType.Width = 50;
+            this.ShapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // ShapeInfo
             // 
+            this.ShapeInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ShapeInfo.FillWeight = 208.5562F;
             this.ShapeInfo.HeaderText = "資訊";
             this.ShapeInfo.MinimumWidth = 6;
             this.ShapeInfo.Name = "ShapeInfo";
+            this.ShapeInfo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ShapeInfo.Width = 130;
             // 
             // PowerPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 937);
+            this.ClientSize = new System.Drawing.Size(1803, 961);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Slide1);
             this.Controls.Add(this.GroupView);
@@ -190,7 +203,7 @@ namespace WindowPowerPoint
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 說明ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 關於ToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DeleteShape;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteShape;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShapeInfo;
     }

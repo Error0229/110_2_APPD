@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowPowerPoint
 {
-    class Rectangle : Shape
+    public class Rectangle : Shape
     {
+        public Rectangle()
+        {
+            _name = Constant.RECTANGLE_CHINESE;
+        }
     }
 }

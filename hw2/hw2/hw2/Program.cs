@@ -14,9 +14,10 @@ namespace WindowPowerPoint
         [STAThread]
         static void Main()
         {
+            var model = new PowerPointModel();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PowerPoint());
+            Application.Run(new PowerPoint(model));
         }
     }
 }

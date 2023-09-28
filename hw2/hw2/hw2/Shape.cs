@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace WindowPowerPoint
 {
-    enum ShapeType
+    public enum ShapeType
     {
         LINE,
         RECTANGLE
     }
     public class Shape
     {
-        Shape (ShapeType type)
+        public Shape (ShapeType type)
         {
             _type = type;
+        }
+        public Shape()
+        {
+
         }
         // get shape's info
         public string GetInfo()
@@ -37,11 +41,11 @@ namespace WindowPowerPoint
             _down = down;
             _right = right;
         }
-        private ShapeType _type;
-        private int _top;
-        private int _left;
-        private int _down;
-        private int _right;
-        private string _name;
+        protected ShapeType _type;
+        protected int _top;
+        protected int _left;
+        protected int _down;
+        protected int _right;
+        protected string _name;
     }
 }

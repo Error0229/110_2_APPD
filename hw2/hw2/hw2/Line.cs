@@ -8,5 +8,9 @@ namespace WindowPowerPoint
 {
     class Line : Shape
     {
+        public Line()
+        {
+            _name = Constant.LINE_CHINESE;
+        }
     }
 }

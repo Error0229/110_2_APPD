@@ -6,12 +6,25 @@ using System.Threading.Tasks;
 
 namespace WindowPowerPoint
 {
-    class PowerPointModel
+    public class PowerPointModel
     {
-        void InsertShape()
+        public PowerPointModel()
         {
-
+            _shapes = new List<Shape>();
+            _factory = new ShapeFactory();
+        }
+        // insert shape by shape name
+        public void InsertShape(string shapeName)
+        {
+            _shapes.Add(_factory.CreateShape(shapeName));
+        }
+        // remove shape by index
+        public void RemoveShape(int index)
+        {
+            _shapes.RemoveAt(index);
         }
 
+        private List<Shape> _shapes { get; }
+        private ShapeFactory _factory;
     }
 }

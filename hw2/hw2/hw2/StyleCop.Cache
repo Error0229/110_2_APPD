@@ -3,19 +3,30 @@
   <project key="692281412">
     <configuration>DEBUG;TRACE</configuration>
   </project>
+  <sourcecode name="Constant.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/21 10:57:41.530</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/09/28 14:30:36.625</sourceFile>
+      <parser>2023/09/21 10:57:41.530</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="Form1.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/21 10:57:41.530</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/28 11:34:58.673</sourceFile>
+      <sourceFile>2023/09/28 15:58:56.735</sourceFile>
       <parser>2023/09/21 10:57:41.530</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Method1" ruleCheckId="MT0001">
-        <context>ICS(函式-1)</context>
-        <line>17</line>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\Form1.cs on line 28.</context>
+        <line>28</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -24,62 +35,12 @@
     <timestamps>
       <styleCop>2023/09/21 10:57:41.530</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/28 11:34:58.669</sourceFile>
+      <sourceFile>2023/09/28 15:26:59.270</sourceFile>
       <parser>2023/09/21 10:57:41.530</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>184</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>185</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>186</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>187</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>188</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>189</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>190</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>191</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>192</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
-        <context>ICS(變數-1)</context>
-        <line>193</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
         <context>ICS(變數-1)</context>
         <line>194</line>
@@ -90,24 +51,91 @@
         <line>195</line>
         <warning>False</warning>
       </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>196</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>197</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>198</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>199</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>200</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>201</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>202</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>203</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>204</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Variable1" ruleCheckId="VR0001">
+        <context>ICS(變數-1)</context>
+        <line>205</line>
+        <warning>False</warning>
+      </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="PowerPointModel.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="Line.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/21 10:57:41.530</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/28 11:34:58.686</sourceFile>
+      <sourceFile>2023/09/28 14:28:13.970</sourceFile>
       <parser>2023/09/21 10:57:41.530</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="PowerPointModel.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/21 10:57:41.530</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/09/28 16:00:03.313</sourceFile>
+      <parser>2023/09/21 10:57:41.530</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\login\Desktop\112_1_APPD\hw2\hw2\hw2\PowerPointModel.cs on line 22.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="Program.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/21 10:57:41.530</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/28 11:34:58.679</sourceFile>
+      <sourceFile>2023/09/28 13:58:25.064</sourceFile>
       <parser>2023/09/21 10:57:41.530</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -147,11 +175,22 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="Rectangle.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/21 10:57:41.530</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/09/28 14:28:48.858</sourceFile>
+      <parser>2023/09/21 10:57:41.530</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="Shape.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/21 10:57:41.530</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/28 11:42:58.673</sourceFile>
+      <sourceFile>2023/09/28 15:36:49.801</sourceFile>
       <parser>2023/09/21 10:57:41.530</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -159,62 +198,57 @@
     <violations>
       <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
         <context>Literal constants(字面常數)-"("</context>
-        <line>13</line>
-        <index>241</index>
-        <endIndex>243</endIndex>
-        <startLine>13</startLine>
+        <line>27</line>
+        <index>488</index>
+        <endIndex>490</endIndex>
+        <startLine>27</startLine>
         <startColumn>20</startColumn>
-        <endLine>13</endLine>
+        <endLine>27</endLine>
         <endColumn>22</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
         <context>Literal constants(字面常數)-", "</context>
-        <line>13</line>
-        <index>254</index>
-        <endIndex>257</endIndex>
-        <startLine>13</startLine>
+        <line>27</line>
+        <index>501</index>
+        <endIndex>504</endIndex>
+        <startLine>27</startLine>
         <startColumn>33</startColumn>
-        <endLine>13</endLine>
+        <endLine>27</endLine>
         <endColumn>36</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
         <context>Literal constants(字面常數)-", "</context>
-        <line>13</line>
-        <index>287</index>
-        <endIndex>290</endIndex>
-        <startLine>13</startLine>
+        <line>27</line>
+        <index>534</index>
+        <endIndex>537</endIndex>
+        <startLine>27</startLine>
         <startColumn>66</startColumn>
-        <endLine>13</endLine>
+        <endLine>27</endLine>
         <endColumn>69</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
         <context>Literal constants(字面常數)-"), ("</context>
-        <line>13</line>
-        <index>269</index>
-        <endIndex>274</endIndex>
-        <startLine>13</startLine>
+        <line>27</line>
+        <index>516</index>
+        <endIndex>521</endIndex>
+        <startLine>27</startLine>
         <startColumn>48</startColumn>
-        <endLine>13</endLine>
+        <endLine>27</endLine>
         <endColumn>53</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
         <context>Literal constants(字面常數)-")"</context>
-        <line>13</line>
-        <index>302</index>
-        <endIndex>304</endIndex>
-        <startLine>13</startLine>
+        <line>27</line>
+        <index>549</index>
+        <endIndex>551</endIndex>
+        <startLine>27</startLine>
         <startColumn>81</startColumn>
-        <endLine>13</endLine>
+        <endLine>27</endLine>
         <endColumn>83</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Method1" ruleCheckId="MT0001">
-        <context>ICS(函式-1)</context>
-        <line>11</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -223,7 +257,7 @@
     <timestamps>
       <styleCop>2023/09/21 10:57:41.530</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/28 11:34:58.663</sourceFile>
+      <sourceFile>2023/09/28 14:46:39.658</sourceFile>
       <parser>2023/09/21 10:57:41.530</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/21 10:57:41.530</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
