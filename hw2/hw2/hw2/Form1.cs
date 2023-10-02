@@ -6,28 +6,34 @@ namespace WindowPowerPoint
     public partial class PowerPoint : Form
     {
 
+        private readonly BindingSource _bindingSource = new BindingSource();
         public PowerPoint(PowerPointModel model)
         {
             _model = model;
             InitializeComponent();
+            _bindingSource.DataSource = _model.Shapes;
+            ShapeGridView.DataSource = _bindingSource;
         }
 
         // insert shape
         private void ButtonInsertShapeClick(object sender, System.EventArgs e)
         {
+            if (ShapeComboBox.Text == string.Empty)
+            {
+                return;
+            }
             _model.InsertShape(ShapeComboBox.Text);
-            // add a new row to the grid view
-            // the grid view have 3 columns, first one is delete button, second one is shape name, third one is shape's coordinates
-            ShapeGridView.Rows.Add("Delete", ShapeComboBox.Text, "(0, 0), (1, 1)");
+            _bindingSource.ResetBindings(false);
         }
         private PowerPointModel _model;
 
+        // delete shape
         private void ShapeGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
                 _model.RemoveShape(e.RowIndex);
-                ShapeGridView.Rows.RemoveAt(e.RowIndex);
+                _bindingSource.ResetBindings(false);
             }
         }
     }

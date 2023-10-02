@@ -24,7 +24,14 @@ namespace WindowPowerPoint
             _shapes.RemoveAt(index);
         }
 
-        private List<Shape> _shapes { get; }
+        private List<Shape> _shapes;
         private ShapeFactory _factory;
+        public List<Shape> Shapes
+        {
+            get
+            {
+                return _shapes;
+            }
+        }
     }
 }
