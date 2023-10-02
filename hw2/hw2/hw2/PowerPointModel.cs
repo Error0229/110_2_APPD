@@ -18,14 +18,15 @@ namespace WindowPowerPoint
         {
             _shapes.Add(_factory.CreateShape(shapeName));
         }
+
         // remove shape by index
         public void RemoveShape(int index)
         {
             _shapes.RemoveAt(index);
         }
 
-        private List<Shape> _shapes;
-        private ShapeFactory _factory;
+        private readonly List<Shape> _shapes;
+        private readonly ShapeFactory _factory;
         public List<Shape> Shapes
         {
             get
