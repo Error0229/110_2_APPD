@@ -1,0 +1,9 @@
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\bin\Debug\DrawingForm.exe.config
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\bin\Debug\DrawingForm.exe
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\bin\Debug\DrawingForm.pdb
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\obj\Debug\DrawingForm.csproj.AssemblyReference.cache
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\obj\Debug\DrawingForm.Properties.Resources.resources
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\obj\Debug\DrawingForm.csproj.GenerateResource.cache
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\obj\Debug\DrawingForm.csproj.CoreCompileInputs.cache
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\obj\Debug\DrawingForm.exe
+C:\Users\login\Desktop\112_1_APPD\LabDrawing\DrawingForm\DrawingForm\obj\Debug\DrawingForm.pdb
