@@ -16,7 +16,7 @@ namespace WindowPowerPoint
         // Draw Line
         public override void Draw(Graphics graphics)
         {
-            graphics.DrawLine(new Pen(Color.Black, 2), _pointFirst, _pointSecond);
+            graphics.DrawLine(new Pen(Color.Black, Constant.PEN_THICK), _pointFirst, _pointSecond);
         }
     }
 }

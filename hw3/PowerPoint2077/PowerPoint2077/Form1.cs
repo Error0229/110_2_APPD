@@ -24,15 +24,15 @@ namespace WindowPowerPoint
             InitializeComponent();
             _bindingSource.DataSource = _presentationModel.Shapes;
             _shapeGridView.DataSource = _bindingSource;
-            _presentationModel.SetCanvaCoordinate(new Point(Constant.ZERO_INT, Constant.ZERO_INT), new Point(_canva.Width, _canva.Height));
-            _canva.Paint += HandleCanvasPaint;
-            _canva.MouseDown += HandleCanvasPressed;
-            _canva.MouseUp += HandleCanvasReleased;
-            _canva.MouseMove += HandleCanvasMoving;
-            _canva.MouseEnter += HandleCanvasEnter;
-            _canva.MouseLeave += HandleCanvasLeave;
+            _presentationModel.SetCanvasCoordinate(new Point(Constant.ZERO_INTEGER, Constant.ZERO_INTEGER), new Point(_canvas.Width, _canvas.Height));
+            _canvas.Paint += HandleCanvasPaint;
+            _canvas.MouseDown += HandleCanvasPressed;
+            _canvas.MouseUp += HandleCanvasReleased;
+            _canvas.MouseMove += HandleCanvasMoving;
+            _canvas.MouseEnter += HandleCanvasEnter;
+            _canvas.MouseLeave += HandleCanvasLeave;
 
-            _presentationModel.ModelChanged += HandleModelChanged;
+            _presentationModel._modelChanged += HandleModelChanged;
         }
 
         // handle model change
@@ -40,10 +40,10 @@ namespace WindowPowerPoint
         {
             // Update the view
             _bindingSource.ResetBindings(false);
-            _canva.Invalidate();
+            _canvas.Invalidate();
             _lineAddButton.Checked = _presentationModel.IsLineChecked();
             _rectangleAddButton.Checked = _presentationModel.IsRectangleChecked();
-            _ellipseAddButton.Checked = _presentationModel.IsEliipseChecked();
+            _ellipseAddButton.Checked = _presentationModel.IsCircleChecked();
         }
 
         // insert shape
@@ -68,43 +68,47 @@ namespace WindowPowerPoint
         // handle canva press
         public void HandleCanvasPressed(object sender, MouseEventArgs e)
         {
-            _presentationModel.ProcessCanvaPressed(e.Location);
+            _presentationModel.ProcessCanvasPressed(e.Location);
         }
 
         // handle mouse moving on canva
         public void HandleCanvasMoving(object sender, MouseEventArgs e)
         {
-            _presentationModel.ProcessCanvaMoving(e.Location);
+            _presentationModel.ProcessCanvasMoving(e.Location);
         }
 
         // handle mouse release on canva
         public void HandleCanvasReleased(object sender, MouseEventArgs e)
         {
-            _presentationModel.ProcessCanvaReleased(e.Location);
+            _presentationModel.ProcessCanvasReleased();
         }
 
         // handle mouse enter canva
         public void HandleCanvasEnter(object sender, EventArgs e)
         {
-            Cursor = _presentationModel.ProcessMouseEnterCanva();
+            Cursor = _presentationModel.ProcessMouseEnterCanvas();
         }
 
         // handle mouse leave canva
         public void HandleCanvasLeave(object sender, EventArgs e)
         {
-            Cursor = _presentationModel.ProcessMouseLeaveCanva();
+            Cursor = _presentationModel.ProcessMouseLeaveCanvas();
         }
-        private void _lineAddButtonClick(object sender, System.EventArgs e)
+
+        // click add line
+        private void ClickAddLineButton(object sender, System.EventArgs e)
         {
             _presentationModel.ProcessLineClicked();
         }
 
-        private void _rectangleAddButtonClick(object sender, System.EventArgs e)
+        // click add rect
+        private void ClickAddRectangleButton(object sender, System.EventArgs e)
         {
             _presentationModel.ProcessRectangleClicked();
         }
 
-        private void _ellipseAddButtonClick(object sender, System.EventArgs e)
+        // click arr ellipse
+        private void ClickAddEllipseButton(object sender, System.EventArgs e)
         {
             _presentationModel.ProcessEllipseClicked();
         }

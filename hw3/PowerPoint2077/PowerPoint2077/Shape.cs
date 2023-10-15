@@ -48,13 +48,13 @@ namespace WindowPowerPoint
             _pointSecond = point;
         }
 
+        // adjust point to make it resaonable
         public void AdjustPoints()
         {
-            int top, left, button, right;
-            top = Math.Min(_pointFirst.X, _pointSecond.X);
-            left = Math.Min(_pointFirst.Y, _pointSecond.Y);
-            button = Math.Max(_pointFirst.X, _pointSecond.X);
-            right = Math.Max(_pointFirst.Y, _pointSecond.Y);
+            var top = Math.Min(_pointFirst.X, _pointSecond.X);
+            var left = Math.Min(_pointFirst.Y, _pointSecond.Y);
+            var button = Math.Max(_pointFirst.X, _pointSecond.X);
+            var right = Math.Max(_pointFirst.Y, _pointSecond.Y);
             _pointFirst.X = top;
             _pointFirst.Y = left;
             _pointSecond.X = button;
@@ -83,8 +83,29 @@ namespace WindowPowerPoint
                 return GetInfo();
             }
         }
+
+        // get shape location
+        protected Point GetShapeLocation()
+        {
+            
+            _shapeLocation.X = Math.Min(_pointFirst.X, _pointSecond.X);
+            _shapeLocation.Y = Math.Min(_pointFirst.Y, _pointSecond.Y);
+            return _shapeLocation;
+            
+        }
+
+        // get shape rectangle
+        protected System.Drawing.Rectangle GetShapeRectangle()
+        {
+            _shapeRectangle.Location = GetShapeLocation();
+            _shapeRectangle.Width = Math.Abs(_pointFirst.X - _pointSecond.X);
+            _shapeRectangle.Height = Math.Abs(_pointFirst.Y - _pointSecond.Y);
+            return _shapeRectangle;
+        }
         protected ShapeType _type;
 
+        protected Point _shapeLocation;
+        protected System.Drawing.Rectangle _shapeRectangle;
         protected Point _pointFirst;
         protected Point _pointSecond;
         protected string _name;

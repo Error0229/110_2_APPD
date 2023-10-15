@@ -12,17 +12,18 @@ namespace WindowPowerPoint
     public class PowerPointPresentationModel
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
-        public event ModelChangedEventHandler ModelChanged;
+        public event ModelChangedEventHandler _modelChanged;
         public PowerPointPresentationModel(PowerPointModel model)
         {
             this._model = model;
-            _model.ModelChanged += HandleModelChanged;
-            _isEllipseChecked = false;
+            _model._modelChanged += HandleModelChanged;
+            _isCircleChecked = false;
             _isLineChecked = false;
             _isRectangleChecked = false;
             _isPressed = false;
             _isMoving = false;
         }
+
         // insert shape
         public void ProcessInsertShape(string shapeName)
         {
@@ -42,7 +43,7 @@ namespace WindowPowerPoint
         }
 
         // process mouse enter canva
-        public Cursor ProcessMouseEnterCanva()
+        public Cursor ProcessMouseEnterCanvas()
         {
             if (IsDrawing())
             {
@@ -55,54 +56,61 @@ namespace WindowPowerPoint
         }
 
         // process mouse leave canva
-        public Cursor ProcessMouseLeaveCanva()
+        public Cursor ProcessMouseLeaveCanvas()
         {
-            _isRectangleChecked = _isLineChecked = _isEllipseChecked = false;
-            OnModelChanged(EventArgs.Empty);
+            _isRectangleChecked = _isLineChecked = _isCircleChecked = false;
+            NotifyModelChanged(EventArgs.Empty);
             return Cursors.Default;
         }
 
-
         // Set canva coordinate
-        public void SetCanvaCoordinate(Point pointFirst, Point pointSecond)
+        public void SetCanvasCoordinate(Point pointFirst, Point pointSecond)
         {
-            _model.SetCanvaCoordinate(pointFirst, pointSecond);
+            _model.SetCanvasCoordinate(pointFirst, pointSecond);
         }
 
         // on model changed
-        protected virtual void OnModelChanged(EventArgs e)
+        protected virtual void NotifyModelChanged(EventArgs e)
         {
-            ModelChanged?.Invoke(this, e);
+            if (_modelChanged != null)
+                _modelChanged(this, e);
         }
+
+        // handle model changed
         private void HandleModelChanged(object sender, EventArgs e)
         {
-            OnModelChanged(e);
+            NotifyModelChanged(e);
         }
 
-
+        // line clicked 
         public void ProcessLineClicked()
         {
             _isLineChecked = true;
             _hintType = ShapeType.LINE;
-            _isEllipseChecked = _isRectangleChecked = false;
-            OnModelChanged(EventArgs.Empty);
+            _isCircleChecked = _isRectangleChecked = false;
+            NotifyModelChanged(EventArgs.Empty);
         }
+
+        // circle clicked
         public void ProcessEllipseClicked()
         {
-            _isEllipseChecked = true;
+            _isCircleChecked = true;
             _hintType = ShapeType.CIRCLE;
             _isLineChecked = _isRectangleChecked = false;
-            OnModelChanged(EventArgs.Empty);
+            NotifyModelChanged(EventArgs.Empty);
         }
+
+        // rectangle clicked
         public void ProcessRectangleClicked()
         {
             _isRectangleChecked = true;
             _hintType = ShapeType.RECTANGLE;
-            _isLineChecked = _isEllipseChecked = false;
-            OnModelChanged(EventArgs.Empty);
+            _isLineChecked = _isCircleChecked = false;
+            NotifyModelChanged(EventArgs.Empty);
         }
+
         // process canva pressed
-        public void ProcessCanvaPressed(Point point)
+        public void ProcessCanvasPressed(Point point)
         {
             if (IsDrawing())
             {
@@ -111,8 +119,9 @@ namespace WindowPowerPoint
                 _isPressed = true;
             }
         }
+
         // process mouse moving while pressed in canva
-        public void ProcessCanvaMoving(Point point)
+        public void ProcessCanvasMoving(Point point)
         {
             if (_isPressed)
             {
@@ -122,7 +131,7 @@ namespace WindowPowerPoint
         }
 
         // process mouse release while drawing
-        public void ProcessCanvaReleased(Point point)
+        public void ProcessCanvasReleased()
         {
             if (_isPressed)
             {
@@ -130,6 +139,7 @@ namespace WindowPowerPoint
                 _isPressed = _isMoving = false;
             }
         }
+
         // draw all the shape
         public void Draw(Graphics graphics)
         {
@@ -140,14 +150,19 @@ namespace WindowPowerPoint
             }
         }
 
-        public bool IsEliipseChecked()
+        // is circle checked
+        public bool IsCircleChecked()
         {
-            return _isEllipseChecked;
+            return _isCircleChecked;
         }
+
+        // is line checked
         public bool IsLineChecked()
         {
             return _isLineChecked;
         }
+
+        // is rectangle checked
         public bool IsRectangleChecked()
         {
             return _isRectangleChecked;
@@ -156,8 +171,9 @@ namespace WindowPowerPoint
         // is drawing
         public bool IsDrawing()
         {
-            return _isRectangleChecked || _isLineChecked || _isEllipseChecked;
+            return _isRectangleChecked || _isLineChecked || _isCircleChecked;
         }
+
         public List<Shape> Shapes
         {
             get
@@ -166,7 +182,7 @@ namespace WindowPowerPoint
             }
         }
         private bool _isLineChecked;
-        private bool _isEllipseChecked;
+        private bool _isCircleChecked;
         private bool _isRectangleChecked;
         private bool _isPressed;
         private bool _isMoving;

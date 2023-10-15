@@ -10,21 +10,22 @@ namespace WindowPowerPoint
     public class PowerPointModel
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
-        public event ModelChangedEventHandler ModelChanged;
+        public event ModelChangedEventHandler _modelChanged;
         public PowerPointModel()
         {
             _shapes = new List<Shape>();
             _factory = new ShapeFactory();
         }
+
         // insert shape by shape name
         public void InsertShape(string shapeName)
         {
-            var rand = new Random();
+            var random = new Random();
             Shape shape = _factory.CreateShape(shapeName);
-            shape.SetFirstPoint(new Point(rand.Next(_canvaTopLeft.X, _canvaButtonRight.X), rand.Next(_canvaTopLeft.Y, _canvaButtonRight.Y)));
-            shape.SetSecondPoint(new Point(rand.Next(_canvaTopLeft.X, _canvaButtonRight.X), rand.Next(_canvaTopLeft.Y, _canvaButtonRight.Y)));
+            shape.SetFirstPoint(new Point(random.Next(_canvasTopLeft.X, _canvasButtonRight.X), random.Next(_canvasTopLeft.Y, _canvasButtonRight.Y)));
+            shape.SetSecondPoint(new Point(random.Next(_canvasTopLeft.X, _canvasButtonRight.X), random.Next(_canvasTopLeft.Y, _canvasButtonRight.Y)));
             _shapes.Add(shape);
-            OnModelChanged(EventArgs.Empty);
+            NotifyModelChanged(EventArgs.Empty);
 
         }
 
@@ -32,14 +33,14 @@ namespace WindowPowerPoint
         public void RemoveShape(int index)
         {
             _shapes.RemoveAt(index);
-            OnModelChanged(EventArgs.Empty);
+            NotifyModelChanged(EventArgs.Empty);
         }
 
         // set canva coordinate
-        public void SetCanvaCoordinate(Point pointTopLeft, Point pointButtonRight)
+        public void SetCanvasCoordinate(Point pointTopLeft, Point pointButtonRight)
         {
-            _canvaTopLeft = pointTopLeft;
-            _canvaButtonRight = pointButtonRight;
+            _canvasTopLeft = pointTopLeft;
+            _canvasButtonRight = pointButtonRight;
         }
 
         // draw shapes
@@ -56,11 +57,12 @@ namespace WindowPowerPoint
         {
             _hint.Draw(graphics);
         }
+
         // model change function
-        protected virtual void OnModelChanged(EventArgs e)
+        protected virtual void NotifyModelChanged(EventArgs e)
         {
-           
-            ModelChanged?.Invoke(this, e);
+            if (_modelChanged != null)
+                _modelChanged(this, e);
         }
 
         // set hint type
@@ -79,18 +81,19 @@ namespace WindowPowerPoint
         public void SetHintSecondPoint(Point point)
         {
             _hint.SetSecondPoint(point);
-            OnModelChanged(EventArgs.Empty);
+            NotifyModelChanged(EventArgs.Empty);
         }
 
         // insert user drew shape by hint
         public void AddShapeWithHint()
         {
             _shapes.Add(_hint);
-            OnModelChanged(EventArgs.Empty);
+            NotifyModelChanged(EventArgs.Empty);
         }
+
         private Shape _hint;
-        private Point _canvaTopLeft;
-        private Point _canvaButtonRight;
+        private Point _canvasTopLeft;
+        private Point _canvasButtonRight;
         private readonly List<Shape> _shapes;
         private readonly ShapeFactory _factory;
         public List<Shape> Shapes

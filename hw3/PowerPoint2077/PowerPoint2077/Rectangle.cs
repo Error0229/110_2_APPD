@@ -12,12 +12,11 @@ namespace WindowPowerPoint
         {
             _name = Constant.RECTANGLE_CHINESE;
         }
+
         // Draw Rectangle
         public override void Draw(Graphics graphics)
         {
-            Point pointTopLeft = new Point(Math.Min(_pointFirst.X, _pointSecond.X), Math.Min(_pointFirst.Y, _pointSecond.Y));
-            Size rectangleSize = new Size(Math.Abs(_pointSecond.X - _pointFirst.X), Math.Abs(_pointSecond.Y - _pointFirst.Y));
-            graphics.DrawRectangle(new Pen(Color.Black, 2), new System.Drawing.Rectangle(pointTopLeft, rectangleSize));
+            graphics.DrawRectangle(new Pen(Color.Black, Constant.PEN_THICK), GetShapeRectangle());
         }
     }
 }
