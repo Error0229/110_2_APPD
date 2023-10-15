@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Drawing;
 namespace WindowPowerPoint
 {
     public enum ShapeType
     {
         LINE,
-        RECTANGLE
+        RECTANGLE,
+        CIRCLE
     }
-    public class Shape
+    public abstract class Shape
     {
         public Shape(ShapeType type)
         {
             _type = type;
+            _pointFirst = new Point();
+            _pointSecond = new Point();
         }
         public Shape()
         {
@@ -24,7 +27,7 @@ namespace WindowPowerPoint
         // get shape's info
         public string GetInfo()
         {
-            return FormatCoordinate(_top, _left) + Constant.COMMA + Constant.SPACE + FormatCoordinate(_down, _right);
+            return FormatCoordinate(_pointFirst.X, _pointFirst.Y) + Constant.COMMA + Constant.SPACE + FormatCoordinate(_pointSecond.X, _pointSecond.Y);
         }
 
         // get shape's name
@@ -33,13 +36,29 @@ namespace WindowPowerPoint
             return _name;
         }
 
-        // set shape coordinate
-        public void SetCoordinate(int top, int left, int down, int right)
+        // set first point
+        public void SetFirstPoint(Point point)
         {
-            _top = top;
-            _left = left;
-            _down = down;
-            _right = right;
+            _pointFirst = point;
+        }
+
+        // set second point
+        public void SetSecondPoint(Point point)
+        {
+            _pointSecond = point;
+        }
+
+        public void AdjustPoints()
+        {
+            int top, left, button, right;
+            top = Math.Min(_pointFirst.X, _pointSecond.X);
+            left = Math.Min(_pointFirst.Y, _pointSecond.Y);
+            button = Math.Max(_pointFirst.X, _pointSecond.X);
+            right = Math.Max(_pointFirst.Y, _pointSecond.Y);
+            _pointFirst.X = top;
+            _pointFirst.Y = left;
+            _pointSecond.X = button;
+            _pointSecond.Y = right;
         }
 
         // format coordinate
@@ -47,6 +66,9 @@ namespace WindowPowerPoint
         {
             return Constant.LEFT_BRACKET + first + Constant.COMMA + Constant.SPACE + second + Constant.RIGHT_BRACKET;
         }
+
+        // draw shape
+        public abstract void Draw(Graphics graphic);
         public string Name
         {
             get
@@ -62,10 +84,9 @@ namespace WindowPowerPoint
             }
         }
         protected ShapeType _type;
-        protected int _top;
-        protected int _left;
-        protected int _down;
-        protected int _right;
+
+        protected Point _pointFirst;
+        protected Point _pointSecond;
         protected string _name;
     }
 }

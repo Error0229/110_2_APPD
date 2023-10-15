@@ -46,12 +46,13 @@ namespace WindowPowerPoint
             this._lineAddButton = new System.Windows.Forms.ToolStripButton();
             this._rectangleAddButton = new System.Windows.Forms.ToolStripButton();
             this._ellipseAddButton = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this._slideBackground = new System.Windows.Forms.Panel();
+            this._canva = new DoubleBufferedPanel();
             ((System.ComponentModel.ISupportInitialize)(this._shapeGridView)).BeginInit();
             this._groupView.SuspendLayout();
             this._menuStrip1.SuspendLayout();
             this._toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this._slideBackground.SuspendLayout();
             this.SuspendLayout();
             // 
             // _shapeGridView
@@ -63,7 +64,7 @@ namespace WindowPowerPoint
             this.ShapeType,
             this.ShapeInfo});
             this._shapeGridView.Location = new System.Drawing.Point(14, 67);
-            this._shapeGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._shapeGridView.Margin = new System.Windows.Forms.Padding(2);
             this._shapeGridView.Name = "_shapeGridView";
             this._shapeGridView.ReadOnly = true;
             this._shapeGridView.RowHeadersVisible = false;
@@ -116,9 +117,10 @@ namespace WindowPowerPoint
             this._shapeComboBox.FormattingEnabled = true;
             this._shapeComboBox.Items.AddRange(new object[] {
             "矩形",
-            "線"});
+            "線",
+            "圓形"});
             this._shapeComboBox.Location = new System.Drawing.Point(120, 26);
-            this._shapeComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._shapeComboBox.Margin = new System.Windows.Forms.Padding(2);
             this._shapeComboBox.Name = "_shapeComboBox";
             this._shapeComboBox.Size = new System.Drawing.Size(110, 21);
             this._shapeComboBox.TabIndex = 1;
@@ -127,7 +129,7 @@ namespace WindowPowerPoint
             // 
             this._buttonInsertShape.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._buttonInsertShape.Location = new System.Drawing.Point(14, 17);
-            this._buttonInsertShape.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._buttonInsertShape.Margin = new System.Windows.Forms.Padding(2);
             this._buttonInsertShape.Name = "_buttonInsertShape";
             this._buttonInsertShape.Size = new System.Drawing.Size(64, 35);
             this._buttonInsertShape.TabIndex = 2;
@@ -140,11 +142,11 @@ namespace WindowPowerPoint
             this._groupView.Controls.Add(this._buttonInsertShape);
             this._groupView.Controls.Add(this._shapeGridView);
             this._groupView.Controls.Add(this._shapeComboBox);
-            this._groupView.Location = new System.Drawing.Point(908, 41);
-            this._groupView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._groupView.Location = new System.Drawing.Point(908, 51);
+            this._groupView.Margin = new System.Windows.Forms.Padding(2);
             this._groupView.Name = "_groupView";
-            this._groupView.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this._groupView.Size = new System.Drawing.Size(244, 714);
+            this._groupView.Padding = new System.Windows.Forms.Padding(2);
+            this._groupView.Size = new System.Drawing.Size(244, 704);
             this._groupView.TabIndex = 3;
             this._groupView.TabStop = false;
             this._groupView.Text = "資料顯示";
@@ -152,7 +154,7 @@ namespace WindowPowerPoint
             // _slide1
             // 
             this._slide1.Location = new System.Drawing.Point(2, 113);
-            this._slide1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._slide1.Margin = new System.Windows.Forms.Padding(2);
             this._slide1.Name = "_slide1";
             this._slide1.Size = new System.Drawing.Size(113, 100);
             this._slide1.TabIndex = 4;
@@ -161,7 +163,7 @@ namespace WindowPowerPoint
             // _slide2
             // 
             this._slide2.Location = new System.Drawing.Point(2, 9);
-            this._slide2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._slide2.Margin = new System.Windows.Forms.Padding(2);
             this._slide2.Name = "_slide2";
             this._slide2.Size = new System.Drawing.Size(113, 100);
             this._slide2.TabIndex = 5;
@@ -239,28 +241,38 @@ namespace WindowPowerPoint
             this._ellipseAddButton.Text = "⭕";
             this._ellipseAddButton.Click += new System.EventHandler(this._ellipseAddButtonClick);
             // 
-            // panel1
+            // _slideBackground
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this._slide2);
-            this.panel1.Controls.Add(this._slide1);
-            this.panel1.Location = new System.Drawing.Point(12, 58);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(118, 693);
-            this.panel1.TabIndex = 9;
+            this._slideBackground.AutoScroll = true;
+            this._slideBackground.BackColor = System.Drawing.SystemColors.ControlDark;
+            this._slideBackground.Controls.Add(this._slide2);
+            this._slideBackground.Controls.Add(this._slide1);
+            this._slideBackground.Location = new System.Drawing.Point(12, 51);
+            this._slideBackground.Name = "_slideBackground";
+            this._slideBackground.Size = new System.Drawing.Size(118, 702);
+            this._slideBackground.TabIndex = 9;
+            // 
+            // _canva
+            // 
+            this._canva.AutoSize = true;
+            this._canva.BackColor = System.Drawing.Color.White;
+            this._canva.Location = new System.Drawing.Point(136, 51);
+            this._canva.Name = "_canva";
+            this._canva.Size = new System.Drawing.Size(767, 702);
+            this._canva.TabIndex = 10;
             // 
             // PowerPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 765);
+            this.Controls.Add(this._canva);
             this.Controls.Add(this._groupView);
             this.Controls.Add(this._toolStrip1);
             this.Controls.Add(this._menuStrip1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this._slideBackground);
             this.MainMenuStrip = this._menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PowerPoint";
             this.Text = "PowerPoint-🤡";
             ((System.ComponentModel.ISupportInitialize)(this._shapeGridView)).EndInit();
@@ -269,7 +281,7 @@ namespace WindowPowerPoint
             this._menuStrip1.PerformLayout();
             this._toolStrip1.ResumeLayout(false);
             this._toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this._slideBackground.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,7 +308,8 @@ namespace WindowPowerPoint
         private System.Windows.Forms.DataGridViewButtonColumn DeleteShape;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShapeInfo;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel _slideBackground;
+        private System.Windows.Forms.Panel _canva;
     }
 }
 
