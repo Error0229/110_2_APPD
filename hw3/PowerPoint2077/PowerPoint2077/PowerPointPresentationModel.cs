@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.ComponentModel;
 using System.Drawing;
-using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
@@ -36,7 +32,7 @@ namespace WindowPowerPoint
         // get shape
         public void ProcessRemoveShape(int columnIndex, int index)
         {
-            if (columnIndex == 0)
+            if (columnIndex == 0 && index >= 0)
             {
                 _model.RemoveShape(index);
             }
@@ -143,10 +139,10 @@ namespace WindowPowerPoint
         // draw all the shape
         public void Draw(Graphics graphics)
         {
-            _model.Draw(graphics);
+            _model.Draw(new WindowsFormsGraphicsAdaptor(graphics));
             if (_isMoving)
             {
-                _model.DrawHint(graphics);
+                _model.DrawHint(new WindowsFormsGraphicsAdaptor(graphics));
             }
         }
 
@@ -174,13 +170,14 @@ namespace WindowPowerPoint
             return _isRectangleChecked || _isLineChecked || _isCircleChecked;
         }
 
-        public List<Shape> Shapes
+        public BindingList<Shape> Shapes
         {
             get
             {
                 return _model.Shapes;
             }
         }
+
         private bool _isLineChecked;
         private bool _isCircleChecked;
         private bool _isRectangleChecked;

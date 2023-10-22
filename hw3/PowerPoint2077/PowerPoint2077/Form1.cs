@@ -1,7 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
 using System.Drawing;
-using System.Diagnostics;
-using System;
+using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
@@ -22,8 +21,7 @@ namespace WindowPowerPoint
 
             _presentationModel = model;
             InitializeComponent();
-            _bindingSource.DataSource = _presentationModel.Shapes;
-            _shapeGridView.DataSource = _bindingSource;
+            _shapeGridView.DataSource = _presentationModel.Shapes;
             _presentationModel.SetCanvasCoordinate(new Point(Constant.ZERO_INTEGER, Constant.ZERO_INTEGER), new Point(_canvas.Width, _canvas.Height));
             _canvas.Paint += HandleCanvasPaint;
             _canvas.MouseDown += HandleCanvasPressed;
@@ -39,7 +37,6 @@ namespace WindowPowerPoint
         private void HandleModelChanged(object sender, EventArgs e)
         {
             // Update the view
-            _bindingSource.ResetBindings(false);
             _canvas.Invalidate();
             _lineAddButton.Checked = _presentationModel.IsLineChecked();
             _rectangleAddButton.Checked = _presentationModel.IsRectangleChecked();

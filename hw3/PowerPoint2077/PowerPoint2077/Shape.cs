@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 namespace WindowPowerPoint
 {
@@ -25,7 +21,7 @@ namespace WindowPowerPoint
 
         }
         // get shape's info
-        public string GetInfo()
+        public virtual string GetInfo()
         {
             return FormatCoordinate(_pointFirst.X, _pointFirst.Y) + Constant.COMMA + Constant.SPACE + FormatCoordinate(_pointSecond.X, _pointSecond.Y);
         }
@@ -68,7 +64,7 @@ namespace WindowPowerPoint
         }
 
         // draw shape
-        public abstract void Draw(Graphics graphic);
+        public abstract void Draw(IGraphics graphic);
         public string Name
         {
             get
@@ -87,11 +83,11 @@ namespace WindowPowerPoint
         // get shape location
         protected Point GetShapeLocation()
         {
-            
+
             _shapeLocation.X = Math.Min(_pointFirst.X, _pointSecond.X);
             _shapeLocation.Y = Math.Min(_pointFirst.Y, _pointSecond.Y);
             return _shapeLocation;
-            
+
         }
 
         // get shape rectangle

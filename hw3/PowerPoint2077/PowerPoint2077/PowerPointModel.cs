@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
+
 namespace WindowPowerPoint
 {
     public class PowerPointModel
@@ -13,7 +15,7 @@ namespace WindowPowerPoint
         public event ModelChangedEventHandler _modelChanged;
         public PowerPointModel()
         {
-            _shapes = new List<Shape>();
+            _shapes = new BindingList<Shape>();
             _factory = new ShapeFactory();
         }
 
@@ -44,7 +46,7 @@ namespace WindowPowerPoint
         }
 
         // draw shapes
-        public void Draw(Graphics graphics)
+        public void Draw(IGraphics graphics)
         {
             foreach (Shape shape in _shapes)
             {
@@ -53,7 +55,7 @@ namespace WindowPowerPoint
         }
 
         // draw hint
-        public void DrawHint(Graphics graphics)
+        public void DrawHint(IGraphics graphics)
         {
             _hint.Draw(graphics);
         }
@@ -94,9 +96,9 @@ namespace WindowPowerPoint
         private Shape _hint;
         private Point _canvasTopLeft;
         private Point _canvasButtonRight;
-        private readonly List<Shape> _shapes;
         private readonly ShapeFactory _factory;
-        public List<Shape> Shapes
+        private readonly BindingList<Shape> _shapes;
+        public BindingList<Shape> Shapes
         {
             get
             {

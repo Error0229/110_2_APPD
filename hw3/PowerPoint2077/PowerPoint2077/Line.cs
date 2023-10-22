@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-namespace WindowPowerPoint
+﻿namespace WindowPowerPoint
 {
     class Line : Shape
     {
@@ -13,10 +7,16 @@ namespace WindowPowerPoint
             _name = Constant.LINE_CHINESE;
         }
 
-        // Draw Line
-        public override void Draw(Graphics graphics)
+        // get line's info
+        public override string GetInfo()
         {
-            graphics.DrawLine(new Pen(Color.Black, Constant.PEN_THICK), _pointFirst, _pointSecond);
+            return base.GetInfo();
+        }
+
+        // Draw Line
+        public override void Draw(IGraphics graphics)
+        {
+            graphics.DrawLine(_pointFirst, _pointSecond);
         }
     }
 }

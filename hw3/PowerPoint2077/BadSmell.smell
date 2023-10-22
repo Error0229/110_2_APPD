@@ -216,6 +216,11 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>IGraphics.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Line.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -265,9 +270,14 @@
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>WindowsFormsGraphicsAdaptor.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1051</ProductionLoc>
+          <ProductionLoc>1096</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

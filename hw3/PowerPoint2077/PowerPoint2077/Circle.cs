@@ -13,10 +13,17 @@ namespace WindowPowerPoint
             _name = Constant.CIRCLE_CHINESE;
         }
 
-        // draw circle
-        public override void Draw(Graphics graphics)
+        // get circle's info
+        public override string GetInfo()
         {
-            graphics.DrawEllipse(new Pen(Color.Black, Constant.PEN_THICK), GetShapeRectangle());
+            AdjustPoints();
+            return base.GetInfo();
+        }
+
+        // draw circle
+        public override void Draw(IGraphics graphics)
+        {
+            graphics.DrawCircle(GetShapeRectangle());
         }
     }
 }

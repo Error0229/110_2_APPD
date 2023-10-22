@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-namespace WindowPowerPoint
+﻿namespace WindowPowerPoint
 {
-    public class Rectangle : Shape
+    class Rectangle : Shape
     {
-        public Rectangle() : base (ShapeType.RECTANGLE)
+        public Rectangle() : base(ShapeType.RECTANGLE)
         {
             _name = Constant.RECTANGLE_CHINESE;
         }
 
-        // Draw Rectangle
-        public override void Draw(Graphics graphics)
+        // get rectangle's info
+        public override string GetInfo()
         {
-            graphics.DrawRectangle(new Pen(Color.Black, Constant.PEN_THICK), GetShapeRectangle());
+            AdjustPoints();
+            return base.GetInfo();
+        }
+
+        // Draw Rectangle
+        public override void Draw(IGraphics graphics)
+        {
+            graphics.DrawRectangle(GetShapeRectangle());
         }
     }
 }
