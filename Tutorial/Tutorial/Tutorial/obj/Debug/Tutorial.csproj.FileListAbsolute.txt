@@ -1,7 +1,0 @@
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\bin\Debug\Tutorial.exe.config
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\bin\Debug\Tutorial.exe
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\bin\Debug\Tutorial.pdb
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\obj\Debug\Tutorial.csproj.AssemblyReference.cache
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\obj\Debug\Tutorial.csproj.CoreCompileInputs.cache
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\obj\Debug\Tutorial.exe
-C:\Users\login\Desktop\112_1_APPD\Tutorial\Tutorial\Tutorial\obj\Debug\Tutorial.pdb
