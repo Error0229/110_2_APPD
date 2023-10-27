@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 obj/
 bin/
 .vs/
 .vscode/
-=======
-*.vs/
-*obj/
-*bin/
->>>>>>> aeab9535557237fb70392841bb8ea9c7d460b17e
