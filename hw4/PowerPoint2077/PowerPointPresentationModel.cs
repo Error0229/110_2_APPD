@@ -38,7 +38,7 @@ namespace WindowPowerPoint
             }
         }
 
-        // process mouse enter canva
+        // process mouse enter canvas
         public Cursor ProcessMouseEnterCanvas()
         {
             if (IsDrawing())
@@ -51,7 +51,7 @@ namespace WindowPowerPoint
             }
         }
 
-        // process mouse leave canva
+        // process mouse leave canvas
         public Cursor ProcessMouseLeaveCanvas()
         {
             _isRectangleChecked = _isLineChecked = _isCircleChecked = false;
@@ -59,7 +59,7 @@ namespace WindowPowerPoint
             return Cursors.Default;
         }
 
-        // Set canva coordinate
+        // Set canvas coordinate
         public void SetCanvasCoordinate(Point pointFirst, Point pointSecond)
         {
             _model.SetCanvasCoordinate(pointFirst, pointSecond);
@@ -105,7 +105,7 @@ namespace WindowPowerPoint
             NotifyModelChanged(EventArgs.Empty);
         }
 
-        // process canva pressed
+        // process canvas pressed
         public void ProcessCanvasPressed(Point point)
         {
             if (IsDrawing())
@@ -116,7 +116,7 @@ namespace WindowPowerPoint
             }
         }
 
-        // process mouse moving while pressed in canva
+        // process mouse moving while pressed in canvas
         public void ProcessCanvasMoving(Point point)
         {
             if (_isPressed)
@@ -137,12 +137,12 @@ namespace WindowPowerPoint
         }
 
         // draw all the shape
-        public void Draw(Graphics graphics)
+        public void Draw(IGraphics graphics)
         {
-            _model.Draw(new WindowsFormsGraphicsAdaptor(graphics));
+            _model.Draw(graphics);
             if (_isMoving)
             {
-                _model.DrawHint(new WindowsFormsGraphicsAdaptor(graphics));
+                _model.DrawHint(graphics);
             }
         }
 

@@ -13,10 +13,13 @@ namespace WindowPowerPoint
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
+
+        private IState _state;
         public PowerPointModel()
         {
             _shapes = new BindingList<Shape>();
             _factory = new ShapeFactory();
+
         }
 
         // insert shape by shape name
@@ -38,11 +41,29 @@ namespace WindowPowerPoint
             NotifyModelChanged(EventArgs.Empty);
         }
 
-        // set canva coordinate
+        // set canvas coordinate
         public void SetCanvasCoordinate(Point pointTopLeft, Point pointButtonRight)
         {
             _canvasTopLeft = pointTopLeft;
             _canvasButtonRight = pointButtonRight;
+        }
+
+        // Handle mouse down
+        public void HandleMouseDown(Point point)
+        {
+            _state.MouseDown(point);
+        }
+
+        // Handle mouse move
+        public void HandleMouseMove(Point point)
+        {
+            _state.MouseMove(point);
+        }
+
+        // Handle mouse up
+        public void HandleMouseUp(Point point)
+        {
+            _state.MouseUp(point);
         }
 
         // draw shapes

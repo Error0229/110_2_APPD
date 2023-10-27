@@ -15,10 +15,13 @@ namespace WindowPowerPoint
             _type = type;
             _pointFirst = new Point();
             _pointSecond = new Point();
+            _name = string.Empty;
         }
         public Shape()
         {
-
+            _pointFirst = new Point();
+            _pointSecond = new Point();
+            _name = string.Empty;
         }
         // get shape's info
         public virtual string GetInfo()
@@ -44,7 +47,7 @@ namespace WindowPowerPoint
             _pointSecond = point;
         }
 
-        // adjust point to make it reasonable
+        // adjust point to make it resaonable
         public void AdjustPoints()
         {
             var top = Math.Min(_pointFirst.X, _pointSecond.X);

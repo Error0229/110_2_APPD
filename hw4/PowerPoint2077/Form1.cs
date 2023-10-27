@@ -59,7 +59,7 @@ namespace WindowPowerPoint
         // handle panel paint
         public void HandleCanvasPaint(object sender, PaintEventArgs e)
         {
-            _presentationModel.Draw(e.Graphics);
+            _presentationModel.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics));
         }
 
         // handle canva press
