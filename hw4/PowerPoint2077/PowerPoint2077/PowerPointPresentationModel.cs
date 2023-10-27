@@ -137,12 +137,12 @@ namespace WindowPowerPoint
         }
 
         // draw all the shape
-        public void Draw(Graphics graphics)
+        public void Draw(IGraphics graphics)
         {
-            _model.Draw(new WindowsFormsGraphicsAdaptor(graphics));
+            _model.Draw(graphics);
             if (_isMoving)
             {
-                _model.DrawHint(new WindowsFormsGraphicsAdaptor(graphics));
+                _model.DrawHint(graphics);
             }
         }
 

@@ -78,6 +78,7 @@ namespace WindowPowerPoint
         public void HandleCanvasReleased(object sender, MouseEventArgs e)
         {
             _presentationModel.ProcessCanvasReleased();
+            Cursor = _presentationModel.ProcessMouseLeaveCanvas();
         }
 
         // handle mouse enter canva
