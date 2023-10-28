@@ -80,7 +80,7 @@ namespace WindowPowerPoint
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_LINE_CHECKED));
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CIRCLE_CHECKED));
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_RECTANGLE_CHECKED));
-                PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CIRCLE_CHECKED));
+                PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CURSOR_CHECKED));
             }
         }
 
