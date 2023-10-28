@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Diagnostics;
 namespace WindowPowerPoint
 {
     class Circle : Shape
@@ -24,6 +25,16 @@ namespace WindowPowerPoint
         public override void Draw(IGraphics graphics)
         {
             graphics.DrawCircle(GetShapeRectangle());
+            if (_isSelected)
+            {
+                DrawHandle(graphics);
+            }
+        }
+
+        // draw circle handle
+        public override void DrawHandle(IGraphics graphics)
+        {
+            graphics.DrawCircleHandle(GetShapeRectangle());
         }
     }
 }

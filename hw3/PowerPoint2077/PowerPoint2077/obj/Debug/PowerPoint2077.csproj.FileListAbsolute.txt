@@ -1,0 +1,10 @@
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\bin\Debug\PowerPoint2077.exe.config
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\bin\Debug\PowerPoint2077.exe
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\bin\Debug\PowerPoint2077.pdb
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\PowerPoint2077.csproj.AssemblyReference.cache
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\WindowPowerPoint.PowerPoint.resources
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\WindowPowerPoint.Properties.Resources.resources
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\PowerPoint2077.csproj.GenerateResource.cache
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\PowerPoint2077.csproj.CoreCompileInputs.cache
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\PowerPoint2077.exe
+D:\110_2_APPD\hw3\PowerPoint2077\PowerPoint2077\obj\Debug\PowerPoint2077.pdb

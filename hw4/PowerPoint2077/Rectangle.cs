@@ -18,6 +18,16 @@
         public override void Draw(IGraphics graphics)
         {
             graphics.DrawRectangle(GetShapeRectangle());
+            if (_isSelected)
+            {
+                DrawHandle(graphics);
+            }
+        }
+
+        // Draw Rectangle Handle
+        public override void DrawHandle(IGraphics graphics)
+        {
+            graphics.DrawRectangleHandle(GetShapeRectangle());
         }
     }
 }

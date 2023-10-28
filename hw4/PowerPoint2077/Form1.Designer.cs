@@ -31,24 +31,23 @@ namespace WindowPowerPoint
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerPoint));
             this._shapeGridView = new System.Windows.Forms.DataGridView();
-            this.DeleteShape = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ShapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShapeInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._deleteShape = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._shapeInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeComboBox = new System.Windows.Forms.ComboBox();
             this._buttonInsertShape = new System.Windows.Forms.Button();
             this._groupView = new System.Windows.Forms.GroupBox();
             this._slide1 = new System.Windows.Forms.Button();
-            this._slide2 = new System.Windows.Forms.Button();
             this._menuStrip1 = new System.Windows.Forms.MenuStrip();
             this._helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this._lineAddButton = new System.Windows.Forms.ToolStripButton();
-            this._rectangleAddButton = new System.Windows.Forms.ToolStripButton();
-            this._ellipseAddButton = new System.Windows.Forms.ToolStripButton();
+            this._lineAddButton = new WindowPowerPoint.BindingToolStripButton();
+            this._rectangleAddButton = new WindowPowerPoint.BindingToolStripButton();
+            this._ellipseAddButton = new WindowPowerPoint.BindingToolStripButton();
+            this._cursorButton = new WindowPowerPoint.BindingToolStripButton();
             this._slideBackground = new System.Windows.Forms.Panel();
             this._canvas = new WindowPowerPoint.DoubleBufferedPanel();
-            this.cursorButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this._shapeGridView)).BeginInit();
             this._groupView.SuspendLayout();
             this._menuStrip1.SuspendLayout();
@@ -61,10 +60,10 @@ namespace WindowPowerPoint
             this._shapeGridView.AllowUserToAddRows = false;
             this._shapeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._shapeGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DeleteShape,
-            this.ShapeType,
-            this.ShapeInfo});
-            this._shapeGridView.Location = new System.Drawing.Point(14, 67);
+            this._deleteShape,
+            this._shapeType,
+            this._shapeInfo});
+            this._shapeGridView.Location = new System.Drawing.Point(16, 77);
             this._shapeGridView.Margin = new System.Windows.Forms.Padding(2);
             this._shapeGridView.Name = "_shapeGridView";
             this._shapeGridView.ReadOnly = true;
@@ -72,45 +71,45 @@ namespace WindowPowerPoint
             this._shapeGridView.RowHeadersWidth = 51;
             this._shapeGridView.RowTemplate.Height = 24;
             this._shapeGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._shapeGridView.Size = new System.Drawing.Size(215, 643);
+            this._shapeGridView.Size = new System.Drawing.Size(251, 742);
             this._shapeGridView.TabIndex = 0;
             this._shapeGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShapeGridViewCellContentClick);
             // 
-            // DeleteShape
+            // _deleteShape
             // 
-            this.DeleteShape.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DeleteShape.FillWeight = 45.72192F;
-            this.DeleteShape.HeaderText = "刪除";
-            this.DeleteShape.MinimumWidth = 6;
-            this.DeleteShape.Name = "DeleteShape";
-            this.DeleteShape.ReadOnly = true;
-            this.DeleteShape.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeleteShape.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteShape.Text = "刪除";
-            this.DeleteShape.UseColumnTextForButtonValue = true;
+            this._deleteShape.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this._deleteShape.FillWeight = 45.72192F;
+            this._deleteShape.HeaderText = "刪除";
+            this._deleteShape.MinimumWidth = 6;
+            this._deleteShape.Name = "_deleteShape";
+            this._deleteShape.ReadOnly = true;
+            this._deleteShape.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._deleteShape.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this._deleteShape.Text = "刪除";
+            this._deleteShape.UseColumnTextForButtonValue = true;
             // 
-            // ShapeType
+            // _shapeType
             // 
-            this.ShapeType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ShapeType.DataPropertyName = "Name";
-            this.ShapeType.FillWeight = 45.72192F;
-            this.ShapeType.HeaderText = "形狀";
-            this.ShapeType.MinimumWidth = 6;
-            this.ShapeType.Name = "ShapeType";
-            this.ShapeType.ReadOnly = true;
-            this.ShapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._shapeType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this._shapeType.DataPropertyName = "Name";
+            this._shapeType.FillWeight = 45.72192F;
+            this._shapeType.HeaderText = "形狀";
+            this._shapeType.MinimumWidth = 6;
+            this._shapeType.Name = "_shapeType";
+            this._shapeType.ReadOnly = true;
+            this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // ShapeInfo
+            // _shapeInfo
             // 
-            this.ShapeInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ShapeInfo.DataPropertyName = "Info";
-            this.ShapeInfo.FillWeight = 208.5562F;
-            this.ShapeInfo.HeaderText = "資訊";
-            this.ShapeInfo.MinimumWidth = 6;
-            this.ShapeInfo.Name = "ShapeInfo";
-            this.ShapeInfo.ReadOnly = true;
-            this.ShapeInfo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ShapeInfo.Width = 130;
+            this._shapeInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this._shapeInfo.DataPropertyName = "Info";
+            this._shapeInfo.FillWeight = 208.5562F;
+            this._shapeInfo.HeaderText = "資訊";
+            this._shapeInfo.MinimumWidth = 6;
+            this._shapeInfo.Name = "_shapeInfo";
+            this._shapeInfo.ReadOnly = true;
+            this._shapeInfo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._shapeInfo.Width = 130;
             // 
             // _shapeComboBox
             // 
@@ -120,19 +119,19 @@ namespace WindowPowerPoint
             "矩形",
             "線",
             "圓形"});
-            this._shapeComboBox.Location = new System.Drawing.Point(120, 26);
+            this._shapeComboBox.Location = new System.Drawing.Point(140, 30);
             this._shapeComboBox.Margin = new System.Windows.Forms.Padding(2);
             this._shapeComboBox.Name = "_shapeComboBox";
-            this._shapeComboBox.Size = new System.Drawing.Size(110, 21);
+            this._shapeComboBox.Size = new System.Drawing.Size(128, 23);
             this._shapeComboBox.TabIndex = 1;
             // 
             // _buttonInsertShape
             // 
-            this._buttonInsertShape.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonInsertShape.Location = new System.Drawing.Point(14, 17);
+            this._buttonInsertShape.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._buttonInsertShape.Location = new System.Drawing.Point(16, 20);
             this._buttonInsertShape.Margin = new System.Windows.Forms.Padding(2);
             this._buttonInsertShape.Name = "_buttonInsertShape";
-            this._buttonInsertShape.Size = new System.Drawing.Size(64, 35);
+            this._buttonInsertShape.Size = new System.Drawing.Size(75, 40);
             this._buttonInsertShape.TabIndex = 2;
             this._buttonInsertShape.Text = "新增";
             this._buttonInsertShape.UseVisualStyleBackColor = true;
@@ -143,32 +142,23 @@ namespace WindowPowerPoint
             this._groupView.Controls.Add(this._buttonInsertShape);
             this._groupView.Controls.Add(this._shapeGridView);
             this._groupView.Controls.Add(this._shapeComboBox);
-            this._groupView.Location = new System.Drawing.Point(908, 51);
+            this._groupView.Location = new System.Drawing.Point(1059, 59);
             this._groupView.Margin = new System.Windows.Forms.Padding(2);
             this._groupView.Name = "_groupView";
             this._groupView.Padding = new System.Windows.Forms.Padding(2);
-            this._groupView.Size = new System.Drawing.Size(244, 704);
+            this._groupView.Size = new System.Drawing.Size(285, 812);
             this._groupView.TabIndex = 3;
             this._groupView.TabStop = false;
             this._groupView.Text = "資料顯示";
             // 
             // _slide1
             // 
-            this._slide1.Location = new System.Drawing.Point(2, 113);
+            this._slide1.Location = new System.Drawing.Point(4, 11);
             this._slide1.Margin = new System.Windows.Forms.Padding(2);
             this._slide1.Name = "_slide1";
-            this._slide1.Size = new System.Drawing.Size(113, 100);
-            this._slide1.TabIndex = 4;
+            this._slide1.Size = new System.Drawing.Size(132, 115);
+            this._slide1.TabIndex = 5;
             this._slide1.UseVisualStyleBackColor = true;
-            // 
-            // _slide2
-            // 
-            this._slide2.Location = new System.Drawing.Point(2, 9);
-            this._slide2.Margin = new System.Windows.Forms.Padding(2);
-            this._slide2.Name = "_slide2";
-            this._slide2.Size = new System.Drawing.Size(113, 100);
-            this._slide2.TabIndex = 5;
-            this._slide2.UseVisualStyleBackColor = true;
             // 
             // _menuStrip1
             // 
@@ -177,8 +167,8 @@ namespace WindowPowerPoint
             this._helpToolStripMenuItem});
             this._menuStrip1.Location = new System.Drawing.Point(0, 0);
             this._menuStrip1.Name = "_menuStrip1";
-            this._menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this._menuStrip1.Size = new System.Drawing.Size(1155, 24);
+            this._menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this._menuStrip1.Size = new System.Drawing.Size(1348, 24);
             this._menuStrip1.TabIndex = 7;
             this._menuStrip1.Text = "menuStrip1";
             // 
@@ -203,82 +193,84 @@ namespace WindowPowerPoint
             this._lineAddButton,
             this._rectangleAddButton,
             this._ellipseAddButton,
-            this.cursorButton});
+            this._cursorButton});
             this._toolStrip1.Location = new System.Drawing.Point(0, 24);
             this._toolStrip1.Name = "_toolStrip1";
-            this._toolStrip1.Size = new System.Drawing.Size(1155, 27);
+            this._toolStrip1.Size = new System.Drawing.Size(1348, 27);
             this._toolStrip1.TabIndex = 8;
             this._toolStrip1.Text = "toolStrip1";
             // 
             // _lineAddButton
             // 
             this._lineAddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this._lineAddButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lineAddButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._lineAddButton.Image = ((System.Drawing.Image)(resources.GetObject("_lineAddButton.Image")));
             this._lineAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._lineAddButton.Name = "_lineAddButton";
-            this._lineAddButton.Size = new System.Drawing.Size(28, 24);
+            this._lineAddButton.Size = new System.Drawing.Size(27, 24);
             this._lineAddButton.Text = "➖";
             this._lineAddButton.Click += new System.EventHandler(this.ClickAddLineButton);
             // 
             // _rectangleAddButton
             // 
             this._rectangleAddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this._rectangleAddButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._rectangleAddButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._rectangleAddButton.Image = ((System.Drawing.Image)(resources.GetObject("_rectangleAddButton.Image")));
             this._rectangleAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._rectangleAddButton.Name = "_rectangleAddButton";
-            this._rectangleAddButton.Size = new System.Drawing.Size(28, 24);
+            this._rectangleAddButton.Size = new System.Drawing.Size(27, 24);
             this._rectangleAddButton.Text = "🔲";
             this._rectangleAddButton.Click += new System.EventHandler(this.ClickAddRectangleButton);
             // 
             // _ellipseAddButton
             // 
             this._ellipseAddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this._ellipseAddButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._ellipseAddButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._ellipseAddButton.Image = ((System.Drawing.Image)(resources.GetObject("_ellipseAddButton.Image")));
             this._ellipseAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._ellipseAddButton.Name = "_ellipseAddButton";
-            this._ellipseAddButton.Size = new System.Drawing.Size(28, 24);
+            this._ellipseAddButton.Size = new System.Drawing.Size(27, 24);
             this._ellipseAddButton.Text = "⭕";
             this._ellipseAddButton.Click += new System.EventHandler(this.ClickAddEllipseButton);
+            // 
+            // _cursorButton
+            // 
+            this._cursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._cursorButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._cursorButton.Image = ((System.Drawing.Image)(resources.GetObject("_cursorButton.Image")));
+            this._cursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._cursorButton.Name = "_cursorButton";
+            this._cursorButton.Size = new System.Drawing.Size(24, 24);
+            this._cursorButton.Text = "⭕";
+            this._cursorButton.ToolTipText = "🖱️";
+            this._cursorButton.Click += new System.EventHandler(this.ClickCursorButton);
             // 
             // _slideBackground
             // 
             this._slideBackground.AutoScroll = true;
             this._slideBackground.BackColor = System.Drawing.SystemColors.ControlDark;
-            this._slideBackground.Controls.Add(this._slide2);
             this._slideBackground.Controls.Add(this._slide1);
-            this._slideBackground.Location = new System.Drawing.Point(12, 51);
+            this._slideBackground.Location = new System.Drawing.Point(14, 59);
+            this._slideBackground.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this._slideBackground.Name = "_slideBackground";
-            this._slideBackground.Size = new System.Drawing.Size(118, 702);
+            this._slideBackground.Size = new System.Drawing.Size(138, 810);
             this._slideBackground.TabIndex = 9;
             // 
             // _canvas
             // 
             this._canvas.AutoSize = true;
             this._canvas.BackColor = System.Drawing.Color.White;
-            this._canvas.Location = new System.Drawing.Point(136, 51);
+            this._canvas.Location = new System.Drawing.Point(159, 59);
+            this._canvas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this._canvas.Name = "_canvas";
-            this._canvas.Size = new System.Drawing.Size(767, 702);
+            this._canvas.Size = new System.Drawing.Size(895, 810);
             this._canvas.TabIndex = 10;
-            // 
-            // cursorButton
-            // 
-            this.cursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cursorButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cursorButton.Image = ((System.Drawing.Image)(resources.GetObject("cursorButton.Image")));
-            this.cursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cursorButton.Name = "cursorButton";
-            this.cursorButton.Size = new System.Drawing.Size(24, 24);
-            this.cursorButton.Text = "⭕";
-            this.cursorButton.ToolTipText = "🖱️";
             // 
             // PowerPoint
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 765);
+            this.ClientSize = new System.Drawing.Size(1348, 883);
             this.Controls.Add(this._canvas);
             this.Controls.Add(this._groupView);
             this.Controls.Add(this._toolStrip1);
@@ -307,23 +299,18 @@ namespace WindowPowerPoint
         private System.Windows.Forms.Button _buttonInsertShape;
         private System.Windows.Forms.GroupBox _groupView;
         private System.Windows.Forms.Button _slide1;
-        private System.Windows.Forms.Button _slide2;
         private System.Windows.Forms.MenuStrip _menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem _helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStrip _toolStrip1;
-        private System.Windows.Forms.ToolStripButton _lineAddButton;
-        private System.Windows.Forms.ToolStripButton _rectangleAddButton;
-        private System.Windows.Forms.ToolStripButton _ellipseAddButton;
+        private BindingToolStripButton _lineAddButton;
+        private BindingToolStripButton _rectangleAddButton;
+        private BindingToolStripButton _ellipseAddButton;
+        private BindingToolStripButton _cursorButton;
+        private System.Windows.Forms.Panel _slideBackground;
         private System.Windows.Forms.DataGridViewButtonColumn _deleteShape;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeInfo;
-        private System.Windows.Forms.Panel _slideBackground;
-        private System.Windows.Forms.DataGridViewButtonColumn DeleteShape;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShapeType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShapeInfo;
         private DoubleBufferedPanel _canvas;
-        private System.Windows.Forms.ToolStripButton cursorButton;
     }
 }
-

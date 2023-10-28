@@ -47,7 +47,16 @@ namespace WindowPowerPoint
             _pointSecond = point;
         }
 
-        // adjust point to make it resaonable
+        // move first point
+        public void Move(Point offset)
+        {
+            if (!_isSelected)
+                return;
+            _pointFirst.Offset(offset);
+            _pointSecond.Offset(offset);
+        }
+
+        // adjust point to make it reasonable
         public void AdjustPoints()
         {
             var top = Math.Min(_pointFirst.X, _pointSecond.X);
@@ -60,6 +69,12 @@ namespace WindowPowerPoint
             _pointSecond.Y = right;
         }
 
+        // check if point is in shape
+        public bool IsInShape(Point point)
+        {
+            return GetShapeRectangle().Contains(point);
+        }
+
         // format coordinate
         private string FormatCoordinate(int first, int second)
         {
@@ -68,6 +83,9 @@ namespace WindowPowerPoint
 
         // draw shape
         public abstract void Draw(IGraphics graphic);
+
+        // draw handle
+        public abstract void DrawHandle(IGraphics graphic);
         public string Name
         {
             get
@@ -82,6 +100,18 @@ namespace WindowPowerPoint
                 return GetInfo();
             }
         }
+        [System.ComponentModel.Browsable(false)]
+        public bool Selected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+            }
+        }
 
         // get shape location
         protected Point GetShapeLocation()
@@ -90,7 +120,6 @@ namespace WindowPowerPoint
             _shapeLocation.X = Math.Min(_pointFirst.X, _pointSecond.X);
             _shapeLocation.Y = Math.Min(_pointFirst.Y, _pointSecond.Y);
             return _shapeLocation;
-
         }
 
         // get shape rectangle
@@ -102,7 +131,7 @@ namespace WindowPowerPoint
             return _shapeRectangle;
         }
         protected ShapeType _type;
-
+        protected bool _isSelected;
         protected Point _shapeLocation;
         protected System.Drawing.Rectangle _shapeRectangle;
         protected Point _pointFirst;

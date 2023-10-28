@@ -15,5 +15,11 @@
         public const string SPACE = " ";
         public const int FIVE_HUNDRED = 500;
         public const int PEN_THICK = 2;
+        public const int HANDLE_SIZE = 10;
+        public const string CHECKED = "Checked";
+        public const string IS_LINE_CHECKED = "IsLineChecked";
+        public const string IS_RECTANGLE_CHECKED = "IsRectangleChecked";
+        public const string IS_CIRCLE_CHECKED = "IsCircleChecked";
+        public const string IS_CURSOR_CHECKED = "IsCursorChecked";
     }
 }

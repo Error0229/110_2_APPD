@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
@@ -19,7 +20,7 @@ namespace WindowPowerPoint
         {
             _shapes = new BindingList<Shape>();
             _factory = new ShapeFactory();
-
+            _state = new IdleState();
         }
 
         // insert shape by shape name
@@ -32,6 +33,12 @@ namespace WindowPowerPoint
             _shapes.Add(shape);
             NotifyModelChanged(EventArgs.Empty);
 
+        }
+
+        // set state 
+        public void SetState(IState state)
+        {
+            _state = state;
         }
 
         // remove shape by index
@@ -66,12 +73,34 @@ namespace WindowPowerPoint
             _state.MouseUp(point);
         }
 
+        // handle Key down
+        public void HandleKeyDown(Keys keyCode)
+        {
+            _state.KeyDown(keyCode);
+        }
+
         // draw shapes
         public void Draw(IGraphics graphics)
+        {
+            DrawShapes(graphics);
+            _state.Draw(graphics);
+        }
+
+        // draw all shapes
+        public void DrawShapes(IGraphics graphics)
         {
             foreach (Shape shape in _shapes)
             {
                 shape.Draw(graphics);
+            }
+        }
+
+        // clear selected shape
+        public void ClearSelectedShape()
+        {
+            foreach (Shape shape in _shapes)
+            {
+                shape.Selected = false;
             }
         }
 
@@ -82,7 +111,7 @@ namespace WindowPowerPoint
         }
 
         // model change function
-        protected virtual void NotifyModelChanged(EventArgs e)
+        public virtual void NotifyModelChanged(EventArgs e)
         {
             if (_modelChanged != null)
                 _modelChanged(this, e);
