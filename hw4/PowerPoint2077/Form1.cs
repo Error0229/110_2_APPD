@@ -44,6 +44,7 @@ namespace WindowPowerPoint
         {
             // Update the view
             _canvas.Invalidate();
+            _shapeGridView.Invalidate();
             // _lineAddButton.Checked = _presentationModel.IsLineChecked();
             // _rectangleAddButton.Checked = _presentationModel.IsRectangleChecked();
             // _ellipseAddButton.Checked = _presentationModel.IsCircleChecked();

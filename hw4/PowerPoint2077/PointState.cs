@@ -61,6 +61,7 @@ namespace WindowPowerPoint
         public void MouseUp(Point point)
         {
             _isAdjusting = false;
+            _model.NotifyModelChanged(EventArgs.Empty);
         }
 
         // handle Draw
