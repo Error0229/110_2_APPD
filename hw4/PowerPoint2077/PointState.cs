@@ -73,7 +73,7 @@ namespace WindowPowerPoint
         // handle key down
         public void KeyDown(Keys keyCode)
         {
-            if (keyCode == Keys.Delete && _isAdjusting)
+            if (keyCode == Keys.Delete)
             {
                 foreach (Shape shape in _model.Shapes)
                 {
