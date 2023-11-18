@@ -24,7 +24,7 @@ namespace WindowPowerPoint
         }
 
         // insert shape by shape name
-        public void InsertShape(string shapeName)
+        public virtual void InsertShape(string shapeName)
         {
             var random = new Random();
             Shape shape = _factory.CreateShape(shapeName);
@@ -35,7 +35,7 @@ namespace WindowPowerPoint
         }
 
         // insert shape by shape name and coordinate
-        public void InsertShape(string shapeName, Point firstPoint, Point secondPoint)
+        public virtual void InsertShape(string shapeName, Point firstPoint, Point secondPoint)
         {
             var random = new Random();
             Shape shape = _factory.CreateShape(shapeName);
@@ -46,51 +46,51 @@ namespace WindowPowerPoint
         }
 
         // set state 
-        public void SetState(IState state)
+        public virtual void SetState(IState state)
         {
             _state = state;
         }
 
         // remove shape by index
-        public void RemoveShape(int index)
+        public virtual void RemoveShape(int index)
         {
             _shapes.RemoveAt(index);
             NotifyModelChanged(EventArgs.Empty);
         }
 
         // set canvas coordinate
-        public void SetCanvasCoordinate(Point pointTopLeft, Point pointButtonRight)
+        public virtual void SetCanvasCoordinate(Point pointTopLeft, Point pointButtonRight)
         {
             _canvasTopLeft = pointTopLeft;
             _canvasButtonRight = pointButtonRight;
         }
 
         // Handle mouse down
-        public void HandleMouseDown(Point point)
+        public virtual void HandleMouseDown(Point point)
         {
             _state.MouseDown(point);
         }
 
         // Handle mouse move
-        public void HandleMouseMove(Point point)
+        public virtual void HandleMouseMove(Point point)
         {
             _state.MouseMove(point);
         }
 
         // Handle mouse up
-        public void HandleMouseUp(Point point)
+        public virtual void HandleMouseUp(Point point)
         {
             _state.MouseUp(point);
         }
 
         // handle Key down
-        public void HandleKeyDown(Keys keyCode)
+        public virtual void HandleKeyDown(Keys keyCode)
         {
             _state.KeyDown(keyCode);
         }
 
         // draw shapes
-        public void Draw(IGraphics graphics)
+        public virtual void Draw(IGraphics graphics)
         {
             DrawShapes(graphics);
             _state.Draw(graphics);

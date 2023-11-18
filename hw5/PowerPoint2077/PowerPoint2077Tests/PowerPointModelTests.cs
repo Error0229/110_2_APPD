@@ -16,19 +16,19 @@ namespace WindowPowerPoint.Tests
     public class PowerPointModelTests
     {
         PowerPointModel _model;
-        PrivateObject _private_model;
+        PrivateObject _privateModel;
         [TestInitialize()]
         public void Initialize()
         {
             _model = new PowerPointModel();
-            _private_model = new PrivateObject(_model);
+            _privateModel = new PrivateObject(_model);
         }
         [TestMethod()]
         public void PowerPointModelTest()
         {
             Assert.IsNotNull(_model);
-            Assert.IsNotNull(_private_model.GetField("_shapes"));
-            Assert.IsNotNull(_private_model.GetField("_state"));
+            Assert.IsNotNull(_privateModel.GetField("_shapes"));
+            Assert.IsNotNull(_privateModel.GetField("_state"));
         }
 
         [TestMethod()]
@@ -51,21 +51,21 @@ namespace WindowPowerPoint.Tests
         public void SetIdleStateTest()
         {
             _model.SetState(new IdleState());
-            Assert.IsInstanceOfType(_private_model.GetField("_state"), typeof(IdleState));    
+            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(IdleState));    
         }
 
         [TestMethod()]
         public void SetPointStateTest()
         {
             _model.SetState(new PointState(_model));
-            Assert.IsInstanceOfType(_private_model.GetField("_state"), typeof(PointState));
+            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(PointState));
         }
 
         [TestMethod()]
         public void SetDrawingStateTest()
         {
             _model.SetState(new DrawingState(_model));
-            Assert.IsInstanceOfType(_private_model.GetField("_state"), typeof(DrawingState));
+            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(DrawingState));
         }
 
         [TestMethod()]
@@ -86,8 +86,8 @@ namespace WindowPowerPoint.Tests
         public void SetCanvasCoordinateTest()
         {
             _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
-            Assert.AreEqual(_private_model.GetField("_canvasTopLeft"), new Point(0, 0));
-            Assert.AreEqual(_private_model.GetField("_canvasButtonRight"), new Point(600, 800));
+            Assert.AreEqual(_privateModel.GetField("_canvasTopLeft"), new Point(0, 0));
+            Assert.AreEqual(_privateModel.GetField("_canvasButtonRight"), new Point(600, 800));
         }
 
         [TestMethod()]
@@ -97,7 +97,7 @@ namespace WindowPowerPoint.Tests
             _model.SetHint(ShapeType.CIRCLE);
             _model.HandleMouseDown(new Point(50, 50));
 
-            var _private_state = new PrivateObject(_private_model.GetField("_state"));
+            var _private_state = new PrivateObject(_privateModel.GetField("_state"));
             Assert.AreEqual(_private_state.GetField("_isDrawing"), true);
         }
 
@@ -119,7 +119,7 @@ namespace WindowPowerPoint.Tests
             _model.SetHint(ShapeType.CIRCLE);
             _model.HandleMouseDown(new Point(50, 50));
             _model.HandleMouseMove(new Point(60, 60));
-            Assert.AreEqual(((Shape)_private_model.GetField("_hint")).Info, "(50, 50), (60, 60)");
+            Assert.AreEqual(((Shape)_privateModel.GetField("_hint")).Info, "(50, 50), (60, 60)");
         }
 
         [TestMethod()]
@@ -151,7 +151,7 @@ namespace WindowPowerPoint.Tests
             _model.HandleMouseDown(new Point(65, 65));
             _model.HandleMouseMove(new Point(70, 70));
             _model.HandleMouseUp(new Point(70, 70));
-            Assert.IsFalse((bool)(new PrivateObject((PointState)_private_model.GetField("_state"))).GetField("_isAdjusting"));
+            Assert.IsFalse((bool)(new PrivateObject((PointState)_privateModel.GetField("_state"))).GetField("_isAdjusting"));
         }
 
         [TestMethod()]
@@ -267,7 +267,7 @@ namespace WindowPowerPoint.Tests
         public void SetHintTest()
         {
             _model.SetHint(ShapeType.CIRCLE);
-            Assert.IsInstanceOfType(_private_model.GetField("_hint"), typeof(Circle));
+            Assert.IsInstanceOfType(_privateModel.GetField("_hint"), typeof(Circle));
         }
 
         [TestMethod()]
@@ -276,7 +276,7 @@ namespace WindowPowerPoint.Tests
             _model.SetState(new DrawingState(_model));
             _model.SetHint(ShapeType.CIRCLE);
             _model.SetHintFirstPoint(new Point(0, 0));
-            Assert.AreEqual((Point)(new PrivateObject((Circle)_private_model.GetField("_hint"))).GetField("_pointFirst"), new Point(0, 0));
+            Assert.AreEqual((Point)(new PrivateObject((Circle)_privateModel.GetField("_hint"))).GetField("_pointFirst"), new Point(0, 0));
         }
 
         [TestMethod()]
@@ -286,7 +286,7 @@ namespace WindowPowerPoint.Tests
             _model.SetHint(ShapeType.CIRCLE);
             _model.SetHintFirstPoint(new Point(0, 0));
             _model.SetHintSecondPoint(new Point(10, 10));
-            Assert.AreEqual((Point)(new PrivateObject((Circle)_private_model.GetField("_hint"))).GetField("_pointSecond"), new Point(10, 10));
+            Assert.AreEqual((Point)(new PrivateObject((Circle)_privateModel.GetField("_hint"))).GetField("_pointSecond"), new Point(10, 10));
         }
 
         [TestMethod()]

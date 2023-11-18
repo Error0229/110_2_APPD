@@ -18,8 +18,6 @@ namespace WindowPowerPoint
             _isLineChecked = false;
             _isRectangleChecked = false;
             _isSelecting = false;
-            // _isPressed = false;
-            // _isMoving = false;
         }
 
         // insert shape
@@ -70,7 +68,7 @@ namespace WindowPowerPoint
         }
 
         // on model changed
-        protected virtual void NotifyModelChanged(EventArgs e)
+        public virtual void NotifyModelChanged(EventArgs e)
         {
             if (_modelChanged != null)
                 _modelChanged(this, e);
@@ -84,7 +82,7 @@ namespace WindowPowerPoint
         }
 
         // handle model changed
-        private void HandleModelChanged(object sender, EventArgs e)
+        public void HandleModelChanged(object sender, EventArgs e)
         {
             NotifyModelChanged(e);
         }
