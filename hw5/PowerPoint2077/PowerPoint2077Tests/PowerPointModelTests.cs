@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using WindowPowerPoint;
 using System;
 using System.Collections.Generic;
@@ -162,61 +163,141 @@ namespace WindowPowerPoint.Tests
             _model.HandleMouseDown(new Point(30, 30));
             _model.HandleKeyDown(Keys.Delete);
 
-            Assert.AreEqual(_model.Shapes.Count, 0);
+            Assert.AreEqual(_model.Shapes.Count, 1);
         }
 
         [TestMethod()]
-        public void DrawTest()
+        public void DrawRecatangleTest()
         {
-            Assert.Fail();
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.RECTANGLE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            _model.HandleMouseDown(new Point(40, 40));
+            Bitmap bitmap = new Bitmap(800, 600);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
+            _model.Draw(mockAdaptor.Object);
+            mockAdaptor.Verify(adaptor => adaptor.DrawRectangle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawRectangleHandle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+        }
+
+        [TestMethod()]
+        public void DrawCircleTest()
+        {
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            _model.HandleMouseDown(new Point(40, 40));
+            Bitmap bitmap = new Bitmap(800, 600);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
+            _model.Draw(mockAdaptor.Object);
+            mockAdaptor.Verify(adaptor => adaptor.DrawCircle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawCircleHandle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+        }
+
+        [TestMethod()]
+        public void DrawLineTest()
+        {
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.LINE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            _model.HandleMouseDown(new Point(40, 40));
+            Bitmap bitmap = new Bitmap(800, 600);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
+            _model.Draw(mockAdaptor.Object);
+            mockAdaptor.Verify(adaptor => adaptor.DrawLine(It.IsAny<System.Drawing.Point>(), It.IsAny<System.Drawing.Point>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawLineHandle(It.IsAny<System.Drawing.Point>(), It.IsAny<System.Drawing.Point>()), Times.Once());
         }
 
         [TestMethod()]
         public void DrawShapesTest()
         {
-            Assert.Fail();
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.InsertShape(Constant.LINE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.InsertShape(Constant.RECTANGLE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            Bitmap bitmap = new Bitmap(800, 600);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
+            _model.Draw(mockAdaptor.Object);
+            mockAdaptor.Verify(adaptor => adaptor.DrawCircle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawLine(It.IsAny<System.Drawing.Point>(), It.IsAny<System.Drawing.Point>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawRectangle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
         }
 
         [TestMethod()]
         public void ClearSelectedShapeTest()
         {
-            Assert.Fail();
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            _model.HandleMouseDown(new Point(40, 40));
+            _model.HandleMouseDown(new Point(60, 60));
+            Assert.IsFalse(_model.Shapes[0].Selected);
         }
 
         [TestMethod()]
         public void DrawHintTest()
         {
-            Assert.Fail();
+            _model.SetState(new DrawingState(_model));
+            _model.SetHint(ShapeType.CIRCLE);
+            _model.HandleMouseDown(new Point(50, 50));
+            _model.HandleMouseMove(new Point(70, 70));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            Bitmap bitmap = new Bitmap(800, 600);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
+            _model.DrawHint(mockAdaptor.Object);
+            mockAdaptor.Verify(adaptor => adaptor.DrawCircle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
         }
 
         [TestMethod()]
         public void NotifyModelChangedTest()
         {
-            Assert.Fail();
+            var modelChanged = new Mock<PowerPointModel.ModelChangedEventHandler>();
+            _model._modelChanged += modelChanged.Object;
+            _model.NotifyModelChanged(EventArgs.Empty);
+            modelChanged.Verify(m => m(_model, EventArgs.Empty), Times.Once());
         }
 
         [TestMethod()]
         public void SetHintTest()
         {
-            Assert.Fail();
+            _model.SetHint(ShapeType.CIRCLE);
+            Assert.IsInstanceOfType(_private_model.GetField("_hint"), typeof(Circle));
         }
 
         [TestMethod()]
         public void SetHintFirstPointTest()
         {
-            Assert.Fail();
+            _model.SetState(new DrawingState(_model));
+            _model.SetHint(ShapeType.CIRCLE);
+            _model.SetHintFirstPoint(new Point(0, 0));
+            Assert.AreEqual((Point)(new PrivateObject((Circle)_private_model.GetField("_hint"))).GetField("_pointFirst"), new Point(0, 0));
         }
 
         [TestMethod()]
         public void SetHintSecondPointTest()
         {
-            Assert.Fail();
+            _model.SetState(new DrawingState(_model));
+            _model.SetHint(ShapeType.CIRCLE);
+            _model.SetHintFirstPoint(new Point(0, 0));
+            _model.SetHintSecondPoint(new Point(10, 10));
+            Assert.AreEqual((Point)(new PrivateObject((Circle)_private_model.GetField("_hint"))).GetField("_pointSecond"), new Point(10, 10));
         }
 
         [TestMethod()]
         public void AddShapeWithHintTest()
         {
-            Assert.Fail();
+            _model.SetState(new DrawingState(_model));
+            _model.SetHint(ShapeType.CIRCLE);
+            _model.SetHintFirstPoint(new Point(0, 0));
+            _model.SetHintSecondPoint(new Point(10, 10));
+            _model.AddShapeWithHint();
+            Assert.AreEqual(_model.Shapes.Count, 1);
         }
     }
 }

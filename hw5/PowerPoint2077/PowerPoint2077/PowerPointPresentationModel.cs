@@ -142,20 +142,13 @@ namespace WindowPowerPoint
         {
             if (IsDrawing() || IsCursorChecked)
             {
-                // _model.SetHintFirstPoint(point);
                 _model.HandleMouseDown(point);
-                // _isPressed = true;
             }
         }
 
         // process mouse moving while pressed in canvas
         public void ProcessCanvasMoving(Point point)
         {
-            // if (_isPressed)
-            // {
-            //     _isMoving = true;
-            //     // _model.SetHintSecondPoint(point);
-            // }
             _model.HandleMouseMove(point);
         }
 

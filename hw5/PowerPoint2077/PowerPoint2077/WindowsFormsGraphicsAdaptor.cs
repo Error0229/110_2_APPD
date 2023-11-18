@@ -2,7 +2,7 @@
 
 namespace WindowPowerPoint
 {
-    class WindowsFormsGraphicsAdaptor : IGraphics
+    public class WindowsFormsGraphicsAdaptor : IGraphics
     {
         Graphics _graphics;
         public WindowsFormsGraphicsAdaptor(Graphics graphics)
@@ -17,26 +17,26 @@ namespace WindowPowerPoint
         }
 
         // draw line
-        public void DrawLine(Point pointFirst, Point pointSecond)
+        public virtual void DrawLine(Point pointFirst, Point pointSecond)
         {
             _graphics.DrawLine(Pens.Black, pointFirst, pointSecond);
         }
 
         // draw line handle
-        public void DrawLineHandle(Point pointFirst, Point pointSecond)
+        public virtual void DrawLineHandle(Point pointFirst, Point pointSecond)
         {
             _graphics.DrawEllipse(Pens.Gray, pointFirst.X - (Constant.HANDLE_SIZE >> 1), pointFirst.Y - (Constant.HANDLE_SIZE >> 1), Constant.HANDLE_SIZE, Constant.HANDLE_SIZE);
             _graphics.DrawEllipse(Pens.Gray, pointSecond.X - (Constant.HANDLE_SIZE >> 1), pointSecond.Y - (Constant.HANDLE_SIZE >> 1), Constant.HANDLE_SIZE, Constant.HANDLE_SIZE);
         }
 
         // draw rectangle
-        public void DrawRectangle(System.Drawing.Rectangle rectangle)
+        public virtual void DrawRectangle(System.Drawing.Rectangle rectangle)
         {
             _graphics.DrawRectangle(Pens.Black, rectangle);
         }
 
         // draw rectangle handle
-        public void DrawRectangleHandle(System.Drawing.Rectangle rectangle)
+        public virtual void DrawRectangleHandle(System.Drawing.Rectangle rectangle)
         {
             // draw out rectangle
             _graphics.DrawRectangle(Pens.Gray, rectangle);
@@ -53,14 +53,14 @@ namespace WindowPowerPoint
         }
 
         // draw circle
-        public void DrawCircle(System.Drawing.Rectangle rectangle)
+        public virtual void DrawCircle(System.Drawing.Rectangle rectangle)
         {
             _graphics.DrawEllipse(Pens.Black, rectangle);
 
         }
 
         // draw circle handle
-        public void DrawCircleHandle(System.Drawing.Rectangle rectangle)
+        public virtual void DrawCircleHandle(System.Drawing.Rectangle rectangle)
         {
             DrawRectangleHandle(rectangle);
         }
