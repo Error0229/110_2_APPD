@@ -211,6 +211,12 @@ namespace WindowPowerPoint.Tests
             _presentationModel.HandleModelChanged(this, EventArgs.Empty);
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
         }
+        [TestMethod]
+        public void ShapesTest()
+        {
+            _ = _presentationModel.Shapes;
+            _model.Verify(model => model.Shapes, Times.Once());
+        }
 
     }
 }
