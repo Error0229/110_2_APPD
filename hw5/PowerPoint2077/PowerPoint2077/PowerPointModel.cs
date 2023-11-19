@@ -14,13 +14,26 @@ namespace WindowPowerPoint
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
-
+        public CursorManager cursorManager;
         private IState _state;
+        public static readonly Dictionary<HandleType, Cursor> handleToCursor = new Dictionary<HandleType, Cursor>{
+            {HandleType.TOP_LEFT, Cursors.SizeNWSE},
+            {HandleType.TOP, Cursors.SizeNS},
+            {HandleType.TOP_RIGHT, Cursors.SizeNESW},
+            {HandleType.LEFT, Cursors.SizeWE},
+            {HandleType.CENTER, Cursors.SizeAll},
+            {HandleType.RIGHT, Cursors.SizeWE},
+            {HandleType.BUTTON_LEFT, Cursors.SizeNESW},
+            {HandleType.BUTTON, Cursors.SizeNS},
+            {HandleType.BUTTON_RIGHT, Cursors.SizeNWSE},
+            {HandleType.NONE, Cursors.Default}
+        };
+        
         public PowerPointModel()
         {
             _shapes = new BindingList<Shape>();
             _factory = new ShapeFactory();
-            _state = new IdleState();
+            _state = new PointState(this);
         }
 
         // insert shape by shape name
@@ -37,10 +50,10 @@ namespace WindowPowerPoint
         // insert shape by shape name and coordinate
         public virtual void InsertShape(string shapeName, Point firstPoint, Point secondPoint)
         {
-            var random = new Random();
             Shape shape = _factory.CreateShape(shapeName);
             shape.SetFirstPoint(firstPoint);
             shape.SetSecondPoint(secondPoint);
+            shape.AdjustHandle();
             _shapes.Add(shape);
             NotifyModelChanged(EventArgs.Empty);
         }

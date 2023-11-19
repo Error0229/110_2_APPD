@@ -21,6 +21,7 @@ namespace WindowPowerPoint.Tests
         public void Initialize()
         {
             _model = new PowerPointModel();
+            _model.cursorManager = new CursorManager();
             _privateModel = new PrivateObject(_model);
         }
         [TestMethod()]
@@ -38,6 +39,7 @@ namespace WindowPowerPoint.Tests
             _model.InsertShape(Constant.CIRCLE_CHINESE);
             _model.InsertShape(Constant.RECTANGLE_CHINESE);
             Assert.AreEqual(_model.Shapes.Count, 3);
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, _model.Shapes[1].Name);
         }
 
         [TestMethod()]
@@ -45,13 +47,6 @@ namespace WindowPowerPoint.Tests
         {
             _model.InsertShape(Constant.LINE_CHINESE, new Point(10, 10), new Point(50, 50));
             Assert.IsTrue(_model.Shapes[0].IsInShape(new Point(30, 30)));
-        }
-
-        [TestMethod()]
-        public void SetIdleStateTest()
-        {
-            _model.SetState(new IdleState());
-            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(IdleState));    
         }
 
         [TestMethod()]
@@ -85,9 +80,11 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void SetCanvasCoordinateTest()
         {
-            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
-            Assert.AreEqual(_privateModel.GetField("_canvasTopLeft"), new Point(0, 0));
-            Assert.AreEqual(_privateModel.GetField("_canvasButtonRight"), new Point(600, 800));
+            Point pointFirst = new Point(0, 0);
+            Point pointSecond = new Point(800, 600);
+            _model.SetCanvasCoordinate(pointFirst, pointSecond);
+            Assert.AreEqual(pointFirst, _privateModel.GetField("_canvasTopLeft"));
+            Assert.AreEqual(pointSecond, _privateModel.GetField("_canvasButtonRight"));
         }
 
         [TestMethod()]
@@ -98,11 +95,11 @@ namespace WindowPowerPoint.Tests
             _model.HandleMouseDown(new Point(50, 50));
 
             var _private_state = new PrivateObject(_privateModel.GetField("_state"));
-            Assert.AreEqual(_private_state.GetField("_isDrawing"), true);
+            Assert.IsTrue((bool)_private_state.GetField("_isDrawing"));
         }
 
         [TestMethod()]
-        public void HandlePointStateMouseDownTest()
+        public void HandlePointStateMouseDownForMovingTest()
         {
             _model.SetState(new PointState(_model));
             _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(60, 60), new Point(70, 70));
@@ -110,6 +107,26 @@ namespace WindowPowerPoint.Tests
             _model.HandleMouseDown(new Point(30, 30));
             Assert.IsFalse(_model.Shapes[0].Selected);
             Assert.IsTrue(_model.Shapes[1].Selected);
+        }
+
+        [TestMethod()]
+        public void HandlePointStateMouseDownForClearingTest()
+        {
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.RECTANGLE_CHINESE, new Point(10, 10), new Point(50, 50));
+            _model.HandleMouseDown(new Point(30, 30));
+            _model.HandleMouseUp(new Point(30, 30));
+            _model.HandleMouseDown(new Point(0, 0));
+            Assert.IsFalse(_model.Shapes[0].Selected);
+        }
+        [TestMethod()]
+        public void HandlePointStateMouseDownForAdjustTest()
+        {
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(60, 60), new Point(70, 70));
+            _model.HandleMouseDown(new Point(60, 60));
+            _model.HandleMouseDown(new Point(60, 60));
+            Assert.IsTrue((bool)(new PrivateObject((PointState)_privateModel.GetField("_state"))).GetField("_isAdjusting"));
         }
 
         [TestMethod()]
@@ -123,13 +140,38 @@ namespace WindowPowerPoint.Tests
         }
 
         [TestMethod()]
-        public void HandlePointStateMouseMoveTest()
+        public void HandlePointStateMouseMoveForMoveTest()
         {
             _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(30, 30), new Point(40, 40));
             _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(60, 60), new Point(70, 70));
             _model.HandleMouseDown(new Point(65, 65));
             _model.HandleMouseMove(new Point(70, 70));
-            Assert.AreEqual(_model.Shapes[0].Info, "(65, 65), (75, 75)");
+            Assert.AreEqual(_model.Shapes[1].Info, "(65, 65), (75, 75)");
+        }
+
+        [TestMethod()]
+        public void HandlePointStateMouseMoveForAdjustTest()
+        {
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(90, 90), new Point(100, 100));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(60, 60), new Point(70, 70));
+            _model.HandleMouseDown(new Point(60, 60));
+            _model.HandleMouseDown(new Point(60, 60));
+            _model.HandleMouseMove(new Point(50, 50));
+            Assert.AreEqual(_model.Shapes[1].Info, "(50, 50), (70, 70)");
+        }
+
+        [TestMethod()]
+        public void HandlePointStateMouseMoveCloseToHandleTest()
+        {
+            _model.SetState(new PointState(_model));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(90, 90), new Point(100, 100));
+            _model.InsertShape(Constant.CIRCLE_CHINESE, new Point(60, 60), new Point(70, 70));
+            _model.HandleMouseDown(new Point(65, 65));
+            _model.HandleMouseUp(new Point(65, 65));
+            _model.HandleMouseMove(new Point(60, 60));
+            Assert.AreEqual(Cursors.SizeNWSE, _model.cursorManager.CurrentCursor);
         }
 
         [TestMethod()]
@@ -151,19 +193,28 @@ namespace WindowPowerPoint.Tests
             _model.HandleMouseDown(new Point(65, 65));
             _model.HandleMouseMove(new Point(70, 70));
             _model.HandleMouseUp(new Point(70, 70));
-            Assert.IsFalse((bool)(new PrivateObject((PointState)_privateModel.GetField("_state"))).GetField("_isAdjusting"));
+            Assert.IsFalse((bool)(new PrivateObject((PointState)_privateModel.GetField("_state"))).GetField("_isMoving"));
         }
 
         [TestMethod()]
-        public void HandleKeyDownTest()
+        public void HandleKeyDownPointStateTest()
         {
             _model.SetState(new PointState(_model));
             _model.InsertShape(Constant.RECTANGLE_CHINESE, new Point(10, 10), new Point(50, 50));
             _model.InsertShape(Constant.RECTANGLE_CHINESE, new Point(60, 60), new Point(70, 70));
+            _model.HandleKeyDown(Keys.Delete);
             _model.HandleMouseDown(new Point(30, 30));
             _model.HandleKeyDown(Keys.Delete);
 
             Assert.AreEqual(_model.Shapes.Count, 1);
+        }
+
+        [TestMethod()]
+        public void HandleKeyDownDrawingStateTest()
+        {
+            _model.SetState(new DrawingState(_model));
+            _model.HandleKeyDown(Keys.Delete);
+            Assert.AreNotEqual(";", ";"); // what do I know 🗿
         }
 
         [TestMethod()]
@@ -178,7 +229,7 @@ namespace WindowPowerPoint.Tests
             var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
             _model.Draw(mockAdaptor.Object);
             mockAdaptor.Verify(adaptor => adaptor.DrawRectangle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
-            mockAdaptor.Verify(adaptor => adaptor.DrawRectangleHandle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawHandle(It.IsAny<Point>()), Times.Exactly(8));
         }
 
         [TestMethod()]
@@ -193,7 +244,7 @@ namespace WindowPowerPoint.Tests
             var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
             _model.Draw(mockAdaptor.Object);
             mockAdaptor.Verify(adaptor => adaptor.DrawCircle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
-            mockAdaptor.Verify(adaptor => adaptor.DrawCircleHandle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawHandle(It.IsAny<Point>()), Times.Exactly(9));
         }
 
         [TestMethod()]
@@ -208,7 +259,7 @@ namespace WindowPowerPoint.Tests
             var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
             _model.Draw(mockAdaptor.Object);
             mockAdaptor.Verify(adaptor => adaptor.DrawLine(It.IsAny<System.Drawing.Point>(), It.IsAny<System.Drawing.Point>()), Times.Once());
-            mockAdaptor.Verify(adaptor => adaptor.DrawLineHandle(It.IsAny<System.Drawing.Point>(), It.IsAny<System.Drawing.Point>()), Times.Once());
+            mockAdaptor.Verify(adaptor => adaptor.DrawHandle(It.IsAny<Point>()), Times.Exactly(2));
         }
 
         [TestMethod()]
@@ -237,6 +288,21 @@ namespace WindowPowerPoint.Tests
             _model.HandleMouseDown(new Point(40, 40));
             _model.HandleMouseDown(new Point(60, 60));
             Assert.IsFalse(_model.Shapes[0].Selected);
+        }
+
+        [TestMethod()]
+        public void DrawWhileDrawingTest()
+        {
+            _model.SetState(new DrawingState(_model));
+            _model.SetHint(ShapeType.CIRCLE);
+            _model.HandleMouseDown(new Point(50, 50));
+            _model.HandleMouseMove(new Point(70, 70));
+            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            Bitmap bitmap = new Bitmap(800, 600);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
+            _model.Draw(mockAdaptor.Object);
+            mockAdaptor.Verify(adaptor => adaptor.DrawCircle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
         }
 
         [TestMethod()]

@@ -7,7 +7,7 @@ namespace WindowPowerPoint
     public partial class PowerPoint : Form
     {
 
-        private readonly BindingSource _bindingSource = new BindingSource();
+        private CursorManager _cursorManager;
         public PowerPoint(PowerPointPresentationModel model)
         {
             // DoubleBuffered = true;
@@ -36,7 +36,11 @@ namespace WindowPowerPoint
             KeyPreview = true;
             KeyDown += HandleKeyDown;
             _brief = new Bitmap(_canvas.Width, _canvas.Height);
-            _presentationModel._modelChanged += HandleModelChanged;
+            _presentationModel.ModelChanged += HandleModelChanged;
+            _cursorManager = new CursorManager();
+            _presentationModel.SetupCursorManager(_cursorManager);
+            _presentationModel.CursorChanged += HandleCursorChanged;
+            _presentationModel.ProcessCursorClicked();
         }
 
         // handle model change
@@ -45,10 +49,12 @@ namespace WindowPowerPoint
             // Update the view
             _canvas.Invalidate();
             _shapeGridView.Invalidate();
-            // _lineAddButton.Checked = _presentationModel.IsLineChecked();
-            // _rectangleAddButton.Checked = _presentationModel.IsRectangleChecked();
-            // _ellipseAddButton.Checked = _presentationModel.IsCircleChecked();
-            // _cursorButton.Checked = _presentationModel.IsCursorChecked();
+        }
+
+        // handle cursor changed
+        private void HandleCursorChanged(object sender, EventArgs e)
+        {
+            Cursor = _cursorManager.CurrentCursor;
         }
 
         // regenerate thumbnail
@@ -94,20 +100,20 @@ namespace WindowPowerPoint
         // handle mouse release on canvas
         public void HandleCanvasReleased(object sender, MouseEventArgs e)
         {
-            Cursor = _presentationModel.ProcessCanvasReleased(e.Location);
+            _presentationModel.ProcessCanvasReleased(e.Location);
             GenerateBrief();
         }
 
         // handle mouse enter canvas
         public void HandleCanvasEnter(object sender, EventArgs e)
         {
-            Cursor = _presentationModel.ProcessMouseEnterCanvas();
+            _presentationModel.ProcessMouseEnterCanvas();
         }
 
         // handle mouse leave canvas
         public void HandleCanvasLeave(object sender, EventArgs e)
         {
-            Cursor = _presentationModel.ProcessMouseLeaveCanvas();
+            _presentationModel.ProcessMouseLeaveCanvas();
             GenerateBrief();
         }
 

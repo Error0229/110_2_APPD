@@ -15,6 +15,7 @@
         public const string SPACE = " ";
         public const int FIVE_HUNDRED = 500;
         public const int PEN_THICK = 2;
+        public const double DISTANCE_THRESHOLD = 4;
         public const int HANDLE_SIZE = 10;
         public const string CHECKED = "Checked";
         public const string IS_LINE_CHECKED = "IsLineChecked";

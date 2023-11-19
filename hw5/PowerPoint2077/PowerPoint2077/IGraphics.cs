@@ -22,6 +22,12 @@ namespace WindowPowerPoint
         // draw circle handle
         void DrawCircleHandle(System.Drawing.Rectangle rectangle);
 
+        // draw handle
+        void DrawHandle(Point point);
+
+        // draw Outline
+        void DrawOutline(System.Drawing.Rectangle rectangle);
+
         // clear all
         void ClearAll();
     }

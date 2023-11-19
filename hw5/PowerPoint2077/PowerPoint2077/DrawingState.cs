@@ -53,7 +53,6 @@ namespace WindowPowerPoint
         // handle key down
         public void KeyDown(System.Windows.Forms.Keys keyCode)
         {
-
         }
         private bool _isDrawing;
     }

@@ -1,4 +1,6 @@
-﻿namespace WindowPowerPoint
+﻿using System.Drawing;
+using System.Collections.Generic;
+namespace WindowPowerPoint
 {
     public class Line : Shape
     {
@@ -23,10 +25,38 @@
             }
         }
 
+        // generate handle
+        public override void AdjustHandle()
+        {
+            _handles.Clear();
+            _handles.Add(new Handle { Position = _pointFirst, Type = HandleType.TOP_LEFT });
+            _handles.Add(new Handle { Position = _pointSecond, Type = HandleType.BUTTON_RIGHT });
+        }
+
+        // adjust by handle
+        public override void AdjustByHandle(Point handlePosition)
+        {
+            switch (_selectedHandleType)
+            {
+                case HandleType.TOP_LEFT:
+                    _pointFirst = handlePosition;
+                    break;
+                case HandleType.BUTTON_RIGHT:
+                    _pointSecond = handlePosition;
+                    break;
+            }
+        }
+
+
         // Draw Line Handle
         public override void DrawHandle(IGraphics graphics)
         {
-            graphics.DrawLineHandle(_pointFirst, _pointSecond);
+            AdjustHandle();
+            foreach (var handle in _handles)
+            {
+                graphics.DrawHandle(handle.Position);
+            }
+            // graphics.DrawLineHandle(_pointFirst, _pointSecond);
         }
     }
 }

@@ -8,16 +8,25 @@ namespace WindowPowerPoint
     public class PowerPointPresentationModel : INotifyPropertyChanged
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
-        public event ModelChangedEventHandler _modelChanged;
+        public event ModelChangedEventHandler ModelChanged;
+        public event ModelChangedEventHandler CursorChanged;
         public event PropertyChangedEventHandler PropertyChanged;
+        private CursorManager _cursorManager;
         public PowerPointPresentationModel(PowerPointModel model)
         {
-            this._model = model;
+            _model = model;
             _model._modelChanged += HandleModelChanged;
             _isCircleChecked = false;
             _isLineChecked = false;
             _isRectangleChecked = false;
             _isSelecting = false;
+        }
+
+        // setup cursor manager
+        public void SetupCursorManager(CursorManager cursorManager)
+        {
+            _cursorManager = cursorManager;
+            _model.cursorManager = cursorManager;
         }
 
         // insert shape
@@ -39,26 +48,29 @@ namespace WindowPowerPoint
         }
 
         // process mouse enter canvas
-        public Cursor ProcessMouseEnterCanvas()
+        public void ProcessMouseEnterCanvas()
         {
             if (IsDrawing())
             {
-                return Cursors.Cross;
+                _cursorManager.CurrentCursor = Cursors.Cross;
             }
             else
             {
-                return Cursors.Default;
+                _cursorManager.CurrentCursor = Cursors.Default;
             }
+            NotifyCursorChanged(EventArgs.Empty);
         }
 
         // process mouse leave canvas
-        public Cursor ProcessMouseLeaveCanvas()
+        public void ProcessMouseLeaveCanvas()
         {
-            _isSelecting = _isRectangleChecked = _isLineChecked = _isCircleChecked = false;
-            _model.SetState(new IdleState());
+            _isRectangleChecked = _isLineChecked = _isCircleChecked = false;
+            _isSelecting = true;
+            _model.SetState(new PointState(_model));
             _model.ClearSelectedShape();
+            _cursorManager.CurrentCursor = Cursors.Default;
+            NotifyCursorChanged(EventArgs.Empty);
             NotifyModelChanged(EventArgs.Empty);
-            return Cursors.Default;
         }
 
         // Set canvas coordinate
@@ -70,8 +82,8 @@ namespace WindowPowerPoint
         // on model changed
         public virtual void NotifyModelChanged(EventArgs e)
         {
-            if (_modelChanged != null)
-                _modelChanged(this, e);
+            if (ModelChanged != null)
+                ModelChanged(this, e);
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_LINE_CHECKED));
@@ -79,6 +91,13 @@ namespace WindowPowerPoint
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_RECTANGLE_CHECKED));
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CURSOR_CHECKED));
             }
+        }
+        
+        // on cursor changed
+        public virtual void NotifyCursorChanged(EventArgs e)
+        {
+            if (CursorChanged != null)
+                CursorChanged(this, e);
         }
 
         // handle model changed
@@ -148,18 +167,19 @@ namespace WindowPowerPoint
         public void ProcessCanvasMoving(Point point)
         {
             _model.HandleMouseMove(point);
+            NotifyCursorChanged(EventArgs.Empty);
         }
 
         // process mouse release while drawing
-        public Cursor ProcessCanvasReleased(Point point)
+        public void ProcessCanvasReleased(Point point)
         {
             _model.HandleMouseUp(point);
             if (IsDrawing())
             {
-                // _model.AddShapeWithHint();
-                return ProcessMouseLeaveCanvas();
+                ProcessMouseLeaveCanvas();
             }
-            return Cursors.Default;
+            _cursorManager.CurrentCursor = Cursors.Default;
+            NotifyCursorChanged(EventArgs.Empty);
         }
 
         // draw all the shape

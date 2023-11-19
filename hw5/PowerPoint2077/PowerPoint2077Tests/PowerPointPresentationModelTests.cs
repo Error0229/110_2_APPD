@@ -18,12 +18,13 @@ namespace WindowPowerPoint.Tests
         PowerPointPresentationModel _presentationModel;
         Mock<PowerPointModel> _model;
         PrivateObject _privatePresentationModel;
-        
+
         [TestInitialize()]
         public void Initialize()
         {
             _model = new Mock<PowerPointModel>();
             _presentationModel = new PowerPointPresentationModel(_model.Object);
+            _presentationModel.SetupCursorManager(new CursorManager());
             _privatePresentationModel = new PrivateObject(_presentationModel);
         }
         [TestMethod()]
@@ -54,16 +55,17 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void ProcessMouseEnterCanvasWhileDrawingTest()
         {
+
             _presentationModel.ProcessLineClicked();
-            var cursor = _presentationModel.ProcessMouseEnterCanvas();
-            Assert.AreEqual(cursor, Cursors.Cross);
+            _presentationModel.ProcessMouseEnterCanvas();
+            Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Cross);
         }
 
         [TestMethod()]
         public void ProcessMouseEnterCanvasWhileIdleTest()
         {
-            var cursor = _presentationModel.ProcessMouseEnterCanvas();
-            Assert.AreEqual(cursor, Cursors.Default);
+            _presentationModel.ProcessMouseEnterCanvas();
+            Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
         [TestMethod()]
@@ -71,12 +73,12 @@ namespace WindowPowerPoint.Tests
         {
             _presentationModel.ProcessLineClicked();
             _presentationModel.ProcessMouseEnterCanvas();
-            var cursor = _presentationModel.ProcessMouseLeaveCanvas();
-            Assert.IsFalse((bool)_privatePresentationModel.GetField("_isSelecting"));
+            _presentationModel.ProcessMouseLeaveCanvas();
+            Assert.IsTrue((bool)_privatePresentationModel.GetField("_isSelecting"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isRectangleChecked"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isLineChecked"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isCircleChecked"));
-            Assert.AreEqual(cursor, Cursors.Default);
+            Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
         [TestMethod()]
@@ -126,7 +128,6 @@ namespace WindowPowerPoint.Tests
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isRectangleChecked"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isLineChecked"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isCircleChecked"));
-
         }
 
         [TestMethod()]
@@ -160,15 +161,18 @@ namespace WindowPowerPoint.Tests
             var point = new Point(50, 50);
             _presentationModel.ProcessEllipseClicked();
             _presentationModel.ProcessCanvasPressed(new Point(0, 0));
-            Assert.AreEqual(Cursors.Default, _presentationModel.ProcessCanvasReleased(point));
+            _presentationModel.ProcessCanvasReleased(point);
+            Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
+
         [TestMethod()]
         public void ProcessCanvasReleasedPointTest()
         {
             var point = new Point(50, 50);
             _presentationModel.ProcessCursorClicked();
             _presentationModel.ProcessCanvasPressed(new Point(0, 0));
-            Assert.AreEqual(Cursors.Default, _presentationModel.ProcessCanvasReleased(point));
+            _presentationModel.ProcessCanvasReleased(point);
+            Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
         [TestMethod()]
@@ -192,25 +196,36 @@ namespace WindowPowerPoint.Tests
             Assert.IsTrue(_presentationModel.IsRectangleChecked);
             Assert.IsTrue(_presentationModel.IsDrawing());
         }
+
         [TestMethod()]
         public void NotifyModelChangedTest()
         {
             var modelChanged = new Mock<PowerPointPresentationModel.ModelChangedEventHandler>();
             var propertyChanged = new Mock<PropertyChangedEventHandler>();
-            _presentationModel._modelChanged += modelChanged.Object;
+            _presentationModel.ModelChanged += modelChanged.Object;
             _presentationModel.PropertyChanged += propertyChanged.Object;
             _presentationModel.NotifyModelChanged(EventArgs.Empty);
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
             propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(4));
         }
         [TestMethod()]
+        public void NotifyCursorChangedTest()
+        {
+            var cursorChanged = new Mock<PowerPointPresentationModel.ModelChangedEventHandler>();
+            _presentationModel.CursorChanged += cursorChanged.Object;
+            _presentationModel.NotifyCursorChanged(EventArgs.Empty);
+            cursorChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
+        }
+
+        [TestMethod()]
         public void HandleModelChangedTest()
         {
             var modelChanged = new Mock<PowerPointPresentationModel.ModelChangedEventHandler>();
-            _presentationModel._modelChanged += modelChanged.Object;
+            _presentationModel.ModelChanged += modelChanged.Object;
             _presentationModel.HandleModelChanged(this, EventArgs.Empty);
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
         }
+
         [TestMethod]
         public void ShapesTest()
         {

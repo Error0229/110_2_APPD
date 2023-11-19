@@ -49,6 +49,7 @@
     <Compile Include="BindingToolStripButton.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="CursorManager.cs" />
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -59,7 +60,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IdleState.cs" />
     <Compile Include="IGraphics.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="Line.cs" />

@@ -64,5 +64,17 @@ namespace WindowPowerPoint
         {
             DrawRectangleHandle(rectangle);
         }
+
+        // draw handle by points
+        public virtual void DrawHandle(Point point)
+        {
+            _graphics.DrawEllipse(Pens.Gray, point.X - (Constant.HANDLE_SIZE >> 1), point.Y - (Constant.HANDLE_SIZE >> 1), Constant.HANDLE_SIZE, Constant.HANDLE_SIZE);  
+        }
+
+        // draw outline of a shape
+        public virtual void DrawOutline(System.Drawing.Rectangle rectangle)
+        {
+            _graphics.DrawRectangle(Pens.Gray, rectangle);
+        }
     }
 }
