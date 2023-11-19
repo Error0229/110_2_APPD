@@ -68,7 +68,7 @@ namespace WindowPowerPoint
         // draw handle by points
         public virtual void DrawHandle(Point point)
         {
-            _graphics.DrawEllipse(Pens.Gray, point.X - (Constant.HANDLE_SIZE >> 1), point.Y - (Constant.HANDLE_SIZE >> 1), Constant.HANDLE_SIZE, Constant.HANDLE_SIZE);  
+            _graphics.DrawEllipse(Pens.Gray, point.X - (Constant.HANDLE_SIZE >> 1), point.Y - (Constant.HANDLE_SIZE >> 1), Constant.HANDLE_SIZE, Constant.HANDLE_SIZE);
         }
 
         // draw outline of a shape

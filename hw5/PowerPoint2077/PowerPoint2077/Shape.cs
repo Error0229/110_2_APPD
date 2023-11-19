@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Collections.Generic;
 using System.Windows.Forms.VisualStyles;
+using System.Runtime.CompilerServices;
 namespace WindowPowerPoint
 {
     public enum ShapeType
@@ -12,24 +13,47 @@ namespace WindowPowerPoint
     }
     public enum HandleType
     {
-        TOP_LEFT,
-        TOP,
-        TOP_RIGHT,
-        LEFT,
-        CENTER,
-        RIGHT,
-        BUTTON_LEFT,
-        BUTTON,
-        BUTTON_RIGHT,
-        NONE
+        TopLeft,
+        Top,
+        TopRight,
+        Left,
+        Right,
+        BottomLeft,
+        Bottom,
+        BottomRight,
+        None
     }
     public struct Handle
     {
-        public Point Position;
-        public HandleType Type;
+        Point _position;
+        HandleType _type;
+        public Point Position
+        {
+            get
+            {
+                return _position;
+            }
+            set
+            {
+                _position = value;
+            }
+        }
+        public HandleType Type
+        {
+            get
+            {
+                return _type;
+            }
+            set
+            {
+                _type = value;
+            }
+        }
+
     }
     public abstract class Shape
     {
+        private Dictionary<HandleType, Action<Point>> _adjustWith;
         public Shape(ShapeType type) : this()
         {
             _type = type;
@@ -39,8 +63,9 @@ namespace WindowPowerPoint
             _pointFirst = new Point();
             _pointSecond = new Point();
             _name = string.Empty;
-            _selectedHandleType = HandleType.NONE;
+            _selectedHandleType = HandleType.None;
             _handles = new List<Handle>();
+            InitializeAdjustWith();
         }
         // get shape's info
         public virtual string GetInfo()
@@ -99,7 +124,7 @@ namespace WindowPowerPoint
         }
 
         // distance bewtween two point
-        protected double DistanceOf(Point pointFirst, Point pointSecond)
+        protected double GetDistanceOf(Point pointFirst, Point pointSecond)
         {
             var deltaX = pointFirst.X - pointSecond.X;
             var deltaY = pointFirst.Y - pointSecond.Y;
@@ -116,20 +141,20 @@ namespace WindowPowerPoint
         public abstract void AdjustHandle();
 
         // check close to handle
-        public Handle IsCloseToHandle(Point cursor)
+        public HandleType IsCloseToHandle(Point cursor)
         {
             foreach (var handle in _handles)
             {
-                if (DistanceOf(cursor, handle.Position) <= Constant.DISTANCE_THRESHOLD)
+                if (GetDistanceOf(cursor, handle.Position) <= Constant.DISTANCE_THRESHOLD)
                 {
-                    return handle;
+                    return handle.Type;
                 }
             }
-            return new Handle { Type = HandleType.NONE };
+            return HandleType.None;
         }
 
         // select handle
-        public void SelectHandle(HandleType handle)
+        public void SetSelectHandle(HandleType handle)
         {
             _selectedHandleType = handle;
         }
@@ -137,33 +162,7 @@ namespace WindowPowerPoint
         // adjust by handle
         public virtual void AdjustByHandle(Point handlePosition)
         {
-            switch (_selectedHandleType)
-            {
-                case HandleType.TOP_LEFT:
-                    AdjustByTopLeft(handlePosition);
-                    break;
-                case HandleType.TOP:
-                    AdjustByTop(handlePosition);
-                    break;
-                case HandleType.TOP_RIGHT:
-                    AdjustByTopRight(handlePosition);
-                    break;
-                case HandleType.LEFT:
-                    AdjustByLeft(handlePosition);
-                    break;
-                case HandleType.RIGHT:
-                    AdjustByRight(handlePosition);
-                    break;
-                case HandleType.BUTTON_LEFT:
-                    AdjustByButtonLeft(handlePosition);
-                    break;
-                case HandleType.BUTTON:
-                    AdjustByButton(handlePosition);
-                    break;
-                case HandleType.BUTTON_RIGHT:
-                    AdjustByButtonRight(handlePosition);
-                    break;
-            }
+            _adjustWith[_selectedHandleType](handlePosition);
         }
 
         // adjust by top left handle
@@ -171,24 +170,15 @@ namespace WindowPowerPoint
         {
             _pointFirst.X = handlePosition.X;
             _pointFirst.Y = handlePosition.Y;
-            if (_pointFirst.X >= _pointSecond.X)
-            {
-                _selectedHandleType = HandleType.TOP_RIGHT;
-            }
-            else if (_pointFirst.Y >= _pointSecond.Y)
-            {
-                _selectedHandleType = HandleType.BUTTON_LEFT;
-            }
+            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.TopRight;
+            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.BottomLeft;
         }
 
         // adjust by top handle
         public virtual void AdjustByTop(Point handlePosition)
         {
             _pointFirst.Y = handlePosition.Y;
-            if (_pointFirst.Y >= _pointSecond.Y)
-            {
-                _selectedHandleType = HandleType.BUTTON;
-            }
+            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.Bottom;
         }
 
         // adjust by top right handle
@@ -197,81 +187,122 @@ namespace WindowPowerPoint
 
             _pointSecond.X = handlePosition.X;
             _pointFirst.Y = handlePosition.Y;
-            if (_pointFirst.X >= _pointSecond.X)
-            {
-                _selectedHandleType = HandleType.TOP_LEFT;
-            }
-            else if (_pointFirst.Y >= _pointSecond.Y)
-            {
-                _selectedHandleType = HandleType.BUTTON_RIGHT;
-            }
+            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.TopLeft;
+            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.BottomRight;
         }
 
         // adjust by left handle
         public virtual void AdjustByLeft(Point handlePosition)
         {
-
             _pointFirst.X = handlePosition.X;
-            if (_pointFirst.X >= _pointSecond.X)
-            {
-                _selectedHandleType = HandleType.RIGHT;
-            }
+            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.Right;
         }
 
         // adjust by right handle
         public virtual void AdjustByRight(Point handlePosition)
         {
-
             _pointSecond.X = handlePosition.X;
-            if (_pointFirst.X >= _pointSecond.X)
-            {
-                _selectedHandleType = HandleType.LEFT;
-            }
+            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.Left;
         }
 
         // adjust by button left handle
-        public virtual void AdjustByButtonLeft(Point handlePosition)
+        public virtual void AdjustByBottomLeft(Point handlePosition)
         {
-
             _pointFirst.X = handlePosition.X;
             _pointSecond.Y = handlePosition.Y;
-            if (_pointFirst.X >= _pointSecond.X)
-            {
-                _selectedHandleType = HandleType.BUTTON_RIGHT;
-            }
-            else if (_pointFirst.Y >= _pointSecond.Y)
-            {
-                _selectedHandleType = HandleType.TOP_LEFT;
-            }
+            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.BottomRight;
+            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.TopLeft;
         }
 
         // adjust by button handle
-        public virtual void AdjustByButton(Point handlePosition)
+        public virtual void AdjustByBottom(Point handlePosition)
         {
-
             _pointSecond.Y = handlePosition.Y;
-            if (_pointFirst.Y >= _pointSecond.Y)
-            {
-                _selectedHandleType = HandleType.TOP;
-            }
+            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.Top;
         }
 
         // adjust by button right handle
-        public virtual void AdjustByButtonRight(Point handlePosition)
+        public virtual void AdjustByBottomRight(Point handlePosition)
         {
-
             _pointSecond.X = handlePosition.X;
             _pointSecond.Y = handlePosition.Y;
-            if (_pointFirst.X >= _pointSecond.X)
+            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.BottomLeft;
+            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.TopRight;
+        }
+
+        // initialize adjuster
+        private void InitializeAdjustWith()
+        {
+            _adjustWith = new Dictionary<HandleType, Action<Point>>();
+            _adjustWith.Add(HandleType.TopLeft, AdjustByTopLeft);
+            _adjustWith.Add(HandleType.Top, AdjustByTop);
+            _adjustWith.Add(HandleType.TopRight, AdjustByTopRight);
+            _adjustWith.Add(HandleType.Left, AdjustByLeft);
+            _adjustWith.Add(HandleType.Right, AdjustByRight);
+            _adjustWith.Add(HandleType.BottomLeft, AdjustByBottomLeft);
+            _adjustWith.Add(HandleType.Bottom, AdjustByBottom);
+            _adjustWith.Add(HandleType.BottomRight, AdjustByBottomRight);
+        }
+
+        // initialize rectangle handle
+        protected void InitializeRectangleHandle()
+        {
+            var two = (1 << 1);
+            var count = 0;
+            for (int i = 0; i < ((1 << (two + 1)) + 1/* lord forgive me 🗿*/); i++)
             {
-                _selectedHandleType = HandleType.BUTTON_LEFT;
-            }
-            else if (_pointFirst.Y >= _pointSecond.Y)
-            {
-                _selectedHandleType = HandleType.TOP_RIGHT;
+                if (i == (1 << two))
+                    continue; // skip center handle (index = 4)
+                _handles.Add(new Handle
+                {
+                    Type = (HandleType)count++
+                });;
             }
         }
 
+        // adjust rectangle handles
+        protected void AdjustRectangleHandle()
+        {
+            System.Drawing.Rectangle rectangle = GetShapeRectangle();
+            var two = 1 << 1;
+            var count = 0;
+            // draw 8 handles
+            for (int i = 0; i < ((two << two) + 1/* lord forgive me 🗿*/); i++)
+            {
+                if (i == (1 << two))
+                    continue; // skip center handle (index = 4)
+                int x = rectangle.X + (((i % (1 + two) /* lord forgive me 🗿*/) * rectangle.Width) >> 1);
+                int y = rectangle.Y + (((i / (1 + two) /* lord forgive me 🗿*/) * rectangle.Height) >> 1);
+                var handle = _handles[count];
+                handle.Position = new Point(x, y);
+                _handles[count++] = handle;
+            }
+        }
+
+        // try adjust
+        public bool TryAdjustWhenMouseDown(Point point, out bool isAdjusting, out HandleType adjustingHandleType)
+        {
+            adjustingHandleType = IsCloseToHandle(point);
+            if (Selected && adjustingHandleType != HandleType.None)
+            {
+                SetSelectHandle(adjustingHandleType);
+                isAdjusting = true;
+                return true;
+            }
+            isAdjusting = false;
+            return false;
+        }
+
+        // try Move
+        public bool TryAdjustWhenMouseMove(Point point)
+        {
+            if (Selected)
+            {
+                AdjustByHandle(point);
+                return true;
+            }
+            return false;
+        }
         public string Name
         {
             get

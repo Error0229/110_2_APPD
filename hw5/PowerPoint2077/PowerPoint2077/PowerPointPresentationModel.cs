@@ -8,8 +8,8 @@ namespace WindowPowerPoint
     public class PowerPointPresentationModel : INotifyPropertyChanged
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
-        public event ModelChangedEventHandler ModelChanged;
-        public event ModelChangedEventHandler CursorChanged;
+        public event ModelChangedEventHandler _modelChanged;
+        public event ModelChangedEventHandler _cursorChanged;
         public event PropertyChangedEventHandler PropertyChanged;
         private CursorManager _cursorManager;
         public PowerPointPresentationModel(PowerPointModel model)
@@ -23,10 +23,10 @@ namespace WindowPowerPoint
         }
 
         // setup cursor manager
-        public void SetupCursorManager(CursorManager cursorManager)
+        public void SetCursorManager(CursorManager cursorManager)
         {
             _cursorManager = cursorManager;
-            _model.cursorManager = cursorManager;
+            _model.Manager = cursorManager;
         }
 
         // insert shape
@@ -82,8 +82,8 @@ namespace WindowPowerPoint
         // on model changed
         public virtual void NotifyModelChanged(EventArgs e)
         {
-            if (ModelChanged != null)
-                ModelChanged(this, e);
+            if (_modelChanged != null)
+                _modelChanged(this, e);
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_LINE_CHECKED));
@@ -92,12 +92,12 @@ namespace WindowPowerPoint
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CURSOR_CHECKED));
             }
         }
-        
+
         // on cursor changed
         public virtual void NotifyCursorChanged(EventArgs e)
         {
-            if (CursorChanged != null)
-                CursorChanged(this, e);
+            if (_cursorChanged != null)
+                _cursorChanged(this, e);
         }
 
         // handle model changed

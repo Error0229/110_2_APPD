@@ -19,17 +19,24 @@ namespace WindowPowerPoint.Tests
         Mock<PowerPointModel> _model;
         PrivateObject _privatePresentationModel;
 
+        // initialize
         [TestInitialize()]
         public void Initialize()
         {
             _model = new Mock<PowerPointModel>();
             _presentationModel = new PowerPointPresentationModel(_model.Object);
-            _presentationModel.SetupCursorManager(new CursorManager());
+            _presentationModel.SetCursorManager(new CursorManager());
             _privatePresentationModel = new PrivateObject(_presentationModel);
         }
+
+        // test constructor
         [TestMethod()]
         public void PowerPointPresentationModelTest()
         {
+            _model = new Mock<PowerPointModel>();
+            _presentationModel = new PowerPointPresentationModel(_model.Object);
+            _presentationModel.SetCursorManager(new CursorManager());
+            _privatePresentationModel = new PrivateObject(_presentationModel);
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isSelecting"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isRectangleChecked"));
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isLineChecked"));
@@ -37,6 +44,7 @@ namespace WindowPowerPoint.Tests
             Assert.IsNotNull(_privatePresentationModel.GetField("_model"));
         }
 
+        // test insert shape
         [TestMethod()]
         public void ProcessInsertShapeTest()
         {
@@ -44,6 +52,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.InsertShape(Constant.CIRCLE_CHINESE), Times.Once());
         }
 
+        // test remove shape
         [TestMethod()]
         public void ProcessRemoveShapeTest()
         {
@@ -52,6 +61,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.RemoveShape(0), Times.Once());
         }
 
+        // test mouse enter canvas while drawing
         [TestMethod()]
         public void ProcessMouseEnterCanvasWhileDrawingTest()
         {
@@ -61,6 +71,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Cross);
         }
 
+        // test mouse enter canvas while idle
         [TestMethod()]
         public void ProcessMouseEnterCanvasWhileIdleTest()
         {
@@ -68,6 +79,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
+        // test mouse leave canvas
         [TestMethod()]
         public void ProcessMouseLeaveCanvasTest()
         {
@@ -81,6 +93,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
+        // test set canvas coordinate
         [TestMethod()]
         public void SetCanvasCoordinateTest()
         {
@@ -90,6 +103,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.SetCanvasCoordinate(firstPoint, secondPoint), Times.Once());
         }
 
+        // test Line button clicked
         [TestMethod()]
         public void ProcessLineClickedTest()
         {
@@ -100,6 +114,7 @@ namespace WindowPowerPoint.Tests
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isCircleChecked"));
         }
 
+        // test Circle button clicked
         [TestMethod()]
         public void ProcessEllipseClickedTest()
         {
@@ -110,6 +125,7 @@ namespace WindowPowerPoint.Tests
             Assert.IsTrue((bool)_privatePresentationModel.GetField("_isCircleChecked"));
         }
 
+        // test Rectangle button clicked
         [TestMethod()]
         public void ProcessRectangleClickedTest()
         {
@@ -120,6 +136,7 @@ namespace WindowPowerPoint.Tests
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isCircleChecked"));
         }
 
+        // test Cursor button clicked
         [TestMethod()]
         public void ProcessCursorClickedTest()
         {
@@ -130,6 +147,7 @@ namespace WindowPowerPoint.Tests
             Assert.IsFalse((bool)_privatePresentationModel.GetField("_isCircleChecked"));
         }
 
+        // test key down
         [TestMethod()]
         public void ProcessKeyDownTest()
         {
@@ -138,6 +156,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.HandleKeyDown(key), Times.Once());
         }
 
+        // test canvas pressed
         [TestMethod()]
         public void ProcessCanvasPressedTest()
         {
@@ -147,6 +166,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.HandleMouseDown(point), Times.Once());
         }
 
+        // test canvas mouse moving
         [TestMethod()]
         public void ProcessCanvasMovingTest()
         {
@@ -155,6 +175,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.HandleMouseMove(point), Times.Once());
         }
 
+        // test canvas mouse release in drawing state
         [TestMethod()]
         public void ProcessCanvasReleasedDrawTest()
         {
@@ -165,6 +186,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
+        // test canvas mouse release in point state
         [TestMethod()]
         public void ProcessCanvasReleasedPointTest()
         {
@@ -175,6 +197,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
+        // test draw
         [TestMethod()]
         public void DrawTest()
         {
@@ -183,6 +206,7 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.Draw(adaptor), Times.Once());
         }
 
+        // test is drawing
         [TestMethod()]
         public void IsDrawingTest()
         {
@@ -197,35 +221,40 @@ namespace WindowPowerPoint.Tests
             Assert.IsTrue(_presentationModel.IsDrawing());
         }
 
+        // test notify model changed
         [TestMethod()]
         public void NotifyModelChangedTest()
         {
             var modelChanged = new Mock<PowerPointPresentationModel.ModelChangedEventHandler>();
             var propertyChanged = new Mock<PropertyChangedEventHandler>();
-            _presentationModel.ModelChanged += modelChanged.Object;
+            _presentationModel._modelChanged += modelChanged.Object;
             _presentationModel.PropertyChanged += propertyChanged.Object;
             _presentationModel.NotifyModelChanged(EventArgs.Empty);
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
             propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(4));
         }
+
+        // test notify cursor changed
         [TestMethod()]
         public void NotifyCursorChangedTest()
         {
             var cursorChanged = new Mock<PowerPointPresentationModel.ModelChangedEventHandler>();
-            _presentationModel.CursorChanged += cursorChanged.Object;
+            _presentationModel._cursorChanged += cursorChanged.Object;
             _presentationModel.NotifyCursorChanged(EventArgs.Empty);
             cursorChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
         }
 
+        // test handle model changed
         [TestMethod()]
         public void HandleModelChangedTest()
         {
             var modelChanged = new Mock<PowerPointPresentationModel.ModelChangedEventHandler>();
-            _presentationModel.ModelChanged += modelChanged.Object;
+            _presentationModel._modelChanged += modelChanged.Object;
             _presentationModel.HandleModelChanged(this, EventArgs.Empty);
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
         }
 
+        // test get shape
         [TestMethod]
         public void ShapesTest()
         {

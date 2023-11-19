@@ -185,30 +185,132 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>98 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw5\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>98</Line>
+              <StartLine>97</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>98</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>112 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw5\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>112</Line>
+              <StartLine>112</StartLine>
+              <StartCol>24</StartCol>
+              <EndLine>112</EndLine>
+              <EndCol>65</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>114 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw5\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>114</Line>
+              <StartLine>113</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>114</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>35 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape._pointFirst 以及 WindowPowerPoint.Shape._handles</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw5\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <Line>35</Line>
+              <StartLine>31</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>35</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape._pointFirst 以及 WindowPowerPoint.Shape._handles</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>39 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape._pointSecond 以及 WindowPowerPoint.Shape._handles</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw5\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <Line>39</Line>
+              <StartLine>35</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>39</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape._pointSecond 以及 WindowPowerPoint.Shape._handles</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
-          <HashCodeRequestIgnoreList />
+          <HashCodeRequestIgnoreList>
+            <string>98 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</string>
+            <string>112 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</string>
+            <string>114 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</string>
+            <string>35 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape._pointFirst 以及 WindowPowerPoint.Shape._handles</string>
+            <string>39 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape._pointSecond 以及 WindowPowerPoint.Shape._handles</string>
+          </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
             <AnalysisFiles>
               <AnalysisFile>
+                <RelativePath>BindingToolStripButton.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Circle.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Constant.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>CursorManager.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>DoubleBufferedPanel.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DrawingState.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Form1.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Form1.Designer.cs</RelativePath>
@@ -218,12 +320,22 @@
               <AnalysisFile>
                 <RelativePath>IGraphics.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>IState.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Line.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PointState.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>PowerPointModel.cs</RelativePath>
@@ -243,7 +355,7 @@
               <AnalysisFile>
                 <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Properties\Resources.Designer.cs</RelativePath>
@@ -258,27 +370,42 @@
               <AnalysisFile>
                 <RelativePath>Rectangle.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Shape.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>ShapeFactory.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>WindowsFormsGraphicsAdaptor.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PowerPointModelTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PowerPointPresentationModelTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1095</ProductionLoc>
-          <TestLoc>0</TestLoc>
+          <ProductionLoc>2039</ProductionLoc>
+          <TestLoc>678</TestLoc>
         </CodeReview>
       </Data>
     </div>

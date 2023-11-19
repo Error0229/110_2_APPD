@@ -1,0 +1,39 @@
+<stylecopresultscache>
+  <version>12</version>
+  <project key="2089776515">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="PowerPointModelTests.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/11/20 00:00:50.282</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PowerPointPresentationModelTests.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/11/20 00:00:31.492</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/11/18 15:59:24.321</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

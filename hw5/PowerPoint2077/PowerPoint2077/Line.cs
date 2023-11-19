@@ -29,8 +29,14 @@ namespace WindowPowerPoint
         public override void AdjustHandle()
         {
             _handles.Clear();
-            _handles.Add(new Handle { Position = _pointFirst, Type = HandleType.TOP_LEFT });
-            _handles.Add(new Handle { Position = _pointSecond, Type = HandleType.BUTTON_RIGHT });
+            _handles.Add(new Handle
+            { 
+                Position = _pointFirst, Type = HandleType.TopLeft 
+            });
+            _handles.Add(new Handle 
+            { 
+                Position = _pointSecond, Type = HandleType.BottomRight 
+            });
         }
 
         // adjust by handle
@@ -38,15 +44,14 @@ namespace WindowPowerPoint
         {
             switch (_selectedHandleType)
             {
-                case HandleType.TOP_LEFT:
+                case HandleType.TopLeft:
                     _pointFirst = handlePosition;
                     break;
-                case HandleType.BUTTON_RIGHT:
+                case HandleType.BottomRight:
                     _pointSecond = handlePosition;
                     break;
             }
         }
-
 
         // Draw Line Handle
         public override void DrawHandle(IGraphics graphics)

@@ -14,22 +14,38 @@ namespace WindowPowerPoint
         public PointState(PowerPointModel model)
         {
             _model = model;
-            _draggingHandle = new Handle();
+            _adjustingHandleType = HandleType.None;
         }
-        
+
         // handle mouse down
         public void MouseDown(Point point)
         {
+            MouseDownForAdjust(point);
+            if (_isAdjusting)
+                return;
+            MouseDownForMove(point);
+            if (!_isMoving)
+            {
+                _model.ClearSelectedShape();
+            }
+            _model.NotifyModelChanged(EventArgs.Empty);
+        }
+
+        // mouse down for shape adjust
+        private void MouseDownForAdjust(Point point)
+        {
             foreach (Shape shape in _model.Shapes)
             {
-                _draggingHandle = shape.IsCloseToHandle(point);
-                if (shape.Selected && _draggingHandle.Type != HandleType.NONE)
+                if (shape.TryAdjustWhenMouseDown(point, out _isAdjusting, out _adjustingHandleType))
                 {
-                    shape.SelectHandle(_draggingHandle.Type);
-                    _isAdjusting = true;
-                    return;
+                    break;
                 }
             }
+        }
+
+        // mouse down for shape move
+        private void MouseDownForMove(Point point)
+        {
             _model.ClearSelectedShape();
             foreach (Shape shape in _model.Shapes)
             {
@@ -41,12 +57,6 @@ namespace WindowPowerPoint
                     break;
                 }
             }
-            if (!_isMoving)
-            {
-                _model.ClearSelectedShape();
-            }
-
-            _model.NotifyModelChanged(EventArgs.Empty);
         }
 
         // handle mouse move
@@ -54,44 +64,58 @@ namespace WindowPowerPoint
         {
             if (_isAdjusting)
             {
-                _draggingHandle.Position = point;
-                foreach (Shape shape in _model.Shapes)
-                {
-                    if (shape.Selected)
-                    {
-                        shape.AdjustByHandle(point);
-                        _model.NotifyModelChanged(EventArgs.Empty);
-                        break;
-                    }
-                }
+                MouseMoveWhileAdjusting(point);
                 return;
             }
             if (_isMoving)
             {
-                foreach (Shape shape in _model.Shapes)
-                {
-                    if (shape.Selected)
-                    {
-                        shape.Move(point - new Size(_lastPoint));
-                        _lastPoint = point;
-                        _model.NotifyModelChanged(EventArgs.Empty);
-                        break;
-                    }
-                }
+                MouseMoveWhileMoving(point);
                 return;
             }
-            foreach(Shape shape in _model.Shapes)
+            MouseMoveWhileIdle(point);
+        }
+
+        // mouse move while adjusting shape
+        private void MouseMoveWhileAdjusting(Point point)
+        {
+            foreach (Shape shape in _model.Shapes)
+            {
+                if (shape.TryAdjustWhenMouseMove(point))
+                {
+                    _model.NotifyModelChanged(EventArgs.Empty);
+                    return;
+                }
+            }
+        }
+
+        // mouse move while moving shape
+        private void MouseMoveWhileMoving(Point point)
+        {
+            foreach (Shape shape in _model.Shapes)
             {
                 if (shape.Selected)
                 {
-                    var handle = shape.IsCloseToHandle(point);
-                    _model.cursorManager.CurrentCursor = PowerPointModel.handleToCursor[handle.Type];
+                    shape.Move(point - new Size(_lastPoint));
+                    _lastPoint = point;
+                    _model.NotifyModelChanged(EventArgs.Empty);
                     break;
                 }
-                _model.cursorManager.CurrentCursor = Cursors.Default;
             }
-            
+        }
 
+        // mouse move while idle
+        private void MouseMoveWhileIdle(Point point)
+        {
+            foreach (Shape shape in _model.Shapes)
+            {
+                if (shape.Selected)
+                {
+                    var handleType = shape.IsCloseToHandle(point);
+                    _model.Manager.CurrentCursor = _model.HandleToCursor[handleType];
+                    break;
+                }
+                _model.Manager.CurrentCursor = Cursors.Default;
+            }
         }
 
         // handle mouse up
@@ -124,7 +148,7 @@ namespace WindowPowerPoint
                 }
             }
         }
-        private Handle _draggingHandle;
+        private HandleType _adjustingHandleType;
         private bool _isAdjusting;
         private bool _isMoving;
         private Point _lastPoint;

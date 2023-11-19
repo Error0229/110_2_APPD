@@ -24,9 +24,9 @@ namespace WindowPowerPoint
             {
                 return _bindingContext;
             }
-            set 
-            { 
-                _bindingContext = value; 
+            set
+            {
+                _bindingContext = value;
             }
         }
     }

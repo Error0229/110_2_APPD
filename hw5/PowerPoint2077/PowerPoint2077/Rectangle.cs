@@ -7,6 +7,7 @@ namespace WindowPowerPoint
         public Rectangle() : base(ShapeType.RECTANGLE)
         {
             _name = Constant.RECTANGLE_CHINESE;
+            InitializeRectangleHandle();
         }
 
         // get rectangle's info
@@ -29,18 +30,7 @@ namespace WindowPowerPoint
         // draw circle handles 
         public override void AdjustHandle()
         {
-            _handles.Clear();
-            System.Drawing.Rectangle rectangle = GetShapeRectangle();
-            var two = (1 << 1);
-            // draw 8 handles
-            for (int i = 0; i < ((1 << (two + 1)) + 1/* lord forgive me 🗿*/); i++)
-            {
-                if (i == (1 << two))
-                    continue; // skip center handle (index = 4)
-                int x = rectangle.X +  (((i % (1 + two) /* lord forgive me 🗿*/) *rectangle.Width) >> 1);
-                int y = rectangle.Y + (((i / (1 + two) /* lord forgive me 🗿*/) * rectangle.Height) >> 1);
-                _handles.Add(new Handle { Position = new Point(x, y), Type = (HandleType)i });
-            }
+            AdjustRectangleHandle();
         }
 
         // Draw Rectangle Handle
@@ -51,7 +41,6 @@ namespace WindowPowerPoint
             {
                 graphics.DrawHandle(handle.Position);
             }
-            // graphics.DrawRectangleHandle(GetShapeRectangle());
         }
     }
 }

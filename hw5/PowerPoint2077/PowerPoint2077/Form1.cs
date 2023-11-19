@@ -36,10 +36,10 @@ namespace WindowPowerPoint
             KeyPreview = true;
             KeyDown += HandleKeyDown;
             _brief = new Bitmap(_canvas.Width, _canvas.Height);
-            _presentationModel.ModelChanged += HandleModelChanged;
+            _presentationModel._modelChanged += HandleModelChanged;
             _cursorManager = new CursorManager();
-            _presentationModel.SetupCursorManager(_cursorManager);
-            _presentationModel.CursorChanged += HandleCursorChanged;
+            _presentationModel.SetCursorManager(_cursorManager);
+            _presentationModel._cursorChanged += HandleCursorChanged;
             _presentationModel.ProcessCursorClicked();
         }
 

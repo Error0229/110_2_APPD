@@ -14,21 +14,47 @@ namespace WindowPowerPoint
     {
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
-        public CursorManager cursorManager;
+        private CursorManager _cursorManager;
+        public CursorManager Manager
+        {
+            get
+            {
+                return _cursorManager;
+            }
+            set
+            {
+                _cursorManager = value;
+            }
+
+        }
         private IState _state;
-        public static readonly Dictionary<HandleType, Cursor> handleToCursor = new Dictionary<HandleType, Cursor>{
-            {HandleType.TOP_LEFT, Cursors.SizeNWSE},
-            {HandleType.TOP, Cursors.SizeNS},
-            {HandleType.TOP_RIGHT, Cursors.SizeNESW},
-            {HandleType.LEFT, Cursors.SizeWE},
-            {HandleType.CENTER, Cursors.SizeAll},
-            {HandleType.RIGHT, Cursors.SizeWE},
-            {HandleType.BUTTON_LEFT, Cursors.SizeNESW},
-            {HandleType.BUTTON, Cursors.SizeNS},
-            {HandleType.BUTTON_RIGHT, Cursors.SizeNWSE},
-            {HandleType.NONE, Cursors.Default}
-        };
-        
+        private readonly Dictionary<HandleType, Cursor>_handleToCursor = new Dictionary<HandleType, Cursor>
+        { 
+            { 
+                HandleType.TopLeft, Cursors.SizeNWSE },
+            { 
+                HandleType.Top, Cursors.SizeNS },
+            { 
+                HandleType.TopRight, Cursors.SizeNESW },
+            { 
+                HandleType.Left, Cursors.SizeWE },
+            { 
+                HandleType.Right, Cursors.SizeWE },
+            { 
+                HandleType.BottomLeft, Cursors.SizeNESW },
+            { 
+                HandleType.Bottom, Cursors.SizeNS },
+            { 
+                HandleType.BottomRight, Cursors.SizeNWSE },
+            { 
+                HandleType.None, Cursors.Default } };
+        public Dictionary<HandleType, Cursor> HandleToCursor 
+        {
+            get
+            {
+                return _handleToCursor;
+            }
+        }
         public PowerPointModel()
         {
             _shapes = new BindingList<Shape>();
