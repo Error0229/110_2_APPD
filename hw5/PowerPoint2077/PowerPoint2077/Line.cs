@@ -9,12 +9,6 @@ namespace WindowPowerPoint
             _name = Constant.LINE_CHINESE;
         }
 
-        // get line's info
-        public override string GetInfo()
-        {
-            return base.GetInfo();
-        }
-
         // Draw Line
         public override void Draw(IGraphics graphics)
         {
@@ -30,12 +24,14 @@ namespace WindowPowerPoint
         {
             _handles.Clear();
             _handles.Add(new Handle
-            { 
-                Position = _pointFirst, Type = HandleType.TopLeft 
+            {
+                Position = _pointFirst,
+                Type = HandleType.TopLeft
             });
-            _handles.Add(new Handle 
-            { 
-                Position = _pointSecond, Type = HandleType.BottomRight 
+            _handles.Add(new Handle
+            {
+                Position = _pointSecond,
+                Type = HandleType.BottomRight
             });
         }
 

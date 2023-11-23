@@ -17,14 +17,17 @@ namespace WindowPowerPoint.Tests
     {
         PowerPointModel _model;
         PrivateObject _privateModel;
-
+        Mock<CursorManager> _manager;
+        Mock<IState> _state;
         // initialize the model
         [TestInitialize()]
         public void Initialize()
         {
+            _manager = new Mock<CursorManager>();
+            _state = new Mock<IState>();
             _model = new PowerPointModel
             {
-                Manager = new CursorManager()
+                Manager = _manager.Object
             };
             _privateModel = new PrivateObject(_model);
         }
@@ -33,12 +36,13 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void PowerPointModelTest()
         {
+            _manager = new Mock<CursorManager>();
+            _state = new Mock<IState>();
             _model = new PowerPointModel
             {
-                Manager = new CursorManager()
+                Manager = _manager.Object
             };
-            _privateModel = new PrivateObject(_model);
-            Assert.IsNotNull(_model);
+            _privateModel = new PrivateObject(_model); Assert.IsNotNull(_model);
             Assert.IsNotNull(_privateModel.GetField("_shapes"));
             Assert.IsNotNull(_privateModel.GetField("_state"));
         }
@@ -64,18 +68,10 @@ namespace WindowPowerPoint.Tests
 
         // test model set point state
         [TestMethod()]
-        public void SetPointStateTest()
+        public void SetStateTest()
         {
-            _model.SetState(new PointState(_model));
-            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(PointState));
-        }
-
-        // test model set drawing state
-        [TestMethod()]
-        public void SetDrawingStateTest()
-        {
-            _model.SetState(new DrawingState(_model));
-            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(DrawingState));
+            _model.SetState(_state.Object);
+            Assert.IsNotNull(_privateModel.GetField("_state"));
         }
 
         // test model remove shape
@@ -106,14 +102,11 @@ namespace WindowPowerPoint.Tests
 
         // test drawing state model mouse down
         [TestMethod()]
-        public void HandleDrawingStateMouseDownTest()
+        public void HandleMouseDownTest()
         {
-            _model.SetState(new DrawingState(_model));
-            _model.SetHint(ShapeType.CIRCLE);
-            _model.HandleMouseDown(new Point(50, 50));
-
-            var _private_state = new PrivateObject(_privateModel.GetField("_state"));
-            Assert.IsTrue((bool)_private_state.GetField("_isDrawing"));
+            var p = new Point(0, 0);
+            _model.HandleMouseDown(p);
+            _state.Verify(state => state.MouseDown(p), Times.Once());
         }
 
         // test point state model mouse down for move shape

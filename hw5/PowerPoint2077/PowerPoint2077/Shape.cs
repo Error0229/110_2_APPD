@@ -123,7 +123,7 @@ namespace WindowPowerPoint
             return Constant.LEFT_BRACKET + first + Constant.COMMA + Constant.SPACE + second + Constant.RIGHT_BRACKET;
         }
 
-        // distance bewtween two point
+        // distance between two point
         protected double GetDistanceOf(Point pointFirst, Point pointSecond)
         {
             var deltaX = pointFirst.X - pointSecond.X;
@@ -256,7 +256,7 @@ namespace WindowPowerPoint
                 _handles.Add(new Handle
                 {
                     Type = (HandleType)count++
-                });;
+                }); ;
             }
         }
 
