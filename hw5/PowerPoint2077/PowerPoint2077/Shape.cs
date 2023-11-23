@@ -74,25 +74,25 @@ namespace WindowPowerPoint
         }
 
         // get shape's name
-        public string GetShapeName()
+        public virtual string GetShapeName()
         {
             return _name;
         }
 
         // set first point
-        public void SetFirstPoint(Point point)
+        public virtual void SetFirstPoint(Point point)
         {
             _pointFirst = point;
         }
 
         // set second point
-        public void SetSecondPoint(Point point)
+        public virtual void SetSecondPoint(Point point)
         {
             _pointSecond = point;
         }
 
         // move first point
-        public void Move(Point offset)
+        public virtual void Move(Point offset)
         {
             _pointFirst.Offset(offset);
             _pointSecond.Offset(offset);
@@ -112,7 +112,7 @@ namespace WindowPowerPoint
         }
 
         // check if point is in shape
-        public bool IsInShape(Point point)
+        public virtual bool IsInShape(Point point)
         {
             return GetShapeRectangle().Contains(point);
         }
@@ -141,7 +141,7 @@ namespace WindowPowerPoint
         public abstract void AdjustHandle();
 
         // check close to handle
-        public HandleType IsCloseToHandle(Point cursor)
+        public virtual HandleType IsCloseToHandle(Point cursor)
         {
             foreach (var handle in _handles)
             {
@@ -280,7 +280,7 @@ namespace WindowPowerPoint
         }
 
         // try adjust
-        public bool TryAdjustWhenMouseDown(Point point, out bool isAdjusting, out HandleType adjustingHandleType)
+        public virtual bool TryAdjustWhenMouseDown(Point point, out bool isAdjusting, out HandleType adjustingHandleType)
         {
             adjustingHandleType = IsCloseToHandle(point);
             if (Selected && adjustingHandleType != HandleType.None)
@@ -294,7 +294,7 @@ namespace WindowPowerPoint
         }
 
         // try Move
-        public bool TryAdjustWhenMouseMove(Point point)
+        public virtual bool TryAdjustWhenMouseMove(Point point)
         {
             if (Selected)
             {
@@ -318,7 +318,7 @@ namespace WindowPowerPoint
             }
         }
         [System.ComponentModel.Browsable(false)]
-        public bool Selected
+        public virtual bool Selected
         {
             get
             {

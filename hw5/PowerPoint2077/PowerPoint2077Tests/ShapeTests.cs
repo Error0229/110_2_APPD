@@ -18,28 +18,36 @@ namespace WindowPowerPoint.Tests
             {
 
             }
+
             public TestShape() : base()
             {
 
             }
+
+            // draw handle
             public override void DrawHandle(IGraphics graphics)
             {
                 // do something in subclasses
-                _calledAbstractMethod = true;
+                calledAbstractMethod = true;
             }
+
+            // draw
             public override void Draw(IGraphics graphic)
             {
                 // do something in subclasses
-                _calledAbstractMethod = true;
+                calledAbstractMethod = true;
             }
+
+            // adjust handle
             public override void AdjustHandle()
             {
                 // do something in subclasses
                 _handles = new List<Handle>();
                 _handles.Add(new Handle { Type = HandleType.TopLeft, Position = new Point(0, 0) });
-                _calledAbstractMethod = true;
+                _handles.Add(new Handle { Type = HandleType.BottomRight, Position = new Point(100, 100) });
+                calledAbstractMethod = true;
             }
-            private bool _calledAbstractMethod = false;
+            public bool calledAbstractMethod;
         }
         TestShape _shape;
         PrivateObject _privateShape;
@@ -53,7 +61,7 @@ namespace WindowPowerPoint.Tests
             _privateShape = new PrivateObject(_shape);
         }
 
-        // test constructoe
+        // test constructor
         [TestMethod()]
         public void ShapeTest()
         {
@@ -74,19 +82,23 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(ShapeType.LINE, _privateShape.GetField("_type"));
         }
 
-
+        // get info
         [TestMethod()]
         public void GetInfoTest()
         {
             Assert.AreEqual("(0, 0), (0, 0)", _shape.GetInfo());
+            Assert.AreEqual("(0, 0), (0, 0)", _shape.Info);
         }
 
+        // test get shape name
         [TestMethod()]
         public void GetShapeNameTest()
         {
             Assert.AreEqual(string.Empty, _shape.GetShapeName());
+            Assert.AreEqual(string.Empty, _shape.Name);
         }
 
+        // test set first point
         [TestMethod()]
         public void SetFirstPointTest()
         {
@@ -95,6 +107,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(p, _privateShape.GetField("_pointFirst"));
         }
 
+        // test set second point
         [TestMethod()]
         public void SetSecondPointTest()
         {
@@ -103,6 +116,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(p, _privateShape.GetField("_pointSecond"));
         }
 
+        // test move
         [TestMethod()]
         public void MoveTest()
         {
@@ -113,6 +127,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(25, 25), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust point
         [TestMethod()]
         public void AdjustPointsTest()
         {
@@ -125,6 +140,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(p2, _privateShape.GetField("_pointSecond"));
         }
 
+        // test is in shape
         [TestMethod()]
         public void IsInShapeTest()
         {
@@ -134,34 +150,40 @@ namespace WindowPowerPoint.Tests
             Assert.IsFalse(_shape.IsInShape(new Point(23, 23)));
         }
 
+        // test draw
         [TestMethod()]
         public void DrawTest()
         {
             _shape.Draw(null);
-            Assert.IsTrue((bool)_privateShape.GetField("_calledAbstractMethod"));
+            Assert.IsTrue(_shape.calledAbstractMethod);
         }
 
+        // test draw handle
         [TestMethod()]
         public void DrawHandleTest()
         {
             _shape.DrawHandle(null);
-            Assert.IsTrue((bool)_privateShape.GetField("_calledAbstractMethod"));
+            Assert.IsTrue(_shape.calledAbstractMethod);
         }
 
+        // test adjust handle and generate handle
         [TestMethod()]
         public void AdjustHandleTest()
         {
             _shape.AdjustHandle();
-            Assert.IsTrue((bool)_privateShape.GetField("_calledAbstractMethod"));
+            Assert.IsTrue(_shape.calledAbstractMethod);
         }
 
+        // test the point is close to handle or not
         [TestMethod()]
         public void IsCloseToHandleTest()
         {
             _shape.AdjustHandle();
             Assert.AreEqual(HandleType.TopLeft, _shape.IsCloseToHandle(new Point(0, 0)));
+            Assert.AreEqual(HandleType.None, _shape.IsCloseToHandle(new Point(50, 50)));
         }
 
+        // test Set selected handle
         [TestMethod()]
         public void SetSelectHandleTest()
         {
@@ -169,6 +191,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(HandleType.TopLeft, _privateShape.GetField("_selectedHandleType"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByHandleTest()
         {
@@ -180,6 +203,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(20, 20), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByTopLeftTest()
         {
@@ -190,6 +214,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(20, 20), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByTopTest()
         {
@@ -200,6 +225,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(20, 20), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByTopRightTest()
         {
@@ -210,6 +236,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(15, 20), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByLeftTest()
         {
@@ -220,6 +247,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(20, 20), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByRightTest()
         {
@@ -230,6 +258,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(15, 20), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByBottomLeftTest()
         {
@@ -240,6 +269,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(20, 15), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByBottomTest()
         {
@@ -250,6 +280,7 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Point(20, 15), _privateShape.GetField("_pointSecond"));
         }
 
+        // test adjust by handle
         [TestMethod()]
         public void AdjustByBottomRightTest()
         {

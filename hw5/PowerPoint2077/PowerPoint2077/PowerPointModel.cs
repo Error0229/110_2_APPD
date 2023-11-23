@@ -15,7 +15,7 @@ namespace WindowPowerPoint
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
         private CursorManager _cursorManager;
-        public CursorManager Manager
+        public virtual CursorManager Manager
         {
             get
             {
@@ -136,7 +136,7 @@ namespace WindowPowerPoint
         }
 
         // draw all shapes
-        public void DrawShapes(IGraphics graphics)
+        public virtual void DrawShapes(IGraphics graphics)
         {
             foreach (Shape shape in _shapes)
             {
@@ -145,7 +145,7 @@ namespace WindowPowerPoint
         }
 
         // clear selected shape
-        public void ClearSelectedShape()
+        public virtual void ClearSelectedShape()
         {
             foreach (Shape shape in _shapes)
             {
@@ -154,7 +154,7 @@ namespace WindowPowerPoint
         }
 
         // draw hint
-        public void DrawHint(IGraphics graphics)
+        public virtual void DrawHint(IGraphics graphics)
         {
             _hint.Draw(graphics);
         }
@@ -167,26 +167,26 @@ namespace WindowPowerPoint
         }
 
         // set hint type
-        public void SetHint(ShapeType type)
+        public virtual void SetHint(ShapeType type)
         {
             _hint = _factory.CreateShape(type);
         }
 
         // set hint's first point
-        public void SetHintFirstPoint(Point point)
+        public virtual void SetHintFirstPoint(Point point)
         {
             _hint.SetFirstPoint(point);
         }
 
         // set hint's second point
-        public void SetHintSecondPoint(Point point)
+        public virtual void SetHintSecondPoint(Point point)
         {
             _hint.SetSecondPoint(point);
             NotifyModelChanged(EventArgs.Empty);
         }
 
         // insert user drew shape by hint
-        public void AddShapeWithHint()
+        public virtual void AddShapeWithHint()
         {
             _shapes.Add(_hint);
             NotifyModelChanged(EventArgs.Empty);
@@ -196,7 +196,7 @@ namespace WindowPowerPoint
         private Point _canvasTopLeft;
         private Point _canvasButtonRight;
         private readonly ShapeFactory _factory;
-        private readonly BindingList<Shape> _shapes;
+        private BindingList<Shape> _shapes;
         public virtual BindingList<Shape> Shapes
         {
             get

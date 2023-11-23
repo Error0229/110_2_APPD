@@ -2,7 +2,7 @@
 
 namespace WindowPowerPoint
 {
-    class ShapeFactory
+    public class ShapeFactory
     {
         // Create shape
         public Shape CreateShape(string shapeName)
