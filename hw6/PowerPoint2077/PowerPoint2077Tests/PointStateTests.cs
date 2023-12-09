@@ -147,7 +147,9 @@ namespace WindowPowerPoint.Tests
         {
             _privateState.SetField("_isAdjusting", true);
             _privateState.SetField("_isMoving", true);
-            _state.MouseUp(new Point(0, 0));
+            _privateState.SetField("_startPoint", new Point(0, 0));
+            _privateState.SetField("_lastPoint", new Point(10, 10));
+            _state.MouseUp(new Point(10, 10));
             Assert.IsFalse((bool)_privateState.GetField("_isAdjusting"));
             Assert.IsFalse((bool)_privateState.GetField("_isMoving"));
             _model.Verify(model => model.NotifyModelChanged(EventArgs.Empty), Times.Once());

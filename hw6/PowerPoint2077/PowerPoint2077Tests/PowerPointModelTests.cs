@@ -114,6 +114,8 @@ namespace WindowPowerPoint.Tests
         public void SetCanvasSizeTest()
         {
             var size = new Size(600, 800);
+            var shape = new Circle();
+            _model.Shapes.Add(shape);
             _model.SetCanvasSize(size);
             Assert.AreEqual(size, _privateModel.GetField("_canvasSize"));
         }
