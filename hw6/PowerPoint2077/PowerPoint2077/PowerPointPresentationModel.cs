@@ -81,9 +81,9 @@ namespace WindowPowerPoint
         }
 
         // Set canvas coordinate
-        public void SetCanvasCoordinate(Point pointFirst, Point pointSecond)
+        public void SetCanvasSize(Size canvasSize)
         {
-            _model.SetCanvasCoordinate(pointFirst, pointSecond);
+            _model.SetCanvasSize(canvasSize);
         }
 
         // on model changed

@@ -44,6 +44,7 @@ namespace WindowPowerPoint
             _shapes = new BindingList<Shape>();
             _factory = new ShapeFactory();
             _state = new PointState(this);
+            _canvasSize = new Size(0, 0);
             _handleToCursor = new Dictionary<HandleType, Cursor>();
             _handleToCursor.Add(HandleType.TopLeft, Cursors.SizeNWSE);
             _handleToCursor.Add(HandleType.Top, Cursors.SizeNS);
@@ -62,8 +63,8 @@ namespace WindowPowerPoint
         {
             var random = new Random();
             Shape shape = _factory.CreateShape(shapeName);
-            shape.SetFirstPoint(new Point(random.Next(_canvasTopLeft.X, _canvasButtonRight.X), random.Next(_canvasTopLeft.Y, _canvasButtonRight.Y)));
-            shape.SetSecondPoint(new Point(random.Next(_canvasTopLeft.X, _canvasButtonRight.X), random.Next(_canvasTopLeft.Y, _canvasButtonRight.Y)));
+            shape.SetFirstPoint(new Point(random.Next(0, _canvasSize.Width), random.Next(0, _canvasSize.Height)));
+            shape.SetSecondPoint(new Point(random.Next(0, _canvasSize.Width), random.Next(0, _canvasSize.Height)));
             _commandManager.Execute(new AddCommand(this, shape));
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -102,18 +103,18 @@ namespace WindowPowerPoint
         // remove shape by shape
         public virtual void RemoveShape(Shape shape)
         {
+            shape.Selected = false;
             _shapes.Remove(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
 
         // set canvas coordinate
-        public virtual void SetCanvasCoordinate(Point pointTopLeft, Point pointButtonRight)
+        public virtual void SetCanvasSize(Size canvasSize)
         {
-            _canvasTopLeft = pointTopLeft;
-            _canvasButtonRight = pointButtonRight;
+            _canvasSize = canvasSize;
             foreach (Shape shape in _shapes)
             {
-                shape.SetCanvasSize(new Size(_canvasButtonRight.X - _canvasTopLeft.X, _canvasButtonRight.Y - _canvasTopLeft.Y));
+                shape.SetCanvasSize(canvasSize);
             }
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -241,8 +242,7 @@ namespace WindowPowerPoint
         }
 
         private Shape _hint;
-        private Point _canvasTopLeft;
-        private Point _canvasButtonRight;
+        private Size _canvasSize;
         private readonly ShapeFactory _factory;
         private BindingList<Shape> _shapes;
         public virtual BindingList<Shape> Shapes

@@ -26,7 +26,6 @@ namespace WindowPowerPoint
             _redoButton.DataBindings.Add(Constant.ENABLED, _presentationModel, Constant.IS_REDO_ENABLED);
             _undoButton.DataBindings.Add(Constant.ENABLED, _presentationModel, Constant.IS_UNDO_ENABLED);
 
-            _presentationModel.SetCanvasCoordinate(new Point(Constant.ZERO_INTEGER, Constant.ZERO_INTEGER), new Point(_canvas.Width, _canvas.Height));
             _canvas.Paint += HandleCanvasPaint;
             _canvas.MouseDown += HandleCanvasPressed;
             _canvas.MouseUp += HandleCanvasReleased;
@@ -42,7 +41,8 @@ namespace WindowPowerPoint
             _presentationModel._cursorChanged += HandleCursorChanged;
             _presentationModel.ProcessCursorClicked();
             SizeChanged += PowerPointSizeChanged;
-            SplitContainer1Adjust(null, null); // lazy resize
+            PowerPointSizeChanged(this, null); // lazy resize
+            _presentationModel.SetCanvasSize(_canvas.Size);
         }
 
         // handle window size changed
@@ -199,7 +199,7 @@ namespace WindowPowerPoint
                 _canvas.Location = new Point((int)((panel2Width - _canvas.Width) / Constant.PEN_THICK), (int)((panel2Height - _canvas.Height) / Constant.PEN_THICK));
             }
             if (_canvas.Width != Constant.ZERO_INTEGER && _canvas.Height != Constant.ZERO_INTEGER)
-                _presentationModel.SetCanvasCoordinate(_canvas.Location, new Point(_canvas.Location.X + _canvas.Width, _canvas.Location.Y + _canvas.Height));
+                _presentationModel.SetCanvasSize(_canvas.Size);
         }
 
         // click redo

@@ -41,66 +41,137 @@ namespace WindowPowerPoint
         // adjust by top left handle
         public virtual void AdjustByTopLeft(Point handlePosition)
         {
-            _pointFirst.X = handlePosition.X;
-            _pointFirst.Y = handlePosition.Y;
-            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.TopRight;
-            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.BottomLeft;
+            if (handlePosition.X > _pointSecond.X)
+            {
+                _selectedHandleType = HandleType.TopRight;
+                _pointFirst.X = _pointSecond.X;
+                _pointSecond.X = handlePosition.X;
+            }
+            else
+                _pointFirst.X = handlePosition.X;
+            if (handlePosition.Y > _pointSecond.Y)
+            {
+                _selectedHandleType = HandleType.BottomLeft;
+                _pointFirst.Y = _pointSecond.Y;
+                _pointSecond.Y = handlePosition.Y;
+            }
+            else
+                _pointFirst.Y = handlePosition.Y;
         }
 
         // adjust by top handle
         public virtual void AdjustByTop(Point handlePosition)
         {
-            _pointFirst.Y = handlePosition.Y;
-            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.Bottom;
+            if (handlePosition.Y > _pointSecond.Y)
+            {
+                _selectedHandleType = HandleType.Bottom;
+                _pointFirst.Y = _pointSecond.Y;
+                _pointSecond.Y = handlePosition.Y;
+            }
+            else
+                _pointFirst.Y = handlePosition.Y;
         }
 
         // adjust by top right handle
         public virtual void AdjustByTopRight(Point handlePosition)
         {
-
-            _pointSecond.X = handlePosition.X;
-            _pointFirst.Y = handlePosition.Y;
-            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.TopLeft;
-            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.BottomRight;
+            if (handlePosition.X < _pointFirst.X)
+            {
+                _selectedHandleType = HandleType.TopLeft;
+                _pointSecond.X = _pointFirst.X;
+                _pointFirst.X = handlePosition.X;
+            }
+            else
+                _pointSecond.X = handlePosition.X;
+            if (handlePosition.Y > _pointSecond.Y)
+            {
+                _selectedHandleType = HandleType.BottomRight;
+                _pointFirst.Y = _pointSecond.Y;
+                _pointSecond.Y = handlePosition.Y;
+            }
+            else
+                _pointFirst.Y = handlePosition.Y;
         }
 
         // adjust by left handle
         public virtual void AdjustByLeft(Point handlePosition)
         {
-            _pointFirst.X = handlePosition.X;
-            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.Right;
+            if (handlePosition.X > _pointSecond.X)
+            {
+                _selectedHandleType = HandleType.Right;
+                _pointFirst.X = _pointSecond.X;
+                _pointSecond.X = handlePosition.X;
+            }
+            else
+                _pointFirst.X = handlePosition.X;
         }
 
         // adjust by right handle
         public virtual void AdjustByRight(Point handlePosition)
         {
-            _pointSecond.X = handlePosition.X;
-            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.Left;
+            if (handlePosition.X < _pointFirst.X)
+            {
+                _selectedHandleType = HandleType.Left;
+                _pointSecond.X = _pointFirst.X;
+                _pointFirst.X = handlePosition.X;
+            }
+            else
+                _pointSecond.X = handlePosition.X;
         }
 
         // adjust by button left handle
         public virtual void AdjustByBottomLeft(Point handlePosition)
         {
-            _pointFirst.X = handlePosition.X;
-            _pointSecond.Y = handlePosition.Y;
-            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.BottomRight;
-            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.TopLeft;
+            if (handlePosition.X > _pointSecond.X)
+            {
+                _selectedHandleType = HandleType.BottomRight;
+                _pointFirst.X = _pointSecond.X;
+                _pointSecond.X = handlePosition.X;
+            }
+            else
+                _pointFirst.X = handlePosition.X;
+            if (handlePosition.Y < _pointFirst.Y)
+            {
+                _selectedHandleType = HandleType.TopLeft;
+                _pointSecond.Y = _pointFirst.Y;
+                _pointFirst.Y = handlePosition.Y;
+            }
+            else
+                _pointSecond.Y = handlePosition.Y;
         }
 
         // adjust by button handle
         public virtual void AdjustByBottom(Point handlePosition)
         {
-            _pointSecond.Y = handlePosition.Y;
-            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.Top;
+            if (handlePosition.Y < _pointFirst.Y)
+            {
+                _selectedHandleType = HandleType.Top;
+                _pointSecond.Y = _pointFirst.Y;
+                _pointFirst.Y = handlePosition.Y;
+            }
+            else
+                _pointSecond.Y = handlePosition.Y;
         }
 
         // adjust by button right handle
         public virtual void AdjustByBottomRight(Point handlePosition)
         {
-            _pointSecond.X = handlePosition.X;
-            _pointSecond.Y = handlePosition.Y;
-            _selectedHandleType = _pointFirst.X < _pointSecond.X ? _selectedHandleType : HandleType.BottomLeft;
-            _selectedHandleType = _pointFirst.Y < _pointSecond.Y ? _selectedHandleType : HandleType.TopRight;
+            if (handlePosition.X < _pointFirst.X)
+            {
+                _selectedHandleType = HandleType.BottomLeft;
+                _pointSecond.X = _pointFirst.X;
+                _pointFirst.X = handlePosition.X;
+            }
+            else
+                _pointSecond.X = handlePosition.X;
+            if (handlePosition.Y < _pointFirst.Y)
+            {
+                _selectedHandleType = HandleType.TopRight;
+                _pointSecond.Y = _pointFirst.Y;
+                _pointFirst.Y = handlePosition.Y;
+            }
+            else
+                _pointSecond.Y = handlePosition.Y;
         }
 
         // initialize adjuster

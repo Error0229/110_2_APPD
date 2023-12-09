@@ -109,17 +109,13 @@ namespace WindowPowerPoint.Tests
             _commandManager.Verify(manager => manager.Execute(It.IsAny<DeleteCommand>()), Times.Once());
         }
 
-        // test model set canvas coordinate
+        // test model set canvas size
         [TestMethod()]
-        public void SetCanvasCoordinateTest()
+        public void SetCanvasSizeTest()
         {
-            Point pointFirst = new Point(0, 0);
-            Point pointSecond = new Point(800, 600);
-            var shape = new Circle();
-            _model.Shapes.Add(shape);
-            _model.SetCanvasCoordinate(pointFirst, pointSecond);
-            Assert.AreEqual(pointFirst, _privateModel.GetField("_canvasTopLeft"));
-            Assert.AreEqual(pointSecond, _privateModel.GetField("_canvasButtonRight"));
+            var size = new Size(600, 800);
+            _model.SetCanvasSize(size);
+            Assert.AreEqual(size, _privateModel.GetField("_canvasSize"));
         }
 
         // test drawing state model mouse down
@@ -243,7 +239,7 @@ namespace WindowPowerPoint.Tests
             _model.SetHint(ShapeType.CIRCLE);
             _model.HandleMouseDown(new Point(50, 50));
             _model.HandleMouseMove(new Point(70, 70));
-            _model.SetCanvasCoordinate(new Point(0, 0), new Point(600, 800));
+            _model.SetCanvasSize(new Size(800, 600));
             Bitmap bitmap = new Bitmap(800, 600);
             Graphics graphics = Graphics.FromImage(bitmap);
             var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);

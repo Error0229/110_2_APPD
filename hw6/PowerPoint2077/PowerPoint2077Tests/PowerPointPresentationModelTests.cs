@@ -88,14 +88,13 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 
-        // test set canvas coordinate
+        // test set canvas size
         [TestMethod()]
-        public void SetCanvasCoordinateTest()
+        public void SetCanvasSizeTest()
         {
-            var firstPoint = new Point(0, 0);
-            var secondPoint = new Point(600, 800);
-            _presentationModel.SetCanvasCoordinate(firstPoint, secondPoint);
-            _model.Verify(model => model.SetCanvasCoordinate(firstPoint, secondPoint), Times.Once());
+            var size = new Size(1600, 900);
+            _presentationModel.SetCanvasSize(size);
+            _model.Verify(model => model.SetCanvasSize(size), Times.Once());
         }
 
         // test Line button clicked

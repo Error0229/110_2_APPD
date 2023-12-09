@@ -117,7 +117,7 @@ namespace WindowPowerPoint
         // handle mouse up
         public void MouseUp(Point point)
         {
-            if (_isMoving)
+            if (_isMoving && _lastPoint != _startPoint)
             {
                 _model.HandleMoveShape(point - new Size(_startPoint));
             }

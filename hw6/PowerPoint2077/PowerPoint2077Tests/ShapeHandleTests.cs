@@ -109,8 +109,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByTopLeft(new Point(15, 15));
-            Assert.AreEqual(new PointF(15, 15), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(20, 20), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByTopLeft(new Point(30, 30));
+            Assert.AreEqual(new PointF(20, 20), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(30, 30), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -120,8 +121,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByTop(new Point(15, 15));
-            Assert.AreEqual(new PointF(10, 15), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(20, 20), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByTop(new Point(30, 30));
+            Assert.AreEqual(new PointF(10, 20), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(20, 30), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -131,8 +133,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByTopRight(new Point(15, 15));
-            Assert.AreEqual(new PointF(10, 15), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(15, 20), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByTopRight(new Point(5, 30));
+            Assert.AreEqual(new PointF(5, 20), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(10, 30), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -142,8 +145,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByLeft(new Point(15, 15));
-            Assert.AreEqual(new PointF(15, 10), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(20, 20), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByLeft(new Point(30, 15));
+            Assert.AreEqual(new PointF(20, 10), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(30, 20), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -153,8 +157,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByRight(new Point(15, 15));
-            Assert.AreEqual(new PointF(10, 10), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(15, 20), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByRight(new Point(5, 15));
+            Assert.AreEqual(new PointF(5, 10), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(10, 20), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -164,8 +169,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByBottomLeft(new Point(15, 15));
-            Assert.AreEqual(new PointF(15, 10), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(20, 15), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByBottomLeft(new Point(30, 5));
+            Assert.AreEqual(new PointF(20, 5), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(30, 10), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -175,8 +181,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByBottom(new Point(15, 15));
-            Assert.AreEqual(new PointF(10, 10), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(20, 15), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByBottom(new Point(30, 5));
+            Assert.AreEqual(new PointF(10, 5), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(20, 10), _privateShape.GetField("_pointSecond"));
         }
 
         // test adjust by handle
@@ -186,8 +193,9 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             _shape.AdjustByBottomRight(new Point(15, 15));
-            Assert.AreEqual(new PointF(10, 10), _privateShape.GetField("_pointFirst"));
-            Assert.AreEqual(new PointF(15, 15), _privateShape.GetField("_pointSecond"));
+            _shape.AdjustByBottomRight(new Point(5, 5));
+            Assert.AreEqual(new PointF(5, 5), _privateShape.GetField("_pointFirst"));
+            Assert.AreEqual(new PointF(10, 10), _privateShape.GetField("_pointSecond"));
         }
 
         // try adjust while shape selected
