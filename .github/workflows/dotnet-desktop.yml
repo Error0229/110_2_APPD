@@ -42,7 +42,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    types: [opened, synchronize, reopened]
 
 jobs:
 
@@ -58,7 +58,8 @@ jobs:
     env:
       Solution_Name: .\hw6\PowerPoint2077\PowerPoint2077.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: .\hw6\PowerPoint2077PowerPoint2077Tests\PowerPoint2077Tests.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
+      COVERAGE_RESULTS: coverage_results
+      REPORT_RESULTS: result_results
     steps:
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -83,12 +84,22 @@ jobs:
 
     - name: Restore NuGet packages
       run: nuget restore .\hw6\PowerPoint2077\PowerPoint2077.sln
+    
 
     - name: Build for ${{ matrix.configuration }}
       run: msbuild .\hw6\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
-      
-    - name: Run Tests for ${{ matrix.configuration }}
-      run: vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
+
+    - name: Run Tests for ${{ matrix.configuration }} report
+      run: >
+        vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
+        /Logger:trx
+        /ResultsDirectory:"${{ env.REPORT_RESULTS }}"
+    - name: Run Tests for ${{ matrix.configuration }} coverage
+      run: >
+        vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
+        /EnableCodeCoverage
+        /Collect:"Code Coverage;Format=Xml" 
+        /ResultsDirectory:"${{ env.COVERAGE_RESULTS }}"
     - name: Cache SonarCloud packages
       uses: actions/cache@v3
       with:
@@ -114,7 +125,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: powershell
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"Error0229_110_2_APPD" /o:"mountainsea" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"Error0229_110_2_APPD" /o:"mountainsea" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.cs.vscoveragexml.reportsPath="${{ env.COVERAGE_RESULTS }}/*/*.xml" 
         msbuild .\hw6\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
         vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
