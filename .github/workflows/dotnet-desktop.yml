@@ -83,5 +83,5 @@ jobs:
       run: msbuild .\hw6\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
       
     - name: Run Tests for ${{ matrix.configuration }}
-      run: vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\obj\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
+      run: vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
 
