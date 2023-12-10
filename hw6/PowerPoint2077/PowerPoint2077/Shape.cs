@@ -80,7 +80,7 @@ namespace WindowPowerPoint
         }
 
         // set canvas size
-        public virtual void SetCanvasSize(Size size)
+        public virtual void UpdateCanvasSize(Size size)
         {
             if (_canvasSize != Size.Empty)
             {
@@ -208,5 +208,12 @@ namespace WindowPowerPoint
         protected HandleType _selectedHandleType;
         protected List<Handle> _handles;
         protected Size _canvasSize;
+        public Size CanvasSize
+        {
+            set
+            {
+                _canvasSize = value;                
+            }
+        }
     }
 }

@@ -152,8 +152,8 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void SetCanvasSizeTest()
         {
-            _shape.SetCanvasSize(new Size(100, 100));
-            _shape.SetCanvasSize(new Size(200, 200));
+            _shape.UpdateCanvasSize(new Size(100, 100));
+            _shape.UpdateCanvasSize(new Size(200, 200));
             Assert.AreEqual(new Size(200, 200), _privateShape.GetField("_canvasSize"));
         }
     }

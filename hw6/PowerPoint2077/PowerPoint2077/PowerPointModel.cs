@@ -83,6 +83,7 @@ namespace WindowPowerPoint
         // insert shape by shape for command pattern
         public virtual void InsertShape(Shape shape)
         {
+            shape.CanvasSize = _canvasSize;
             _shapes.Add(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -114,7 +115,7 @@ namespace WindowPowerPoint
             _canvasSize = canvasSize;
             foreach (Shape shape in _shapes)
             {
-                shape.SetCanvasSize(canvasSize);
+                shape.UpdateCanvasSize(canvasSize);
             }
             NotifyModelChanged(EventArgs.Empty);
         }

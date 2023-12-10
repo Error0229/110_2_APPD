@@ -42,7 +42,8 @@ namespace WindowPowerPoint
             _presentationModel.ProcessCursorClicked();
             SizeChanged += PowerPointSizeChanged;
             PowerPointSizeChanged(this, null); // lazy resize
-            _presentationModel.SetCanvasSize(_canvas.Size);
+            // _presentationModel.SetCanvasSize(_canvas.Size);
+
         }
 
         // handle window size changed
