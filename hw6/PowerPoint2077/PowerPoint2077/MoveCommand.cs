@@ -4,8 +4,8 @@ namespace WindowPowerPoint
 {
     public class MoveCommand : ICommand
     {
-        PowerPointModel _model;
-        Shape _shape;
+        readonly PowerPointModel _model;
+        readonly Shape _shape;
         Point _offset;
         // ensure that the first excute will not move the shape
         bool _firstMove;

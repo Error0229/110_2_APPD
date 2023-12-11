@@ -9,7 +9,6 @@ namespace WindowPowerPoint
         private CursorManager _cursorManager;
         public PowerPoint(PowerPointPresentationModel model)
         {
-            // DoubleBuffered = true;
             base.DoubleBuffered = true;
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.ResizeRedraw, true);
@@ -42,8 +41,6 @@ namespace WindowPowerPoint
             _presentationModel.ProcessCursorClicked();
             SizeChanged += PowerPointSizeChanged;
             PowerPointSizeChanged(this, null); // lazy resize
-            // _presentationModel.SetCanvasSize(_canvas.Size);
-
         }
 
         // handle window size changed
@@ -126,7 +123,6 @@ namespace WindowPowerPoint
         public void HandleCanvasLeave(object sender, EventArgs e)
         {
             _presentationModel.ProcessMouseLeaveCanvas();
-            GenerateBrief();
         }
 
         // click add line

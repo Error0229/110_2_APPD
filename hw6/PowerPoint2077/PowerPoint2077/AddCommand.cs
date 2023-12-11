@@ -2,8 +2,8 @@
 {
     public class AddCommand : ICommand
     {
-        PowerPointModel _model;
-        Shape _shape;
+        readonly PowerPointModel _model;
+        readonly Shape _shape;
         public AddCommand(PowerPointModel model, Shape shape)
         {
             _model = model;

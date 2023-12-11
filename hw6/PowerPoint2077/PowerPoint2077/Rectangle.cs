@@ -16,12 +16,12 @@
         }
 
         // Draw Rectangle
-        public override void Draw(IGraphics graphics)
+        public override void Draw(IGraphics graphic)
         {
-            graphics.DrawRectangle(GetShapeRectangle());
+            graphic.DrawRectangle(GetShapeRectangle());
             if (_isSelected)
             {
-                DrawHandle(graphics);
+                DrawHandle(graphic);
             }
         }
 
@@ -32,12 +32,12 @@
         }
 
         // Draw Rectangle Handle
-        public override void DrawHandle(IGraphics graphics)
+        public override void DrawHandle(IGraphics graphic)
         {
             AdjustHandle();
             foreach (var handle in _handles)
             {
-                graphics.DrawHandle(handle.Position);
+                graphic.DrawHandle(handle.Position);
             }
         }
     }

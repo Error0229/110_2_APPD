@@ -55,12 +55,12 @@ namespace WindowPowerPoint.Tests
             // insert shape into _model.Shapes
             var shapeMock0 = new Mock<Shape>();
             var shapeMock = new Mock<Shape>();
-            shapeMock0.Setup(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny, out It.Ref<HandleType>.IsAny)).Returns(false);
-            shapeMock.Setup(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny, out It.Ref<HandleType>.IsAny)).Returns(true);
+            shapeMock0.Setup(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny)).Returns(false);
+            shapeMock.Setup(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny)).Returns(true);
             _model.Object.Shapes.Add(shapeMock0.Object);
             _model.Object.Shapes.Add(shapeMock.Object);
             _privateState.Invoke("MouseDownForAdjust", new Point(0, 0));
-            shapeMock.Verify(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny, out It.Ref<HandleType>.IsAny), Times.Once());
+            shapeMock.Verify(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny), Times.Once());
         }
 
         // test mouse down for move

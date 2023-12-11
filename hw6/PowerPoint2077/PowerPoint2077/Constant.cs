@@ -27,5 +27,6 @@
         public const string ENABLED = "Enabled";
         public const string IS_REDO_ENABLED = "IsRedoEnabled";
         public const string IS_UNDO_ENABLED = "IsUndoEnabled";
+        public const int INTEGER32_BYTES = 4;
     }
 }

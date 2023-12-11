@@ -9,12 +9,12 @@ namespace WindowPowerPoint
         }
 
         // Draw Line
-        public override void Draw(IGraphics graphics)
+        public override void Draw(IGraphics graphic)
         {
-            graphics.DrawLine(GetPoint(_pointFirst), GetPoint(_pointSecond));
+            graphic.DrawLine(GetPoint(_pointFirst), GetPoint(_pointSecond));
             if (_isSelected)
             {
-                DrawHandle(graphics);
+                DrawHandle(graphic);
             }
         }
 
@@ -49,14 +49,13 @@ namespace WindowPowerPoint
         }
 
         // Draw Line Handle
-        public override void DrawHandle(IGraphics graphics)
+        public override void DrawHandle(IGraphics graphic)
         {
             AdjustHandle();
             foreach (var handle in _handles)
             {
-                graphics.DrawHandle(handle.Position);
+                graphic.DrawHandle(handle.Position);
             }
-            // graphics.DrawLineHandle(_pointFirst, _pointSecond);
         }
     }
 }

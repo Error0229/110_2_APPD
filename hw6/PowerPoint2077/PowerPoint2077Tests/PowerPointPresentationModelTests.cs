@@ -81,10 +81,6 @@ namespace WindowPowerPoint.Tests
             _presentationModel.ProcessLineClicked();
             _presentationModel.ProcessMouseEnterCanvas();
             _presentationModel.ProcessMouseLeaveCanvas();
-            Assert.IsTrue((bool)_privatePresentationModel.GetField("_isSelecting"));
-            Assert.IsFalse((bool)_privatePresentationModel.GetField("_isRectangleChecked"));
-            Assert.IsFalse((bool)_privatePresentationModel.GetField("_isLineChecked"));
-            Assert.IsFalse((bool)_privatePresentationModel.GetField("_isCircleChecked"));
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }
 

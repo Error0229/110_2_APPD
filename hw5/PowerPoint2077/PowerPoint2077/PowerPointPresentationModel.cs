@@ -242,6 +242,6 @@ namespace WindowPowerPoint
         private bool _isCircleChecked;
         private bool _isRectangleChecked;
         private bool _isSelecting;
-        private PowerPointModel _model;
+        private readonly PowerPointModel _model;
     }
 }

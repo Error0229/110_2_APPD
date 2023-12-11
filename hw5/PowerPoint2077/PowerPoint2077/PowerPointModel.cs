@@ -196,7 +196,7 @@ namespace WindowPowerPoint
         private Point _canvasTopLeft;
         private Point _canvasButtonRight;
         private readonly ShapeFactory _factory;
-        private BindingList<Shape> _shapes;
+        private readonly BindingList<Shape> _shapes;
         public virtual BindingList<Shape> Shapes
         {
             get

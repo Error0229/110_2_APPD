@@ -3,7 +3,7 @@ namespace WindowPowerPoint
 {
     public class DrawingState : IState
     {
-        private PowerPointModel _model;
+        private readonly PowerPointModel _model;
         public DrawingState(PowerPointModel model)
         {
             _model = model;

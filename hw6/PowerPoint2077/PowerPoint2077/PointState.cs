@@ -5,11 +5,10 @@ namespace WindowPowerPoint
 {
     public class PointState : IState
     {
-        private PowerPointModel _model;
+        private readonly PowerPointModel _model;
         public PointState(PowerPointModel model)
         {
             _model = model;
-            _adjustingHandleType = HandleType.None;
         }
 
         // handle mouse down
@@ -31,7 +30,7 @@ namespace WindowPowerPoint
         {
             foreach (Shape shape in _model.Shapes)
             {
-                if (shape.TryAdjustWhenMouseDown(point, out _isAdjusting, out _adjustingHandleType))
+                if (shape.TryAdjustWhenMouseDown(point, out _isAdjusting))
                 {
                     break;
                 }
@@ -148,7 +147,6 @@ namespace WindowPowerPoint
                 }
             }
         }
-        private HandleType _adjustingHandleType;
         private bool _isAdjusting;
         private bool _isMoving;
         private Point _lastPoint;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace WindowPowerPoint
 {
@@ -58,13 +59,24 @@ namespace WindowPowerPoint
             // don't fuck me, fuck 🧑🏿‍⚕️smell
         }
 
+        // generate random number securly
+        public static int GenerateRandomNumber(int minValue, int maxValue)
+        {
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                byte[] randomNumber = new byte[Constant.INTEGER32_BYTES];
+                rng.GetBytes(randomNumber);
+                int generatedValue = BitConverter.ToInt32(randomNumber, 0);
+                return Math.Abs(generatedValue % (maxValue - minValue + 1)) + minValue;
+            }
+        }
+
         // insert shape by shape name
         public virtual void HandleInsertShape(string shapeName)
         {
-            var random = new Random();
             Shape shape = _factory.CreateShape(shapeName);
-            shape.SetFirstPoint(new Point(random.Next(0, _canvasSize.Width), random.Next(0, _canvasSize.Height)));
-            shape.SetSecondPoint(new Point(random.Next(0, _canvasSize.Width), random.Next(0, _canvasSize.Height)));
+            shape.SetFirstPoint(new Point(GenerateRandomNumber(0, _canvasSize.Width), GenerateRandomNumber(0, _canvasSize.Height)));
+            shape.SetSecondPoint(new Point(GenerateRandomNumber(0, _canvasSize.Width), GenerateRandomNumber(0, _canvasSize.Height)));
             _commandManager.Execute(new AddCommand(this, shape));
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -83,7 +95,7 @@ namespace WindowPowerPoint
         // insert shape by shape for command pattern
         public virtual void InsertShape(Shape shape)
         {
-            shape.CanvasSize = _canvasSize;
+            shape.SetCanvasSize(_canvasSize);
             _shapes.Add(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -115,7 +127,7 @@ namespace WindowPowerPoint
             _canvasSize = canvasSize;
             foreach (Shape shape in _shapes)
             {
-                shape.UpdateCanvasSize(canvasSize);
+                shape.SetCanvasSize(canvasSize);
             }
             NotifyModelChanged(EventArgs.Empty);
         }

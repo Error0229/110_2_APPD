@@ -36,9 +36,6 @@ namespace WindowPowerPoint.Tests
             public override void AdjustHandle()
             {
                 // do something in subclasses
-                _handles = new List<Handle>();
-                _handles.Add(new Handle { Type = HandleType.TopLeft, Position = new Point(0, 0) });
-                _handles.Add(new Handle { Type = HandleType.BottomRight, Position = new Point(100, 100) });
                 calledAbstractMethod = true;
             }
             public bool calledAbstractMethod;
@@ -152,9 +149,11 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void SetCanvasSizeTest()
         {
-            _shape.UpdateCanvasSize(new Size(100, 100));
-            _shape.UpdateCanvasSize(new Size(200, 200));
+            _shape.SetCanvasSize(new Size(100, 100));
+            _shape.SetCanvasSize(new Size(200, 200));
             Assert.AreEqual(new Size(200, 200), _privateShape.GetField("_canvasSize"));
         }
+
+        // test set 
     }
 }

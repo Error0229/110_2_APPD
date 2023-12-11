@@ -207,8 +207,7 @@ namespace WindowPowerPoint.Tests
             _shape.AdjustHandle();
             _shape.Selected = true;
             bool flag;
-            HandleType type;
-            Assert.IsTrue(_shape.TryAdjustWhenMouseDown(new Point(0, 0), out flag, out type));
+            Assert.IsTrue(_shape.TryAdjustWhenMouseDown(new Point(0, 0), out flag));
         }
 
         // test try adjust while shape not selected
@@ -218,8 +217,7 @@ namespace WindowPowerPoint.Tests
             _shape.SetFirstPoint(new Point(10, 10));
             _shape.SetSecondPoint(new Point(20, 20));
             bool flag;
-            HandleType type;
-            Assert.IsFalse(_shape.TryAdjustWhenMouseDown(new Point(15, 15), out flag, out type));
+            Assert.IsFalse(_shape.TryAdjustWhenMouseDown(new Point(15, 15), out flag));
         }
 
         // test try adjust while shape selected

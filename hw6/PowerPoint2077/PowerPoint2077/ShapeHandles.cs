@@ -224,9 +224,9 @@ namespace WindowPowerPoint
         }
 
         // try adjust
-        public virtual bool TryAdjustWhenMouseDown(Point point, out bool isAdjusting, out HandleType adjustingHandleType)
+        public virtual bool TryAdjustWhenMouseDown(Point point, out bool isAdjusting)
         {
-            adjustingHandleType = IsCloseToHandle(point);
+            var adjustingHandleType = IsCloseToHandle(point);
             if (Selected && adjustingHandleType != HandleType.None)
             {
                 SetSelectHandle(adjustingHandleType);

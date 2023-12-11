@@ -7,10 +7,9 @@ namespace WindowPowerPoint
         public BindingToolStripButton()
         {
             _dataBindings = new ControlBindingsCollection(this);
-            _bindingContext = new BindingContext();
+            BindingContext = new BindingContext();
         }
-        private ControlBindingsCollection _dataBindings;
-        private BindingContext _bindingContext;
+        private readonly ControlBindingsCollection _dataBindings;
         public ControlBindingsCollection DataBindings
         {
             get
@@ -20,14 +19,7 @@ namespace WindowPowerPoint
         }
         public BindingContext BindingContext
         {
-            get
-            {
-                return _bindingContext;
-            }
-            set
-            {
-                _bindingContext = value;
-            }
+            get; set;
         }
     }
 }

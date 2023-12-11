@@ -353,7 +353,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
               <Line>94</Line>
               <StartLine>93</StartLine>
               <StartCol>0</StartCol>
@@ -369,7 +369,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
               <Line>108</Line>
               <StartLine>108</StartLine>
               <StartCol>24</StartCol>
@@ -385,7 +385,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
               <Line>110</Line>
               <StartLine>109</StartLine>
               <StartCol>0</StartCol>
@@ -401,7 +401,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
               <Line>29</Line>
               <StartLine>24</StartLine>
               <StartCol>0</StartCol>
@@ -417,7 +417,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
               <Line>34</Line>
               <StartLine>29</StartLine>
               <StartCol>0</StartCol>
@@ -658,8 +658,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2492</ProductionLoc>
-          <TestLoc>1859</TestLoc>
+          <ProductionLoc>2483</ProductionLoc>
+          <TestLoc>1862</TestLoc>
         </CodeReview>
       </Data>
     </div>

@@ -7,8 +7,8 @@ namespace WindowPowerPoint
     {
         public event EventHandler _undoStateChanged;
         public event EventHandler _redoStateChanged;
-        private Stack<ICommand> _undoStack;
-        private Stack<ICommand> _redoStack;
+        private readonly Stack<ICommand> _undoStack;
+        private readonly Stack<ICommand> _redoStack;
 
         // constructor
         public CommandManager()

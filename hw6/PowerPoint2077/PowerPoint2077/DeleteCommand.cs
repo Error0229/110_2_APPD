@@ -2,8 +2,8 @@
 {
     public class DeleteCommand : ICommand
     {
-        PowerPointModel _model;
-        Shape _shape;
+        readonly PowerPointModel _model;
+        readonly Shape _shape;
         public DeleteCommand(PowerPointModel model, Shape shape)
         {
             _model = model;

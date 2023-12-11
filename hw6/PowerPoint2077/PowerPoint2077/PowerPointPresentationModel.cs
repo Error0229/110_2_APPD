@@ -71,13 +71,8 @@ namespace WindowPowerPoint
         // process mouse leave canvas
         public void ProcessMouseLeaveCanvas()
         {
-            _isRectangleChecked = _isLineChecked = _isCircleChecked = false;
-            _isSelecting = true;
-            _model.SetState(new PointState(_model));
-            _model.ClearSelectedShape();
             _cursorManager.CurrentCursor = Cursors.Default;
             NotifyCursorChanged(EventArgs.Empty);
-            NotifyModelChanged(EventArgs.Empty);
         }
 
         // Set canvas coordinate
@@ -183,7 +178,7 @@ namespace WindowPowerPoint
             _model.HandleMouseUp(point);
             if (IsDrawing())
             {
-                ProcessMouseLeaveCanvas();
+                ProcessCursorClicked();
             }
             _cursorManager.CurrentCursor = Cursors.Default;
             NotifyCursorChanged(EventArgs.Empty);

@@ -82,7 +82,15 @@ namespace WindowPowerPoint.Tests
             _commandManager.Verify(manager => manager.Execute(It.IsAny<AddCommand>()), Times.Exactly(3));
         }
 
-
+        // test generate random number
+        [TestMethod()]
+        public void GeneraterandomNumberTest()
+        {
+            var r1 = PowerPointModel.GenerateRandomNumber(0, 10000);
+            var r2 = PowerPointModel.GenerateRandomNumber(-10, 10);
+            Assert.IsTrue(r1 >= 0 && r1 <= 10000);
+            Assert.IsTrue(r2 >= -10 && r2 <= 10);
+        }
 
         // test model insert shape with point
         [TestMethod()]

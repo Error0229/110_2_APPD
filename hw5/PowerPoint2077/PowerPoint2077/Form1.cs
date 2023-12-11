@@ -7,7 +7,7 @@ namespace WindowPowerPoint
     public partial class PowerPoint : Form
     {
 
-        private CursorManager _cursorManager;
+        private readonly CursorManager _cursorManager;
         public PowerPoint(PowerPointPresentationModel model)
         {
             // DoubleBuffered = true;
@@ -148,6 +148,6 @@ namespace WindowPowerPoint
 
             _presentationModel.ProcessKeyDown(e.KeyCode);
         }
-        private Bitmap _brief;
+        private readonly Bitmap _brief;
     }
 }
