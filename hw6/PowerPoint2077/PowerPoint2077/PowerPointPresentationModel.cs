@@ -12,7 +12,7 @@ namespace WindowPowerPoint
         public event ModelChangedEventHandler _cursorChanged;
         public event PropertyChangedEventHandler PropertyChanged;
         private CursorManager _cursorManager;
-        private CommandManager _commandManager;
+        private readonly CommandManager _commandManager;
         public PowerPointPresentationModel(PowerPointModel model)
         {
             _commandManager = new CommandManager();
@@ -284,6 +284,6 @@ namespace WindowPowerPoint
         private bool _isSelecting;
         private bool _isUndoEnabled;
         private bool _isRedoEnabled;
-        private PowerPointModel _model;
+        private readonly PowerPointModel _model;
     }
 }

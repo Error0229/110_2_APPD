@@ -203,6 +203,7 @@ namespace WindowPowerPoint
         private void RedoButtonClick(object sender, EventArgs e)
         {
             _presentationModel.ProcessRedo();
+            ResizeCanvas(sender, e);
             GenerateBrief();
         }
 
@@ -210,6 +211,7 @@ namespace WindowPowerPoint
         private void UndoButtonClick(object sender, EventArgs e)
         {
             _presentationModel.ProcessUndo();
+            ResizeCanvas(sender, e);
             GenerateBrief();
         }
     }

@@ -23,7 +23,7 @@ namespace WindowPowerPoint.Tests
         {
             _line = new Line();
             _privateLine = new PrivateObject(_line);
-            Assert.AreEqual(_privateLine.GetField("_name"), Constant.LINE_CHINESE);
+            Assert.AreEqual(Constant.LINE_CHINESE, _privateLine.GetField("_name"));
         }
 
         // test drawing
@@ -44,9 +44,9 @@ namespace WindowPowerPoint.Tests
         {
             _line.AdjustHandle();
             var _handles = (List<Handle>)_privateLine.GetField("_handles");
-            Assert.AreEqual(_handles.Count, 2);
-            Assert.AreEqual(_handles[0].Type, HandleType.TopLeft);
-            Assert.AreEqual(_handles[1].Type, HandleType.BottomRight);
+            Assert.AreEqual(2, _handles.Count);
+            Assert.AreEqual(HandleType.TopLeft, _handles[0].Type);
+            Assert.AreEqual(HandleType.BottomRight, _handles[1].Type);
         }
 
         // test adjust by top left

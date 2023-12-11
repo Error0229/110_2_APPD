@@ -4,10 +4,10 @@ namespace WindowPowerPoint
 {
     public class WindowsFormsGraphicsAdaptor : IGraphics
     {
-        Graphics _graphics;
+        readonly Graphics _graphics;
         public WindowsFormsGraphicsAdaptor(Graphics graphics)
         {
-            this._graphics = graphics;
+            _graphics = graphics;
         }
 
         // clear all

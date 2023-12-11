@@ -24,7 +24,7 @@ namespace WindowPowerPoint.Tests
         {
             _rectangle = new Rectangle();
             _privateRectangle = new PrivateObject(_rectangle);
-            Assert.AreEqual(_privateRectangle.GetField("_name"), Constant.RECTANGLE_CHINESE);
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, _privateRectangle.GetField("_name"));
         }
 
         // test get info
@@ -33,7 +33,7 @@ namespace WindowPowerPoint.Tests
         {
             _rectangle.SetFirstPoint(new Point(10, 10));
             _rectangle.SetSecondPoint(new Point(5, 5));
-            Assert.AreEqual(_rectangle.GetInfo(), "(5, 5), (10, 10)");
+            Assert.AreEqual("(5, 5), (10, 10)", _rectangle.GetInfo());
         }
 
         // test drawing
@@ -56,15 +56,15 @@ namespace WindowPowerPoint.Tests
             _rectangle.SetSecondPoint(new Point(5, 5));
             _rectangle.AdjustHandle();
             var _handles = (List<Handle>)_privateRectangle.GetField("_handles");
-            Assert.AreEqual(_handles.Count, 8);
-            Assert.AreEqual(_handles[0].Position, new Point(5, 5));
-            Assert.AreEqual(_handles[1].Position, new Point(7, 5));
-            Assert.AreEqual(_handles[2].Position, new Point(10, 5));
-            Assert.AreEqual(_handles[3].Position, new Point(5, 7));
-            Assert.AreEqual(_handles[4].Position, new Point(10, 7));
-            Assert.AreEqual(_handles[5].Position, new Point(5, 10));
-            Assert.AreEqual(_handles[6].Position, new Point(7, 10));
-            Assert.AreEqual(_handles[7].Position, new Point(10, 10));
+            Assert.AreEqual(8, _handles.Count);
+            Assert.AreEqual(new Point(5, 5), _handles[0].Position);
+            Assert.AreEqual(new Point(7, 5), _handles[1].Position);
+            Assert.AreEqual(new Point(10, 5), _handles[2].Position);
+            Assert.AreEqual(new Point(5, 7), _handles[3].Position);
+            Assert.AreEqual(new Point(10, 7), _handles[4].Position);
+            Assert.AreEqual(new Point(5, 10), _handles[5].Position);
+            Assert.AreEqual(new Point(7, 10), _handles[6].Position);
+            Assert.AreEqual(new Point(10, 10), _handles[7].Position);
         }
 
         // draw handle

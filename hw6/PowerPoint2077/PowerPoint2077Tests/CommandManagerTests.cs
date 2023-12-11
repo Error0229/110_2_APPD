@@ -38,8 +38,8 @@ namespace WindowPowerPoint.Tests
             _commandManager.Execute(_command.Object);
             var _undoStack = (Stack<ICommand>)_privateCommandManager.GetField("_undoStack");
             var _redoStack = (Stack<ICommand>)_privateCommandManager.GetField("_redoStack");
-            Assert.AreEqual(_undoStack.Count, 1);
-            Assert.AreEqual(_redoStack.Count, 0);
+            Assert.AreEqual(1, _undoStack.Count);
+            Assert.AreEqual(0, _redoStack.Count);
             _command.Verify(command => command.Execute(), Times.Once());
         }
 
@@ -51,17 +51,17 @@ namespace WindowPowerPoint.Tests
             _commandManager.Undo();
             var _undoStack = (Stack<ICommand>)_privateCommandManager.GetField("_undoStack");
             var _redoStack = (Stack<ICommand>)_privateCommandManager.GetField("_redoStack");
-            Assert.AreEqual(_undoStack.Count, 0);
-            Assert.AreEqual(_redoStack.Count, 1);
+            Assert.AreEqual(0, _undoStack.Count);
+            Assert.AreEqual(1, _redoStack.Count);
             _command.Verify(command => command.Unexecute(), Times.Once());
             _undoStack.Clear();
             _redoStack.Clear();
             _commandManager.Undo();
-            Assert.AreEqual(_undoStack.Count, 0);
-            Assert.AreEqual(_redoStack.Count, 0);
+            Assert.AreEqual(0, _undoStack.Count);
+            Assert.AreEqual(0, _redoStack.Count);
             _commandManager.Redo();
-            Assert.AreEqual(_undoStack.Count, 0);
-            Assert.AreEqual(_redoStack.Count, 0);
+            Assert.AreEqual(0, _undoStack.Count);
+            Assert.AreEqual(0, _redoStack.Count);
             _commandManager.Undo();
             _commandManager.Execute(_command.Object);
             _commandManager.Undo();
@@ -70,11 +70,11 @@ namespace WindowPowerPoint.Tests
             _commandManager.Undo();
             _commandManager.Undo();
             _commandManager.Undo();
-            Assert.AreEqual(_undoStack.Count, 0);
-            Assert.AreEqual(_redoStack.Count, 2);
+            Assert.AreEqual(0, _undoStack.Count);
+            Assert.AreEqual(2, _redoStack.Count);
             _commandManager.Redo();
-            Assert.AreEqual(_undoStack.Count, 1);
-            Assert.AreEqual(_redoStack.Count, 1);
+            Assert.AreEqual(1, _undoStack.Count);
+            Assert.AreEqual(1, _redoStack.Count);
         }
 
         // test redo
@@ -86,14 +86,14 @@ namespace WindowPowerPoint.Tests
             _commandManager.Redo();
             var _undoStack = (Stack<ICommand>)_privateCommandManager.GetField("_undoStack");
             var _redoStack = (Stack<ICommand>)_privateCommandManager.GetField("_redoStack");
-            Assert.AreEqual(_undoStack.Count, 1);
-            Assert.AreEqual(_redoStack.Count, 0);
+            Assert.AreEqual(1, _undoStack.Count);
+            Assert.AreEqual(0, _redoStack.Count);
             _command.Verify(command => command.Execute(), Times.Exactly(2));
             _undoStack.Clear();
             _redoStack.Clear();
             _commandManager.Redo();
-            Assert.AreEqual(_undoStack.Count, 0);
-            Assert.AreEqual(_redoStack.Count, 0);
+            Assert.AreEqual(0, _undoStack.Count);
+            Assert.AreEqual(0, _redoStack.Count);
             _commandManager.Undo();
             _commandManager.Execute(_command.Object);
             _commandManager.Undo();
@@ -102,13 +102,13 @@ namespace WindowPowerPoint.Tests
             _commandManager.Undo();
             _commandManager.Undo();
             _commandManager.Undo();
-            Assert.AreEqual(_undoStack.Count, 0);
-            Assert.AreEqual(_redoStack.Count, 2);
+            Assert.AreEqual(0, _undoStack.Count);
+            Assert.AreEqual(2, _redoStack.Count);
             _commandManager.Redo();
             _commandManager.Redo();
             _commandManager.Redo();
-            Assert.AreEqual(_undoStack.Count, 2);
-            Assert.AreEqual(_redoStack.Count, 0);
+            Assert.AreEqual(2, _undoStack.Count);
+            Assert.AreEqual(0, _redoStack.Count);
         }
 
         // test state changed

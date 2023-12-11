@@ -53,11 +53,11 @@ namespace WindowPowerPoint
     public abstract partial class Shape
     {
         private Dictionary<HandleType, Action<Point>> _adjustWith;
-        public Shape(ShapeType type) : this()
+        protected Shape(ShapeType type) : this()
         {
             _type = type;
         }
-        public Shape()
+        protected Shape()
         {
             _pointFirst = new Point();
             _pointSecond = new Point();

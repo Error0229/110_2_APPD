@@ -16,7 +16,7 @@ namespace WindowPowerPoint
                 case Constant.CIRCLE_CHINESE:
                     return new Circle();
                 default:
-                    throw new ArgumentException();
+                    throw new ArgumentException(Constant.INVALID_SHAPE_NAME);
             }
         }
 
@@ -32,7 +32,7 @@ namespace WindowPowerPoint
                 case ShapeType.CIRCLE:
                     return new Circle();
                 default:
-                    throw new ArgumentException();
+                    throw new ArgumentException(Constant.INVALID_SHAPE_TYPE);
             }
         }
     }

@@ -27,6 +27,8 @@
         public const string ENABLED = "Enabled";
         public const string IS_REDO_ENABLED = "IsRedoEnabled";
         public const string IS_UNDO_ENABLED = "IsUndoEnabled";
+        public const string INVALID_SHAPE_NAME = "Invalid shape name";
+        public const string INVALID_SHAPE_TYPE = "Invalid shape type";
         public const int INTEGER32_BYTES = 4;
     }
 }

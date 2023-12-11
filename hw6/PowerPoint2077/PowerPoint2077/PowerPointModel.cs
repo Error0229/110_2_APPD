@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
@@ -257,7 +257,7 @@ namespace WindowPowerPoint
         private Shape _hint;
         private Size _canvasSize;
         private readonly ShapeFactory _factory;
-        private BindingList<Shape> _shapes;
+        private readonly BindingList<Shape> _shapes;
         public virtual BindingList<Shape> Shapes
         {
             get

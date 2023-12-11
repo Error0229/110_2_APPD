@@ -25,7 +25,7 @@ namespace WindowPowerPoint.Tests
         {
             _circle = new Circle();
             _privateCircle = new PrivateObject(_circle);
-            Assert.AreEqual(_privateCircle.GetField("_name"), Constant.CIRCLE_CHINESE);
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, _privateCircle.GetField("_name"));
         }
 
         // test get info
@@ -34,7 +34,7 @@ namespace WindowPowerPoint.Tests
         {
             _circle.SetFirstPoint(new Point(10, 10));
             _circle.SetSecondPoint(new Point(5, 5));
-            Assert.AreEqual(_circle.GetInfo(), "(5, 5), (10, 10)");
+            Assert.AreEqual("(5, 5), (10, 10)", _circle.GetInfo());
         }
 
         // test drawing
@@ -55,15 +55,15 @@ namespace WindowPowerPoint.Tests
         {
             _circle.AdjustHandle();
             var _handles = (List<Handle>)_privateCircle.GetField("_handles");
-            Assert.AreEqual(_handles.Count, 8);
-            Assert.AreEqual(_handles[0].Type, HandleType.TopLeft);
-            Assert.AreEqual(_handles[1].Type, HandleType.Top);
-            Assert.AreEqual(_handles[2].Type, HandleType.TopRight);
-            Assert.AreEqual(_handles[3].Type, HandleType.Left);
-            Assert.AreEqual(_handles[4].Type, HandleType.Right);
-            Assert.AreEqual(_handles[5].Type, HandleType.BottomLeft);
-            Assert.AreEqual(_handles[6].Type, HandleType.Bottom);
-            Assert.AreEqual(_handles[7].Type, HandleType.BottomRight);
+            Assert.AreEqual(8, _handles.Count);
+            Assert.AreEqual(HandleType.TopLeft, _handles[0].Type);
+            Assert.AreEqual(HandleType.Top, _handles[1].Type);
+            Assert.AreEqual(HandleType.TopRight, _handles[2].Type);
+            Assert.AreEqual(HandleType.Left, _handles[3].Type);
+            Assert.AreEqual(HandleType.Right, _handles[4].Type);
+            Assert.AreEqual(HandleType.BottomLeft, _handles[5].Type);
+            Assert.AreEqual(HandleType.Bottom, _handles[6].Type);
+            Assert.AreEqual(HandleType.BottomRight, _handles[7].Type);
         }
 
         // adjust by handle

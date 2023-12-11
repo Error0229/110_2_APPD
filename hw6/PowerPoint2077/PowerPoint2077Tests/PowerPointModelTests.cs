@@ -59,7 +59,7 @@ namespace WindowPowerPoint.Tests
         public void InsertShapeTest()
         {
             _model.InsertShape(new Circle());
-            Assert.AreEqual(_model.Shapes.Count, 1);
+            Assert.AreEqual(1, _model.Shapes.Count);
         }
 
         // test remove shape
@@ -69,7 +69,7 @@ namespace WindowPowerPoint.Tests
             var shape = new Circle();
             _model.Shapes.Add(shape);
             _model.RemoveShape(shape);
-            Assert.AreEqual(_model.Shapes.Count, 0);
+            Assert.AreEqual(0, _model.Shapes.Count);
         }
 
         // test model handle insert shape
@@ -281,7 +281,7 @@ namespace WindowPowerPoint.Tests
         {
             _model.SetHint(ShapeType.CIRCLE);
             _model.SetHintFirstPoint(new Point(0, 0));
-            Assert.AreEqual((PointF)(new PrivateObject((Circle)_privateModel.GetField("_hint"))).GetField("_pointFirst"), new Point(0, 0));
+            Assert.AreEqual(new Point(0, 0), (PointF)(new PrivateObject((Circle)_privateModel.GetField("_hint"))).GetField("_pointFirst"));
         }
 
         // test set hint second point
@@ -291,7 +291,7 @@ namespace WindowPowerPoint.Tests
             _model.SetHint(ShapeType.CIRCLE);
             _model.SetHintFirstPoint(new Point(0, 0));
             _model.SetHintSecondPoint(new Point(10, 10));
-            Assert.AreEqual((PointF)(new PrivateObject((Circle)_privateModel.GetField("_hint"))).GetField("_pointSecond"), new Point(10, 10));
+            Assert.AreEqual(new Point(10, 10), (PointF)(new PrivateObject((Circle)_privateModel.GetField("_hint"))).GetField("_pointSecond"));
         }
 
         // test add shape with hint

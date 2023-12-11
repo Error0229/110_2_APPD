@@ -349,15 +349,15 @@
             <Smell>
               <Id>11</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>94 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <HashCode>93 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
-              <Line>94</Line>
-              <StartLine>93</StartLine>
+              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>93</Line>
+              <StartLine>92</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>94</EndLine>
+              <EndLine>93</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
               <Auto>false</Auto>
@@ -365,15 +365,15 @@
             <Smell>
               <Id>12</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>108 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <HashCode>107 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
-              <Line>108</Line>
-              <StartLine>108</StartLine>
+              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>107</Line>
+              <StartLine>107</StartLine>
               <StartCol>24</StartCol>
-              <EndLine>108</EndLine>
+              <EndLine>107</EndLine>
               <EndCol>65</EndCol>
               <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
               <Auto>false</Auto>
@@ -381,15 +381,15 @@
             <Smell>
               <Id>13</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>110 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <HashCode>109 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
-              <Line>110</Line>
-              <StartLine>109</StartLine>
+              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>109</Line>
+              <StartLine>108</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>110</EndLine>
+              <EndLine>109</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
               <Auto>false</Auto>
@@ -401,7 +401,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
               <Line>29</Line>
               <StartLine>24</StartLine>
               <StartCol>0</StartCol>
@@ -417,7 +417,7 @@
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>C:\Users\login\Desktop\112_1_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
               <Line>34</Line>
               <StartLine>29</StartLine>
               <StartCol>0</StartCol>
@@ -658,8 +658,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2483</ProductionLoc>
-          <TestLoc>1862</TestLoc>
+          <ProductionLoc>2475</ProductionLoc>
+          <TestLoc>1860</TestLoc>
         </CodeReview>
       </Data>
     </div>
