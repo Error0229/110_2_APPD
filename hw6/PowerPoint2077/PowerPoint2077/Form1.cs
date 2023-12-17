@@ -153,7 +153,6 @@ namespace WindowPowerPoint
 
         private void HandleKeyDown(object sender, KeyEventArgs e)
         {
-
             _presentationModel.ProcessKeyDown(e.KeyCode);
             GenerateBrief();
         }

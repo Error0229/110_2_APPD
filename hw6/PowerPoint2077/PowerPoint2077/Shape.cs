@@ -209,5 +209,16 @@ namespace WindowPowerPoint
         protected HandleType _selectedHandleType;
         protected List<Handle> _handles;
         protected Size _canvasSize;
+        public Size CanvasSize
+        {
+            get
+            {
+                return _canvasSize;
+            }
+            set
+            {
+                SetCanvasSize(value);
+            }
+        }
     }
 }
