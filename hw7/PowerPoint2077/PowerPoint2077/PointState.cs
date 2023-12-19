@@ -32,6 +32,8 @@ namespace WindowPowerPoint
             {
                 if (shape.TryAdjustWhenMouseDown(point, out _isAdjusting))
                 {
+                    _shapeFirstPoint = shape.GetFirstPoint();
+                    _shapeSecondPoint = shape.GetSecondPoint();
                     break;
                 }
             }
@@ -116,6 +118,10 @@ namespace WindowPowerPoint
         // handle mouse up
         public void MouseUp(Point point)
         {
+            if (_isAdjusting)
+            {
+                _model.HanldeShapeResize(_shapeFirstPoint, _shapeSecondPoint);
+            }
             if (_isMoving && _lastPoint != _startPoint)
             {
                 _model.HandleMoveShape(point - new Size(_startPoint));
@@ -151,5 +157,7 @@ namespace WindowPowerPoint
         private bool _isMoving;
         private Point _lastPoint;
         private Point _startPoint;
+        private PointF _shapeFirstPoint;
+        private PointF _shapeSecondPoint;
     }
 }

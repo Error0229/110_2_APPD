@@ -104,6 +104,19 @@ namespace WindowPowerPoint
             _pointSecond = point;
         }
 
+        // get first point
+        public virtual PointF GetFirstPoint()
+        {
+            return _pointFirst;
+        }
+
+        // get second point
+        public virtual PointF GetSecondPoint()
+        {
+            return _pointSecond;
+        }
+
+
         // move first point
         public virtual void Move(Point offset)
         {

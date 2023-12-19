@@ -116,7 +116,6 @@ namespace WindowPowerPoint
         // remove shape by shape
         public virtual void RemoveShape(Shape shape)
         {
-            shape.Selected = false;
             _shapes.Remove(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -142,6 +141,28 @@ namespace WindowPowerPoint
                     _commandManager.Execute(new MoveCommand(this, shape, offset));
                 }
             }
+            NotifyModelChanged(EventArgs.Empty);
+        }
+
+        // handle resize shape
+        public virtual void HanldeShapeResize(PointF firstPoint, PointF secondPoint)
+        {
+            foreach (Shape shape in _shapes)
+            {
+                if (shape.Selected)
+                {
+                    _commandManager.Execute(new ResizeCommand(this, shape, firstPoint, secondPoint));
+                }
+            }
+            NotifyModelChanged(EventArgs.Empty);
+        }
+
+        // resize shape
+        public virtual void ResizeShape(Shape shape, PointF firstPoint, PointF secondPoint)
+        {
+            shape.SetFirstPoint(Point.Round(firstPoint));
+            shape.SetSecondPoint(Point.Round(secondPoint));
+            shape.AdjustHandle();
             NotifyModelChanged(EventArgs.Empty);
         }
 
