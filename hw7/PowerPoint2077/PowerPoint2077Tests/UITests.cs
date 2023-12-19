@@ -60,11 +60,11 @@ namespace PowerPoint2077Tests
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
             var size = _canvas.Size;
-            actionBuilder.AddAction(device.CreatePointerMove(_canvas, -size.Width / 2, -size.Height / 2, TimeSpan.Zero));
-            actionBuilder.AddAction(device.CreatePointerMove(CoordinateOrigin.Pointer, startX, startY, TimeSpan.Zero));
-            actionBuilder.AddAction(device.CreatePointerDown(PointerButton.LeftMouse));
-            actionBuilder.AddAction(device.CreatePointerMove(CoordinateOrigin.Pointer, endX - startX, endY - startY, TimeSpan.Zero));
-            actionBuilder.AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
+            actionBuilder.AddAction(device.CreatePointerMove(_canvas, -size.Width / 2, -size.Height / 2, TimeSpan.Zero))
+            .AddAction(device.CreatePointerMove(CoordinateOrigin.Pointer, startX, startY, TimeSpan.Zero))
+            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerMove(CoordinateOrigin.Pointer, endX - startX, endY - startY, TimeSpan.Zero))
+            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
@@ -73,18 +73,17 @@ namespace PowerPoint2077Tests
         {
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
-            var size = _canvas.Size;
-            actionBuilder.AddAction(CreateMoveTo(device, (originLeft + originRight) / 2, (originTop + originBottom) / 2));
-            actionBuilder.AddAction(device.CreatePointerDown(PointerButton.LeftMouse));
-            actionBuilder.AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
-            actionBuilder.AddAction(CreateMoveTo(device, originTop, originLeft));
-            actionBuilder.AddAction(device.CreatePointerDown(PointerButton.LeftMouse));
-            actionBuilder.AddAction(CreateMoveTo(device, targetTop, targetLeft));
-            actionBuilder.AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
-            actionBuilder.AddAction(CreateMoveTo(device, originRight, originBottom));
-            actionBuilder.AddAction(device.CreatePointerDown(PointerButton.LeftMouse));
-            actionBuilder.AddAction(CreateMoveTo(device, targetRight, targetBottom));
-            actionBuilder.AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
+            actionBuilder.AddAction(CreateMoveTo(device, (originLeft + originRight) / 2, (originTop + originBottom) / 2))
+            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse))
+            .AddAction(CreateMoveTo(device, originTop, originLeft))
+            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(CreateMoveTo(device, targetTop, targetLeft))
+            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse))
+            .AddAction(CreateMoveTo(device, originRight, originBottom))
+            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(CreateMoveTo(device, targetRight, targetBottom))
+            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
@@ -93,11 +92,10 @@ namespace PowerPoint2077Tests
         {
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
-            var size = _canvas.Size;
-            actionBuilder.AddAction(CreateMoveTo(device, (originLeft + originRight) / 2, (originTop + originBottom) / 2));
-            actionBuilder.AddAction(device.CreatePointerDown(PointerButton.LeftMouse));
-            actionBuilder.AddAction(CreateMoveTo(device, targetX, targetY));
-            actionBuilder.AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
+            actionBuilder.AddAction(CreateMoveTo(device, (originLeft + originRight) / 2, (originTop + originBottom) / 2))
+            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(CreateMoveTo(device, targetX, targetY))
+            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
