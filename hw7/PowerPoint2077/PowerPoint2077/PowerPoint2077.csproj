@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="ICommand.cs" />
     <Compile Include="IGraphics.cs" />
+    <Compile Include="ISlide.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="MoveCommand.cs" />

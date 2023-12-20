@@ -1,6 +1,6 @@
 ﻿namespace WindowPowerPoint
 {
-    public interface ICommand
+    public interface ICommand : ISlide
     {
         // execute command 
         void Execute();

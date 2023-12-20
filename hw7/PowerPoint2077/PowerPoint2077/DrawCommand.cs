@@ -4,6 +4,7 @@
     {
         readonly PowerPointModel _model;
         readonly Shape _shape;
+        public int SlideNumber { get; set; }
         public DrawCommand(PowerPointModel model, Shape shape)
         {
             _model = model;

@@ -31,6 +31,7 @@ namespace WindowPowerPoint
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerPoint));
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this._canvas = new WindowPowerPoint.DoubleBufferedPanel();
             this._groupView = new System.Windows.Forms.GroupBox();
             this._buttonInsertShape = new System.Windows.Forms.Button();
             this._shapeGridView = new System.Windows.Forms.DataGridView();
@@ -50,7 +51,7 @@ namespace WindowPowerPoint
             this._cursorButton = new WindowPowerPoint.BindingToolStripButton();
             this._undoButton = new WindowPowerPoint.BindingToolStripButton();
             this._redoButton = new WindowPowerPoint.BindingToolStripButton();
-            this._canvas = new WindowPowerPoint.DoubleBufferedPanel();
+            this._addPageButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).BeginInit();
             this._splitContainer2.Panel1.SuspendLayout();
             this._splitContainer2.Panel2.SuspendLayout();
@@ -84,10 +85,21 @@ namespace WindowPowerPoint
             // 
             this._splitContainer2.Panel2.Controls.Add(this._groupView);
             this._splitContainer2.Size = new System.Drawing.Size(1127, 567);
-            this._splitContainer2.SplitterDistance = 875;
+            this._splitContainer2.SplitterDistance = 876;
             this._splitContainer2.SplitterWidth = 3;
             this._splitContainer2.TabIndex = 0;
             this._splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.SplitContainer2Adjust);
+            // 
+            // _canvas
+            // 
+            this._canvas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._canvas.BackColor = System.Drawing.Color.White;
+            this._canvas.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this._canvas.Location = new System.Drawing.Point(38, 54);
+            this._canvas.Margin = new System.Windows.Forms.Padding(0);
+            this._canvas.Name = "_canvas";
+            this._canvas.Size = new System.Drawing.Size(800, 450);
+            this._canvas.TabIndex = 10;
             // 
             // _groupView
             // 
@@ -99,7 +111,7 @@ namespace WindowPowerPoint
             this._groupView.Location = new System.Drawing.Point(0, 0);
             this._groupView.Name = "_groupView";
             this._groupView.Padding = new System.Windows.Forms.Padding(2);
-            this._groupView.Size = new System.Drawing.Size(249, 567);
+            this._groupView.Size = new System.Drawing.Size(248, 567);
             this._groupView.TabIndex = 3;
             this._groupView.TabStop = false;
             this._groupView.Text = "資料顯示";
@@ -136,7 +148,7 @@ namespace WindowPowerPoint
             this._shapeGridView.RowHeadersWidth = 51;
             this._shapeGridView.RowTemplate.Height = 24;
             this._shapeGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._shapeGridView.Size = new System.Drawing.Size(243, 513);
+            this._shapeGridView.Size = new System.Drawing.Size(242, 513);
             this._shapeGridView.TabIndex = 0;
             this._shapeGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShapeGridViewCellContentClick);
             // 
@@ -191,7 +203,7 @@ namespace WindowPowerPoint
             this._shapeComboBox.Location = new System.Drawing.Point(77, 25);
             this._shapeComboBox.Margin = new System.Windows.Forms.Padding(2);
             this._shapeComboBox.Name = "_shapeComboBox";
-            this._shapeComboBox.Size = new System.Drawing.Size(161, 21);
+            this._shapeComboBox.Size = new System.Drawing.Size(160, 21);
             this._shapeComboBox.TabIndex = 1;
             // 
             // _splitContainer1
@@ -264,6 +276,7 @@ namespace WindowPowerPoint
             this._rectangleAddButton,
             this._ellipseAddButton,
             this._cursorButton,
+            this._addPageButton,
             this._undoButton,
             this._redoButton});
             this._toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -291,7 +304,7 @@ namespace WindowPowerPoint
             this._rectangleAddButton.Image = ((System.Drawing.Image)(resources.GetObject("_rectangleAddButton.Image")));
             this._rectangleAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._rectangleAddButton.Name = "_rectangleAddButton";
-            this._rectangleAddButton.Size = new System.Drawing.Size(28, 25);
+            this._rectangleAddButton.Size = new System.Drawing.Size(27, 25);
             this._rectangleAddButton.Text = "🔲";
             this._rectangleAddButton.ToolTipText = "Rectangle";
             this._rectangleAddButton.Click += new System.EventHandler(this.ClickAddRectangleButton);
@@ -303,7 +316,7 @@ namespace WindowPowerPoint
             this._ellipseAddButton.Image = ((System.Drawing.Image)(resources.GetObject("_ellipseAddButton.Image")));
             this._ellipseAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._ellipseAddButton.Name = "_ellipseAddButton";
-            this._ellipseAddButton.Size = new System.Drawing.Size(28, 25);
+            this._ellipseAddButton.Size = new System.Drawing.Size(27, 25);
             this._ellipseAddButton.Text = "⭕";
             this._ellipseAddButton.ToolTipText = "Ellipse";
             this._ellipseAddButton.Click += new System.EventHandler(this.ClickAddEllipseButton);
@@ -328,34 +341,32 @@ namespace WindowPowerPoint
             this._undoButton.Image = ((System.Drawing.Image)(resources.GetObject("_undoButton.Image")));
             this._undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._undoButton.Name = "_undoButton";
-            this._undoButton.Size = new System.Drawing.Size(28, 25);
+            this._undoButton.Size = new System.Drawing.Size(27, 25);
             this._undoButton.Text = "⬅️";
             this._undoButton.ToolTipText = "Undo";
             this._undoButton.Click += new System.EventHandler(this.UndoButtonClick);
             // 
             // _redoButton
             // 
-            this._redoButton.AutoSize = false;
             this._redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this._redoButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
             this._redoButton.Image = ((System.Drawing.Image)(resources.GetObject("_redoButton.Image")));
             this._redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._redoButton.Name = "_redoButton";
-            this._redoButton.Size = new System.Drawing.Size(27, 24);
+            this._redoButton.Size = new System.Drawing.Size(27, 25);
             this._redoButton.Text = "➡️";
             this._redoButton.ToolTipText = "Redo";
             this._redoButton.Click += new System.EventHandler(this.RedoButtonClick);
             // 
-            // _canvas
+            // _addPageButton
             // 
-            this._canvas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._canvas.BackColor = System.Drawing.Color.White;
-            this._canvas.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
-            this._canvas.Location = new System.Drawing.Point(38, 54);
-            this._canvas.Margin = new System.Windows.Forms.Padding(0);
-            this._canvas.Name = "_canvas";
-            this._canvas.Size = new System.Drawing.Size(800, 450);
-            this._canvas.TabIndex = 10;
+            this._addPageButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._addPageButton.Image = ((System.Drawing.Image)(resources.GetObject("_addPageButton.Image")));
+            this._addPageButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._addPageButton.Name = "_addPageButton";
+            this._addPageButton.Size = new System.Drawing.Size(24, 25);
+            this._addPageButton.Text = "toolStripButton1";
+            this._addPageButton.Click += new System.EventHandler(this.addPageButtonClick);
             // 
             // PowerPoint
             // 
@@ -416,5 +427,6 @@ namespace WindowPowerPoint
         private System.Windows.Forms.DataGridViewButtonColumn _deleteShape;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeInfo;
+        private System.Windows.Forms.ToolStripButton _addPageButton;
     }
 }

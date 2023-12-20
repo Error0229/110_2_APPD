@@ -50,7 +50,7 @@ namespace WindowPowerPoint
         }
 
     }
-    public abstract partial class Shape
+    public abstract partial class Shape : ISlide
     {
         private Dictionary<HandleType, Action<Point>> _adjustWith;
         protected Shape(ShapeType type) : this()
@@ -188,6 +188,9 @@ namespace WindowPowerPoint
                 _isSelected = value;
             }
         }
+
+        [System.ComponentModel.Browsable(false)]
+        public int SlideNumber { get; set; }
 
         // get shape location
         protected Point GetShapeLocation()

@@ -224,5 +224,10 @@ namespace WindowPowerPoint
             ResizeCanvas(sender, e);
             GenerateBrief();
         }
+
+        private void addPageButtonClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

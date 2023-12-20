@@ -12,6 +12,7 @@ namespace WindowPowerPoint
         PointF _newShapeSecondPoint;
         // ensure that the first excute will not move the shape
         bool _firstResize;
+        public int SlideNumber { get; set; }
         public ResizeCommand(PowerPointModel model, Shape shape, PointF firstPoint, PointF secondPoint)
         {
             _model = model;

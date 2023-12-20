@@ -6,6 +6,7 @@ namespace WindowPowerPoint
     {
         readonly PowerPointModel _model;
         readonly Shape _shape;
+        public int SlideNumber { get; set; }
         Point _offset;
         // ensure that the first excute will not move the shape
         bool _firstMove;
