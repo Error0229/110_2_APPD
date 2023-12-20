@@ -5,11 +5,11 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows.Forms;
-using WindowPowerPoint;
 using PointerInputDevice = OpenQA.Selenium.Appium.Interactions.PointerInputDevice;
 
-namespace PowerPoint2077Tests
+namespace WindowPowerPoint.Tests
 {
     [TestClass]
     public class UITests : PowerPoint2077Session
@@ -20,6 +20,11 @@ namespace PowerPoint2077Tests
         const string selectButtonName = "🖰";
         const string undoButtonName = "⬅️";
         const string redoButtonName = "➡️";
+        const string insertCircleColumnName = "圓形";
+        const string insertRectangleColumnName = "矩形";
+        const string insertLineColumnName = "線";
+        const string insertShapeButtonName = "新增";
+        const string insertShapeComboBox = "_shapeComboBox";
         const string canvasId = "_canvas";
         const string dataGridId = "_shapeGridView";
         private WindowsElement _canvas;
@@ -34,13 +39,14 @@ namespace PowerPoint2077Tests
             var targetAppPath = Path.Combine(solutionPath, projectName, "bin", "Debug", "PowerPoint2077.exe");
             Setup(context, targetAppPath);
             session.SwitchTo().Window(session.CurrentWindowHandle);
-
         }
+
         [ClassCleanup]
         public static void ClassCleanUp()
         {
             TearDown();
         }
+
         [TestInitialize]
         public void TestInitialize()
         {
@@ -56,67 +62,129 @@ namespace PowerPoint2077Tests
         }
 
         // draw shape
-        public void DrawShape(string shapeButtonName, int startX, int startY, int endX, int endY)
+        public void DrawShape(string shapeButtonName, ShapeCoordinate coor)
         {
-            ClickButton(shapeButtonName);
+            ClickByElementName(shapeButtonName);
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
             actionBuilder
-            .AddAction(CreateMoveTo(device, startX, startY))
+            .AddAction(CreateMoveTo(device, coor.Left, coor.Top))
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
-            .AddAction(CreateMoveTo(device, endX, endY))
+            .AddAction(CreateMoveTo(device, coor.Right, coor.Bottom))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
         // resize shape
-        public void ResizeShape(int originTop, int originLeft, int originRight, int originBottom, int targetTop, int targetLeft, int targetRight, int targetBottom)
+        public void ResizeShape(ShapeCoordinate originCoor, ShapeCoordinate targetCoor)
         {
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
-            actionBuilder.AddAction(CreateMoveTo(device, (originLeft + originRight) / 2, (originTop + originBottom) / 2))
+            actionBuilder.AddAction(CreateMoveTo(device, (originCoor.Left + originCoor.Right) / 2, (originCoor.Top + originCoor.Bottom) / 2))
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse))
-            .AddAction(CreateMoveTo(device, originTop, originLeft))
+            .AddAction(CreateMoveTo(device, originCoor.Left, originCoor.Top))
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
-            .AddAction(CreateMoveTo(device, targetTop, targetLeft))
+            .AddAction(CreateMoveTo(device, targetCoor.Left, targetCoor.Top))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse))
-            .AddAction(CreateMoveTo(device, originRight, originBottom))
+            .AddAction(CreateMoveTo(device, originCoor.Right, originCoor.Bottom))
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
-            .AddAction(CreateMoveTo(device, targetRight, targetBottom))
+            .AddAction(CreateMoveTo(device, targetCoor.Right, targetCoor.Bottom))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
         // move shape
-        public void MoveShape(int originTop, int originLeft, int originRight, int originBottom, int targetX, int targetY)
+        public void MoveShape(ShapeCoordinate coor, int targetX, int targetY)
         {
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
-            actionBuilder.AddAction(CreateMoveTo(device, (originLeft + originRight) / 2, (originTop + originBottom) / 2))
+            actionBuilder.AddAction(CreateMoveTo(device, (coor.Left + coor.Right) / 2, (coor.Top + coor.Bottom) / 2))
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
             .AddAction(CreateMoveTo(device, targetX, targetY))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
+        public struct ShapeCoordinate
+        {
+            public int Top { get; set; }
+            public int Left { get; set; }
+            public int Right { get; set; }
+            public int Bottom { get; set; }
+
+            public ShapeCoordinate(int left, int top, int right, int bottom)
+            {
+                Left = left;
+                Top = top;
+                Right = right;
+                Bottom = bottom;
+            }
+        }
+        public string GetCoordinateString(ShapeCoordinate coor)
+        {
+            return $"({coor.Left}, {coor.Top}), ({coor.Right}, {coor.Bottom})";
+        }
+
+        public ShapeCoordinate InsertShape(string shapeName)
+        {
+            ClickByElementID(insertShapeComboBox);
+            ClickByElementName(shapeName);
+            ClickByElementName(insertShapeButtonName);
+            var dialogBox = session.FindElementByAccessibilityId("Dialog");
+            var textBox1 = dialogBox.FindElementByAccessibilityId("textBox1");
+            var textBox2 = dialogBox.FindElementByAccessibilityId("textBox2");
+            var textBox3 = dialogBox.FindElementByAccessibilityId("textBox3");
+            var textBox4 = dialogBox.FindElementByAccessibilityId("textBox4");
+            var buttonOK = dialogBox.FindElementByAccessibilityId("buttonOK");
+            var size = _canvas.Size;
+            var coordinate = new ShapeCoordinate
+            {
+                Left = GenerateRandomNumber(0, size.Width),
+                Top = GenerateRandomNumber(0, size.Height)
+            };
+            coordinate.Right = GenerateRandomNumber(coordinate.Left, size.Width);
+            coordinate.Bottom = GenerateRandomNumber(coordinate.Top, size.Height);
+            textBox1.SendKeys(coordinate.Left.ToString());
+            textBox2.SendKeys(coordinate.Top.ToString());
+            textBox3.SendKeys(coordinate.Right.ToString());
+            textBox4.SendKeys(coordinate.Bottom.ToString());
+            buttonOK.Click();
+            return coordinate;
+        }
+
+        // random shape
+        public int GenerateRandomNumber(int minValue, int maxValue)
+        {
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                byte[] randomNumber = new byte[Constant.INTEGER32_BYTES];
+                rng.GetBytes(randomNumber);
+                int generatedValue = BitConverter.ToInt32(randomNumber, 0);
+                return Math.Abs(generatedValue % (maxValue - minValue + 1)) + minValue;
+            }
+        }
+
+        // resize window 
+        public void ResizeWindow(int width, int height)
+        {
+            session.Manage().Window.Size = new System.Drawing.Size(width, height);
+        }
+
         // test draw circle
         [TestMethod]
         public void TestDrawCircle()
         {
-            var startX = 100;
-            var startY = 100;
-            var endX = 200;
-            var endY = 200;
-            ClickButton(circleButtonName);
+            var coor = new ShapeCoordinate(100, 100, 300, 300);
+            ClickByElementName(circleButtonName);
             Assert.IsTrue(IsButtonChecked(circleButtonName));
             Assert.IsFalse(IsButtonChecked(rectangleButtonName));
             Assert.IsFalse(IsButtonChecked(lineButtonName));
             Assert.IsFalse(IsButtonChecked(selectButtonName));
             // why not use elegant Actions(session)? due to the Pure action give a 250ms duration which somehow makes the moving unstable
-            DrawShape(circleButtonName, startX, startY, endX, endY);
+            DrawShape(circleButtonName, coor);
             Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
-            Assert.AreEqual($"({startX}, {startY}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(coor), GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
 
@@ -124,18 +192,15 @@ namespace PowerPoint2077Tests
         [TestMethod]
         public void TestDrawRectangle()
         {
-            var startX = 100;
-            var startY = 100;
-            var endX = 200;
-            var endY = 200;
-            ClickButton(rectangleButtonName);
+            var coor = new ShapeCoordinate(100, 100, 300, 300);
+            ClickByElementName(rectangleButtonName);
             Assert.IsFalse(IsButtonChecked(circleButtonName));
             Assert.IsTrue(IsButtonChecked(rectangleButtonName));
             Assert.IsFalse(IsButtonChecked(lineButtonName));
             Assert.IsFalse(IsButtonChecked(selectButtonName));
-            DrawShape(rectangleButtonName, startX, startY, endX, endY);
+            DrawShape(rectangleButtonName, coor);
             Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(0, 1));
-            Assert.AreEqual($"({startX}, {startY}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(coor), GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
 
@@ -143,18 +208,45 @@ namespace PowerPoint2077Tests
         [TestMethod]
         public void TestDrawLine()
         {
-            var startX = 100;
-            var startY = 100;
-            var endX = 200;
-            var endY = 200;
-            ClickButton(lineButtonName);
+            var coor = new ShapeCoordinate(100, 100, 300, 300);
+            ClickByElementName(lineButtonName);
             Assert.IsFalse(IsButtonChecked(circleButtonName));
             Assert.IsFalse(IsButtonChecked(rectangleButtonName));
             Assert.IsTrue(IsButtonChecked(lineButtonName));
             Assert.IsFalse(IsButtonChecked(selectButtonName));
-            DrawShape(lineButtonName, startX, startY, endX, endY);
+            DrawShape(lineButtonName, coor);
             Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(0, 1));
-            Assert.AreEqual($"({startX}, {startY}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(coor), GetDataGridViewCellText(0, 2));
+            DeleteLastInsertShape();
+        }
+
+        // test insert circle
+        [TestMethod]
+        public void TestInsertCircle()
+        {
+            var coordinate = InsertShape(insertCircleColumnName);
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
+            DeleteLastInsertShape();
+        }
+
+        // test insert rectangle
+        [TestMethod]
+        public void TestInsertRectangle()
+        {
+            var coordinate = InsertShape(insertRectangleColumnName);
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
+            DeleteLastInsertShape();
+        }
+
+        // test insert line
+        [TestMethod]
+        public void TestInsertLine()
+        {
+            var coordinate = InsertShape(insertLineColumnName);
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
 
@@ -162,16 +254,13 @@ namespace PowerPoint2077Tests
         [TestMethod]
         public void TestDrawShapeUndoRedo()
         {
-            var startX = 100;
-            var startY = 100;
-            var endX = 300;
-            var endY = 300;
-            DrawShape(circleButtonName, startX, startY, endX, endY);
-            ClickButton(undoButtonName);
+            var coor = new ShapeCoordinate(100, 100, 300, 300);
+            DrawShape(circleButtonName, coor);
+            ClickByElementName(undoButtonName);
             Assert.AreEqual("0", _dataGrid.GetAttribute("Grid.RowCount"));
-            ClickButton(redoButtonName);
+            ClickByElementName(redoButtonName);
             Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
-            Assert.AreEqual($"({startX}, {startY}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(coor), GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
 
@@ -179,26 +268,20 @@ namespace PowerPoint2077Tests
         [TestMethod]
         public void TestResizeUndoRedo()
         {
-            var startX = 100;
-            var startY = 100;
-            var endX = 300;
-            var endY = 300;
-            var targetTop = 50;
-            var targetLeft = 50;
-            var targetRight = 400;
-            var targetButtom = 400;
+            var originCoor = new ShapeCoordinate(100, 100, 300, 300);
+            var targetCoor = new ShapeCoordinate(50, 50, 400, 400);
 
-            DrawShape(rectangleButtonName, startX, startY, endX, endY);
-            ResizeShape(startX, startY, endX, endY, targetTop, targetLeft, targetRight, targetButtom);
-            Assert.AreEqual($"({targetTop}, {targetLeft}), ({targetRight}, {targetButtom})", GetDataGridViewCellText(0, 2));
-            ClickButton(undoButtonName);
-            Assert.AreEqual($"({targetTop}, {targetLeft}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
-            ClickButton(undoButtonName);
-            Assert.AreEqual($"({startX}, {startY}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
-            ClickButton(redoButtonName);
-            ClickButton(redoButtonName);
+            DrawShape(rectangleButtonName, originCoor);
+            ResizeShape(originCoor, targetCoor);
+            Assert.AreEqual(GetCoordinateString(targetCoor), GetDataGridViewCellText(0, 2));
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual($"({targetCoor.Top}, {targetCoor.Left}), ({originCoor.Bottom}, {originCoor.Right})", GetDataGridViewCellText(0, 2));
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual(GetCoordinateString(originCoor), GetDataGridViewCellText(0, 2));
+            ClickByElementName(redoButtonName);
+            ClickByElementName(redoButtonName);
             Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(0, 1));
-            Assert.AreEqual($"({targetTop}, {targetLeft}), ({targetRight}, {targetButtom})", GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(targetCoor), GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
 
@@ -206,26 +289,68 @@ namespace PowerPoint2077Tests
         [TestMethod]
         public void TestMoveUndoRedo()
         {
-            var startX = 100;
-            var startY = 100;
-            var endX = 300;
-            var endY = 300;
+            var coor = new ShapeCoordinate(100, 100, 300, 300);
             var targetX = 300;
             var targetY = 300;
 
-            DrawShape(rectangleButtonName, startX, startY, endX, endY);
-
-            MoveShape(startX, startY, endX, endY, targetX, targetY);
-            Assert.AreEqual($"({targetX - (endX - startX) / 2}, {targetY - (endY - startY) / 2}), ({targetX + (endX - startX) / 2}, {targetY + (endY - startY) / 2})", GetDataGridViewCellText(0, 2));
-            ClickButton(undoButtonName);
-            Assert.AreEqual($"({startX}, {startY}), ({endX}, {endY})", GetDataGridViewCellText(0, 2));
-            ClickButton(redoButtonName);
-            Assert.AreEqual($"({targetX - (endX - startX) / 2}, {targetY - (endY - startY) / 2}), ({targetX + (endX - startX) / 2}, {targetY + (endY - startY) / 2})", GetDataGridViewCellText(0, 2));
+            DrawShape(rectangleButtonName, coor);
+            MoveShape(coor, targetX, targetY);
+            Assert.AreEqual($"({targetX - (coor.Right - coor.Left) / 2}, {targetY - (coor.Bottom - coor.Top) / 2}), ({targetX + (coor.Right - coor.Left) / 2}, {targetY + (coor.Bottom - coor.Top) / 2})", GetDataGridViewCellText(0, 2));
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual(GetCoordinateString(coor), GetDataGridViewCellText(0, 2));
+            ClickByElementName(redoButtonName);
+            Assert.AreEqual($"({targetX - (coor.Right - coor.Left) / 2}, {targetY - (coor.Bottom - coor.Top) / 2}), ({targetX + (coor.Right - coor.Left) / 2}, {targetY + (coor.Bottom - coor.Top) / 2})", GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
-        protected void ClickButton(string buttonName)
+
+        // test insert shape undo and redo
+        [TestMethod]
+        public void TestInsertUndoRedo()
+        {
+            var coordinate = InsertShape(insertCircleColumnName);
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual("0", _dataGrid.GetAttribute("Grid.RowCount"));
+            ClickByElementName(redoButtonName);
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
+            DeleteLastInsertShape();
+        }
+
+        // test move shape
+        [TestMethod]
+        public void TestMoveShape()
+        {
+            var coor = new ShapeCoordinate(100, 100, 300, 300);
+            var targetX = 300;
+            var targetY = 300;
+
+            DrawShape(rectangleButtonName, coor);
+            MoveShape(coor, targetX, targetY);
+            Assert.AreEqual($"({targetX - (coor.Right - coor.Left) / 2}, {targetY - (coor.Bottom - coor.Top) / 2}), ({targetX + (coor.Right - coor.Left) / 2}, {targetY + (coor.Bottom - coor.Top) / 2})", GetDataGridViewCellText(0, 2));
+            DeleteLastInsertShape();
+        }
+        // TODO
+        // test resize window
+        [TestMethod]
+        public void TestResizeWindow()
+        {
+            var width = 800;
+            var height = 600;
+            ResizeWindow(width, height);
+            Assert.IsTrue(Math.Abs(_canvas.Size.Width / _canvas.Size.Height - 16 / 9) < 0.01);
+            Assert.AreEqual(width, session.Manage().Window.Size.Width);
+            Assert.AreEqual(height, session.Manage().Window.Size.Height);
+        }
+        protected void ClickByElementName(string buttonName)
         {
             session.FindElementByName(buttonName).Click();
+        }
+
+        public void ClickByElementID(string buttonID)
+        {
+            session.FindElementByAccessibilityId(buttonID).Click();
         }
 
         protected bool IsButtonChecked(string buttonName)
@@ -252,7 +377,7 @@ namespace PowerPoint2077Tests
         private void DeleteLastInsertShape()
         {
             var rowCount = _dataGrid.FindElementsByName("Row").Count;
-            ClickButton(DataGridColumnName[0] + " Row " + rowCount);
+            ClickByElementName(DataGridColumnName[0] + " Row " + rowCount);
         }
     }
 }

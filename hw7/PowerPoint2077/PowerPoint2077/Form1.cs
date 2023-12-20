@@ -7,6 +7,7 @@ namespace WindowPowerPoint
     {
 
         private CursorManager _cursorManager;
+        private Dialog _dialog;
         public PowerPoint(PowerPointPresentationModel model)
         {
             base.DoubleBuffered = true;
@@ -42,6 +43,7 @@ namespace WindowPowerPoint
             SizeChanged += PowerPointSizeChanged;
             PowerPointSizeChanged(this, null); // lazy resize
             SplitContainer1Adjust(this, null);
+            _dialog = new Dialog();
         }
 
         // handle window size changed
@@ -77,7 +79,11 @@ namespace WindowPowerPoint
         // insert shape
         private void ButtonInsertShapeClick(object sender, EventArgs e)
         {
-            _presentationModel.ProcessInsertShape(_shapeComboBox.Text);
+            // _presentationModel.ProcessInsertShape(_shapeComboBox.Text);
+            // if the dialog box not open, open it
+            _dialog.SetupDialog(_canvas.Size, _shapeComboBox.Text, _presentationModel, new Point(Width >> 1, Height >> 1));
+            _dialog.ShowDialog();
+
             GenerateBrief();
         }
         private readonly PowerPointPresentationModel _presentationModel;

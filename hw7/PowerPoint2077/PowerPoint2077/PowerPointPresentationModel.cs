@@ -36,6 +36,15 @@ namespace WindowPowerPoint
             _model.ModelCursorManager = cursorManager;
         }
 
+        // insert shape with coordinate
+        public void ProcessInsertShape(string shapeName, Point firstPoint, Point secondPoint)
+        {
+            if (shapeName != string.Empty)
+            {
+                _model.HandleInsertShape(shapeName, firstPoint, secondPoint);
+            }
+        }
+
         // insert shape
         public void ProcessInsertShape(string shapeName)
         {

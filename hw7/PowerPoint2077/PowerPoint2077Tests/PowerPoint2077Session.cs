@@ -3,7 +3,7 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 
-namespace PowerPoint2077Tests
+namespace WindowPowerPoint.Tests
 {
     public class PowerPoint2077Session
     {
@@ -48,8 +48,5 @@ namespace PowerPoint2077Tests
             }
             catch { }
         }
-
-
-
     }
 }
