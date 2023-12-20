@@ -24,6 +24,8 @@ namespace PowerPoint2077Tests
         const string dataGridId = "_shapeGridView";
         private WindowsElement _canvas;
         private WindowsElement _dataGrid;
+
+        // initialize class
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
@@ -47,10 +49,10 @@ namespace PowerPoint2077Tests
         }
 
         // absolute move
-        public Interaction CreateMoveTo(PointerInputDevice devic, int x, int y)
+        public Interaction CreateMoveTo(PointerInputDevice device, int x, int y)
         {
             var size = _canvas.Size;
-            return devic.CreatePointerMove(_canvas, x - size.Width / 2, y - size.Height / 2, TimeSpan.Zero);
+            return device.CreatePointerMove(_canvas, x - size.Width / 2, y - size.Height / 2, TimeSpan.Zero);
         }
 
         // draw shape
@@ -59,11 +61,10 @@ namespace PowerPoint2077Tests
             ClickButton(shapeButtonName);
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
-            var size = _canvas.Size;
-            actionBuilder.AddAction(device.CreatePointerMove(_canvas, -size.Width / 2, -size.Height / 2, TimeSpan.Zero))
-            .AddAction(device.CreatePointerMove(CoordinateOrigin.Pointer, startX, startY, TimeSpan.Zero))
+            actionBuilder
+            .AddAction(CreateMoveTo(device, startX, startY))
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
-            .AddAction(device.CreatePointerMove(CoordinateOrigin.Pointer, endX - startX, endY - startY, TimeSpan.Zero))
+            .AddAction(CreateMoveTo(device, endX, endY))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
@@ -239,12 +240,15 @@ namespace PowerPoint2077Tests
             { 1, "形狀" },
             { 2, "資訊" }
         };
+        // get data grid view cell text
         protected string GetDataGridViewCellText(int rowIndex, int columnIndex)
         {
             var rowData = _dataGrid.FindElementByName("Row " + rowIndex);
             var columnData = rowData.FindElementByName(DataGridColumnName[columnIndex] + " Row " + rowIndex);
             return columnData.Text;
         }
+
+        // delete last insert shape
         private void DeleteLastInsertShape()
         {
             var rowCount = _dataGrid.FindElementsByName("Row").Count;

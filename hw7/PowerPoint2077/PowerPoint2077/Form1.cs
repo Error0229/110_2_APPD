@@ -41,6 +41,7 @@ namespace WindowPowerPoint
             _presentationModel.ProcessCursorClicked();
             SizeChanged += PowerPointSizeChanged;
             PowerPointSizeChanged(this, null); // lazy resize
+            SplitContainer1Adjust(this, null);
         }
 
         // handle window size changed
