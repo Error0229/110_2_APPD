@@ -40,7 +40,7 @@ namespace WindowPowerPoint
             this.label4 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this._flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // textBox1
@@ -145,13 +145,13 @@ namespace WindowPowerPoint
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // flowLayoutPanel1
+            // _flowLayoutPanel
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(339, 217);
-            this.flowLayoutPanel1.TabIndex = 10;
+            this._flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this._flowLayoutPanel.Name = "_flowLayoutPanel";
+            this._flowLayoutPanel.Size = new System.Drawing.Size(339, 217);
+            this._flowLayoutPanel.TabIndex = 10;
             // 
             // Dialog
             // 
@@ -168,9 +168,10 @@ namespace WindowPowerPoint
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this._flowLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +189,6 @@ namespace WindowPowerPoint
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel _flowLayoutPanel;
     }
 }

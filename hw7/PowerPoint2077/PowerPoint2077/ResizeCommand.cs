@@ -13,7 +13,7 @@ namespace WindowPowerPoint
         // ensure that the first excute will not move the shape
         bool _firstResize;
         public int SlideIndex { get; set; }
-        public ResizeCommand(PowerPointModel model, Shape shape, PointF firstPoint, PointF secondPoint)
+        public ResizeCommand(PowerPointModel model, Shape shape, PointF firstPoint, PointF secondPoint, int slideIndex)
         {
             _model = model;
             _shape = shape;
@@ -22,6 +22,7 @@ namespace WindowPowerPoint
             _newShapeFirstPoint = shape.GetFirstPoint();
             _newShapeSecondPoint = shape.GetSecondPoint();
             _firstResize = true;
+            SlideIndex = slideIndex;
         }
 
         // execute command
@@ -32,13 +33,13 @@ namespace WindowPowerPoint
                 _firstResize = false;
                 return;
             }
-            _model.ResizeShape(_shape, _newShapeFirstPoint, _newShapeSecondPoint);
+            _model.ResizeShape(_shape, _newShapeFirstPoint, _newShapeSecondPoint, SlideIndex);
         }
 
         // unexecute commmand
         public void Unexecute()
         {
-            _model.ResizeShape(_shape, _oldShapeFirstPoint, _oldShapeSecondPoint);
+            _model.ResizeShape(_shape, _oldShapeFirstPoint, _oldShapeSecondPoint, SlideIndex);
         }
 
     }

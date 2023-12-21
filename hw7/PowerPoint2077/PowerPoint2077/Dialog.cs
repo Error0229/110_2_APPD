@@ -17,9 +17,8 @@ namespace WindowPowerPoint
         {
             InitializeComponent();
         }
-        public void SetupDialog(Size canvasSize, string shapeName, PowerPointPresentationModel model, Point location)
+        public void SetupDialog(Size canvasSize, string shapeName, PowerPointPresentationModel model)
         {
-            Location = location;
             _canvasSize = canvasSize;
             _model = model;
             _shapeName = shapeName;

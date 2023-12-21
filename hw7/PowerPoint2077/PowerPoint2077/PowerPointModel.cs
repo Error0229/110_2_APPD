@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -13,6 +12,7 @@ namespace WindowPowerPoint
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
         private CursorManager _cursorManager;
+        public Size CanvasSize { get; set; }
         public int SlideIndex { get; set; }
         public virtual CursorManager ModelCursorManager
         {
@@ -49,7 +49,7 @@ namespace WindowPowerPoint
             Pages = new List<Page>();
             Pages.Add(_pageFactory.GetPage());
             _state = new PointState(this);
-            _canvasSize = new Size(0, 0);
+            CanvasSize = new Size(0, 0);
             _handleToCursor = new Dictionary<HandleType, Cursor>();
             _handleToCursor.Add(HandleType.TopLeft, Cursors.SizeNWSE);
             _handleToCursor.Add(HandleType.Top, Cursors.SizeNS);
@@ -86,8 +86,8 @@ namespace WindowPowerPoint
         public virtual void HandleInsertShape(string shapeName)
         {
             Shape shape = _factory.CreateShape(shapeName);
-            shape.SetFirstPoint(new Point(GenerateRandomNumber(0, _canvasSize.Width), GenerateRandomNumber(0, _canvasSize.Height)));
-            shape.SetSecondPoint(new Point(GenerateRandomNumber(0, _canvasSize.Width), GenerateRandomNumber(0, _canvasSize.Height)));
+            shape.SetFirstPoint(new Point(GenerateRandomNumber(0, CanvasSize.Width), GenerateRandomNumber(0, CanvasSize.Height)));
+            shape.SetSecondPoint(new Point(GenerateRandomNumber(0, CanvasSize.Width), GenerateRandomNumber(0, CanvasSize.Height)));
             _commandManager.Execute(new AddCommand(this, shape, SlideIndex));
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -106,12 +106,12 @@ namespace WindowPowerPoint
         // insert shape by shape for command pattern
         public virtual void InsertShape(Shape shape, int actionIndex)
         {
-            shape.SetCanvasSize(_canvasSize);
             if (actionIndex != SlideIndex)
             {
                 SlideIndex = actionIndex;
                 NotifyPageChanged(actionIndex, Page.Action.Switch);
             }
+            shape.SetCanvasSize(CanvasSize);
             Pages[SlideIndex].AddShape(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
@@ -144,7 +144,11 @@ namespace WindowPowerPoint
         // set canvas coordinate
         public virtual void SetCanvasSize(Size canvasSize)
         {
-            _canvasSize = canvasSize;
+            if (Pages.Count == 0)
+            {
+                return;
+            }
+            CanvasSize = canvasSize;
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
                 shape.SetCanvasSize(canvasSize);
@@ -159,7 +163,7 @@ namespace WindowPowerPoint
             {
                 if (shape.Selected)
                 {
-                    _commandManager.Execute(new MoveCommand(this, shape, offset, SlideIndex));
+                    _commandManager.Execute(new MoveCommand(this, shape, offset, CanvasSize, SlideIndex));
                 }
             }
             NotifyModelChanged(EventArgs.Empty);
@@ -172,15 +176,20 @@ namespace WindowPowerPoint
             {
                 if (shape.Selected)
                 {
-                    _commandManager.Execute(new ResizeCommand(this, shape, firstPoint, secondPoint));
+                    _commandManager.Execute(new ResizeCommand(this, shape, firstPoint, secondPoint, SlideIndex));
                 }
             }
             NotifyModelChanged(EventArgs.Empty);
         }
 
         // resize shape
-        public virtual void ResizeShape(Shape shape, PointF firstPoint, PointF secondPoint)
+        public virtual void ResizeShape(Shape shape, PointF firstPoint, PointF secondPoint, int commandSlideIndex)
         {
+            if (commandSlideIndex != SlideIndex)
+            {
+                SlideIndex = commandSlideIndex;
+                NotifyPageChanged(commandSlideIndex, Page.Action.Switch);
+            }
             shape.SetFirstPoint(Point.Round(firstPoint));
             shape.SetSecondPoint(Point.Round(secondPoint));
             shape.AdjustHandle();
@@ -190,7 +199,7 @@ namespace WindowPowerPoint
         // move shape
         public virtual void MoveShape(Shape shape, Point offset, int commandIndex)
         {
-            if(commandIndex != SlideIndex)
+            if (commandIndex != SlideIndex)
             {
                 SlideIndex = commandIndex;
                 NotifyPageChanged(commandIndex, Page.Action.Switch);
@@ -220,7 +229,16 @@ namespace WindowPowerPoint
         // handle Key down
         public virtual void HandleKeyDown(Keys keyCode)
         {
+            if (Pages.Count == 0)
+            {
+                return;
+            }
+            var oldCount = Pages[SlideIndex].Shapes.Count;
             _state.KeyDown(keyCode);
+            if (oldCount == Pages[SlideIndex].Shapes.Count && keyCode == Keys.Delete)
+            {
+                _commandManager.Execute(new DeletePageCommand(this, SlideIndex, Pages[SlideIndex]));
+            }
         }
 
         // draw shapes
@@ -233,6 +251,10 @@ namespace WindowPowerPoint
         // draw all shapes
         public virtual void DrawShapes(IGraphics graphics)
         {
+            if (Pages.Count == 0)
+            {
+                return;
+            }
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
                 shape.Draw(graphics);
@@ -242,6 +264,10 @@ namespace WindowPowerPoint
         // clear selected shape
         public virtual void ClearSelectedShape()
         {
+            if (Pages.Count == 0)
+            {
+                return;
+            }
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
                 shape.Selected = false;
@@ -310,7 +336,7 @@ namespace WindowPowerPoint
         // remove page
         public virtual void DeletePage(int deleteIndex, Page page)
         {
-            if (deleteIndex == SlideIndex)
+            if (deleteIndex <= SlideIndex && !(deleteIndex == 0 && Pages.Count > 1))
             {
                 SlideIndex--;
             }
@@ -339,7 +365,6 @@ namespace WindowPowerPoint
         }
 
         private Shape _hint;
-        private Size _canvasSize;
         private readonly ShapeFactory _factory;
         private readonly PageFactory _pageFactory;
         public List<Page> Pages;

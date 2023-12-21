@@ -71,7 +71,7 @@ namespace WindowPowerPoint
         {
             if (columnIndex == 0 && index >= 0)
             {
-                _model.HandleRemoveShape(_model.Pages[SlideIndex].Shapes[index]) ;
+                _model.HandleRemoveShape(_model.Pages[SlideIndex].Shapes[index]);
             }
         }
 
