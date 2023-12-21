@@ -5,12 +5,14 @@ using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
-    public class PowerPointPresentationModel : INotifyPropertyChanged
+    public class PowerPointPresentationModel : INotifyPropertyChanged, ISlide
     {
+        public int SlideIndex { get; set; }
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
         public event ModelChangedEventHandler _cursorChanged;
         public event PropertyChangedEventHandler PropertyChanged;
+        public event Action<int, Page.Action> _pageChanged;
         private CursorManager _cursorManager;
         private readonly CommandManager _commandManager;
         public PowerPointPresentationModel(PowerPointModel model)
@@ -20,6 +22,7 @@ namespace WindowPowerPoint
             _commandManager._redoStateChanged += (sender, e) => IsRedoEnabled = _commandManager.CanRedo;
             _model = model;
             _model._modelChanged += HandleModelChanged;
+            _model._pageChanged += HandlePageChange;
             _model.ModelCommandManager = _commandManager;
             _isCircleChecked = false;
             _isLineChecked = false;
@@ -27,6 +30,15 @@ namespace WindowPowerPoint
             _isSelecting = false;
             _isUndoEnabled = false;
             _isRedoEnabled = false;
+        }
+
+        // handle add page
+        public void HandlePageChange(int index, Page.Action operation)
+        {
+            if (_pageChanged != null)
+            {
+                _pageChanged.Invoke(index, operation);
+            }
         }
 
         // setup cursor manager
@@ -59,7 +71,7 @@ namespace WindowPowerPoint
         {
             if (columnIndex == 0 && index >= 0)
             {
-                _model.HandleRemoveShape(index);
+                _model.HandleRemoveShape(_model.Pages[SlideIndex].Shapes[index]) ;
             }
         }
 
@@ -193,6 +205,27 @@ namespace WindowPowerPoint
             NotifyCursorChanged(EventArgs.Empty);
         }
 
+        // process add page
+        public void ProcessAddPage(int newSlideIndex)
+        {
+            SlideIndex = newSlideIndex;
+            _model.HandleAddPage(newSlideIndex);
+        }
+
+        // process delete page
+        public void ProcessDeletePage(int deletedSlideIndex)
+        {
+            SlideIndex = deletedSlideIndex - 1;
+            _model.HandleDeletePage(deletedSlideIndex);
+        }
+
+        // process change page
+        public void ProcessSwitchPage(int newSlideIndex)
+        {
+            SlideIndex = newSlideIndex;
+            _model.HandleSwitchPage(newSlideIndex);
+        }
+
         // process redo
         public void ProcessRedo()
         {
@@ -283,7 +316,14 @@ namespace WindowPowerPoint
         {
             get
             {
-                return _model.Shapes;
+                try
+                {
+                    return _model.Pages[SlideIndex].Shapes;
+                }
+                catch
+                {
+                    return new BindingList<Shape>();
+                }
             }
         }
 

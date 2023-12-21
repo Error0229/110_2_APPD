@@ -50,7 +50,7 @@ namespace WindowPowerPoint
         }
 
     }
-    public abstract partial class Shape : ISlide
+    public abstract partial class Shape
     {
         private Dictionary<HandleType, Action<Point>> _adjustWith;
         protected Shape(ShapeType type) : this()
@@ -159,6 +159,7 @@ namespace WindowPowerPoint
             return Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
         }
 
+
         // draw shape
         public abstract void Draw(IGraphics graphic);
 
@@ -188,9 +189,6 @@ namespace WindowPowerPoint
                 _isSelected = value;
             }
         }
-
-        [System.ComponentModel.Browsable(false)]
-        public int SlideNumber { get; set; }
 
         // get shape location
         protected Point GetShapeLocation()

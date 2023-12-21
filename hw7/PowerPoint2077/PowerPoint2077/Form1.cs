@@ -3,9 +3,13 @@ using System.Drawing;
 using System.Windows.Forms;
 namespace WindowPowerPoint
 {
-    public partial class PowerPoint : Form
+    public partial class PowerPoint : Form, ISlide
     {
 
+        public int SlideIndex
+        {
+            get; set;
+        }
         private CursorManager _cursorManager;
         private Dialog _dialog;
         public PowerPoint(PowerPointPresentationModel model)
@@ -18,7 +22,6 @@ namespace WindowPowerPoint
             UpdateStyles();
             _presentationModel = model;
             InitializeComponent();
-            _shapeGridView.DataSource = _presentationModel.Shapes;
             _lineAddButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_LINE_CHECKED);
             _rectangleAddButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_RECTANGLE_CHECKED);
             _ellipseAddButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_CIRCLE_CHECKED);
@@ -39,8 +42,11 @@ namespace WindowPowerPoint
             _cursorManager = new CursorManager();
             _presentationModel.SetCursorManager(_cursorManager);
             _presentationModel._cursorChanged += HandleCursorChanged;
+            _presentationModel._pageChanged += ProcessPageChanged;
             _presentationModel.ProcessCursorClicked();
             SizeChanged += PowerPointSizeChanged;
+            InitializeSlide(); // lazy add page
+            _shapeGridView.DataSource = _presentationModel.Shapes;
             PowerPointSizeChanged(this, null); // lazy resize
             SplitContainer1Adjust(this, null);
             _dialog = new Dialog();
@@ -73,7 +79,8 @@ namespace WindowPowerPoint
                 return;
             _brief = new Bitmap(_canvas.Width, _canvas.Height);
             _canvas.DrawToBitmap(_brief, new System.Drawing.Rectangle(Constant.ZERO_INTEGER, Constant.ZERO_INTEGER, _canvas.Width, _canvas.Height));
-            _slide1.Image = new Bitmap(_brief, _slide1.Size);
+            Button button = ((Button)(_flowLayoutPanel.Controls[SlideIndex]));
+            button.Image = new Bitmap(_brief, button.Size);
         }
 
         // insert shape
@@ -169,13 +176,16 @@ namespace WindowPowerPoint
         private void SplitContainer1Adjust(object sender, SplitterEventArgs e)
         {
             // make sure the thumbnail and the slide button is updated keep the aspect ratio 16:9
-            double panel1Width = _splitContainer1.Panel1.Width;
-            _slide1.Width = (int)panel1Width - _splitContainer1.Panel1.Margin.Horizontal;
-            _slide1.Height = (int)(_slide1.Width / Constant.SLIDE_RATIO);
-            _slide1.Left = (int)((panel1Width - _slide1.Width) / Constant.PEN_THICK);
+            double panel1Width = _flowLayoutPanel.Width;
+            foreach (Button slideButton in _flowLayoutPanel.Controls)
+            {
+                slideButton.Width = (int)panel1Width - _flowLayoutPanel.Margin.Horizontal;
+                slideButton.Height = (int)(slideButton.Width / Constant.SLIDE_RATIO);
+            }
             ResizeCanvas(sender, e);
             GenerateBrief();
         }
+
 
         // handle when splitter2 move
         private void SplitContainer2Adjust(object sender, SplitterEventArgs e)
@@ -225,9 +235,67 @@ namespace WindowPowerPoint
             GenerateBrief();
         }
 
-        private void addPageButtonClick(object sender, EventArgs e)
+        // add page button click
+        private void AddPageButtonClick(object sender, EventArgs e)
         {
+            _presentationModel.ProcessAddPage(SlideIndex + 1);
+        }
+        private void ProcessPageChanged(int index, Page.Action action)
+        {
+            switch (action)
+            {
+                case Page.Action.Add:
+                    Button button = new Button();
+                    double panel1Width = _flowLayoutPanel.Width;
+                    button.Width = (int)panel1Width - _flowLayoutPanel.Margin.Horizontal;
+                    button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
+                    button.Click += HandleSlideButtonClick;
+                    _flowLayoutPanel.Controls.Add(button);
+                    _flowLayoutPanel.Controls.SetChildIndex(button, index);
+                    button.Focus();
+                    _shapeGridView.DataSource = _presentationModel.Shapes;
+                    SlideIndex++;
+                    break;
+                case Page.Action.Remove:
+                    _flowLayoutPanel.Controls.RemoveAt(index);
+                    _shapeGridView.DataSource = _presentationModel.Shapes;
+                    if (index == SlideIndex)
+                        SlideIndex--;
+                    break;
+                case Page.Action.Switch:
+                    SlideIndex = index;
+                    // change the current page
+                    _presentationModel.ProcessSwitchPage(SlideIndex);
+                    _shapeGridView.DataSource = _presentationModel.Shapes;
+                    _flowLayoutPanel.Controls[SlideIndex].Focus();
+                    break;
+            }
+            GenerateBrief();
+            // add a button in flowlayoutpanel as a slide page
+        }
 
+        // initialize first page
+        private void InitializeSlide()
+        {
+            SlideIndex = 0;
+            Button button = new Button();
+            double panel1Width = _flowLayoutPanel.Width;
+            button.Width = (int)panel1Width - _flowLayoutPanel.Margin.Horizontal;
+            button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
+            button.Click += HandleSlideButtonClick;
+            _flowLayoutPanel.Controls.Add(button);
+            _flowLayoutPanel.Controls.SetChildIndex(button, SlideIndex);
+            _presentationModel.SlideIndex = 0;
+            GenerateBrief();
+        }
+        // handle slide buttin click
+        private void HandleSlideButtonClick(object sender, EventArgs e)
+        {
+            SlideIndex = _flowLayoutPanel.Controls.GetChildIndex((Button)sender);
+            // change the current page
+            _presentationModel.ProcessSwitchPage(SlideIndex);
+            _shapeGridView.DataSource = _presentationModel.Shapes;
+            GenerateBrief();
         }
     }
 }

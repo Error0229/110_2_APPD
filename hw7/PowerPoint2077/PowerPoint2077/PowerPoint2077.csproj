@@ -69,12 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddCommand.cs" />
+    <Compile Include="AddPageCommand.cs" />
     <Compile Include="BindingToolStripButton.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="CommandManager.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="CursorManager.cs" />
     <Compile Include="DeleteCommand.cs" />
+    <Compile Include="DeletePageCommand.cs" />
     <Compile Include="Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +100,8 @@
     <Compile Include="IState.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="MoveCommand.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="PageFactory.cs" />
     <Compile Include="PointState.cs" />
     <Compile Include="PowerPointModel.cs" />
     <Compile Include="PowerPointPresentationModel.cs" />

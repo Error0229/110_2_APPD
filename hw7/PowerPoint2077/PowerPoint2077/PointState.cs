@@ -28,7 +28,7 @@ namespace WindowPowerPoint
         // mouse down for shape adjust
         private void MouseDownForAdjust(Point point)
         {
-            foreach (Shape shape in _model.Shapes)
+            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
             {
                 if (shape.TryAdjustWhenMouseDown(point, out _isAdjusting))
                 {
@@ -43,7 +43,7 @@ namespace WindowPowerPoint
         private void MouseDownForMove(Point point)
         {
             _model.ClearSelectedShape();
-            foreach (Shape shape in _model.Shapes)
+            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
             {
                 if (shape.IsInShape(point))
                 {
@@ -75,7 +75,7 @@ namespace WindowPowerPoint
         // mouse move while adjusting shape
         private void MouseMoveWhileAdjusting(Point point)
         {
-            foreach (Shape shape in _model.Shapes)
+            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
             {
                 if (shape.TryAdjustWhenMouseMove(point))
                 {
@@ -88,7 +88,7 @@ namespace WindowPowerPoint
         // mouse move while moving shape
         private void MouseMoveWhileMoving(Point point)
         {
-            foreach (Shape shape in _model.Shapes)
+            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
             {
                 if (shape.Selected)
                 {
@@ -103,7 +103,7 @@ namespace WindowPowerPoint
         // mouse move while idle
         private void MouseMoveWhileIdle(Point point)
         {
-            foreach (Shape shape in _model.Shapes)
+            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
             {
                 if (shape.Selected)
                 {
@@ -142,11 +142,11 @@ namespace WindowPowerPoint
         {
             if (keyCode == Keys.Delete)
             {
-                foreach (Shape shape in _model.Shapes)
+                foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
                 {
                     if (shape.Selected)
                     {
-                        _model.HandleRemoveShape(_model.Shapes.IndexOf(shape));
+                        _model.HandleRemoveShape(shape);
                         _model.NotifyModelChanged(EventArgs.Empty);
                         break;
                     }

@@ -2,6 +2,6 @@
 {
     public interface ISlide
     {
-        int SlideNumber { get; set; }
+        int SlideIndex { get; set; }
     }
 }
