@@ -13,6 +13,7 @@ namespace WindowPowerPoint.Tests
         PowerPointPresentationModel _presentationModel;
         Mock<PowerPointModel> _model;
         PrivateObject _privatePresentationModel;
+        int _slideIndex;
 
         // initialize
         [TestInitialize()]
@@ -47,13 +48,46 @@ namespace WindowPowerPoint.Tests
             _model.Verify(model => model.HandleInsertShape(Constant.CIRCLE_CHINESE), Times.Once());
         }
 
+        // test insert shape with coordinate
+        [TestMethod]
+        public void ProcessInsertShapeTest0()
+        {
+            var firstPoint = new Point(0, 0);
+            var secondPoint = new Point(50, 50);
+            _presentationModel.ProcessInsertShape(Constant.CIRCLE_CHINESE, firstPoint, secondPoint);
+            _model.Verify(model => model.HandleInsertShape(Constant.CIRCLE_CHINESE, firstPoint, secondPoint), Times.Once());
+        }
+
+        // test add page
+        [TestMethod]
+        public void ProcessAddPageTest()
+        {
+            _presentationModel.ProcessAddPage(1);
+            _model.Verify(model => model.HandleAddPage(1), Times.Once());
+        }
+
+        // test remove page
+        [TestMethod]
+        public void ProcessDeletePageTest()
+        {
+            _presentationModel.ProcessDeletePage(0);
+            _model.Verify(model => model.HandleDeletePage(0), Times.Once());
+        }
+
+        // test switch page
+        [TestMethod]
+        public void ProcessSwitchPageTest()
+        {
+            _presentationModel.ProcessSwitchPage(0);
+            _model.Verify(model => model.HandleSwitchPage(0), Times.Once());
+        }
         // test remove shape
         [TestMethod()]
         public void ProcessRemoveShapeTest()
         {
             _presentationModel.ProcessInsertShape(Constant.CIRCLE_CHINESE);
             _presentationModel.ProcessRemoveShape(0, 0);
-            _model.Verify(model => model.HandleRemoveShape(0), Times.Once());
+            _model.Verify(model => model.HandleRemoveShape(_slideIndex, 0), Times.Once());
         }
 
         // test mouse enter canvas while drawing
@@ -260,12 +294,22 @@ namespace WindowPowerPoint.Tests
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
         }
 
+        // test handle page changed
+        [TestMethod()]
+        public void HandlePageChangedTest()
+        {
+            var pageChanged = new Mock<Action<int, Page.Action>>();
+            _presentationModel._pageChanged += pageChanged.Object;
+            _presentationModel.HandlePageChanged(0, Page.Action.Switch);
+            pageChanged.Verify(m => m(0, Page.Action.Switch), Times.Once());
+        }
+
         // test get shape
         [TestMethod()]
         public void ShapesTest()
         {
             _ = _presentationModel.Shapes;
-            _model.Verify(model => model.Shapes, Times.Once());
+            _model.Verify(model => model.GetCurrentShapes(), Times.Once());
         }
 
         // test is undo/redo enabled

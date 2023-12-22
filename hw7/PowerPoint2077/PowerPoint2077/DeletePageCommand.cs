@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WindowPowerPoint
+﻿namespace WindowPowerPoint
 {
-    class DeletePageCommand : ICommand
+    public class DeletePageCommand : ICommand
     {
         readonly PowerPointModel _model;
         Page _page;

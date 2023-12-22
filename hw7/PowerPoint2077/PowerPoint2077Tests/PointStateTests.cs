@@ -11,15 +11,19 @@ namespace WindowPowerPoint.Tests
         Mock<PowerPointModel> _model;
         PointState _state;
         PrivateObject _privateState;
+        int _slideIndex;
+        BindingList<Shape> _shapes;
 
         // set up
         [TestInitialize()]
         public void Initialize()
         {
+            _slideIndex = 0;
+            _shapes = new BindingList<Shape>();
             _model = new Mock<PowerPointModel>();
             // set up _model's public properties
             _model.SetupGet(model => model.ModelCursorManager).Returns(new CursorManager());
-            _model.SetupGet(model => model.Shapes).Returns(new BindingList<Shape>());
+            _model.Setup(model => model.GetCurrentShapes()).Returns(_shapes);
             _state = new PointState(_model.Object);
             _privateState = new PrivateObject(_state);
         }
@@ -57,8 +61,8 @@ namespace WindowPowerPoint.Tests
             var shapeMock = new Mock<Shape>();
             shapeMock0.Setup(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny)).Returns(false);
             shapeMock.Setup(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny)).Returns(true);
-            _model.Object.Shapes.Add(shapeMock0.Object);
-            _model.Object.Shapes.Add(shapeMock.Object);
+            _shapes.Add(shapeMock0.Object);
+            _shapes.Add(shapeMock.Object);
             _privateState.Invoke("MouseDownForAdjust", new Point(0, 0));
             shapeMock.Verify(shape => shape.TryAdjustWhenMouseDown(It.IsAny<Point>(), out It.Ref<bool>.IsAny), Times.Once());
         }
@@ -72,8 +76,8 @@ namespace WindowPowerPoint.Tests
             var shapeMock2 = new Mock<Shape>();
             shapeMock.Setup(shape => shape.IsInShape(It.IsAny<Point>())).Returns(false);
             shapeMock2.Setup(shape => shape.IsInShape(It.IsAny<Point>())).Returns(true);
-            _model.Object.Shapes.Add(shapeMock.Object);
-            _model.Object.Shapes.Add(shapeMock2.Object);
+            _shapes.Add(shapeMock.Object);
+            _shapes.Add(shapeMock2.Object);
             _privateState.Invoke("MouseDownForMove", new Point(0, 0));
             shapeMock.Verify(shape => shape.IsInShape(It.IsAny<Point>()), Times.Once());
             shapeMock2.Verify(shape => shape.IsInShape(It.IsAny<Point>()), Times.Once());
@@ -101,8 +105,8 @@ namespace WindowPowerPoint.Tests
             var shapeMock2 = new Mock<Shape>();
             shapeMock.Setup(shape => shape.TryAdjustWhenMouseMove(It.IsAny<Point>())).Returns(false);
             shapeMock2.Setup(shape => shape.TryAdjustWhenMouseMove(It.IsAny<Point>())).Returns(true);
-            _model.Object.Shapes.Add(shapeMock.Object);
-            _model.Object.Shapes.Add(shapeMock2.Object);
+            _shapes.Add(shapeMock.Object);
+            _shapes.Add(shapeMock2.Object);
             _privateState.Invoke("MouseMoveWhileAdjusting", new Point(0, 0));
             shapeMock.Verify(shape => shape.TryAdjustWhenMouseMove(It.IsAny<Point>()), Times.Once());
             shapeMock2.Verify(shape => shape.TryAdjustWhenMouseMove(It.IsAny<Point>()), Times.Once());
@@ -118,8 +122,8 @@ namespace WindowPowerPoint.Tests
             shapeMock0.Setup(shape => shape.Selected).Returns(false);
             shapeMock.Setup(shape => shape.Move(It.IsAny<Point>()));
             shapeMock.Setup(shape => shape.Selected).Returns(true);
-            _model.Object.Shapes.Add(shapeMock0.Object);
-            _model.Object.Shapes.Add(shapeMock.Object);
+            _shapes.Add(shapeMock0.Object);
+            _shapes.Add(shapeMock.Object);
             _privateState.Invoke("MouseMoveWhileMoving", new Point(0, 0));
             _state.MouseMove(new Point(0, 0));
             shapeMock.Verify(shape => shape.Move(It.IsAny<Point>()), Times.Once());
@@ -135,8 +139,8 @@ namespace WindowPowerPoint.Tests
             shapeMock0.Setup(shape => shape.Selected).Returns(false);
             shapeMock.Setup(shape => shape.IsCloseToHandle(It.IsAny<Point>())).Returns(HandleType.None);
             shapeMock.Setup(shape => shape.Selected).Returns(true);
-            _model.Object.Shapes.Add(shapeMock0.Object);
-            _model.Object.Shapes.Add(shapeMock.Object);
+            _shapes.Add(shapeMock0.Object);
+            _shapes.Add(shapeMock.Object);
             _privateState.Invoke("MouseMoveWhileIdle", new Point(0, 0));
             shapeMock.Verify(shape => shape.IsCloseToHandle(It.IsAny<Point>()), Times.Once());
         }
@@ -171,8 +175,8 @@ namespace WindowPowerPoint.Tests
             var shapeMock0 = new Mock<Shape>();
             var shapeMock = new Mock<Shape>();
             shapeMock.Setup(shape => shape.Selected).Returns(true);
-            _model.Object.Shapes.Add(shapeMock0.Object);
-            _model.Object.Shapes.Add(shapeMock.Object);
+            _shapes.Add(shapeMock0.Object);
+            _shapes.Add(shapeMock.Object);
             _state.KeyDown(System.Windows.Forms.Keys.D);
             _state.KeyDown(System.Windows.Forms.Keys.Delete);
             shapeMock.Verify(shape => shape.Selected, Times.Once());

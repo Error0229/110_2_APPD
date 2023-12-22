@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace WindowPowerPoint
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
         private CursorManager _cursorManager;
-        public Size CanvasSize { get; set; }
+        public virtual Size CanvasSize { get; set; }
         public int SlideIndex { get; set; }
         public virtual CursorManager ModelCursorManager
         {
@@ -129,6 +130,13 @@ namespace WindowPowerPoint
             NotifyModelChanged(EventArgs.Empty);
         }
 
+        // handle remove shape
+        public virtual void HandleRemoveShape(int slideIndex, int index)
+        {
+            _commandManager.Execute(new DeleteCommand(this, Pages[slideIndex].Shapes[index], SlideIndex));
+            NotifyModelChanged(EventArgs.Empty);
+        }
+
         // remove shape by shape
         public virtual void RemoveShape(Shape shape, int actionIndex)
         {
@@ -170,7 +178,7 @@ namespace WindowPowerPoint
         }
 
         // handle resize shape
-        public virtual void HanldeShapeResize(PointF firstPoint, PointF secondPoint)
+        public virtual void HandleShapeResize(PointF firstPoint, PointF secondPoint)
         {
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
@@ -336,7 +344,7 @@ namespace WindowPowerPoint
         // remove page
         public virtual void DeletePage(int deleteIndex, Page page)
         {
-            if (deleteIndex <= SlideIndex && !(deleteIndex == 0 && Pages.Count > 1))
+            if (deleteIndex <= SlideIndex && !(deleteIndex == 0 && SlideIndex == 0 && Pages.Count > 1))
             {
                 SlideIndex--;
             }
@@ -347,6 +355,7 @@ namespace WindowPowerPoint
         public virtual void HandleSwitchPage(int newSlideIndex)
         {
             SlideIndex = newSlideIndex;
+            NotifyPageChanged(newSlideIndex, Page.Action.Switch);
             NotifyModelChanged(EventArgs.Empty);
         }
 
@@ -362,6 +371,12 @@ namespace WindowPowerPoint
         {
             _commandManager.Undo();
             NotifyModelChanged(EventArgs.Empty);
+        }
+
+        // get current shapes
+        public virtual BindingList<Shape> GetCurrentShapes()
+        {
+            return Pages[SlideIndex].Shapes;
         }
 
         private Shape _hint;

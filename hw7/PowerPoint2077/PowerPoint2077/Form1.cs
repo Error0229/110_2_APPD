@@ -318,7 +318,6 @@ namespace WindowPowerPoint
                     break;
                 case Page.Action.Switch:
                     SlideIndex = index;
-                    _presentationModel.ProcessSwitchPage(SlideIndex);
                     _presentationModel.SlideIndex = SlideIndex;
                     _shapeGridView.DataSource = _presentationModel.Shapes;
                     _flowLayoutPanel.Controls[SlideIndex].Focus();
@@ -346,9 +345,9 @@ namespace WindowPowerPoint
         // handle slide buttin click
         private void HandleSlideButtonClick(object sender, EventArgs e)
         {
-            SlideIndex = _flowLayoutPanel.Controls.GetChildIndex((Button)sender);
+            var index = _flowLayoutPanel.Controls.GetChildIndex((Button)sender);
             // change the current page
-            _presentationModel.ProcessSwitchPage(SlideIndex);
+            _presentationModel.ProcessSwitchPage(index);
             _shapeGridView.DataSource = _presentationModel.Shapes;
             GenerateBrief();
         }

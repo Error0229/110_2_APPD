@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 namespace WindowPowerPoint
 {
-    public class Page : ISlide
+    public class Page
     {
         public enum Action
         {
@@ -14,7 +9,6 @@ namespace WindowPowerPoint
             Remove,
             Switch
         }
-        public int SlideIndex { get; set; }
         public BindingList<Shape> Shapes;
         public Page()
         {

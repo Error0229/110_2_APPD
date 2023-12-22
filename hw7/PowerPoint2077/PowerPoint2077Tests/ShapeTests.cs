@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using System.Drawing;
 namespace WindowPowerPoint.Tests
 {
@@ -154,6 +153,28 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(new Size(200, 200), _privateShape.GetField("_canvasSize"));
         }
 
-        // test set 
+        // test get first point
+        [TestMethod()]
+        public void GetFirstPointTest()
+        {
+            _shape.SetFirstPoint(new Point(10, 10));
+            Assert.AreEqual(new PointF(10, 10), _shape.GetFirstPoint());
+        }
+
+        // test get second point
+        [TestMethod()]
+        public void GetSecondPointTest()
+        {
+            _shape.SetSecondPoint(new Point(20, 20));
+            Assert.AreEqual(new PointF(20, 20), _shape.GetSecondPoint());
+        }
+
+        // test CanvasSize
+        [TestMethod]
+        public void CanvasSizeTest()
+        {
+            _shape.CanvasSize = new Size(100, 100);
+            Assert.AreEqual(new Size(100, 100), _shape.CanvasSize);
+        }
     }
 }

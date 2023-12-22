@@ -28,7 +28,7 @@ namespace WindowPowerPoint
         // mouse down for shape adjust
         private void MouseDownForAdjust(Point point)
         {
-            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
+            foreach (Shape shape in _model.GetCurrentShapes())
             {
                 if (shape.TryAdjustWhenMouseDown(point, out _isAdjusting))
                 {
@@ -43,7 +43,7 @@ namespace WindowPowerPoint
         private void MouseDownForMove(Point point)
         {
             _model.ClearSelectedShape();
-            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
+            foreach (Shape shape in _model.GetCurrentShapes())
             {
                 if (shape.IsInShape(point))
                 {
@@ -75,7 +75,7 @@ namespace WindowPowerPoint
         // mouse move while adjusting shape
         private void MouseMoveWhileAdjusting(Point point)
         {
-            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
+            foreach (Shape shape in _model.GetCurrentShapes())
             {
                 if (shape.TryAdjustWhenMouseMove(point))
                 {
@@ -88,7 +88,7 @@ namespace WindowPowerPoint
         // mouse move while moving shape
         private void MouseMoveWhileMoving(Point point)
         {
-            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
+            foreach (Shape shape in _model.GetCurrentShapes())
             {
                 if (shape.Selected)
                 {
@@ -105,7 +105,7 @@ namespace WindowPowerPoint
         {
             if (_model.Pages.Count == 0)
                 return;
-            foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
+            foreach (Shape shape in _model.GetCurrentShapes())
             {
                 if (shape.Selected)
                 {
@@ -122,7 +122,7 @@ namespace WindowPowerPoint
         {
             if (_isAdjusting)
             {
-                _model.HanldeShapeResize(_shapeFirstPoint, _shapeSecondPoint);
+                _model.HandleShapeResize(_shapeFirstPoint, _shapeSecondPoint);
             }
             if (_isMoving && _lastPoint != _startPoint)
             {
@@ -144,7 +144,7 @@ namespace WindowPowerPoint
         {
             if (keyCode == Keys.Delete)
             {
-                foreach (Shape shape in _model.Pages[_model.SlideIndex].Shapes)
+                foreach (Shape shape in _model.GetCurrentShapes())
                 {
                     if (shape.Selected)
                     {

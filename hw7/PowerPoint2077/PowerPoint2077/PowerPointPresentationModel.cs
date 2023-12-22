@@ -22,7 +22,7 @@ namespace WindowPowerPoint
             _commandManager._redoStateChanged += (sender, e) => IsRedoEnabled = _commandManager.CanRedo;
             _model = model;
             _model._modelChanged += HandleModelChanged;
-            _model._pageChanged += HandlePageChange;
+            _model._pageChanged += HandlePageChanged;
             _model.ModelCommandManager = _commandManager;
             _isCircleChecked = false;
             _isLineChecked = false;
@@ -33,7 +33,7 @@ namespace WindowPowerPoint
         }
 
         // handle add page
-        public void HandlePageChange(int index, Page.Action operation)
+        public void HandlePageChanged(int index, Page.Action operation)
         {
             if (_pageChanged != null)
             {
@@ -71,7 +71,7 @@ namespace WindowPowerPoint
         {
             if (columnIndex == 0 && index >= 0)
             {
-                _model.HandleRemoveShape(_model.Pages[SlideIndex].Shapes[index]);
+                _model.HandleRemoveShape(SlideIndex, index);
             }
         }
 
@@ -316,14 +316,7 @@ namespace WindowPowerPoint
         {
             get
             {
-                try
-                {
-                    return _model.Pages[SlideIndex].Shapes;
-                }
-                catch
-                {
-                    return new BindingList<Shape>();
-                }
+                return _model.GetCurrentShapes();
             }
         }
 
