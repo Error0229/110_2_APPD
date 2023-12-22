@@ -103,8 +103,6 @@ namespace WindowPowerPoint
         // mouse move while idle
         private void MouseMoveWhileIdle(Point point)
         {
-            if (_model.Pages.Count == 0)
-                return;
             foreach (Shape shape in _model.GetCurrentShapes())
             {
                 if (shape.Selected)

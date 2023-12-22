@@ -189,6 +189,10 @@ namespace WindowPowerPoint
         // process mouse moving while pressed in canvas
         public void ProcessCanvasMoving(Point point)
         {
+            if (SlideIndex < 0)
+            {
+                return;
+            }
             _model.HandleMouseMove(point);
             NotifyCursorChanged(EventArgs.Empty);
         }

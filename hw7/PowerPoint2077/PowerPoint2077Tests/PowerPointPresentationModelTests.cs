@@ -19,6 +19,7 @@ namespace WindowPowerPoint.Tests
         [TestInitialize()]
         public void Initialize()
         {
+            _slideIndex = 0;
             _model = new Mock<PowerPointModel>();
             _presentationModel = new PowerPointPresentationModel(_model.Object);
             _presentationModel.SetCursorManager(new CursorManager());
@@ -104,6 +105,9 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void ProcessMouseEnterCanvasWhileIdleTest()
         {
+            _slideIndex = -1;
+            _presentationModel.ProcessMouseEnterCanvas();
+            _slideIndex = 0;
             _presentationModel.ProcessMouseEnterCanvas();
             Assert.AreEqual(((CursorManager)_privatePresentationModel.GetField("_cursorManager")).CurrentCursor, Cursors.Default);
         }

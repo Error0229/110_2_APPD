@@ -96,9 +96,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AddCommandTests.cs" />
+    <Compile Include="AddPageCommandTests.cs" />
     <Compile Include="CircleTests.cs" />
     <Compile Include="CommandManagerTests.cs" />
     <Compile Include="DeleteCommandTests.cs" />
+    <Compile Include="DeletePageCommandTests.cs" />
     <Compile Include="DrawCommandTests.cs" />
     <Compile Include="DrawingStateTests.cs" />
     <Compile Include="LineTests.cs" />

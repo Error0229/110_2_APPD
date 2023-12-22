@@ -1,0 +1,52 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System;
+
+namespace WindowPowerPoint.Tests
+{
+    [TestClass()]
+    public class DeletePageCommandTests
+    {
+        Mock<PowerPointModel> _model;
+        int _slideIndex;
+        Mock<Page> _page;
+        DeletePageCommand _command;
+        Mock<Action<int, Page.Action>> _action;
+
+        // initialize
+        [TestInitialize()]
+        public void Initialize()
+        {
+            _slideIndex = 0;
+            _model = new Mock<PowerPointModel>();
+            _action = new Mock<Action<int, Page.Action>>();
+            _model.Object._pageChanged += _action.Object;
+            _page = new Mock<Page>();
+            _command = new DeletePageCommand(_model.Object, _slideIndex, _page.Object);
+        }
+
+        // test constructor
+        [TestMethod()]
+        public void DeletePageCommandTest()
+        {
+            Assert.IsNotNull(_command);
+        }
+
+        // test execute
+        [TestMethod()]
+        public void ExecuteTest()
+        {
+            _command.Execute();
+            _model.Verify(model => model.DeletePage(_slideIndex, _page.Object), Times.Once());
+            _action.Verify(action => action(_slideIndex, Page.Action.Remove), Times.Once());
+        }
+
+        [TestMethod()]
+        public void UnexecuteTest()
+        {
+            _command.Unexecute();
+            _model.Verify(model => model.AddPage(_slideIndex, _page.Object), Times.Once());
+            _action.Verify(action => action(_slideIndex, Page.Action.Add), Times.Once());
+        }
+    }
+}
