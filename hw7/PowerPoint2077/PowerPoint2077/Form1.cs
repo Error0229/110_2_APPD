@@ -296,9 +296,10 @@ namespace WindowPowerPoint
                     _shapeGridView.DataSource = _presentationModel.Shapes;
                     break;
                 case Page.Action.Remove:
-                    _flowLayoutPanel.Controls.RemoveAt(index);
-                    if (index <= SlideIndex && !(index == 0 && _flowLayoutPanel.Controls.Count > 0))
+                    if (SlideIndex == _flowLayoutPanel.Controls.Count - 1)
                         SlideIndex--;
+                    _flowLayoutPanel.Controls.RemoveAt(index);
+                    _presentationModel.SlideIndex = SlideIndex;
                     if (SlideIndex == -1)
                     {
                         _canvas.BackColor = Color.Gray;
@@ -313,7 +314,7 @@ namespace WindowPowerPoint
                         _shapeGridView.DataSource = new BindingList<Shape>();
                         return;
                     }
-                    _presentationModel.SlideIndex = SlideIndex;
+                    _flowLayoutPanel.Controls[SlideIndex].Focus();
                     _shapeGridView.DataSource = _presentationModel.Shapes;
                     break;
                 case Page.Action.Switch:

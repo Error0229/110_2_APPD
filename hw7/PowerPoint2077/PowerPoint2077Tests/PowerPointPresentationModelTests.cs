@@ -127,6 +127,9 @@ namespace WindowPowerPoint.Tests
         public void SetCanvasSizeTest()
         {
             var size = new Size(1600, 900);
+            _presentationModel.SlideIndex = -1;
+            _presentationModel.SetCanvasSize(size);
+            _presentationModel.SlideIndex = 0;
             _presentationModel.SetCanvasSize(size);
             _model.Verify(model => model.SetCanvasSize(size), Times.Once());
         }
@@ -180,6 +183,9 @@ namespace WindowPowerPoint.Tests
         public void ProcessKeyDownTest()
         {
             var key = Keys.Delete;
+            _presentationModel.SlideIndex = -1;
+            _presentationModel.ProcessKeyDown(key);
+            _presentationModel.SlideIndex = 0;
             _presentationModel.ProcessKeyDown(key);
             _model.Verify(model => model.HandleKeyDown(key), Times.Once());
         }
@@ -199,6 +205,9 @@ namespace WindowPowerPoint.Tests
         public void ProcessCanvasMovingTest()
         {
             var point = new Point(50, 50);
+            _presentationModel.SlideIndex = -1;
+            _presentationModel.ProcessCanvasMoving(new Point());
+            _presentationModel.SlideIndex = 0;
             _presentationModel.ProcessCanvasMoving(point);
             _model.Verify(model => model.HandleMouseMove(point), Times.Once());
         }
@@ -246,6 +255,9 @@ namespace WindowPowerPoint.Tests
         public void DrawTest()
         {
             var adaptor = new WindowsFormsGraphicsAdaptor(Graphics.FromImage(new Bitmap(800, 600)));
+            _presentationModel.SlideIndex = -1;
+            _presentationModel.Draw(adaptor);
+            _presentationModel.SlideIndex = 0;
             _presentationModel.Draw(adaptor);
             _model.Verify(model => model.Draw(adaptor), Times.Once());
         }

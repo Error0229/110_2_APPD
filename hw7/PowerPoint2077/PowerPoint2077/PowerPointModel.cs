@@ -152,10 +152,10 @@ namespace WindowPowerPoint
         // set canvas coordinate
         public virtual void SetCanvasSize(Size canvasSize)
         {
-            if (Pages.Count == 0)
+            /*if (Pages.Count == 0)
             {
                 return;
-            }
+            }*/
             CanvasSize = canvasSize;
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
@@ -237,10 +237,10 @@ namespace WindowPowerPoint
         // handle Key down
         public virtual void HandleKeyDown(Keys keyCode)
         {
-            if (Pages.Count == 0)
+            /*if (Pages.Count == 0)
             {
                 return;
-            }
+            }*/
             var oldCount = Pages[SlideIndex].Shapes.Count;
             _state.KeyDown(keyCode);
             if (oldCount == Pages[SlideIndex].Shapes.Count && keyCode == Keys.Delete)
@@ -259,10 +259,10 @@ namespace WindowPowerPoint
         // draw all shapes
         public virtual void DrawShapes(IGraphics graphics)
         {
-            if (Pages.Count == 0)
+            /*if (Pages.Count == 0)
             {
                 return;
-            }
+            }*/
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
                 shape.Draw(graphics);
@@ -272,10 +272,10 @@ namespace WindowPowerPoint
         // clear selected shape
         public virtual void ClearSelectedShape()
         {
-            if (Pages.Count == 0)
-            {
-                return;
-            }
+            /*            if (Pages.Count == 0)
+                        {
+                            return;
+                        }*/
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
                 shape.Selected = false;
@@ -344,7 +344,7 @@ namespace WindowPowerPoint
         // remove page
         public virtual void DeletePage(int deleteIndex, Page page)
         {
-            if (deleteIndex <= SlideIndex && !(deleteIndex == 0 && SlideIndex == 0 && Pages.Count > 1))
+            if (SlideIndex == Pages.Count - 1)
             {
                 SlideIndex--;
             }

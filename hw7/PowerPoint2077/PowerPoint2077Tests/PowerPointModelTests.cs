@@ -38,10 +38,7 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void SetCanvasSizeTest()
         {
-            _model.Pages.Clear();
             var size = new Size(600, 800);
-            _model.SetCanvasSize(size);
-            _model.AddPage(0, new Page());
             _model.SetCanvasSize(size);
             Assert.AreEqual(size, _model.CanvasSize);
         }
@@ -274,9 +271,6 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void HandleKeyDownTest()
         {
-            _model.Pages.Clear();
-            _model.HandleKeyDown(Keys.A);
-            _model.AddPage(0, new Page());
             _model.HandleKeyDown(Keys.Delete);
             _state.Verify(state => state.KeyDown(Keys.Delete), Times.Once());
         }
@@ -327,9 +321,6 @@ namespace WindowPowerPoint.Tests
             Bitmap bitmap = new Bitmap(800, 600);
             Graphics graphics = Graphics.FromImage(bitmap);
             var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
-            _model.Pages.Clear();
-            _model.DrawShapes(mockAdaptor.Object);
-            _model.AddPage(0, new Page());
             _model.Pages[_slideIndex].Shapes.Add(new Circle());
             _model.Pages[_slideIndex].Shapes.Add(new Line());
             _model.Pages[_slideIndex].Shapes.Add(new Rectangle());
@@ -343,9 +334,6 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void ClearSelectedShapeTest()
         {
-            _model.Pages.Clear();
-            _model.ClearSelectedShape();
-            _model.AddPage(0, new Page());
             var shape1 = new Mock<Shape>();
             shape1.Setup(shape => shape.Selected).Returns(true);
             _model.Pages[_slideIndex].Shapes.Add(shape1.Object);

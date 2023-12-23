@@ -99,6 +99,10 @@ namespace WindowPowerPoint
         // Set canvas coordinate
         public void SetCanvasSize(Size canvasSize)
         {
+            if (SlideIndex < 0)
+            {
+                return;
+            }
             _model.SetCanvasSize(canvasSize);
         }
 
@@ -174,6 +178,10 @@ namespace WindowPowerPoint
         // process key down
         public void ProcessKeyDown(Keys keyCode)
         {
+            if (SlideIndex < 0)
+            {
+                return;
+            }
             _model.HandleKeyDown(keyCode);
         }
 
@@ -212,21 +220,18 @@ namespace WindowPowerPoint
         // process add page
         public void ProcessAddPage(int newSlideIndex)
         {
-            SlideIndex = newSlideIndex;
             _model.HandleAddPage(newSlideIndex);
         }
 
         // process delete page
         public void ProcessDeletePage(int deletedSlideIndex)
         {
-            SlideIndex = deletedSlideIndex - 1;
             _model.HandleDeletePage(deletedSlideIndex);
         }
 
         // process change page
         public void ProcessSwitchPage(int newSlideIndex)
         {
-            SlideIndex = newSlideIndex;
             _model.HandleSwitchPage(newSlideIndex);
         }
 
@@ -245,6 +250,10 @@ namespace WindowPowerPoint
         // draw all the shape
         public void Draw(IGraphics graphics)
         {
+            if (SlideIndex < 0)
+            {
+                return;
+            }
             _model.Draw(graphics);
         }
 

@@ -1,9 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Interactions;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -24,12 +26,15 @@ namespace WindowPowerPoint.Tests
         const string insertRectangleColumnName = "矩形";
         const string insertLineColumnName = "線";
         const string insertShapeButtonName = "新增";
+        const string addSlideButtonName = "Add Slide";
         const string insertShapeComboBox = "_shapeComboBox";
         const string canvasId = "_canvas";
         const string dataGridId = "_shapeGridView";
+        const string slidePanel = "_flowLayoutPanel";
+        const string slideButtonClass = "WindowsForms10.BUTTON.app.0.141b42a_r8_ad1";
         private WindowsElement _canvas;
         private WindowsElement _dataGrid;
-
+        private WindowsElement _slidePanel;
         // initialize class
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
@@ -52,6 +57,7 @@ namespace WindowPowerPoint.Tests
         {
             _canvas = session.FindElementByAccessibilityId(canvasId);
             _dataGrid = session.FindElementByAccessibilityId(dataGridId);
+            _slidePanel = session.FindElementByAccessibilityId(slidePanel);
         }
 
         // absolute move
@@ -105,6 +111,28 @@ namespace WindowPowerPoint.Tests
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
             session.PerformActions(actionBuilder.ToActionSequenceList());
         }
+
+        // get slides
+        public ReadOnlyCollection<AppiumWebElement> GetSlides()
+        {
+            return _slidePanel.FindElementsByClassName(slideButtonClass);
+        }
+
+        // add page
+        public void AddPage()
+        {
+            ClickByElementName(addSlideButtonName);
+        }
+
+        // delete page
+        public void DeletePage()
+        {
+            // 建立 Actions 類的實例
+            Actions actions = new Actions(session);
+            // 按下刪除鍵
+            actions.SendKeys(OpenQA.Selenium.Keys.Delete).Perform();
+        }
+
 
         public struct ShapeCoordinate
         {
@@ -305,7 +333,7 @@ namespace WindowPowerPoint.Tests
 
         // test insert shape undo and redo
         [TestMethod]
-        public void TestInsertUndoRedo()
+        public void TestInsertShapeUndoRedo()
         {
             var coordinate = InsertShape(insertCircleColumnName);
             Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
@@ -316,6 +344,61 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
             Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
+        }
+
+        // test delete shape page redo and undo
+        [TestMethod]
+        public void TestDeleteShapeUndoRedo()
+        {
+            var coordinate = InsertShape(insertCircleColumnName);
+            DeleteLastInsertShape();
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(GetCoordinateString(coordinate), GetDataGridViewCellText(0, 2));
+            ClickByElementName(redoButtonName);
+            Assert.AreEqual("0", _dataGrid.GetAttribute("Grid.RowCount"));
+        }
+
+        // test add page redo and undo
+        [TestMethod]
+        public void TestAddPageUndoRedo()
+        {
+            AddPage();
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual(1, GetSlides().Count);
+            ClickByElementName(redoButtonName);
+            Assert.AreEqual(2, GetSlides().Count);
+            DeletePage();
+        }
+
+        // test delete page redo and undo
+        [TestMethod]
+        public void TestDeletePageUndoRedo()
+        {
+            DeletePage();
+            ClickByElementName(undoButtonName);
+            Assert.AreEqual(1, GetSlides().Count);
+            ClickByElementName(redoButtonName);
+            Assert.AreEqual(0, GetSlides().Count);
+            AddPage();
+        }
+
+        // test add page
+        [TestMethod]
+        public void TestAddPage()
+        {
+            AddPage();
+            Assert.AreEqual(2, GetSlides().Count);
+            DeletePage();
+        }
+
+        // test delete page
+        [TestMethod]
+        public void TestDeletePage()
+        {
+            DeletePage();
+            Assert.AreEqual(0, GetSlides().Count);
+            AddPage();
         }
 
         // test move shape
@@ -331,17 +414,20 @@ namespace WindowPowerPoint.Tests
             Assert.AreEqual($"({targetX - (coor.Right - coor.Left) / 2}, {targetY - (coor.Bottom - coor.Top) / 2}), ({targetX + (coor.Right - coor.Left) / 2}, {targetY + (coor.Bottom - coor.Top) / 2})", GetDataGridViewCellText(0, 2));
             DeleteLastInsertShape();
         }
-        // TODO
         // test resize window
         [TestMethod]
         public void TestResizeWindow()
         {
             var width = 800;
             var height = 600;
+            var slides = GetSlides();
+            Assert.AreEqual(1, slides.Count);
             ResizeWindow(width, height);
             Assert.IsTrue(Math.Abs(_canvas.Size.Width / _canvas.Size.Height - 16 / 9) < 0.01);
-            Assert.AreEqual(width, session.Manage().Window.Size.Width);
-            Assert.AreEqual(height, session.Manage().Window.Size.Height);
+            foreach (var slide in slides)
+            {
+                Assert.IsTrue(Math.Abs(slide.Size.Width / slide.Size.Height - 16 / 9) < 0.01);
+            }
         }
         protected void ClickByElementName(string buttonName)
         {
