@@ -13,6 +13,8 @@ namespace WindowPowerPoint
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
         private CursorManager _cursorManager;
+        private GoogleDriveService _drive;
+        private string _fileID;
         public virtual Size CanvasSize { get; set; }
         public int SlideIndex { get; set; }
         public virtual CursorManager ModelCursorManager
@@ -43,8 +45,66 @@ namespace WindowPowerPoint
                 return _handleToCursor;
             }
         }
+
+        // save pages to drive
+        public async void HandleSave()
+        {
+            var encodedPages = EncodePages();
+            // save in local
+            System.IO.File.WriteAllText("save.txt", encodedPages);
+            // save in drive
+            if (_fileID == "")
+            {
+                _fileID = await _drive.Save("save.txt");
+            }
+            else
+                await _drive.UpdateFile("save.txt", _fileID);
+        }
+
+        // load pages from drive
+        public void HandleLoad()
+        {
+            _drive.Load(_fileID, "save.txt");
+            while (SlideIndex >= 0)
+            {
+                HandleDeletePage(SlideIndex);
+            }
+            _commandManager.Clear();
+            string encodedPages = System.IO.File.ReadAllText("save.txt");
+            var rawData = DecodePages(encodedPages);
+            for (int i = 0; i < rawData.Count - 1; i++)
+            {
+                var page = new Page();
+                page.Decode(rawData[i], CanvasSize);
+                AddPage(Pages.Count, page);
+                NotifyPageChanged(Pages.Count - 1, Page.Action.Add);
+            }
+
+        }
+
+        // encode pages
+        public string EncodePages()
+        {
+            string encodedPages = "";
+            foreach (Page page in Pages)
+            {
+                encodedPages += page.Encode();
+                encodedPages += "\n";
+            }
+            return encodedPages;
+        }
+
+        // decode pages
+        public List<string> DecodePages(string encodedPages)
+        {
+            return new List<string>(encodedPages.Split('\n'));
+        }
+
+
         public PowerPointModel()
         {
+            _drive = new GoogleDriveService("PowerPoint2077", "clientSecret.json");
+            CheckSavesExist();
             _factory = new ShapeFactory();
             _pageFactory = new PageFactory();
             Pages = new List<Page>();
@@ -62,6 +122,20 @@ namespace WindowPowerPoint
             _handleToCursor.Add(HandleType.BottomRight, Cursors.SizeNWSE);
             _handleToCursor.Add(HandleType.None, Cursors.Default);
             // don't fuck me, fuck 🧑🏿‍⚕️smell
+        }
+
+        public async void CheckSavesExist()
+        {
+            var results = await _drive.SearchFile("save.txt");
+            if (results.Count != 0)
+            {
+                _fileID = results[0].Id; // get first match file
+            }
+            else
+            {
+                _fileID = string.Empty;
+            }
+            Console.WriteLine(_fileID);
         }
 
         public void NotifyPageChanged(int index, Page.Action operation)
@@ -152,10 +226,6 @@ namespace WindowPowerPoint
         // set canvas coordinate
         public virtual void SetCanvasSize(Size canvasSize)
         {
-            /*if (Pages.Count == 0)
-            {
-                return;
-            }*/
             CanvasSize = canvasSize;
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
@@ -237,10 +307,6 @@ namespace WindowPowerPoint
         // handle Key down
         public virtual void HandleKeyDown(Keys keyCode)
         {
-            /*if (Pages.Count == 0)
-            {
-                return;
-            }*/
             var oldCount = Pages[SlideIndex].Shapes.Count;
             _state.KeyDown(keyCode);
             if (oldCount == Pages[SlideIndex].Shapes.Count && keyCode == Keys.Delete)
@@ -259,10 +325,6 @@ namespace WindowPowerPoint
         // draw all shapes
         public virtual void DrawShapes(IGraphics graphics)
         {
-            /*if (Pages.Count == 0)
-            {
-                return;
-            }*/
             foreach (Shape shape in Pages[SlideIndex].Shapes)
             {
                 shape.Draw(graphics);

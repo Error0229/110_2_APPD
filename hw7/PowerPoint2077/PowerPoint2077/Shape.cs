@@ -215,6 +215,23 @@ namespace WindowPowerPoint
             return new Point((int)point.X, (int)point.Y);
         }
 
+        // encode shape
+        public virtual string Encode()
+        {
+            return _type.ToString() + Constant.COMMA + Constant.LEFT_BRACKET + _pointFirst.X / _canvasSize.Width + Constant.COMMA + _pointFirst.Y / _canvasSize.Height + Constant.COMMA + _pointSecond.X / _canvasSize.Width + Constant.COMMA + _pointSecond.Y / _canvasSize.Height + Constant.RIGHT_BRACKET;
+        }
+
+        // decode shape
+        public virtual void Decode(string data, Size canvasSize)
+        {
+            var datas = data.Split(',');
+            _pointFirst.X = float.Parse(datas[0]) * canvasSize.Width;
+            _pointFirst.Y = float.Parse(datas[1]) * canvasSize.Height;
+            _pointSecond.X = float.Parse(datas[2]) * canvasSize.Width;
+            _pointSecond.Y = float.Parse(datas[3]) * canvasSize.Height;
+            _canvasSize = canvasSize;
+        }
+
         protected ShapeType _type;
         protected bool _isSelected;
         protected PointF _pointFirst;

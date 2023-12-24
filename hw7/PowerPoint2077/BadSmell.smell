@@ -188,13 +188,61 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
               <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
               <HashCode>UnsuitableNaming.AddCommand.Unexecute.Unexecute</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
               <File>AddCommand.cs</File>
-              <Line>20</Line>
+              <Line>22</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -203,14 +251,14 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>2</Id>
+              <Id>5</Id>
               <SmellType>ICS(函式-2)</SmellType>
               <HashCode>Method2.AddCommand.Unexecute</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
               <File>AddCommand.cs</File>
-              <Line>20</Line>
+              <Line>22</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -219,14 +267,142 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>3</Id>
+              <Id>6</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddPageCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddPageCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddPageCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
+              <HashCode>UnsuitableNaming.AddPageCommand.Unexecute.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddPageCommand.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.AddPageCommand.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>AddPageCommand.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DeleteCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DeleteCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DeleteCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
               <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
               <HashCode>UnsuitableNaming.DeleteCommand.Unexecute.Unexecute</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
               <File>DeleteCommand.cs</File>
-              <Line>20</Line>
+              <Line>22</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -235,14 +411,14 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>4</Id>
+              <Id>15</Id>
               <SmellType>ICS(函式-2)</SmellType>
               <HashCode>Method2.DeleteCommand.Unexecute</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
               <File>DeleteCommand.cs</File>
-              <Line>20</Line>
+              <Line>22</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -251,14 +427,62 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>5</Id>
-              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
-              <HashCode>UnsuitableNaming.DrawCommand.Unexecute.Unexecute</HashCode>
+              <Id>16</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>DrawCommand.cs</File>
-              <Line>20</Line>
+              <File>DeletePageCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>17</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DeletePageCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>18</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DeletePageCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>19</Id>
+              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
+              <HashCode>UnsuitableNaming.DeletePageCommand.Unexecute.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DeletePageCommand.cs</File>
+              <Line>23</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -267,14 +491,14 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>6</Id>
+              <Id>20</Id>
               <SmellType>ICS(函式-2)</SmellType>
-              <HashCode>Method2.DrawCommand.Unexecute</HashCode>
+              <HashCode>Method2.DeletePageCommand.Unexecute</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>DrawCommand.cs</File>
-              <Line>20</Line>
+              <File>DeletePageCommand.cs</File>
+              <Line>23</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -283,7 +507,278 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>7</Id>
+              <Id>21</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DrawCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>22</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DrawCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>23</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DrawCommand.cs</File>
+              <Line>7</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>24</Id>
+              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
+              <HashCode>UnsuitableNaming.DrawCommand.Unexecute.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DrawCommand.cs</File>
+              <Line>22</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>25</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.DrawCommand.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>DrawCommand.cs</File>
+              <Line>22</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>26</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.Form1.cs.3.        }.        // handle window size changed</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>79</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>27</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.Form1.cs.2.        }.        // handle when splitter2 move</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>215</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>28</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.PowerPoint.PowerPointSizeChanged.2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>83</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>29</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.PowerPoint.SplitContainer2Adjust.2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>218</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>30</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.PowerPoint.HandleSlideButtonClick.0</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>351</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>31</Id>
+              <SmellType>Unsuitable naming(名不符實)-scrollbarWidth(scrollbar)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPoint._flowLayoutPanelLayout.scrollbarWidth</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>63</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>32</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.PowerPoint._flowLayoutPanelLayout</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>60</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>33</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.PowerPoint.ResizeCanvas.24object sender;EventArgs e;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>24</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>224</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>34</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.PowerPoint.ProcessPageChanged.63int index;Page.Action action;</HashCode>
+              <Severity>Red</Severity>
+              <Weight>63</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>272</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>35</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.PowerPoint._saveButtonClick</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>361</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>36</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.PowerPoint._loadButtonClick</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>367</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>37</Id>
+              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\GoogleDriveService.cs on line 64.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>GoogleDriveService.cs</File>
+              <Line>64</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>38</Id>
               <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
               <HashCode>UnsuitableNaming.ICommand.Unexecute.Unexecute</HashCode>
               <Severity>Red</Severity>
@@ -299,7 +794,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>8</Id>
+              <Id>39</Id>
               <SmellType>ICS(函式-2)</SmellType>
               <HashCode>Method2.ICommand.Unexecute</HashCode>
               <Severity>Red</Severity>
@@ -315,14 +810,30 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>9</Id>
-              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
-              <HashCode>UnsuitableNaming.MoveCommand.Unexecute.Unexecute</HashCode>
+              <Id>40</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.InsertShapeDialog.textBox2_TextChanged.0</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>MoveCommand.cs</File>
-              <Line>32</Line>
+              <File>InsertShapeDialog.cs</File>
+              <Line>55</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>41</Id>
+              <SmellType>Unsuitable naming(名不符實)-_buttom(buttom)</SmellType>
+              <HashCode>UnsuitableNaming.InsertShapeDialog._buttom._buttom</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>15</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -331,13 +842,797 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>10</Id>
+              <Id>42</Id>
+              <SmellType>Unsuitable naming(名不符實)-SetupDialog(setup)</SmellType>
+              <HashCode>UnsuitableNaming.InsertShapeDialog.SetupDialog.SetupDialog</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>43</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.InsertShapeDialog.SetupDialog</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>44</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.buttonOK_Click</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>28</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>45</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.buttonCancel_Click</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>38</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>46</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.textBox1_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>47</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.InsertShapeDialog.textBox1_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>48</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.textBox2_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>55</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>49</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.InsertShapeDialog.textBox2_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>55</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>50</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.textBox3_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>68</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>51</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.InsertShapeDialog.textBox3_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>68</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>52</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.textBox4_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>81</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>53</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.InsertShapeDialog.textBox4_TextChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>81</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>54</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.InsertShapeDialog.notifyTextBoxChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>94</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>55</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.textBox1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>182</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>56</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.textBox2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>183</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>57</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.textBox3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>184</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>58</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.textBox4</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>185</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>59</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.label1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>186</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>60</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.label2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>187</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>61</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.label3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>188</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>62</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.label4</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>189</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>63</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.buttonOK</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>190</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>64</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.InsertShapeDialog.buttonCancel</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.Designer.cs</File>
+              <Line>191</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>65</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ISlide.cs</File>
+              <Line>5</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>66</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ISlide.cs</File>
+              <Line>5</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>67</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ISlide.cs</File>
+              <Line>5</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>68</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.LoadDialog._cancelButtonClick</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>LoadDialog.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>69</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.LoadDialog._loadButtonClick</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>LoadDialog.cs</File>
+              <Line>29</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>70</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.LoadDialog.pictureBox1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>LoadDialog.Designer.cs</File>
+              <Line>96</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>71</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>MoveCommand.cs</File>
+              <Line>9</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>72</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>MoveCommand.cs</File>
+              <Line>9</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>73</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>MoveCommand.cs</File>
+              <Line>9</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>74</Id>
+              <SmellType>Unsuitable naming(名不符實)-_cavasSize(cavas)</SmellType>
+              <HashCode>UnsuitableNaming.MoveCommand._cavasSize._cavasSize</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>MoveCommand.cs</File>
+              <Line>11</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>75</Id>
+              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
+              <HashCode>UnsuitableNaming.MoveCommand.Unexecute.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>MoveCommand.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>76</Id>
               <SmellType>ICS(函式-2)</SmellType>
               <HashCode>Method2.MoveCommand.Unexecute</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
               <File>MoveCommand.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>77</Id>
+              <SmellType>Literal constants(字面常數)-'{'</SmellType>
+              <HashCode>LiteralConstants.Encode.'{'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>78</Id>
+              <SmellType>Literal constants(字面常數)-'{'</SmellType>
+              <HashCode>LiteralConstants.Decode.'{'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>44</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>79</Id>
+              <SmellType>Literal constants(字面常數)-'}'</SmellType>
+              <HashCode>LiteralConstants.Encode.'}'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>80</Id>
+              <SmellType>Literal constants(字面常數)-", "</SmellType>
+              <HashCode>LiteralConstants.Encode.", "</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>81</Id>
+              <SmellType>Literal constants(字面常數)-','</SmellType>
+              <HashCode>LiteralConstants.Decode.','</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>48</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>82</Id>
+              <SmellType>Literal constants(字面常數)-'('</SmellType>
+              <HashCode>LiteralConstants.Decode.'('</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>49</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>83</Id>
+              <SmellType>Literal constants(字面常數)-')'</SmellType>
+              <HashCode>LiteralConstants.Decode.')'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>49</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>84</Id>
+              <SmellType>Literal constants(字面常數)-"LINE"</SmellType>
+              <HashCode>LiteralConstants.Decode."LINE"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>52</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>85</Id>
+              <SmellType>Literal constants(字面常數)-"RECTANGLE"</SmellType>
+              <HashCode>LiteralConstants.Decode."RECTANGLE"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>57</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>86</Id>
+              <SmellType>Literal constants(字面常數)-"CIRCLE"</SmellType>
+              <HashCode>LiteralConstants.Decode."CIRCLE"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>62</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>87</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.Page.RemoveShape.0</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>88</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.Page.RemoveShape.0</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>27</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>89</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.Page.Shapes</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>14</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>90</Id>
+              <SmellType>ICS(類別宣告-1)</SmellType>
+              <HashCode>ClassDeclaration1.Page.Shapes</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>14</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(類別宣告-1) 除非為類別常數(static class constants)，成員變數請勿宣告為 public</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>91</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.Page.Encode</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
               <Line>32</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
@@ -347,61 +1642,2027 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>11</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>93 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
-              <Severity>Warning</Severity>
+              <Id>92</Id>
+              <SmellType>Unsuitable naming(名不符實)-Decode(decode)</SmellType>
+              <HashCode>UnsuitableNaming.Page.Decode.Decode</HashCode>
+              <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
-              <Line>93</Line>
-              <StartLine>92</StartLine>
+              <File>Page.cs</File>
+              <Line>42</Line>
+              <StartLine>0</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>93</EndLine>
+              <EndLine>0</EndLine>
               <EndCol>0</EndCol>
-              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Comment />
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>12</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>107 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Id>93</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.Page.Decode.28string data;Size canvasSize;</HashCode>
               <Severity>Warning</Severity>
-              <Weight>1</Weight>
+              <Weight>28</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
-              <Line>107</Line>
-              <StartLine>107</StartLine>
-              <StartCol>24</StartCol>
-              <EndLine>107</EndLine>
-              <EndCol>65</EndCol>
-              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>13</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>109 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\PointState.cs</File>
-              <Line>109</Line>
-              <StartLine>108</StartLine>
+              <File>Page.cs</File>
+              <Line>42</Line>
+              <StartLine>0</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>109</EndLine>
+              <EndLine>0</EndLine>
               <EndCol>0</EndCol>
-              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Comment />
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>14</Id>
+              <Id>94</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.Page.Decode</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>42</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>95</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.PowerPointModel.cs.2.        }.        public PowerPointModel()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>102</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>96</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.CanvasSize.        public virtual Size CanvasSize { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>18</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>97</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>98</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.CanvasSize.        public virtual Size CanvasSize { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>18</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>99</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>100</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.CanvasSize.        public virtual Size CanvasSize { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>18</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>101</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>102</Id>
+              <SmellType>Literal constants(字面常數)-"save.txt"</SmellType>
+              <HashCode>LiteralConstants.HandleSave."save.txt"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>54</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>103</Id>
+              <SmellType>Literal constants(字面常數)-"save.txt"</SmellType>
+              <HashCode>LiteralConstants.HandleSave."save.txt"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>58</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>104</Id>
+              <SmellType>Literal constants(字面常數)-"save.txt"</SmellType>
+              <HashCode>LiteralConstants.HandleSave."save.txt"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>61</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>105</Id>
+              <SmellType>Literal constants(字面常數)-"save.txt"</SmellType>
+              <HashCode>LiteralConstants.HandleLoad."save.txt"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>67</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>106</Id>
+              <SmellType>Literal constants(字面常數)-"save.txt"</SmellType>
+              <HashCode>LiteralConstants.HandleLoad."save.txt"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>73</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>107</Id>
+              <SmellType>Literal constants(字面常數)-"save.txt"</SmellType>
+              <HashCode>LiteralConstants.CheckSavesExist."save.txt"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>129</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>108</Id>
+              <SmellType>Literal constants(字面常數)-"\n"</SmellType>
+              <HashCode>LiteralConstants.EncodePages."\n"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>92</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>109</Id>
+              <SmellType>Literal constants(字面常數)-'\n'</SmellType>
+              <HashCode>LiteralConstants.DecodePages.'\n'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>100</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>110</Id>
+              <SmellType>Literal constants(字面常數)-"PowerPoint2077"</SmellType>
+              <HashCode>LiteralConstants.PowerPointModel."PowerPoint2077"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>106</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>111</Id>
+              <SmellType>Literal constants(字面常數)-"clientSecret.json"</SmellType>
+              <HashCode>LiteralConstants.PowerPointModel."clientSecret.json"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>106</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>112</Id>
+              <SmellType>Large class(過大類別)</SmellType>
+              <HashCode>LargeClass.WindowPowerPoint.PowerPointModel.396</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>396</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>113</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.PowerPointModel.GenerateRandomNumber.0</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>149</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>114</Id>
+              <SmellType>Unsuitable naming(名不符實)-encodedPages(encoded)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPointModel.HandleSave.encodedPages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>52</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>115</Id>
+              <SmellType>Unsuitable naming(名不符實)-encodedPages(encoded)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPointModel.HandleLoad.encodedPages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>73</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>116</Id>
+              <SmellType>Unsuitable naming(名不符實)-encodedPages(encoded)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPointModel.EncodePages.encodedPages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>88</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>117</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.PowerPointModel.EncodePages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>86</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>118</Id>
+              <SmellType>Unsuitable naming(名不符實)-encodedPages(encoded)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPointModel.DecodePages.encodedPages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>98</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>119</Id>
+              <SmellType>Unsuitable naming(名不符實)-DecodePages(decode)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPointModel.DecodePages.DecodePages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>98</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>120</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.PowerPointModel.DecodePages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>98</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>121</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.PowerPointModel.Pages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>447</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>122</Id>
+              <SmellType>ICS(類別宣告-1)</SmellType>
+              <HashCode>ClassDeclaration1.PowerPointModel.Pages</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>447</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(類別宣告-1) 除非為類別常數(static class constants)，成員變數請勿宣告為 public</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>123</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>124</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>125</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>126</Id>
+              <SmellType>ICS(Delegate與Event-1)</SmellType>
+              <HashCode>DelegateAndEvent1.PowerPointPresentationModel.ModelChangedEventHandler.SlideIndex</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>11</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(Delegate 與 Event-1) delegate 與 event 都宣告於 class 的最上方</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>127</Id>
+              <SmellType>ICS(Delegate與Event-1)</SmellType>
+              <HashCode>DelegateAndEvent1.PowerPointPresentationModel._modelChanged.SlideIndex</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>12</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(Delegate 與 Event-1) delegate 與 event 都宣告於 class 的最上方</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>128</Id>
+              <SmellType>ICS(Delegate與Event-1)</SmellType>
+              <HashCode>DelegateAndEvent1.PowerPointPresentationModel._cursorChanged.SlideIndex</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>13</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(Delegate 與 Event-1) delegate 與 event 都宣告於 class 的最上方</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>129</Id>
+              <SmellType>ICS(Delegate與Event-1)</SmellType>
+              <HashCode>DelegateAndEvent1.PowerPointPresentationModel.PropertyChanged.SlideIndex</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>14</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(Delegate 與 Event-1) delegate 與 event 都宣告於 class 的最上方</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>130</Id>
+              <SmellType>ICS(Delegate與Event-1)</SmellType>
+              <HashCode>DelegateAndEvent1.PowerPointPresentationModel._pageChanged.SlideIndex</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>15</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(Delegate 與 Event-1) delegate 與 event 都宣告於 class 的最上方</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>131</Id>
+              <SmellType>Large class(過大類別)</SmellType>
+              <HashCode>LargeClass.WindowPowerPoint.PowerPointPresentationModel.314</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>314</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointPresentationModel.cs</File>
+              <Line>8</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>132</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.Program.Main.0</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Program.cs</File>
+              <Line>15</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>133</Id>
+              <SmellType>Unsuitable naming(名不符實)-SetProcessDPIAware(dpi)</SmellType>
+              <HashCode>UnsuitableNaming.Program.SetProcessDPIAware.SetProcessDPIAware</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Program.cs</File>
+              <Line>9</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>134</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.Program.SetProcessDPIAware</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Program.cs</File>
+              <Line>9</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>135</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ResizeCommand.cs</File>
+              <Line>15</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>136</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ResizeCommand.cs</File>
+              <Line>15</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>137</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.SlideIndex.        public int SlideIndex { get; set; }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ResizeCommand.cs</File>
+              <Line>15</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>138</Id>
+              <SmellType>Unsuitable naming(名不符實)-Unexecute(unexecute)</SmellType>
+              <HashCode>UnsuitableNaming.ResizeCommand.Unexecute.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ResizeCommand.cs</File>
+              <Line>40</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>139</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.ResizeCommand.Unexecute</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>ResizeCommand.cs</File>
+              <Line>40</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>140</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.SaveDialog._buttonSaveClick</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>SaveDialog.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>141</Id>
+              <SmellType>ICS(函式-1)</SmellType>
+              <HashCode>Method1.SaveDialog._buttonCancelClick</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>SaveDialog.cs</File>
+              <Line>29</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-1) 函式命名一律大寫開始，若由多個單字組成，每個單字的第一個字母大寫，其餘小寫。不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>142</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.SaveDialog.flowLayoutPanel1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>SaveDialog.Designer.cs</File>
+              <Line>110</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>143</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.SaveDialog.pictureBox1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>SaveDialog.Designer.cs</File>
+              <Line>111</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>144</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.Shape.cs.2.        }.        // move first point</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>118</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>145</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.Shape.cs.2.        }.        // draw shape</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>161</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>146</Id>
+              <SmellType>Literal constants(字面常數)-','</SmellType>
+              <HashCode>LiteralConstants.Decode.','</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>227</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>147</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.Decode.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>230</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>148</Id>
+              <SmellType>Literal constants(字面常數)-3</SmellType>
+              <HashCode>LiteralConstants.Decode.3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>231</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>149</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.Shape.Move.2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>121</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>150</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.Shape.Draw.2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>164</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>151</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.Shape.Encode</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>219</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>152</Id>
+              <SmellType>ICS(函式-3)</SmellType>
+              <HashCode>Method3.Shape.Encode</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>219</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-3) Getter 除了取得 bool 值使用 IsXXX()之外，其餘一律使用 GetXXX()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>153</Id>
+              <SmellType>Unsuitable naming(名不符實)-Decode(decode)</SmellType>
+              <HashCode>UnsuitableNaming.Shape.Decode.Decode</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>225</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>154</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.Shape.Decode</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Shape.cs</File>
+              <Line>225</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>155</Id>
+              <SmellType>ICS(縮排與換行-1)</SmellType>
+              <HashCode>IndentAndNewLine1.CloseApp.            catch { }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>49</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-1) 左大括號一律換行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>156</Id>
+              <SmellType>ICS(縮排與換行-2)</SmellType>
+              <HashCode>IndentAndNewLine2.CloseApp.            catch { }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>49</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-2) 右大括號一律換行-並與左大括號對齊</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>157</Id>
+              <SmellType>ICS(縮排與換行-3)</SmellType>
+              <HashCode>IndentAndNewLine3.CloseApp.            catch { }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>49</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-3) 左大括號後，一律換行撰寫程式碼</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>158</Id>
+              <SmellType>ICS(縮排與換行-6)</SmellType>
+              <HashCode>IndentAndNewLine6.CloseApp.            catch { }</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>49</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(縮排與換行-6) 一行不能有多個 statements</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>159</Id>
+              <SmellType>Literal constants(字面常數)-"app"</SmellType>
+              <HashCode>LiteralConstants.Setup."app"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>160</Id>
+              <SmellType>Literal constants(字面常數)-"deviceName"</SmellType>
+              <HashCode>LiteralConstants.Setup."deviceName"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>161</Id>
+              <SmellType>Literal constants(字面常數)-"WindowsPC"</SmellType>
+              <HashCode>LiteralConstants.Setup."WindowsPC"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>162</Id>
+              <SmellType>Literal constants(字面常數)-1.5</SmellType>
+              <HashCode>LiteralConstants.Setup.1.5</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>25</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>163</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 30151479</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>11</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>164</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 26350770</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>13</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>165</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 54037663</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>166</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 14974560</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>167</Id>
+              <SmellType>ICS(變數-4)</SmellType>
+              <HashCode>Variable4.PowerPoint2077Session.WindowsApplicationDriverUrl</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-4) 定義字面常數的名稱的所有字母大寫，並以底線隔開單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>168</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.PowerPoint2077Session.session</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>11</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>169</Id>
+              <SmellType>Unsuitable naming(名不符實)-Setup(setup)</SmellType>
+              <HashCode>UnsuitableNaming.PowerPoint2077Session.Setup.Setup</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>13</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>170</Id>
+              <SmellType>ICS(函式-2)</SmellType>
+              <HashCode>Method2.PowerPoint2077Session.Setup</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>13</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-2) 每個函式表示一種操作，因此一律使用動詞做為第一個單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>171</Id>
+              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\Robot.cs on line 115.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>Robot.cs</File>
+              <Line>115</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>172</Id>
+              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\UITests.cs on line 154.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>UITests.cs</File>
+              <Line>154</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>173</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "_flowLayoutPanelLayout" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Form1.cs.Unresolved warnings(忽視警告)-The method "_flowLayoutPanelLayout" lack of comments.60</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>60</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>174</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "CreateNewService" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.GoogleDriveService.cs.Unresolved warnings(忽視警告)-The method "CreateNewService" lack of comments.37</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>GoogleDriveService.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>175</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "SetupDialog" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "SetupDialog" lack of comments.20</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>176</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "buttonOK_Click" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "buttonOK_Click" lack of comments.28</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>28</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>177</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "buttonCancel_Click" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "buttonCancel_Click" lack of comments.38</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>38</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>178</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "textBox1_TextChanged" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "textBox1_TextChanged" lack of comments.43</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>179</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "textBox2_TextChanged" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "textBox2_TextChanged" lack of comments.55</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>55</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>180</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "textBox3_TextChanged" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "textBox3_TextChanged" lack of comments.68</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>68</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>181</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "textBox4_TextChanged" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "textBox4_TextChanged" lack of comments.81</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>81</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>182</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "notifyTextBoxChanged" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.InsertShapeDialog.cs.Unresolved warnings(忽視警告)-The method "notifyTextBoxChanged" lack of comments.94</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>94</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>183</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "AddShape" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Page.cs.Unresolved warnings(忽視警告)-The method "AddShape" lack of comments.19</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>184</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveShape" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Page.cs.Unresolved warnings(忽視警告)-The method "RemoveShape" lack of comments.23</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>185</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveShape" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Page.cs.Unresolved warnings(忽視警告)-The method "RemoveShape" lack of comments.27</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>27</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>186</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "Encode" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Page.cs.Unresolved warnings(忽視警告)-The method "Encode" lack of comments.32</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>187</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "Decode" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Page.cs.Unresolved warnings(忽視警告)-The method "Decode" lack of comments.42</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>42</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>188</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "CheckSavesExist" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.PowerPointModel.cs.Unresolved warnings(忽視警告)-The method "CheckSavesExist" lack of comments.127</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>127</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>189</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "NotifyPageChanged" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.PowerPointModel.cs.Unresolved warnings(忽視警告)-The method "NotifyPageChanged" lack of comments.141</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>141</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>190</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "SetProcessDPIAware" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.Program.cs.Unresolved warnings(忽視警告)-The method "SetProcessDPIAware" lack of comments.8</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>Program.cs</File>
+              <Line>8</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>191</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "_buttonCancelClick" lack of comments</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.SaveDialog.cs.Unresolved warnings(忽視警告)-The method "_buttonCancelClick" lack of comments.29</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>SaveDialog.cs</File>
+              <Line>29</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>192</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "Setup" lack of comments</SmellType>
+              <HashCode>PowerPoint2077Tests\PowerPoint2077Tests.PowerPoint2077Session.cs.Unresolved warnings(忽視警告)-The method "Setup" lack of comments.13</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests\PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>13</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>193</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "TearDown" lack of comments</SmellType>
+              <HashCode>PowerPoint2077Tests\PowerPoint2077Tests.PowerPoint2077Session.cs.Unresolved warnings(忽視警告)-The method "TearDown" lack of comments.32</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests\PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>194</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "CloseApp" lack of comments</SmellType>
+              <HashCode>PowerPoint2077Tests\PowerPoint2077Tests.PowerPoint2077Session.cs.Unresolved warnings(忽視警告)-The method "CloseApp" lack of comments.43</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests\PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>195</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>19 WindowPowerPoint.Page.AddShape(WindowPowerPoint.Shape)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Page.AddShape(WindowPowerPoint.Shape)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>196</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>23 WindowPowerPoint.Page.RemoveShape(WindowPowerPoint.Shape)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Page.RemoveShape(WindowPowerPoint.Shape)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>197</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>27 WindowPowerPoint.Page.RemoveShape(int)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>27</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Page.RemoveShape(int)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>198</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>32 WindowPowerPoint.Page.Encode()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Page.Encode()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>199</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>42 WindowPowerPoint.Page.Decode(string, System.Drawing.Size)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Page.cs</File>
+              <Line>42</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Page.Decode(string, System.Drawing.Size)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>200</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>8 WindowPowerPoint.Program.SetProcessDPIAware()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Program.cs</File>
+              <Line>8</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Program.SetProcessDPIAware()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>201</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>37 WindowPowerPoint.GoogleDriveService.CreateNewService(string, string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>GoogleDriveService.cs</File>
+              <Line>37</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.GoogleDriveService.CreateNewService(string, string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>202</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>127 WindowPowerPoint.PowerPointModel.CheckSavesExist()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>127</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.PowerPointModel.CheckSavesExist()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>203</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>141 WindowPowerPoint.PowerPointModel.NotifyPageChanged(int, WindowPowerPoint.Page.Action)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>141</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.PowerPointModel.NotifyPageChanged(int, WindowPowerPoint.Page.Action)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>204</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>20 WindowPowerPoint.InsertShapeDialog.SetupDialog(System.Drawing.Size, string, WindowPowerPoint.PowerPointPresentationModel)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.SetupDialog(System.Drawing.Size, string, WindowPowerPoint.PowerPointPresentationModel)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>205</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>28 WindowPowerPoint.InsertShapeDialog.buttonOK_Click(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>28</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.buttonOK_Click(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>206</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>38 WindowPowerPoint.InsertShapeDialog.buttonCancel_Click(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>38</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.buttonCancel_Click(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>207</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>43 WindowPowerPoint.InsertShapeDialog.textBox1_TextChanged(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.textBox1_TextChanged(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>208</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>55 WindowPowerPoint.InsertShapeDialog.textBox2_TextChanged(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>55</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.textBox2_TextChanged(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>209</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>68 WindowPowerPoint.InsertShapeDialog.textBox3_TextChanged(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>68</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.textBox3_TextChanged(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>210</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>81 WindowPowerPoint.InsertShapeDialog.textBox4_TextChanged(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>81</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.textBox4_TextChanged(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>211</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>94 WindowPowerPoint.InsertShapeDialog.notifyTextBoxChanged()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>InsertShapeDialog.cs</File>
+              <Line>94</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.InsertShapeDialog.notifyTextBoxChanged()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>212</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>60 WindowPowerPoint.PowerPoint._flowLayoutPanelLayout(object, System.Windows.Forms.LayoutEventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>Form1.cs</File>
+              <Line>60</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.PowerPoint._flowLayoutPanelLayout(object, System.Windows.Forms.LayoutEventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>213</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>29 WindowPowerPoint.SaveDialog._buttonCancelClick(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>SaveDialog.cs</File>
+              <Line>29</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.SaveDialog._buttonCancelClick(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>214</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>13 WindowPowerPoint.Tests.PowerPoint2077Session.Setup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext, string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>13</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Tests.PowerPoint2077Session.Setup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext, string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>215</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>32 WindowPowerPoint.Tests.PowerPoint2077Session.TearDown()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Tests.PowerPoint2077Session.TearDown()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>216</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>43 WindowPowerPoint.Tests.PowerPoint2077Session.CloseApp()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>PowerPoint2077Session.cs</File>
+              <Line>43</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>WindowPowerPoint.Tests.PowerPoint2077Session.CloseApp()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>217</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>132 目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PowerPointModel.cs</File>
+              <Line>132</Line>
+              <StartLine>131</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>132</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>218</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>29 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetPoint(System.Drawing.PointF) 以及 WindowPowerPoint.Shape._handles</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\Line.cs</File>
               <Line>29</Line>
               <StartLine>24</StartLine>
               <StartCol>0</StartCol>
@@ -411,19 +3672,147 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>15</Id>
+              <Id>219</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>34 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetPoint(System.Drawing.PointF) 以及 WindowPowerPoint.Shape._handles</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw6\PowerPoint2077\PowerPoint2077\Line.cs</File>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\Line.cs</File>
               <Line>34</Line>
               <StartLine>29</StartLine>
               <StartCol>0</StartCol>
               <EndLine>34</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetPoint(System.Drawing.PointF) 以及 WindowPowerPoint.Shape._handles</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>220</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>35 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetFirstPoint() 以及 WindowPowerPoint.Shape.TryAdjustWhenMouseDown(System.Drawing.Point, out bool)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>35</Line>
+              <StartLine>34</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>35</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetFirstPoint() 以及 WindowPowerPoint.Shape.TryAdjustWhenMouseDown(System.Drawing.Point, out bool)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>221</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>36 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetSecondPoint() 以及 WindowPowerPoint.Shape.TryAdjustWhenMouseDown(System.Drawing.Point, out bool)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>36</Line>
+              <StartLine>35</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>36</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetSecondPoint() 以及 WindowPowerPoint.Shape.TryAdjustWhenMouseDown(System.Drawing.Point, out bool)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>222</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>95 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>95</Line>
+              <StartLine>94</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>95</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>223</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>109 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>109</Line>
+              <StartLine>109</StartLine>
+              <StartCol>24</StartCol>
+              <EndLine>109</EndLine>
+              <EndCol>65</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>224</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>111 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>111</Line>
+              <StartLine>110</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>111</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>225</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>149 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.PowerPointModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.PowerPointModel.GetCurrentShapes() 以及 WindowPowerPoint.PowerPointModel.HandleRemoveShape(WindowPowerPoint.Shape)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PointState.cs</File>
+              <Line>149</Line>
+              <StartLine>148</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>149</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.PowerPointModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.PowerPointModel.GetCurrentShapes() 以及 WindowPowerPoint.PowerPointModel.HandleRemoveShape(WindowPowerPoint.Shape)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>226</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>135 目前物件 MainFormUITest.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\Robot.cs</File>
+              <Line>135</Line>
+              <StartLine>135</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>135</EndLine>
+              <EndCol>103</EndCol>
+              <Comment>目前物件 MainFormUITest.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>227</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>138 目前物件 MainFormUITest.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077Tests</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\Robot.cs</File>
+              <Line>138</Line>
+              <StartLine>138</StartLine>
+              <StartCol>28</StartCol>
+              <EndLine>138</EndLine>
+              <EndCol>46</EndCol>
+              <Comment>目前物件 MainFormUITest.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</Comment>
               <Auto>false</Auto>
             </Smell>
           </Reviews>
@@ -433,6 +3822,11 @@
             <AnalysisFiles>
               <AnalysisFile>
                 <RelativePath>AddCommand.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>AddPageCommand.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -467,6 +3861,11 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>DeletePageCommand.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>DoubleBufferedPanel.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -492,6 +3891,11 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>GoogleDriveService.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>ICommand.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -500,6 +3904,21 @@
                 <RelativePath>IGraphics.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>InsertShapeDialog.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>InsertShapeDialog.Designer.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ISlide.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>IState.cs</RelativePath>
@@ -512,7 +3931,27 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>LoadDialog.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>LoadDialog.Designer.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>MoveCommand.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Page.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PageFactory.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -557,6 +3996,21 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>ResizeCommand.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SaveDialog.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SaveDialog.Designer.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Shape.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -582,6 +4036,11 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>AddPageCommandTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>CircleTests.cs</RelativePath>
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -593,6 +4052,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>DeleteCommandTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DeletePageCommandTests.cs</RelativePath>
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -617,9 +4081,24 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>PageFactoryTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PageTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>PointStateTests.cs</RelativePath>
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PowerPoint2077Session.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>PowerPointModelTests.cs</RelativePath>
@@ -642,6 +4121,16 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>ResizeCommandTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Robot.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>ShapeFactoryTests.cs</RelativePath>
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -656,10 +4145,15 @@
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>UITests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2475</ProductionLoc>
-          <TestLoc>1860</TestLoc>
+          <ProductionLoc>3929</ProductionLoc>
+          <TestLoc>2303</TestLoc>
         </CodeReview>
       </Data>
     </div>

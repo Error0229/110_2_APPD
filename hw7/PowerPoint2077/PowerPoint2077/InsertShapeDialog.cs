@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
-    public partial class Dialog : Form
+    public partial class InsertShapeDialog : Form
     {
         Size _canvasSize;
         PowerPointPresentationModel _model;
@@ -13,7 +13,7 @@ namespace WindowPowerPoint
         int _left;
         int _right;
         int _buttom;
-        public Dialog()
+        public InsertShapeDialog()
         {
             InitializeComponent();
         }

@@ -319,6 +319,18 @@ namespace WindowPowerPoint
             }
         }
 
+        // process upload
+        public void ProcessSave()
+        {
+            _model.HandleSave();
+        }
+
+        // process download
+        public void ProcessLoad()
+        {
+            _model.HandleLoad();
+        }
+
         // is drawing
         public bool IsDrawing()
         {

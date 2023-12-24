@@ -49,6 +49,14 @@ namespace WindowPowerPoint
             }
         }
 
+        // clear command
+        public virtual void Clear()
+        {
+            _undoStack.Clear();
+            _redoStack.Clear();
+            StateChanged();
+        }
+
         // handle state change
         private void StateChanged()
         {

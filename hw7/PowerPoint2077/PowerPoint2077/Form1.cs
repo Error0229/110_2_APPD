@@ -12,7 +12,9 @@ namespace WindowPowerPoint
             get; set;
         }
         private CursorManager _cursorManager;
-        private Dialog _dialog;
+        private InsertShapeDialog _insertDialog;
+        private SaveDialog _saveDialog;
+        private LoadDialog _loadDialog;
         public PowerPoint(PowerPointPresentationModel model)
         {
             base.DoubleBuffered = true;
@@ -36,7 +38,7 @@ namespace WindowPowerPoint
             _canvas.MouseMove += HandleCanvasMoving;
             _canvas.MouseEnter += HandleCanvasEnter;
             _canvas.MouseLeave += HandleCanvasLeave;
-            _flowLayoutPanel.Layout += _flowLayoutPanel_Layout;
+            _flowLayoutPanel.Layout += _flowLayoutPanelLayout;
             KeyPreview = true;
             KeyDown += HandleKeyDown;
             _brief = new Bitmap(_canvas.Width, _canvas.Height);
@@ -51,9 +53,11 @@ namespace WindowPowerPoint
             InitializeSlide(); // lazy add page
             SplitContainer1Adjust(this, null);
             _shapeGridView.DataSource = _presentationModel.Shapes;
-            _dialog = new Dialog();
+            _insertDialog = new InsertShapeDialog();
+            _saveDialog = new SaveDialog(_presentationModel);
+            _loadDialog = new LoadDialog(_presentationModel);
         }
-        private void _flowLayoutPanel_Layout(object sender, LayoutEventArgs e)
+        private void _flowLayoutPanelLayout(object sender, LayoutEventArgs e)
         {
             bool verticalScrollVisible = _flowLayoutPanel.Height < _flowLayoutPanel.DisplayRectangle.Height;
             int scrollbarWidth = SystemInformation.VerticalScrollBarWidth;
@@ -111,8 +115,8 @@ namespace WindowPowerPoint
         {
             // _presentationModel.ProcessInsertShape(_shapeComboBox.Text);
             // if the dialog box not open, open it
-            _dialog.SetupDialog(_canvas.Size, _shapeComboBox.Text, _presentationModel);
-            _dialog.ShowDialog();
+            _insertDialog.SetupDialog(_canvas.Size, _shapeComboBox.Text, _presentationModel);
+            _insertDialog.ShowDialog();
             GenerateBrief();
         }
         private readonly PowerPointPresentationModel _presentationModel;
@@ -351,6 +355,18 @@ namespace WindowPowerPoint
             _presentationModel.ProcessSwitchPage(index);
             _shapeGridView.DataSource = _presentationModel.Shapes;
             GenerateBrief();
+        }
+
+        // handle save button click
+        private void _saveButtonClick(object sender, EventArgs e)
+        {
+            _saveDialog.ShowDialog();
+        }
+
+        // handle load button click
+        private void _loadButtonClick(object sender, EventArgs e)
+        {
+            _loadDialog.ShowDialog();
         }
     }
 }

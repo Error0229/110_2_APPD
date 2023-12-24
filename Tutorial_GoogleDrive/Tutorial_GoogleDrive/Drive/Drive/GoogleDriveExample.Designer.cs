@@ -76,25 +76,22 @@
             this.mainViewTableLayoutPanel.Controls.Add(this._deleteGroupBox, 0, 3);
             this.mainViewTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainViewTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainViewTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.mainViewTableLayoutPanel.Name = "mainViewTableLayoutPanel";
             this.mainViewTableLayoutPanel.RowCount = 4;
             this.mainViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.mainViewTableLayoutPanel.Size = new System.Drawing.Size(1128, 671);
+            this.mainViewTableLayoutPanel.Size = new System.Drawing.Size(846, 545);
             this.mainViewTableLayoutPanel.TabIndex = 0;
             // 
             // _uploadGroupBox
             // 
             this._uploadGroupBox.Controls.Add(this._uploadPanel);
             this._uploadGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._uploadGroupBox.Location = new System.Drawing.Point(4, 4);
-            this._uploadGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this._uploadGroupBox.Location = new System.Drawing.Point(3, 3);
             this._uploadGroupBox.Name = "_uploadGroupBox";
-            this._uploadGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this._uploadGroupBox.Size = new System.Drawing.Size(1120, 159);
+            this._uploadGroupBox.Size = new System.Drawing.Size(840, 130);
             this._uploadGroupBox.TabIndex = 0;
             this._uploadGroupBox.TabStop = false;
             this._uploadGroupBox.Text = "Upload";
@@ -103,10 +100,9 @@
             // 
             this._uploadPanel.Controls.Add(this._uploadTableLayoutPanel);
             this._uploadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._uploadPanel.Location = new System.Drawing.Point(4, 19);
-            this._uploadPanel.Margin = new System.Windows.Forms.Padding(4);
+            this._uploadPanel.Location = new System.Drawing.Point(3, 16);
             this._uploadPanel.Name = "_uploadPanel";
-            this._uploadPanel.Size = new System.Drawing.Size(1112, 136);
+            this._uploadPanel.Size = new System.Drawing.Size(834, 111);
             this._uploadPanel.TabIndex = 0;
             // 
             // _uploadTableLayoutPanel
@@ -121,24 +117,22 @@
             this._uploadTableLayoutPanel.Controls.Add(this._uploadButton, 2, 1);
             this._uploadTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._uploadTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this._uploadTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this._uploadTableLayoutPanel.Name = "_uploadTableLayoutPanel";
             this._uploadTableLayoutPanel.RowCount = 2;
-            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this._uploadTableLayoutPanel.Size = new System.Drawing.Size(1112, 136);
+            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this._uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this._uploadTableLayoutPanel.Size = new System.Drawing.Size(834, 111);
             this._uploadTableLayoutPanel.TabIndex = 0;
             // 
             // _uploadLabel
             // 
             this._uploadLabel.AutoSize = true;
             this._uploadLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this._uploadLabel.Location = new System.Drawing.Point(171, 0);
-            this._uploadLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._uploadLabel.Location = new System.Drawing.Point(127, 0);
             this._uploadLabel.Name = "_uploadLabel";
-            this._uploadLabel.Size = new System.Drawing.Size(103, 40);
+            this._uploadLabel.Size = new System.Drawing.Size(78, 32);
             this._uploadLabel.TabIndex = 0;
             this._uploadLabel.Text = "File to Upload :";
             this._uploadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,20 +140,18 @@
             // _uploadFilePathTextBox
             // 
             this._uploadFilePathTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._uploadFilePathTextBox.Location = new System.Drawing.Point(282, 4);
-            this._uploadFilePathTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this._uploadFilePathTextBox.Location = new System.Drawing.Point(211, 3);
             this._uploadFilePathTextBox.Name = "_uploadFilePathTextBox";
             this._uploadFilePathTextBox.ReadOnly = true;
-            this._uploadFilePathTextBox.Size = new System.Drawing.Size(548, 22);
+            this._uploadFilePathTextBox.Size = new System.Drawing.Size(411, 20);
             this._uploadFilePathTextBox.TabIndex = 1;
             // 
             // _uploadBrowseButton
             // 
             this._uploadBrowseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._uploadBrowseButton.Location = new System.Drawing.Point(838, 4);
-            this._uploadBrowseButton.Margin = new System.Windows.Forms.Padding(4);
+            this._uploadBrowseButton.Location = new System.Drawing.Point(628, 3);
             this._uploadBrowseButton.Name = "_uploadBrowseButton";
-            this._uploadBrowseButton.Size = new System.Drawing.Size(270, 32);
+            this._uploadBrowseButton.Size = new System.Drawing.Size(203, 26);
             this._uploadBrowseButton.TabIndex = 2;
             this._uploadBrowseButton.Text = "Browse...";
             this._uploadBrowseButton.UseVisualStyleBackColor = true;
@@ -168,10 +160,9 @@
             // _uploadButton
             // 
             this._uploadButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._uploadButton.Location = new System.Drawing.Point(838, 44);
-            this._uploadButton.Margin = new System.Windows.Forms.Padding(4);
+            this._uploadButton.Location = new System.Drawing.Point(628, 35);
             this._uploadButton.Name = "_uploadButton";
-            this._uploadButton.Size = new System.Drawing.Size(270, 88);
+            this._uploadButton.Size = new System.Drawing.Size(203, 73);
             this._uploadButton.TabIndex = 3;
             this._uploadButton.Text = "Upload";
             this._uploadButton.UseVisualStyleBackColor = true;
@@ -181,11 +172,9 @@
             // 
             this._downloadGroupBox.Controls.Add(this._downloadPanel);
             this._downloadGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._downloadGroupBox.Location = new System.Drawing.Point(4, 171);
-            this._downloadGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this._downloadGroupBox.Location = new System.Drawing.Point(3, 139);
             this._downloadGroupBox.Name = "_downloadGroupBox";
-            this._downloadGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this._downloadGroupBox.Size = new System.Drawing.Size(1120, 159);
+            this._downloadGroupBox.Size = new System.Drawing.Size(840, 130);
             this._downloadGroupBox.TabIndex = 1;
             this._downloadGroupBox.TabStop = false;
             this._downloadGroupBox.Text = "Download";
@@ -194,19 +183,18 @@
             // 
             this._downloadPanel.Controls.Add(this._downloadTableLayoutPanel);
             this._downloadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._downloadPanel.Location = new System.Drawing.Point(4, 19);
-            this._downloadPanel.Margin = new System.Windows.Forms.Padding(4);
+            this._downloadPanel.Location = new System.Drawing.Point(3, 16);
             this._downloadPanel.Name = "_downloadPanel";
-            this._downloadPanel.Size = new System.Drawing.Size(1112, 136);
+            this._downloadPanel.Size = new System.Drawing.Size(834, 111);
             this._downloadPanel.TabIndex = 0;
             // 
             // _downloadTableLayoutPanel
             // 
             this._downloadTableLayoutPanel.ColumnCount = 4;
             this._downloadTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this._downloadTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this._downloadTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this._downloadTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this._downloadTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this._downloadTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
             this._downloadTableLayoutPanel.Controls.Add(this._downloadBrowseButton, 3, 1);
             this._downloadTableLayoutPanel.Controls.Add(this._downloadToTextBox, 2, 1);
             this._downloadTableLayoutPanel.Controls.Add(this._downloadToLabel, 1, 1);
@@ -215,22 +203,20 @@
             this._downloadTableLayoutPanel.Controls.Add(this._listFileOnRootButton, 3, 0);
             this._downloadTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._downloadTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this._downloadTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this._downloadTableLayoutPanel.Name = "_downloadTableLayoutPanel";
             this._downloadTableLayoutPanel.RowCount = 3;
             this._downloadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._downloadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this._downloadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this._downloadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._downloadTableLayoutPanel.Size = new System.Drawing.Size(1112, 136);
+            this._downloadTableLayoutPanel.Size = new System.Drawing.Size(834, 111);
             this._downloadTableLayoutPanel.TabIndex = 0;
             // 
             // _downloadBrowseButton
             // 
             this._downloadBrowseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._downloadBrowseButton.Location = new System.Drawing.Point(961, 52);
-            this._downloadBrowseButton.Margin = new System.Windows.Forms.Padding(4);
+            this._downloadBrowseButton.Location = new System.Drawing.Point(720, 42);
             this._downloadBrowseButton.Name = "_downloadBrowseButton";
-            this._downloadBrowseButton.Size = new System.Drawing.Size(147, 32);
+            this._downloadBrowseButton.Size = new System.Drawing.Size(111, 26);
             this._downloadBrowseButton.TabIndex = 6;
             this._downloadBrowseButton.Text = "Browse...";
             this._downloadBrowseButton.UseVisualStyleBackColor = true;
@@ -239,21 +225,19 @@
             // _downloadToTextBox
             // 
             this._downloadToTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._downloadToTextBox.Location = new System.Drawing.Point(451, 52);
-            this._downloadToTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this._downloadToTextBox.Location = new System.Drawing.Point(338, 42);
             this._downloadToTextBox.Name = "_downloadToTextBox";
             this._downloadToTextBox.ReadOnly = true;
-            this._downloadToTextBox.Size = new System.Drawing.Size(502, 22);
+            this._downloadToTextBox.Size = new System.Drawing.Size(376, 20);
             this._downloadToTextBox.TabIndex = 4;
             // 
             // _downloadToLabel
             // 
             this._downloadToLabel.AutoSize = true;
             this._downloadToLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._downloadToLabel.Location = new System.Drawing.Point(344, 48);
-            this._downloadToLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._downloadToLabel.Location = new System.Drawing.Point(258, 39);
             this._downloadToLabel.Name = "_downloadToLabel";
-            this._downloadToLabel.Size = new System.Drawing.Size(99, 40);
+            this._downloadToLabel.Size = new System.Drawing.Size(74, 32);
             this._downloadToLabel.TabIndex = 1;
             this._downloadToLabel.Text = "Download to:";
             this._downloadToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -261,10 +245,9 @@
             // _downloadButton
             // 
             this._downloadButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._downloadButton.Location = new System.Drawing.Point(961, 92);
-            this._downloadButton.Margin = new System.Windows.Forms.Padding(4);
+            this._downloadButton.Location = new System.Drawing.Point(720, 74);
             this._downloadButton.Name = "_downloadButton";
-            this._downloadButton.Size = new System.Drawing.Size(147, 40);
+            this._downloadButton.Size = new System.Drawing.Size(111, 34);
             this._downloadButton.TabIndex = 3;
             this._downloadButton.Text = "Download";
             this._downloadButton.UseVisualStyleBackColor = true;
@@ -274,21 +257,18 @@
             // 
             this._fileListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._fileListBox.FormattingEnabled = true;
-            this._fileListBox.ItemHeight = 16;
-            this._fileListBox.Location = new System.Drawing.Point(4, 4);
-            this._fileListBox.Margin = new System.Windows.Forms.Padding(4);
+            this._fileListBox.Location = new System.Drawing.Point(3, 3);
             this._fileListBox.Name = "_fileListBox";
             this._downloadTableLayoutPanel.SetRowSpan(this._fileListBox, 3);
-            this._fileListBox.Size = new System.Drawing.Size(332, 128);
+            this._fileListBox.Size = new System.Drawing.Size(249, 105);
             this._fileListBox.TabIndex = 5;
             // 
             // _listFileOnRootButton
             // 
             this._listFileOnRootButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._listFileOnRootButton.Location = new System.Drawing.Point(961, 4);
-            this._listFileOnRootButton.Margin = new System.Windows.Forms.Padding(4);
+            this._listFileOnRootButton.Location = new System.Drawing.Point(720, 3);
             this._listFileOnRootButton.Name = "_listFileOnRootButton";
-            this._listFileOnRootButton.Size = new System.Drawing.Size(147, 40);
+            this._listFileOnRootButton.Size = new System.Drawing.Size(111, 33);
             this._listFileOnRootButton.TabIndex = 7;
             this._listFileOnRootButton.Text = "List Files On Root ";
             this._listFileOnRootButton.UseVisualStyleBackColor = true;
@@ -298,11 +278,9 @@
             // 
             this._updateGroupBox.Controls.Add(this.tableLayoutPanel1);
             this._updateGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._updateGroupBox.Location = new System.Drawing.Point(4, 338);
-            this._updateGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this._updateGroupBox.Location = new System.Drawing.Point(3, 275);
             this._updateGroupBox.Name = "_updateGroupBox";
-            this._updateGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this._updateGroupBox.Size = new System.Drawing.Size(1120, 159);
+            this._updateGroupBox.Size = new System.Drawing.Size(840, 130);
             this._updateGroupBox.TabIndex = 2;
             this._updateGroupBox.TabStop = false;
             this._updateGroupBox.Text = "Update";
@@ -315,21 +293,19 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this._updateButton, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 19);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1112, 136);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(834, 111);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // _updateButton
             // 
             this._updateButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._updateButton.Location = new System.Drawing.Point(374, 4);
-            this._updateButton.Margin = new System.Windows.Forms.Padding(4);
+            this._updateButton.Location = new System.Drawing.Point(281, 3);
             this._updateButton.Name = "_updateButton";
-            this._updateButton.Size = new System.Drawing.Size(362, 128);
+            this._updateButton.Size = new System.Drawing.Size(272, 105);
             this._updateButton.TabIndex = 0;
             this._updateButton.Text = "Update";
             this._updateButton.UseVisualStyleBackColor = true;
@@ -339,11 +315,9 @@
             // 
             this._deleteGroupBox.Controls.Add(this.tableLayoutPanel2);
             this._deleteGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._deleteGroupBox.Location = new System.Drawing.Point(4, 505);
-            this._deleteGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this._deleteGroupBox.Location = new System.Drawing.Point(3, 411);
             this._deleteGroupBox.Name = "_deleteGroupBox";
-            this._deleteGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this._deleteGroupBox.Size = new System.Drawing.Size(1120, 162);
+            this._deleteGroupBox.Size = new System.Drawing.Size(840, 131);
             this._deleteGroupBox.TabIndex = 3;
             this._deleteGroupBox.TabStop = false;
             this._deleteGroupBox.Text = "Delete";
@@ -356,21 +330,19 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.Controls.Add(this._deleteButton, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 19);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1112, 139);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(834, 112);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // _deleteButton
             // 
             this._deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._deleteButton.Location = new System.Drawing.Point(374, 4);
-            this._deleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this._deleteButton.Location = new System.Drawing.Point(281, 3);
             this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.Size = new System.Drawing.Size(362, 131);
+            this._deleteButton.Size = new System.Drawing.Size(272, 106);
             this._deleteButton.TabIndex = 0;
             this._deleteButton.Text = "Delete";
             this._deleteButton.UseVisualStyleBackColor = true;
@@ -382,11 +354,10 @@
             // 
             // GoogleDriveExample
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 671);
+            this.ClientSize = new System.Drawing.Size(846, 545);
             this.Controls.Add(this.mainViewTableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GoogleDriveExample";
             this.Text = "Google Drive Example";
             this.mainViewTableLayoutPanel.ResumeLayout(false);
