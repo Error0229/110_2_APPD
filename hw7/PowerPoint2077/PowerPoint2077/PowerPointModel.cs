@@ -64,13 +64,13 @@ namespace WindowPowerPoint
         // load pages from drive
         public void HandleLoad()
         {
-            _drive.Load(_fileID, "save.txt");
+            _drive.Load(_fileID, "load.txt");
             while (SlideIndex >= 0)
             {
                 HandleDeletePage(SlideIndex);
             }
             _commandManager.Clear();
-            string encodedPages = System.IO.File.ReadAllText("save.txt");
+            string encodedPages = System.IO.File.ReadAllText("load.txt");
             var rawData = DecodePages(encodedPages);
             for (int i = 0; i < rawData.Count - 1; i++)
             {
