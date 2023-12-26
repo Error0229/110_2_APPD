@@ -138,7 +138,7 @@ namespace WindowPowerPoint.Tests
         [TestMethod]
         public void AddPageTest()
         {
-            _model.AddPage(_slideIndex + 1, new Page());
+            _model.AddPage(_slideIndex, new Page());
             Assert.AreEqual(2, _model.Pages.Count);
         }
 
