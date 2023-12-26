@@ -342,6 +342,7 @@ namespace WindowPowerPoint
             button.Width = (int)panel1Width - _flowLayoutPanel.Margin.Horizontal;
             button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
             button.Click += HandleSlideButtonClick;
+            button.BackColor = Color.White;
             _flowLayoutPanel.Controls.Add(button);
             _flowLayoutPanel.Controls.SetChildIndex(button, SlideIndex);
             _presentationModel.SlideIndex = 0;

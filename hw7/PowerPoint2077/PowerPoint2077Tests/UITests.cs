@@ -31,7 +31,8 @@ namespace WindowPowerPoint.Tests
         const string canvasId = "_canvas";
         const string dataGridId = "_shapeGridView";
         const string slidePanel = "_flowLayoutPanel";
-        const string slideButtonClass = "WindowsForms10.BUTTON.app.0.141b42a_r8_ad1";
+        const string slideButtonClass = "WindowsForms10.BUTTON.app.0.17ad52b_r8_ad1";
+        // WindowsForms10.BUTTON.app.0.2c908d5_r9_ad1
         private WindowsElement _canvas;
         private WindowsElement _dataGrid;
         private WindowsElement _slidePanel;

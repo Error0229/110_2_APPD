@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
+using System.IO;
 
 namespace WindowPowerPoint.Tests
 {
@@ -15,10 +16,14 @@ namespace WindowPowerPoint.Tests
             // Launch a new instance of PowerPoint2077 application if it is not yet running
             if (session == null)
             {
+                var projectName = "PowerPoint2077";
+                string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
                 var options = new AppiumOptions();
                 options.AddAdditionalCapability("app", targetAppPath);
                 options.AddAdditionalCapability("deviceName", "WindowsPC");
-                session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), options);
+                options.AddAdditionalCapability("appWorkingDir", Path.Combine(solutionPath, projectName, "bin", "Debug"));
+
+               session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), options);
                 Assert.IsNotNull(session);
 
                 // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
