@@ -52,8 +52,8 @@ namespace WindowPowerPoint
             this._addPageButton = new System.Windows.Forms.ToolStripButton();
             this._undoButton = new WindowPowerPoint.BindingToolStripButton();
             this._redoButton = new WindowPowerPoint.BindingToolStripButton();
-            this._saveButton = new System.Windows.Forms.ToolStripButton();
-            this._loadButton = new System.Windows.Forms.ToolStripButton();
+            this._saveButton = new BindingToolStripButton();
+            this._loadButton = new BindingToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).BeginInit();
             this._splitContainer2.Panel1.SuspendLayout();
             this._splitContainer2.Panel2.SuspendLayout();
@@ -87,7 +87,7 @@ namespace WindowPowerPoint
             // 
             this._splitContainer2.Panel2.Controls.Add(this._groupView);
             this._splitContainer2.Size = new System.Drawing.Size(1530, 698);
-            this._splitContainer2.SplitterDistance = 1237;
+            this._splitContainer2.SplitterDistance = 1213;
             this._splitContainer2.TabIndex = 0;
             this._splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.SplitContainer2Adjust);
             // 
@@ -110,10 +110,10 @@ namespace WindowPowerPoint
             this._groupView.Controls.Add(this._shapeComboBox);
             this._groupView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._groupView.Location = new System.Drawing.Point(0, 0);
-            this._groupView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._groupView.Margin = new System.Windows.Forms.Padding(4);
             this._groupView.Name = "_groupView";
             this._groupView.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._groupView.Size = new System.Drawing.Size(289, 698);
+            this._groupView.Size = new System.Drawing.Size(313, 698);
             this._groupView.TabIndex = 3;
             this._groupView.TabStop = false;
             this._groupView.Text = "資料顯示";
@@ -150,7 +150,7 @@ namespace WindowPowerPoint
             this._shapeGridView.RowHeadersWidth = 51;
             this._shapeGridView.RowTemplate.Height = 24;
             this._shapeGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._shapeGridView.Size = new System.Drawing.Size(278, 631);
+            this._shapeGridView.Size = new System.Drawing.Size(302, 631);
             this._shapeGridView.TabIndex = 0;
             this._shapeGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShapeGridViewCellContentClick);
             // 
@@ -166,7 +166,7 @@ namespace WindowPowerPoint
             this._deleteShape.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this._deleteShape.Text = "刪除";
             this._deleteShape.UseColumnTextForButtonValue = true;
-            this._deleteShape.Width = 65;
+            this._deleteShape.Width = 66;
             // 
             // _shapeType
             // 
@@ -178,7 +178,7 @@ namespace WindowPowerPoint
             this._shapeType.Name = "_shapeType";
             this._shapeType.ReadOnly = true;
             this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._shapeType.Width = 65;
+            this._shapeType.Width = 66;
             // 
             // _shapeInfo
             // 
@@ -205,7 +205,7 @@ namespace WindowPowerPoint
             this._shapeComboBox.Location = new System.Drawing.Point(103, 31);
             this._shapeComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._shapeComboBox.Name = "_shapeComboBox";
-            this._shapeComboBox.Size = new System.Drawing.Size(172, 24);
+            this._shapeComboBox.Size = new System.Drawing.Size(196, 24);
             this._shapeComboBox.TabIndex = 1;
             // 
             // _splitContainer1
@@ -223,7 +223,7 @@ namespace WindowPowerPoint
             // 
             this._splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this._splitContainer1.Panel1.Controls.Add(this._flowLayoutPanel);
-            this._splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this._splitContainer1.Panel1MinSize = 26;
             // 
             // _splitContainer1.Panel2
@@ -392,8 +392,8 @@ namespace WindowPowerPoint
             this._loadButton.Image = ((System.Drawing.Image)(resources.GetObject("_loadButton.Image")));
             this._loadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._loadButton.Name = "_loadButton";
-            this._loadButton.Size = new System.Drawing.Size(29, 31);
-            this._loadButton.Text = "⬇️";
+            this._loadButton.Size = new System.Drawing.Size(34, 31);
+            this._loadButton.Text = "📂";
             this._loadButton.Click += new System.EventHandler(this._loadButtonClick);
             // 
             // PowerPoint
@@ -457,7 +457,7 @@ namespace WindowPowerPoint
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeInfo;
         private System.Windows.Forms.ToolStripButton _addPageButton;
         private System.Windows.Forms.FlowLayoutPanel _flowLayoutPanel;
-        private System.Windows.Forms.ToolStripButton _saveButton;
-        private System.Windows.Forms.ToolStripButton _loadButton;
+        private BindingToolStripButton _saveButton;
+        private BindingToolStripButton _loadButton;
     }
 }

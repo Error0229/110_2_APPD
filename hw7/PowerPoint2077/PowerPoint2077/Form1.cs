@@ -31,7 +31,7 @@ namespace WindowPowerPoint
             _cursorButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_CURSOR_CHECKED);
             _redoButton.DataBindings.Add(Constant.ENABLED, _presentationModel, Constant.IS_REDO_ENABLED);
             _undoButton.DataBindings.Add(Constant.ENABLED, _presentationModel, Constant.IS_UNDO_ENABLED);
-
+            _saveButton.DataBindings.Add(Constant.ENABLED, _presentationModel, nameof(_presentationModel.IsSaveEnabled));
             _canvas.Paint += HandleCanvasPaint;
             _canvas.MouseDown += HandleCanvasPressed;
             _canvas.MouseUp += HandleCanvasReleased;
@@ -107,7 +107,7 @@ namespace WindowPowerPoint
             _brief = new Bitmap(_canvas.Width, _canvas.Height);
             _canvas.DrawToBitmap(_brief, new System.Drawing.Rectangle(Constant.ZERO_INTEGER, Constant.ZERO_INTEGER, _canvas.Width, _canvas.Height));
             Button button = ((Button)(_flowLayoutPanel.Controls[SlideIndex]));
-            button.Image = new Bitmap(_brief, button.Size);
+            button.BackgroundImage = new Bitmap(_brief, button.Size);
         }
 
         // insert shape
@@ -292,6 +292,7 @@ namespace WindowPowerPoint
                     button.Width = (int)panel1Width - (_flowLayoutPanel.Padding.Horizontal + button.Margin.Horizontal);
                     button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
                     button.BackColor = Color.White;
+                    button.BackgroundImageLayout = ImageLayout.Stretch;
                     button.Name = "Slide";
                     button.Click += HandleSlideButtonClick;
                     _flowLayoutPanel.Controls.Add(button);
@@ -344,6 +345,7 @@ namespace WindowPowerPoint
             button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
             button.Click += HandleSlideButtonClick;
             button.BackColor = Color.White;
+            button.BackgroundImageLayout = ImageLayout.Stretch;
             button.Name = "Slide";
             _flowLayoutPanel.Controls.Add(button);
             _flowLayoutPanel.Controls.SetChildIndex(button, SlideIndex);

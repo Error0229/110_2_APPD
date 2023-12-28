@@ -16,7 +16,7 @@ namespace WindowPowerPoint
             _undoStack = new Stack<ICommand>();
             _redoStack = new Stack<ICommand>();
         }
-        // excute command
+        // execute command
         public virtual void Execute(ICommand command)
         {
             command.Execute();

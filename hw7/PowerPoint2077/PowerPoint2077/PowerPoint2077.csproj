@@ -136,6 +136,7 @@
     <Compile Include="MoveCommand.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="PageFactory.cs" />
+    <Compile Include="Pages.cs" />
     <Compile Include="PointState.cs" />
     <Compile Include="PowerPointModel.cs" />
     <Compile Include="PowerPointPresentationModel.cs" />

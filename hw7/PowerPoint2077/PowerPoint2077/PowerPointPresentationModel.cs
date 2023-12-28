@@ -30,6 +30,8 @@ namespace WindowPowerPoint
             _isSelecting = false;
             _isUndoEnabled = false;
             _isRedoEnabled = false;
+            _isSaveEnabled = true;
+            _isLoadEnabled = true;
         }
 
         // handle add page
@@ -319,10 +321,41 @@ namespace WindowPowerPoint
             }
         }
 
-        // process upload
-        public void ProcessSave()
+        // is save enabled
+        public bool IsSaveEnabled
         {
-            _model.HandleSave();
+            get
+            {
+                return _isSaveEnabled;
+            }
+            set
+            {
+                _isSaveEnabled = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsSaveEnabled)));
+            }
+        }
+
+        // is load enabled
+        public bool IsLoadEnabled
+        {
+            get
+            {
+                return _isLoadEnabled;
+            }
+            set
+            {
+                _isLoadEnabled = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsLoadEnabled)));
+            }
+        }
+
+        // process upload
+        public async void ProcessSave()
+        {
+            IsSaveEnabled = false;
+            IsSaveEnabled = await _model.HandleSave();
         }
 
         // process download
@@ -351,6 +384,8 @@ namespace WindowPowerPoint
         private bool _isSelecting;
         private bool _isUndoEnabled;
         private bool _isRedoEnabled;
+        private bool _isSaveEnabled;
+        private bool _isLoadEnabled;
         private readonly PowerPointModel _model;
     }
 }

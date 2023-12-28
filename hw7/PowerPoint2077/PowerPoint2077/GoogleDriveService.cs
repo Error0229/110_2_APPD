@@ -62,10 +62,23 @@ namespace WindowPowerPoint
         public async Task<IList<Google.Apis.Drive.v3.Data.File>> SearchFile(string fileName)
         {
             string query = $"name = '{fileName}' and 'root' in parents and trashed = false";
+
             var request = _service.Files.List();
+
             request.Q = query;
             request.Fields = "files(id, name)";
-            var response = await request.ExecuteAsync();
+            Google.Apis.Drive.v3.Data.FileList response;
+            try
+            {
+                response = await request.ExecuteAsync();
+            }
+            catch (System.Net.Http.HttpRequestException)
+            {
+                MessageBox.Show("Fail to connect Google Drive");
+                Environment.Exit(0);
+                return null;
+            }
+
             return response.Files;
         }
 
@@ -107,7 +120,7 @@ namespace WindowPowerPoint
             var parentFolderId = "root";
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = Path.GetFileName(fileName),
+                Name = "save.txt",
                 Parents = new List<string> { parentFolderId }
             };
 
@@ -118,8 +131,7 @@ namespace WindowPowerPoint
                 request.Fields = "id";      // 返回文件的ID
                 await request.UploadAsync();
             }
-            var file = request.ResponseBody;
-            return file.Id;
+            return request.ResponseBody.Id;
         }
 
         // update file

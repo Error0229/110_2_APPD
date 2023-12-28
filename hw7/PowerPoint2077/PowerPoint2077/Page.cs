@@ -16,22 +16,29 @@ namespace WindowPowerPoint
         {
             Shapes = new BindingList<Shape>();
         }
+
+        // add shape
         public void AddShape(Shape shape)
         {
             Shapes.Add(shape);
         }
+
+        // remove shape
         public void RemoveShape(Shape shape)
         {
             Shapes.Remove(shape);
         }
+
+        // remove shape by index
         public void RemoveShape(int index)
         {
             Shapes.RemoveAt(index);
         }
 
+        // encode page
         public string Encode()
         {
-            var result = "";
+            var result = string.Empty;
             for (int i = 0; i < Shapes.Count; i++)
             {
                 result += '{' + Shapes[i].Encode() + '}' + ", "[(i != Shapes.Count - 1) ? 0 : 1];
@@ -39,32 +46,33 @@ namespace WindowPowerPoint
             return result;
         }
 
+        // decide page
         public void Decode(string data, Size canvasSize)
         {
             var shapes = data.Trim().Split('{');
             for (int i = 1; i < shapes.Length; i++)
             {
-                var shape = shapes[i].Substring(0, shapes[i].Length - 1);
-                var type = shape.Split(',')[0];
-                var data2 = shape.Split('(', ')')[1];
+                var shapeInfo = shapes[i].Substring(0, shapes[i].Length - 1);
+                var type = shapeInfo.Split(',')[0];
+                var coordinate = shapeInfo.Split('(', ')')[1];
+                Shape shape;
                 switch (type)
                 {
                     case "LINE":
-                        var line = new Line();
-                        line.Decode(data2, canvasSize);
-                        Shapes.Add(line);
+                        shape = new Line();
                         break;
                     case "RECTANGLE":
-                        var rectangle = new Rectangle();
-                        rectangle.Decode(data2, canvasSize);
-                        Shapes.Add(rectangle);
+                        shape = new Rectangle();
                         break;
                     case "CIRCLE":
-                        var circle = new Circle();
-                        circle.Decode(data2, canvasSize);
-                        Shapes.Add(circle);
+                        shape = new Circle();
+                        break;
+                    default:
+                        shape = new Circle();
                         break;
                 }
+                shape.Decode(coordinate, canvasSize);
+                Shapes.Add(shape);
             }
         }
     }

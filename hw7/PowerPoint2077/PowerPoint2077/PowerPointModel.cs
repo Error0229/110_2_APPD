@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace WindowPowerPoint
 {
     public class PowerPointModel : ISlide
@@ -47,18 +47,22 @@ namespace WindowPowerPoint
         }
 
         // save pages to drive
-        public async void HandleSave()
+        public async Task<bool> HandleSave()
         {
-            var encodedPages = EncodePages();
+            var encodedPages = Slides.Encode();
             // save in local
-            System.IO.File.WriteAllText("save.txt", encodedPages);
+            var fileName = GenerateRandomNumber(0, 10000000) + ".txt";
+            System.IO.File.WriteAllText(fileName, encodedPages);
             // save in drive
-            if (_fileID == "")
+            if (_fileID == string.Empty)
             {
-                _fileID = await _drive.Save("save.txt");
+                _fileID = await _drive.Save(fileName);
             }
             else
-                await _drive.UpdateFile("save.txt", _fileID);
+                await _drive.UpdateFile(fileName, _fileID);
+            // remove file
+            System.IO.File.Delete(fileName);
+            return true;
         }
 
         // load pages from drive
@@ -76,22 +80,10 @@ namespace WindowPowerPoint
             {
                 var page = new Page();
                 page.Decode(rawData[i], CanvasSize);
-                AddPage(Pages.Count, page);
-                NotifyPageChanged(Pages.Count - 1, Page.Action.Add);
+                AddPage(Slides.Count, page);
+                NotifyPageChanged(Slides.Count - 1, Page.Action.Add);
             }
-
-        }
-
-        // encode pages
-        public string EncodePages()
-        {
-            string encodedPages = "";
-            foreach (Page page in Pages)
-            {
-                encodedPages += page.Encode();
-                encodedPages += "\n";
-            }
-            return encodedPages;
+            System.IO.File.Delete("load.txt");
         }
 
         // decode pages
@@ -107,8 +99,8 @@ namespace WindowPowerPoint
             CheckSavesExist();
             _factory = new ShapeFactory();
             _pageFactory = new PageFactory();
-            Pages = new List<Page>();
-            Pages.Add(_pageFactory.GetPage());
+            Slides = new Pages();
+            Slides.Add(_pageFactory.GetPage());
             _state = new PointState(this);
             CanvasSize = new Size(0, 0);
             _handleToCursor = new Dictionary<HandleType, Cursor>();
@@ -135,7 +127,6 @@ namespace WindowPowerPoint
             {
                 _fileID = string.Empty;
             }
-            Console.WriteLine(_fileID);
         }
 
         public void NotifyPageChanged(int index, Page.Action operation)
@@ -145,7 +136,7 @@ namespace WindowPowerPoint
                 _pageChanged.Invoke(index, operation);
             }
         }
-        // generate random number securly
+        // generate random number securely
         public static int GenerateRandomNumber(int minValue, int maxValue)
         {
             using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
@@ -187,7 +178,7 @@ namespace WindowPowerPoint
                 NotifyPageChanged(actionIndex, Page.Action.Switch);
             }
             shape.SetCanvasSize(CanvasSize);
-            Pages[SlideIndex].AddShape(shape);
+            Slides[SlideIndex].AddShape(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
 
@@ -207,7 +198,7 @@ namespace WindowPowerPoint
         // handle remove shape
         public virtual void HandleRemoveShape(int slideIndex, int index)
         {
-            _commandManager.Execute(new DeleteCommand(this, Pages[slideIndex].Shapes[index], SlideIndex));
+            _commandManager.Execute(new DeleteCommand(this, Slides[slideIndex].Shapes[index], SlideIndex));
             NotifyModelChanged(EventArgs.Empty);
         }
 
@@ -219,7 +210,7 @@ namespace WindowPowerPoint
                 SlideIndex = actionIndex;
                 NotifyPageChanged(actionIndex, Page.Action.Switch);
             }
-            Pages[SlideIndex].Shapes.Remove(shape);
+            Slides[SlideIndex].Shapes.Remove(shape);
             NotifyModelChanged(EventArgs.Empty);
         }
 
@@ -227,7 +218,7 @@ namespace WindowPowerPoint
         public virtual void SetCanvasSize(Size canvasSize)
         {
             CanvasSize = canvasSize;
-            foreach (Shape shape in Pages[SlideIndex].Shapes)
+            foreach (Shape shape in Slides[SlideIndex].Shapes)
             {
                 shape.SetCanvasSize(canvasSize);
             }
@@ -237,7 +228,7 @@ namespace WindowPowerPoint
         // handle move shape
         public virtual void HandleMoveShape(Point offset)
         {
-            foreach (Shape shape in Pages[SlideIndex].Shapes)
+            foreach (Shape shape in Slides[SlideIndex].Shapes)
             {
                 if (shape.Selected)
                 {
@@ -250,7 +241,7 @@ namespace WindowPowerPoint
         // handle resize shape
         public virtual void HandleShapeResize(PointF firstPoint, PointF secondPoint)
         {
-            foreach (Shape shape in Pages[SlideIndex].Shapes)
+            foreach (Shape shape in Slides[SlideIndex].Shapes)
             {
                 if (shape.Selected)
                 {
@@ -307,11 +298,11 @@ namespace WindowPowerPoint
         // handle Key down
         public virtual void HandleKeyDown(Keys keyCode)
         {
-            var oldCount = Pages[SlideIndex].Shapes.Count;
+            var oldCount = Slides[SlideIndex].Shapes.Count;
             _state.KeyDown(keyCode);
-            if (oldCount == Pages[SlideIndex].Shapes.Count && keyCode == Keys.Delete)
+            if (oldCount == Slides[SlideIndex].Shapes.Count && keyCode == Keys.Delete)
             {
-                _commandManager.Execute(new DeletePageCommand(this, SlideIndex, Pages[SlideIndex]));
+                _commandManager.Execute(new DeletePageCommand(this, SlideIndex, Slides[SlideIndex]));
             }
         }
 
@@ -325,7 +316,7 @@ namespace WindowPowerPoint
         // draw all shapes
         public virtual void DrawShapes(IGraphics graphics)
         {
-            foreach (Shape shape in Pages[SlideIndex].Shapes)
+            foreach (Shape shape in Slides[SlideIndex].Shapes)
             {
                 shape.Draw(graphics);
             }
@@ -338,7 +329,7 @@ namespace WindowPowerPoint
                         {
                             return;
                         }*/
-            foreach (Shape shape in Pages[SlideIndex].Shapes)
+            foreach (Shape shape in Slides[SlideIndex].Shapes)
             {
                 shape.Selected = false;
             }
@@ -393,24 +384,24 @@ namespace WindowPowerPoint
         // handle remove page
         public virtual void HandleDeletePage(int deletedSlideIndex)
         {
-            _commandManager.Execute(new DeletePageCommand(this, deletedSlideIndex, Pages[deletedSlideIndex]));
+            _commandManager.Execute(new DeletePageCommand(this, deletedSlideIndex, Slides[deletedSlideIndex]));
         }
 
         // Add page
         public virtual void AddPage(int newSlideIndex, Page page)
         {
-            Pages.Insert(newSlideIndex, page);
+            Slides.Insert(newSlideIndex, page);
             SlideIndex = newSlideIndex;
         }
 
         // remove page
         public virtual void DeletePage(int deleteIndex, Page page)
         {
-            if (SlideIndex == Pages.Count - 1)
+            if (SlideIndex == Slides.Count - 1)
             {
                 SlideIndex--;
             }
-            Pages.Remove(page);
+            Slides.Remove(page);
         }
 
         // handle switch page
@@ -438,12 +429,12 @@ namespace WindowPowerPoint
         // get current shapes
         public virtual BindingList<Shape> GetCurrentShapes()
         {
-            return Pages[SlideIndex].Shapes;
+            return Slides[SlideIndex].Shapes;
         }
 
         private Shape _hint;
         private readonly ShapeFactory _factory;
         private readonly PageFactory _pageFactory;
-        public List<Page> Pages;
+        public Pages Slides;
     }
 }

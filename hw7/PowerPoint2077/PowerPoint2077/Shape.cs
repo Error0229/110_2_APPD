@@ -148,7 +148,7 @@ namespace WindowPowerPoint
         // format coordinate
         protected string FormatCoordinate(float first, float second)
         {
-            return Constant.LEFT_BRACKET + (int)first + Constant.COMMA + Constant.SPACE + (int)second + Constant.RIGHT_BRACKET;
+            return Constant.LEFT_BRACKET + (int)(first + 0.5) + Constant.COMMA + Constant.SPACE + (int)(second + 0.5) + Constant.RIGHT_BRACKET;
         }
 
         // distance between two point
@@ -212,7 +212,7 @@ namespace WindowPowerPoint
         // get point by pointF
         protected Point GetPoint(PointF point)
         {
-            return new Point((int)point.X, (int)point.Y);
+            return new Point((int)(point.X + 0.5), (int)(point.Y + 0.5));
         }
 
         // encode shape
