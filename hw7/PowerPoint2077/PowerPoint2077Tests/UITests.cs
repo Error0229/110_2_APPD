@@ -44,22 +44,24 @@ namespace WindowPowerPoint.Tests
             var projectName = "PowerPoint2077";
             string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
             var targetAppPath = Path.Combine(solutionPath, projectName, "bin", "Debug", "PowerPoint2077.exe");
-            Setup(context, targetAppPath);
-            session.SwitchTo().Window(session.CurrentWindowHandle);
+            Initialize(context, targetAppPath);
+            _session.SwitchTo().Window(_session.CurrentWindowHandle);
         }
 
+        // clean up test class
         [ClassCleanup]
         public static void ClassCleanUp()
         {
             TearDown();
         }
 
+        // initialize test
         [TestInitialize]
         public void TestInitialize()
         {
-            _canvas = session.FindElementByAccessibilityId(canvasId);
-            _dataGrid = session.FindElementByAccessibilityId(dataGridId);
-            _slidePanel = session.FindElementByAccessibilityId(slidePanel);
+            _canvas = _session.FindElementByAccessibilityId(canvasId);
+            _dataGrid = _session.FindElementByAccessibilityId(dataGridId);
+            _slidePanel = _session.FindElementByAccessibilityId(slidePanel);
         }
 
         // absolute move
@@ -80,7 +82,7 @@ namespace WindowPowerPoint.Tests
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
             .AddAction(CreateMoveTo(device, coordinate.Right, coordinate.Bottom))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
-            session.PerformActions(actionBuilder.ToActionSequenceList());
+            _session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
         // draw Suspicious character
@@ -133,6 +135,37 @@ namespace WindowPowerPoint.Tests
             }
         }
 
+        // delete suspicious character
+        public void DeleteSuspicious()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                DeleteLastInsertShape();
+            }
+        }
+
+        // validate suspicious character
+        public void AssertSuspicious()
+        {
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(1, 1));
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(2, 1));
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(3, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(4, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(5, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(6, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(7, 1));
+
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(50, 80, 150, 200)), GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(30, 100, 70, 160)), GetDataGridViewCellText(1, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(60, 200, 80, 240)), GetDataGridViewCellText(2, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(120, 200, 140, 240)), GetDataGridViewCellText(3, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(95, 110, 160, 140)), GetDataGridViewCellText(4, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(50, 80, 75, 60)), GetDataGridViewCellText(5, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(75, 60, 125, 60)), GetDataGridViewCellText(6, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(125, 60, 150, 80)), GetDataGridViewCellText(7, 2));
+        }
+
 
 
         // resize shape
@@ -151,7 +184,7 @@ namespace WindowPowerPoint.Tests
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
             .AddAction(CreateMoveTo(device, targetCoordinate.Right, targetCoordinate.Bottom))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
-            session.PerformActions(actionBuilder.ToActionSequenceList());
+            _session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
         // move shape
@@ -163,13 +196,13 @@ namespace WindowPowerPoint.Tests
             .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
             .AddAction(CreateMoveTo(device, targetX, targetY))
             .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
-            session.PerformActions(actionBuilder.ToActionSequenceList());
+            _session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
         // get slides
         public IReadOnlyCollection<AppiumWebElement> GetSlides()
         {
-            return _slidePanel.FindElementsByAccessibilityId("Slide");
+            return _slidePanel.FindElementsByAccessibilityId(Constant.SLIDE);
         }
 
         // add page
@@ -181,7 +214,7 @@ namespace WindowPowerPoint.Tests
         // delete page
         public void DeletePage()
         {
-            Actions actions = new Actions(session);
+            Actions actions = new Actions(_session);
             actions.SendKeys(OpenQA.Selenium.Keys.Delete).Perform();
         }
 
@@ -201,17 +234,20 @@ namespace WindowPowerPoint.Tests
                 Bottom = bottom;
             }
         }
+
+        // get coordinate string
         public string GetCoordinateString(ShapeCoordinate coordinate)
         {
             return $"({coordinate.Left}, {coordinate.Top}), ({coordinate.Right}, {coordinate.Bottom})";
         }
 
+        // insert shape and return its coordinate
         public ShapeCoordinate InsertShape(string shapeName)
         {
             ClickByElementID(insertShapeComboBox);
             ClickByElementName(shapeName);
             ClickByElementName(insertShapeButtonName);
-            var dialogBox = session.FindElementByAccessibilityId("Dialog");
+            var dialogBox = _session.FindElementByAccessibilityId("Dialog");
             var textBox1 = dialogBox.FindElementByAccessibilityId("textBox1");
             var textBox2 = dialogBox.FindElementByAccessibilityId("textBox2");
             var textBox3 = dialogBox.FindElementByAccessibilityId("textBox3");
@@ -248,7 +284,7 @@ namespace WindowPowerPoint.Tests
         // resize window 
         public void ResizeWindow(int width, int height)
         {
-            session.Manage().Window.Size = new System.Drawing.Size(width, height);
+            _session.Manage().Window.Size = new System.Drawing.Size(width, height);
         }
 
         // test draw circle
@@ -622,14 +658,19 @@ namespace WindowPowerPoint.Tests
         {
             var width = 800;
             var height = 600;
+            AddPage();
+            AddPage();
             var slides = GetSlides();
-            Assert.AreEqual(1, slides.Count);
+            Assert.AreEqual(3, slides.Count);
             ResizeWindow(width, height);
             Assert.IsTrue(Math.Abs(_canvas.Size.Width / _canvas.Size.Height - 16 / 9) < 0.01);
             foreach (var slide in slides)
             {
                 Assert.IsTrue(Math.Abs(slide.Size.Width / slide.Size.Height - 16 / 9) < 0.01);
             }
+            _session.Manage().Window.Maximize();
+            DeletePage();
+            DeletePage();
         }
 
         // test save
@@ -638,46 +679,37 @@ namespace WindowPowerPoint.Tests
         {
             DrawSuspicious();
             ClickByElementName(saveButtonName);
-            var dialogBox = session.FindElementByName("SaveDialog");
+            var dialogBox = _session.FindElementByName("SaveDialog");
             dialogBox.FindElementByName("Save").Click();
-            ClickByElementName(circleButtonName);
             Assert.IsFalse(IsButtonEnabled(saveButtonName));
-
-        }
-
-        // test load
-        [TestMethod]
-        public void TestLoad()
-        {
+            DeleteSuspicious();
+            DrawSuspicious();
+            DeletePage();
+            // wait 10 seconds for saving
+            System.Threading.Thread.Sleep(3000);
+            Assert.IsTrue(IsButtonEnabled(saveButtonName));
             ClickByElementName(loadButtonName);
-            var dialogBox = session.FindElementByName("LoadDialog");
+            dialogBox = _session.FindElementByName("LoadDialog");
             dialogBox.FindElementByName("Load").Click();
-            try
-            {
-                dialogBox.FindElementByName("Cancel").Click();
-            }
-            catch (Exception)
-            {
-                Assert.Fail();
-            }
+            AssertSuspicious();
         }
 
         // click by element name
         protected void ClickByElementName(string buttonName)
         {
-            session.FindElementByName(buttonName).Click();
+            _session.FindElementByName(buttonName).Click();
         }
 
         // click by element id
         public void ClickByElementID(string buttonID)
         {
-            session.FindElementByAccessibilityId(buttonID).Click();
+            _session.FindElementByAccessibilityId(buttonID).Click();
         }
 
         // is button checked
         protected bool IsButtonChecked(string buttonName)
         {
-            string legacyStateValue = session.FindElementByName(buttonName).GetAttribute("LegacyState");
+            string legacyStateValue = _session.FindElementByName(buttonName).GetAttribute("LegacyState");
             AccessibleStates stateFlags = (AccessibleStates)Enum.Parse(typeof(AccessibleStates), legacyStateValue);
             return (stateFlags & AccessibleStates.Checked) == AccessibleStates.Checked;
         }
@@ -685,7 +717,7 @@ namespace WindowPowerPoint.Tests
         // is button enabled
         protected bool IsButtonEnabled(string buttonName)
         {
-            string legacyStateValue = session.FindElementByName(buttonName).GetAttribute("LegacyState");
+            string legacyStateValue = _session.FindElementByName(buttonName).GetAttribute("LegacyState");
             AccessibleStates stateFlags = (AccessibleStates)Enum.Parse(typeof(AccessibleStates), legacyStateValue);
             return (stateFlags & AccessibleStates.Unavailable) != AccessibleStates.Unavailable;
         }

@@ -4,7 +4,12 @@
     {
         readonly PowerPointModel _model;
         readonly Shape _shape;
-        public int SlideIndex { get; set; }
+        public int SlideIndex 
+        { 
+            get; set; 
+        }
+
+        // constructor
         public AddCommand(PowerPointModel model, Shape shape, int currentIndex)
         {
             SlideIndex = currentIndex;
@@ -19,7 +24,7 @@
         }
 
         // unexecute
-        public void Unexecute()
+        public void Withdraw()
         {
             _model.RemoveShape(_shape, SlideIndex);
         }

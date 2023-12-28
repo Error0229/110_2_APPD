@@ -12,98 +12,111 @@ namespace WindowPowerPoint
         int _top;
         int _left;
         int _right;
-        int _buttom;
+        int _bottom;
+
+        // constructor
         public InsertShapeDialog()
         {
             InitializeComponent();
         }
-        public void SetupDialog(Size canvasSize, string shapeName, PowerPointPresentationModel model)
+
+        // setup dialog 
+        public void InitializeDialog(Size canvasSize, string shapeName, PowerPointPresentationModel model)
         {
             _canvasSize = canvasSize;
             _model = model;
             _shapeName = shapeName;
-            buttonOK.Enabled = false;
+            _buttonOK.Enabled = false;
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        // handle click button ok
+        private void ClickButtonInsert(object sender, EventArgs e)
         {
-            _model.ProcessInsertShape(_shapeName, new Point(_left, _top), new Point(_right, _buttom));
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
+            _model.ProcessInsertShape(_shapeName, new Point(_left, _top), new Point(_right, _bottom));
+            _textBox1.Text = "";
+            _textBox2.Text = "";
+            _textBox3.Text = "";
+            _textBox4.Text = "";
             Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        // handle button cancel click
+        private void ClickButtonCancel(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        // text box 1 text changed
+        private void HandleTextBox1TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _left = Convert.ToInt32(textBox1.Text);
+                _left = Convert.ToInt32(_textBox1.Text);
             }
             catch (Exception)
             {
                 _left = 0;
             }
-            notifyTextBoxChanged();
+            NotifyTextBoxChanged();
         }
-        private void textBox2_TextChanged(object sender, EventArgs e)
+
+        // text box 2 text changed
+        private void HandleTextBox2TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _top = Convert.ToInt32(textBox2.Text);
+                _top = Convert.ToInt32(_textBox2.Text);
             }
             catch (Exception)
             {
                 _top = 0;
             }
-            notifyTextBoxChanged();
+            NotifyTextBoxChanged();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        // text box 3 text changed
+
+        private void HandleTextBox3TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _right = Convert.ToInt32(textBox3.Text);
+                _right = Convert.ToInt32(_textBox3.Text);
             }
             catch (Exception)
             {
                 _right = 0;
             }
-            notifyTextBoxChanged();
+            NotifyTextBoxChanged();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        // text box 4 text changed
+        private void HandleTextBox4TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _buttom = Convert.ToInt32(textBox4.Text);
+                _bottom = Convert.ToInt32(_textBox4.Text);
             }
             catch (Exception)
             {
-                _buttom = 0;
+                _bottom = 0;
             }
-            notifyTextBoxChanged();
+            NotifyTextBoxChanged();
         }
 
-        private void notifyTextBoxChanged()
+        // notify text box changed
+        private void NotifyTextBoxChanged()
         {
             if (_left >= 0 && _left <= _canvasSize.Width &&
                 _top >= 0 && _top <= _canvasSize.Height &&
                 _right >= 0 && _right <= _canvasSize.Width &&
-                _buttom >= 0 && _buttom <= _canvasSize.Height &&
-                _left < _right && _top < _buttom)
+                _bottom >= 0 && _bottom <= _canvasSize.Height &&
+                _left < _right && _top < _bottom)
             {
-                buttonOK.Enabled = true;
+                _buttonOK.Enabled = true;
             }
             else
             {
-                buttonOK.Enabled = false;
+                _buttonOK.Enabled = false;
             }
         }
     }

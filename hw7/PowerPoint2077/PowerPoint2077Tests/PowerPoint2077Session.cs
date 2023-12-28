@@ -8,50 +8,43 @@ namespace WindowPowerPoint.Tests
 {
     public class PowerPoint2077Session
     {
-        protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        protected static WindowsDriver<WindowsElement> session;
+        protected const string WINDOWS_APPLICATION_DRIVER_URL = "http://127.0.0.1:4723";
+        protected static WindowsDriver<WindowsElement> _session;
 
-        public static void Setup(TestContext context, string targetAppPath)
+        // setup the session
+        public static void Initialize(TestContext context, string targetAppPath)
         {
-            // Launch a new instance of PowerPoint2077 application if it is not yet running
-            if (session == null)
+            if (_session == null)
             {
-                var projectName = "PowerPoint2077";
-                string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
+                var projectName = Constant.PROJECT_NAME;
+                string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constant.PARENT_FOLDER_PATH));
                 var options = new AppiumOptions();
-                options.AddAdditionalCapability("app", targetAppPath);
-                options.AddAdditionalCapability("deviceName", "WindowsPC");
-                options.AddAdditionalCapability("appWorkingDir", Path.Combine(solutionPath, projectName, "bin", "Debug"));
-
-               session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), options);
-                Assert.IsNotNull(session);
-
-                // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
-                session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
-
-                // Maximize window
-                session.Manage().Window.Maximize();
+                options.AddAdditionalCapability(Constant.APPLICATION, targetAppPath);
+                options.AddAdditionalCapability(Constant.DEVICE_NAME, Constant.WINDOWS_PERSONAL_COMPUTER);
+                options.AddAdditionalCapability(Constant.APPLICATION_WORKING_DIRECTORY, Path.Combine(solutionPath, projectName, Constant.HELP, Constant.ME));
+                _session = new WindowsDriver<WindowsElement>(new Uri(WINDOWS_APPLICATION_DRIVER_URL), options);
+                Assert.IsNotNull(_session);
+                _session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1 + Constant.POINT_FIVE);
+                _session.Manage().Window.Maximize();
             }
         }
 
+        // teardown the session
         public static void TearDown()
         {
             // Close the application and delete the session
-            if (session != null)
+            if (_session != null)
             {
                 CloseApp();
-                session.Quit();
-                session = null;
+                _session.Quit();
+                _session = null;
             }
         }
 
+        // clear the application
         private static void CloseApp()
         {
-            try
-            {
-                session.Close();
-            }
-            catch { }
+            _session.Close();
         }
     }
 }

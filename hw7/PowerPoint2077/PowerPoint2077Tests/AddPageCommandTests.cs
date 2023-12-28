@@ -44,7 +44,7 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void UnexecuteTest()
         {
-            _command.Unexecute();
+            _command.Withdraw();
             _model.Verify(model => model.DeletePage(_slideIndex, _page.Object), Times.Once());
             _action.Verify(action => action(_slideIndex, Page.Action.Remove), Times.Once());
         }

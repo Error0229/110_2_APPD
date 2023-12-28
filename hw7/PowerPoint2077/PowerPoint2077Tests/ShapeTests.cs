@@ -176,5 +176,26 @@ namespace WindowPowerPoint.Tests
             _shape.CanvasSize = new Size(100, 100);
             Assert.AreEqual(new Size(100, 100), _shape.CanvasSize);
         }
+
+        // test Get convert
+        [TestMethod]
+        public void GetConvertTest()
+        {
+            var _circle = new Circle();
+            _circle.CanvasSize = new Size(100, 200);
+            _circle.SetFirstPoint(new Point(10, 10));
+            _circle.SetSecondPoint(new Point(20, 20));
+            Assert.AreEqual("CIRCLE,(0.1,0.05,0.2,0.1)", _circle.GetConvert());
+        }
+
+        // test get interpret
+        [TestMethod]
+        public void GetInterpretTest()
+        {
+            string encode = "0.1,0.05,0.2,0.1";
+            _shape.Interpret(encode, new Size(100, 200));
+            Assert.AreEqual(_shape.GetFirstPoint(), new PointF(10, 10));
+            Assert.AreEqual(_shape.GetSecondPoint(), new PointF(20, 20));
+        }
     }
 }

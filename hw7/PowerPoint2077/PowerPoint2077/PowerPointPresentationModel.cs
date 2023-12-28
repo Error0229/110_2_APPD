@@ -5,9 +5,8 @@ using System.Windows.Forms;
 
 namespace WindowPowerPoint
 {
-    public class PowerPointPresentationModel : INotifyPropertyChanged, ISlide
+    public partial class PowerPointPresentationModel : INotifyPropertyChanged, ISlide
     {
-        public int SlideIndex { get; set; }
         public delegate void ModelChangedEventHandler(object sender, EventArgs e);
         public event ModelChangedEventHandler _modelChanged;
         public event ModelChangedEventHandler _cursorChanged;
@@ -15,6 +14,10 @@ namespace WindowPowerPoint
         public event Action<int, Page.Action> _pageChanged;
         private CursorManager _cursorManager;
         private readonly CommandManager _commandManager;
+        public int SlideIndex 
+        { 
+            get; set; 
+        }
         public PowerPointPresentationModel(PowerPointModel model)
         {
             _commandManager = new CommandManager();
@@ -41,13 +44,6 @@ namespace WindowPowerPoint
             {
                 _pageChanged.Invoke(index, operation);
             }
-        }
-
-        // setup cursor manager
-        public void SetCursorManager(CursorManager cursorManager)
-        {
-            _cursorManager = cursorManager;
-            _model.ModelCursorManager = cursorManager;
         }
 
         // insert shape with coordinate
@@ -119,6 +115,8 @@ namespace WindowPowerPoint
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CIRCLE_CHECKED));
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_RECTANGLE_CHECKED));
                 PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_CURSOR_CHECKED));
+                PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_UNDO_ENABLED));
+                PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_REDO_ENABLED));
             }
         }
 
@@ -258,8 +256,6 @@ namespace WindowPowerPoint
             }
             _model.Draw(graphics);
         }
-
-        // is circle checked
         public bool IsCircleChecked
         {
             get
@@ -267,8 +263,6 @@ namespace WindowPowerPoint
                 return _isCircleChecked;
             }
         }
-
-        // is line checked
         public bool IsLineChecked
         {
             get
@@ -276,8 +270,6 @@ namespace WindowPowerPoint
                 return _isLineChecked;
             }
         }
-
-        // is rectangle checked
         public bool IsRectangleChecked
         {
             get
@@ -285,8 +277,6 @@ namespace WindowPowerPoint
                 return _isRectangleChecked;
             }
         }
-
-        // is cursor checked
         public bool IsCursorChecked
         {
             get
@@ -303,8 +293,7 @@ namespace WindowPowerPoint
             set
             {
                 _isUndoEnabled = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_UNDO_ENABLED));
+                NotifyModelChanged(EventArgs.Empty);
             }
         }
         public bool IsRedoEnabled
@@ -316,52 +305,8 @@ namespace WindowPowerPoint
             set
             {
                 _isRedoEnabled = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(Constant.IS_REDO_ENABLED));
+                NotifyModelChanged(EventArgs.Empty);
             }
-        }
-
-        // is save enabled
-        public bool IsSaveEnabled
-        {
-            get
-            {
-                return _isSaveEnabled;
-            }
-            set
-            {
-                _isSaveEnabled = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsSaveEnabled)));
-            }
-        }
-
-        // is load enabled
-        public bool IsLoadEnabled
-        {
-            get
-            {
-                return _isLoadEnabled;
-            }
-            set
-            {
-                _isLoadEnabled = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsLoadEnabled)));
-            }
-        }
-
-        // process upload
-        public async void ProcessSave()
-        {
-            IsSaveEnabled = false;
-            IsSaveEnabled = await _model.HandleSave();
-        }
-
-        // process download
-        public void ProcessLoad()
-        {
-            _model.HandleLoad();
         }
 
         // is drawing
@@ -384,8 +329,6 @@ namespace WindowPowerPoint
         private bool _isSelecting;
         private bool _isUndoEnabled;
         private bool _isRedoEnabled;
-        private bool _isSaveEnabled;
-        private bool _isLoadEnabled;
         private readonly PowerPointModel _model;
     }
 }

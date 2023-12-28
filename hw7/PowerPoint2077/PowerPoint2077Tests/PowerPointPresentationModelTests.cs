@@ -287,7 +287,7 @@ namespace WindowPowerPoint.Tests
             _presentationModel.PropertyChanged += propertyChanged.Object;
             _presentationModel.NotifyModelChanged(EventArgs.Empty);
             modelChanged.Verify(m => m(_presentationModel, EventArgs.Empty), Times.Once());
-            propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(4));
+            propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(6));
         }
 
         // test notify cursor changed
@@ -338,7 +338,7 @@ namespace WindowPowerPoint.Tests
             _ = _presentationModel.IsRedoEnabled;
             _presentationModel.IsUndoEnabled = true;
             _presentationModel.IsRedoEnabled = true;
-            propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(2));
+            propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(12));
         }
 
     }

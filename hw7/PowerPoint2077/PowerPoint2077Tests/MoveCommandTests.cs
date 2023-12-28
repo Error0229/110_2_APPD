@@ -48,7 +48,7 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void UnexcuteTest()
         {
-            _command.Unexecute();
+            _command.Withdraw();
             _model.Verify(model => model.MoveShape(_shape.Object, It.IsAny<Point>(), _slideIndex), Times.Once());
         }
     }

@@ -12,7 +12,10 @@ namespace WindowPowerPoint
         PointF _newShapeSecondPoint;
         // ensure that the first excute will not move the shape
         bool _firstResize;
-        public int SlideIndex { get; set; }
+        public int SlideIndex 
+        { 
+            get; set; 
+        }
         public ResizeCommand(PowerPointModel model, Shape shape, PointF firstPoint, PointF secondPoint, int slideIndex)
         {
             _model = model;
@@ -37,7 +40,7 @@ namespace WindowPowerPoint
         }
 
         // unexecute commmand
-        public void Unexecute()
+        public void Withdraw()
         {
             _model.ResizeShape(_shape, _oldShapeFirstPoint, _oldShapeSecondPoint, SlideIndex);
         }

@@ -42,7 +42,7 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void UnexcuteTest()
         {
-            _command.Unexecute();
+            _command.Withdraw();
             _model.Verify(model => model.InsertShape(_shape.Object, _slideIndex), Times.Once());
         }
     }

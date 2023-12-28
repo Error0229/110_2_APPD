@@ -31,7 +31,7 @@ namespace WindowPowerPoint
             if (CanUndo)
             {
                 ICommand command = _undoStack.Pop();
-                command.Unexecute();
+                command.Withdraw();
                 _redoStack.Push(command);
                 StateChanged();
             }

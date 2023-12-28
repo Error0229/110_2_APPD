@@ -116,7 +116,6 @@ namespace WindowPowerPoint
             return _pointSecond;
         }
 
-
         // move first point
         public virtual void Move(Point offset)
         {
@@ -148,7 +147,7 @@ namespace WindowPowerPoint
         // format coordinate
         protected string FormatCoordinate(float first, float second)
         {
-            return Constant.LEFT_BRACKET + (int)(first + 0.5) + Constant.COMMA + Constant.SPACE + (int)(second + 0.5) + Constant.RIGHT_BRACKET;
+            return Constant.LEFT_BRACKET + (int)(first + Constant.POINT_FIVE) + Constant.COMMA + Constant.SPACE + (int)(second + Constant.POINT_FIVE) + Constant.RIGHT_BRACKET;
         }
 
         // distance between two point
@@ -158,7 +157,6 @@ namespace WindowPowerPoint
             var deltaY = pointFirst.Y - pointSecond.Y;
             return Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
         }
-
 
         // draw shape
         public abstract void Draw(IGraphics graphic);
@@ -212,23 +210,23 @@ namespace WindowPowerPoint
         // get point by pointF
         protected Point GetPoint(PointF point)
         {
-            return new Point((int)(point.X + 0.5), (int)(point.Y + 0.5));
+            return new Point((int)(point.X + Constant.POINT_FIVE), (int)(point.Y + Constant.POINT_FIVE));
         }
 
         // encode shape
-        public virtual string Encode()
+        public virtual string GetConvert()
         {
             return _type.ToString() + Constant.COMMA + Constant.LEFT_BRACKET + _pointFirst.X / _canvasSize.Width + Constant.COMMA + _pointFirst.Y / _canvasSize.Height + Constant.COMMA + _pointSecond.X / _canvasSize.Width + Constant.COMMA + _pointSecond.Y / _canvasSize.Height + Constant.RIGHT_BRACKET;
         }
 
-        // decode shape
-        public virtual void Decode(string data, Size canvasSize)
+        // Interpret shape
+        public virtual void Interpret(string data, Size canvasSize)
         {
-            var datas = data.Split(',');
-            _pointFirst.X = float.Parse(datas[0]) * canvasSize.Width;
-            _pointFirst.Y = float.Parse(datas[1]) * canvasSize.Height;
-            _pointSecond.X = float.Parse(datas[2]) * canvasSize.Width;
-            _pointSecond.Y = float.Parse(datas[3]) * canvasSize.Height;
+            var result = data.Split(Constant.COMMA[0]);
+            _pointFirst.X = float.Parse(result[Constant.ZERO]) * canvasSize.Width;
+            _pointFirst.Y = float.Parse(result[Constant.ONE]) * canvasSize.Height;
+            _pointSecond.X = float.Parse(result[Constant.TWO]) * canvasSize.Width;
+            _pointSecond.Y = float.Parse(result[Constant.THREE]) * canvasSize.Height;
             _canvasSize = canvasSize;
         }
 

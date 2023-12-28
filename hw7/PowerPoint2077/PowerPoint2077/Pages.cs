@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Collections.Generic;
 
 namespace WindowPowerPoint
 {
@@ -27,10 +21,6 @@ namespace WindowPowerPoint
             get
             {
                 return _pages[index];
-            }
-            set
-            {
-                _pages[index] = value;
             }
         }
 
@@ -56,15 +46,15 @@ namespace WindowPowerPoint
         }
 
         // encode
-        public string Encode()
+        public virtual string Convert()
         {
-            string encodedPages = "";
+            string data = string.Empty;
             foreach (Page page in _pages)
             {
-                encodedPages += page.Encode();
-                encodedPages += "\n";
+                data += page.Convert();
+                data += Constant.NEW_LINE;
             }
-            return encodedPages;
+            return data;
         }
         private List<Page> _pages;
     }

@@ -11,14 +11,12 @@ namespace WindowPowerPoint.Tests
         Mock<PowerPointModel> _model;
         PointState _state;
         PrivateObject _privateState;
-        int _slideIndex;
         BindingList<Shape> _shapes;
 
         // set up
         [TestInitialize()]
         public void Initialize()
         {
-            _slideIndex = 0;
             _shapes = new BindingList<Shape>();
             _model = new Mock<PowerPointModel>();
             // set up _model's public properties

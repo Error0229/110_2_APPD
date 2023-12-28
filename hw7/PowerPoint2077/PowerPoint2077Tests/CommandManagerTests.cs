@@ -53,7 +53,7 @@ namespace WindowPowerPoint.Tests
             var _redoStack = (Stack<ICommand>)_privateCommandManager.GetField("_redoStack");
             Assert.AreEqual(0, _undoStack.Count);
             Assert.AreEqual(1, _redoStack.Count);
-            _command.Verify(command => command.Unexecute(), Times.Once());
+            _command.Verify(command => command.Withdraw(), Times.Once());
             _undoStack.Clear();
             _redoStack.Clear();
             _commandManager.Undo();
@@ -120,6 +120,16 @@ namespace WindowPowerPoint.Tests
             _commandManager.Redo();
             Assert.IsNotNull(_privateCommandManager.GetField("_undoStateChanged"));
             Assert.IsNotNull(_privateCommandManager.GetField("_redoStateChanged"));
+        }
+
+        // test clear
+        [TestMethod]
+        public void ClearTest()
+        {
+            _commandManager.Execute(_command.Object);
+            _commandManager.Clear();
+            Assert.AreEqual(0, (_privateCommandManager.GetField("_undoStack") as Stack<ICommand>).Count);
+            Assert.AreEqual(0, (_privateCommandManager.GetField("_redoStack") as Stack<ICommand>).Count);
         }
     }
 }

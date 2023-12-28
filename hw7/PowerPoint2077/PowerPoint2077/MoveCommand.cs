@@ -6,9 +6,12 @@ namespace WindowPowerPoint
     {
         readonly PowerPointModel _model;
         readonly Shape _shape;
-        public int SlideIndex { get; set; }
+        public int SlideIndex 
+        { 
+            get; set; 
+        }
         Point _offset;
-        Size _cavasSize;
+        Size _canvasSize;
         // ensure that the first excute will not move the shape
         bool _firstMove;
         public MoveCommand(PowerPointModel model, Shape shape, Point offset, Size canvasSize, int index)
@@ -17,7 +20,7 @@ namespace WindowPowerPoint
             _shape = shape;
             _offset = offset;
             _firstMove = true;
-            _cavasSize = canvasSize;
+            _canvasSize = canvasSize;
             SlideIndex = index;
         }
 
@@ -29,15 +32,15 @@ namespace WindowPowerPoint
                 _firstMove = false;
                 return;
             }
-            Point offset = new Point(_offset.X * _model.CanvasSize.Width / _cavasSize.Width, _offset.Y * _model.CanvasSize.Height / _cavasSize.Height);
+            Point offset = new Point(_offset.X * _model.CanvasSize.Width / _canvasSize.Width, _offset.Y * _model.CanvasSize.Height / _canvasSize.Height);
             _model.MoveShape(_shape, offset, SlideIndex);
         }
 
         // unexecute commmand
-        public void Unexecute()
+        public void Withdraw()
         {
 
-            Point offset = new Point(-_offset.X * _model.CanvasSize.Width / _cavasSize.Width, -_offset.Y * _model.CanvasSize.Height / _cavasSize.Height);
+            Point offset = new Point(-_offset.X * _model.CanvasSize.Width / _canvasSize.Width, -_offset.Y * _model.CanvasSize.Height / _canvasSize.Height);
             _model.MoveShape(_shape, offset, SlideIndex);
         }
     }

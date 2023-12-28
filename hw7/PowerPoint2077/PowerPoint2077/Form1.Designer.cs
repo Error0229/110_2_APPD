@@ -384,7 +384,7 @@ namespace WindowPowerPoint
             this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(34, 31);
             this._saveButton.Text = "💾";
-            this._saveButton.Click += new System.EventHandler(this._saveButtonClick);
+            this._saveButton.Click += new System.EventHandler(this.HandleSaveButtonClick);
             // 
             // _loadButton
             // 
@@ -394,7 +394,7 @@ namespace WindowPowerPoint
             this._loadButton.Name = "_loadButton";
             this._loadButton.Size = new System.Drawing.Size(34, 31);
             this._loadButton.Text = "📂";
-            this._loadButton.Click += new System.EventHandler(this._loadButtonClick);
+            this._loadButton.Click += new System.EventHandler(this.HandleLoadButtonClick);
             // 
             // PowerPoint
             // 

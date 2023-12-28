@@ -43,7 +43,7 @@ namespace WindowPowerPoint.Tests
         [TestMethod()]
         public void UnexecuteTest()
         {
-            _command.Unexecute();
+            _command.Withdraw();
             _model.Verify(model => model.ResizeShape(_shape, new Point(0, 0), new Point(100, 100), _slideIndex), Times.Once());
         }
     }

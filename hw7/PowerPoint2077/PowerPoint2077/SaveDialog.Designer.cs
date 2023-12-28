@@ -30,38 +30,38 @@ namespace WindowPowerPoint
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaveDialog));
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this._pictureBox = new System.Windows.Forms.PictureBox();
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(48, 43);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this._flowLayoutPanel.AutoSize = true;
+            this._flowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._flowLayoutPanel.Location = new System.Drawing.Point(48, 43);
+            this._flowLayoutPanel.Name = "flowLayoutPanel1";
+            this._flowLayoutPanel.Size = new System.Drawing.Size(0, 0);
+            this._flowLayoutPanel.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(82, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this._pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this._pictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this._pictureBox.Location = new System.Drawing.Point(82, 26);
+            this._pictureBox.Name = "pictureBox1";
+            this._pictureBox.Size = new System.Drawing.Size(79, 77);
+            this._pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._pictureBox.TabIndex = 0;
+            this._pictureBox.TabStop = false;
             // 
             // _saveButton
             // 
@@ -72,7 +72,7 @@ namespace WindowPowerPoint
             this._saveButton.TabIndex = 1;
             this._saveButton.Text = "Save";
             this._saveButton.UseVisualStyleBackColor = true;
-            this._saveButton.Click += new System.EventHandler(this._buttonSaveClick);
+            this._saveButton.Click += new System.EventHandler(this.HandleButtonSaveClick);
             // 
             // _cancelButton
             // 
@@ -83,7 +83,7 @@ namespace WindowPowerPoint
             this._cancelButton.TabIndex = 2;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
-            this._cancelButton.Click += new System.EventHandler(this._buttonCancelClick);
+            this._cancelButton.Click += new System.EventHandler(this.HandleButtonCancelClick);
             // 
             // SaveDialog
             // 
@@ -92,14 +92,14 @@ namespace WindowPowerPoint
             this.ClientSize = new System.Drawing.Size(248, 185);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._saveButton);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this._pictureBox);
+            this.Controls.Add(this._flowLayoutPanel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SaveDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SaveDialog";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,8 +107,8 @@ namespace WindowPowerPoint
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.FlowLayoutPanel _flowLayoutPanel;
+        private System.Windows.Forms.PictureBox _pictureBox;
         private System.Windows.Forms.Button _saveButton;
         private System.Windows.Forms.Button _cancelButton;
     }

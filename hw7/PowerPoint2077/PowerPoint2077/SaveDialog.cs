@@ -13,6 +13,8 @@ namespace WindowPowerPoint
     public partial class SaveDialog : Form
     {
         PowerPointPresentationModel _model;
+
+        // constructor
         public SaveDialog(PowerPointPresentationModel model)
         {
             InitializeComponent();
@@ -20,13 +22,14 @@ namespace WindowPowerPoint
         }
 
         // handle button save click
-        private void _buttonSaveClick(object sender, EventArgs e)
+        private void HandleButtonSaveClick(object sender, EventArgs e)
         {
             _model.ProcessSave();
             Close();
         }
 
-        private void _buttonCancelClick(object sender, EventArgs e)
+        // handle button cancel click
+        private void HandleButtonCancelClick(object sender, EventArgs e)
         {
             Close();
         }

@@ -4,7 +4,10 @@
     {
         readonly PowerPointModel _model;
         Page _page;
-        public int SlideIndex { get; set; }
+        public int SlideIndex 
+        { 
+            get; set; 
+        }
         public DeletePageCommand(PowerPointModel model, int slideIndex, Page page)
         {
             _model = model;
@@ -20,7 +23,7 @@
         }
 
         // unexecute
-        public void Unexecute()
+        public void Withdraw()
         {
             _model.AddPage(SlideIndex, _page);
             _model.NotifyPageChanged(SlideIndex, Page.Action.Add);

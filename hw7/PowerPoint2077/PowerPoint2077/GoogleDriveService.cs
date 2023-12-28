@@ -15,18 +15,10 @@ namespace WindowPowerPoint
     {
         private static readonly string[] SCOPES = new[] { DriveService.Scope.DriveFile, DriveService.Scope.Drive };
         private DriveService _service;
-        private const int KB = 0x400;
-        private const int DOWNLOAD_CHUNK_SIZE = 256 * KB;
         private int _timeStamp;
         private string _applicationName;
         private string _clientSecretFileName;
-        private UserCredential _credential;
 
-        /// <summary>
-        /// 創造一個Google Drive Service
-        /// </summary>
-        /// <param name="applicationName">應用程式名稱</param>
-        /// <param name="clientSecretFileName">ClientSecret檔案名稱</param>
         public GoogleDriveService(string applicationName, string clientSecretFileName)
         {
             _applicationName = applicationName;
@@ -34,6 +26,8 @@ namespace WindowPowerPoint
             CreateNewService(applicationName, clientSecretFileName);
         }
 
+
+        // create new service
         private void CreateNewService(string applicationName, string clientSecretFileName)
         {
             const string USER = "user";
@@ -53,7 +47,6 @@ namespace WindowPowerPoint
                 ApplicationName = applicationName
             });
 
-            _credential = credential;
             _timeStamp = UNIXNowTimeStamp;
             _service = service;
         }
@@ -75,10 +68,8 @@ namespace WindowPowerPoint
             catch (System.Net.Http.HttpRequestException)
             {
                 MessageBox.Show("Fail to connect Google Drive");
-                Environment.Exit(0);
                 return null;
             }
-
             return response.Files;
         }
 
@@ -103,14 +94,23 @@ namespace WindowPowerPoint
         }
 
         // load file
-        public void Load(string fileId, string fileName)
+        public bool Load(string fileId, string fileName)
         {
             CheckCredentialTimeStamp();
             var request = _service.Files.Get(fileId);
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
-                request.Download(stream);
+                try
+                {
+                    request.Download(stream);
+                }
+                catch (System.Net.Http.HttpRequestException)
+                {
+                    MessageBox.Show("Fail to connect Google Drive");
+                    return false;
+                }
             }
+            return true;
         }
 
         // save file
@@ -128,28 +128,44 @@ namespace WindowPowerPoint
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
                 request = _service.Files.Create(fileMetadata, stream, "text/plain");
-                request.Fields = "id";      // 返回文件的ID
-                await request.UploadAsync();
+                request.Fields = "id";
+                try
+                {
+                    await request.UploadAsync();
+                }
+                catch (System.Net.Http.HttpRequestException)
+                {
+                    MessageBox.Show("Fail to connect Google Drive");
+                    return string.Empty;
+                }
             }
             return request.ResponseBody.Id;
         }
 
         // update file
-        public async Task UpdateFile(string fileName, string fileId)
+        public async Task<bool> UpdateFile(string fileName, string fileId)
         {
             CheckCredentialTimeStamp();
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = Path.GetFileName(fileName)
+                Name = Constant.SAVE_FILE_NAME
             };
             FilesResource.UpdateMediaUpload request;
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
-
                 request = _service.Files.Update(fileMetadata, fileId, stream, "text/plain");
                 request.Fields = "id";
-                await request.UploadAsync();
+                try
+                {
+                    await request.UploadAsync();
+                }
+                catch (System.Net.Http.HttpRequestException)
+                {
+                    MessageBox.Show("Fail to connect Google Drive");
+                    return false;
+                }
             }
+            return true;
         }
     }
 }

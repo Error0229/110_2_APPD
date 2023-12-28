@@ -38,7 +38,7 @@ namespace WindowPowerPoint
             _canvas.MouseMove += HandleCanvasMoving;
             _canvas.MouseEnter += HandleCanvasEnter;
             _canvas.MouseLeave += HandleCanvasLeave;
-            _flowLayoutPanel.Layout += _flowLayoutPanelLayout;
+            _flowLayoutPanel.Layout += HandleFlowLayoutPanelLayout;
             KeyPreview = true;
             KeyDown += HandleKeyDown;
             _brief = new Bitmap(_canvas.Width, _canvas.Height);
@@ -57,16 +57,18 @@ namespace WindowPowerPoint
             _saveDialog = new SaveDialog(_presentationModel);
             _loadDialog = new LoadDialog(_presentationModel);
         }
-        private void _flowLayoutPanelLayout(object sender, LayoutEventArgs e)
+
+        // flow layout panel layout
+        private void HandleFlowLayoutPanelLayout(object sender, LayoutEventArgs e)
         {
             bool verticalScrollVisible = _flowLayoutPanel.Height < _flowLayoutPanel.DisplayRectangle.Height;
-            int scrollbarWidth = SystemInformation.VerticalScrollBarWidth;
+            int scrollBarWidth = SystemInformation.VerticalScrollBarWidth;
 
             foreach (Control control in _flowLayoutPanel.Controls)
             {
                 if (verticalScrollVisible)
                 {
-                    control.Width = _flowLayoutPanel.Width - scrollbarWidth - (_flowLayoutPanel.Padding.Horizontal + control.Margin.Horizontal);
+                    control.Width = _flowLayoutPanel.Width - scrollBarWidth - (_flowLayoutPanel.Padding.Horizontal + control.Margin.Horizontal);
                     control.Height = (int)(control.Width / Constant.SLIDE_RATIO);
                 }
                 else
@@ -76,8 +78,6 @@ namespace WindowPowerPoint
                 }
             }
         }
-
-
 
         // handle window size changed
         private void PowerPointSizeChanged(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace WindowPowerPoint
         {
             // _presentationModel.ProcessInsertShape(_shapeComboBox.Text);
             // if the dialog box not open, open it
-            _insertDialog.SetupDialog(_canvas.Size, _shapeComboBox.Text, _presentationModel);
+            _insertDialog.InitializeDialog(_canvas.Size, _shapeComboBox.Text, _presentationModel);
             _insertDialog.ShowDialog();
             GenerateBrief();
         }
@@ -213,7 +213,6 @@ namespace WindowPowerPoint
             GenerateBrief();
         }
 
-
         // handle when splitter2 move
         private void SplitContainer2Adjust(object sender, SplitterEventArgs e)
         {
@@ -223,25 +222,38 @@ namespace WindowPowerPoint
         // resize canvas
         private void ResizeCanvas(object sender, EventArgs e)
         {
-
             double panel2Width = _splitContainer2.Panel1.Width;
             double panel2Height = _splitContainer2.Panel1.Height;
             if ((panel2Width - _splitContainer2.Panel1.Margin.Horizontal) / (panel2Height - _splitContainer2.Panel1.Margin.Vertical) > Constant.SLIDE_RATIO)
             {
-                _canvas.Height = (int)panel2Height - _splitContainer2.Panel1.Margin.Vertical;
-                _canvas.Height += (_canvas.Height & 1); // make sure the height is even
-                _canvas.Width = (int)(_canvas.Height * Constant.SLIDE_RATIO);
-                _canvas.Width += (_canvas.Width & 1); // make sure the width is even
-                _canvas.Location = new Point((int)((panel2Width - _canvas.Width) / Constant.PEN_THICK), (int)((panel2Height - _canvas.Height) / Constant.PEN_THICK));
+                ResizeCanvasByHeight(sender, e);
             }
             else
             {
-                _canvas.Width = (int)panel2Width - _splitContainer2.Panel1.Margin.Horizontal;
-                _canvas.Width += (_canvas.Width & 1); // make sure the width is even
-                _canvas.Height = (int)(_canvas.Width / Constant.SLIDE_RATIO);
-                _canvas.Height += (_canvas.Height & 1); // make sure the height is even
-                _canvas.Location = new Point((int)((panel2Width - _canvas.Width) / Constant.PEN_THICK), (int)((panel2Height - _canvas.Height) / Constant.PEN_THICK));
+                ResizeCanvasByWidth(sender, e);
             }
+        }
+
+        // resize canvas by width
+        private void ResizeCanvasByWidth(object sender, EventArgs e)
+        {
+            _canvas.Width = _splitContainer2.Panel1.Width - _splitContainer2.Panel1.Margin.Horizontal;
+            _canvas.Width += (_canvas.Width & 1); // make sure the width is even
+            _canvas.Height = (int)(_canvas.Width / Constant.SLIDE_RATIO);
+            _canvas.Height += (_canvas.Height & 1); // make sure the height is even
+            _canvas.Location = new Point((int)((_splitContainer2.Panel1.Width - _canvas.Width) / Constant.PEN_THICK), (int)((_splitContainer2.Panel1.Height - _canvas.Height) / Constant.PEN_THICK));
+            if (_canvas.Width != Constant.ZERO_INTEGER && _canvas.Height != Constant.ZERO_INTEGER)
+                _presentationModel.SetCanvasSize(_canvas.Size);
+        }
+
+        // resize canvas by height
+        private void ResizeCanvasByHeight(object sender, EventArgs e)
+        {
+            _canvas.Height = _splitContainer2.Panel1.Height - _splitContainer2.Panel1.Margin.Vertical;
+            _canvas.Height += (_canvas.Height & 1); // make sure the height is even
+            _canvas.Width = (int)(_canvas.Height * Constant.SLIDE_RATIO);
+            _canvas.Width += (_canvas.Width & 1); // make sure the width is even
+            _canvas.Location = new Point((int)((_splitContainer2.Panel1.Width - _canvas.Width) / Constant.PEN_THICK), (int)((_splitContainer2.Panel1.Height - _canvas.Height) / Constant.PEN_THICK));
             if (_canvas.Width != Constant.ZERO_INTEGER && _canvas.Height != Constant.ZERO_INTEGER)
                 _presentationModel.SetCanvasSize(_canvas.Size);
         }
@@ -268,66 +280,104 @@ namespace WindowPowerPoint
             _presentationModel.ProcessAddPage(SlideIndex + 1);
         }
 
+        // enable control
+        private void EnableControl()
+        {
+            _canvas.BackColor = Color.White;
+            _canvas.Enabled = true;
+            _shapeGridView.Enabled = true;
+            _lineAddButton.Enabled = true;
+            _rectangleAddButton.Enabled = true;
+            _ellipseAddButton.Enabled = true;
+            _buttonInsertShape.Enabled = true;
+            _cursorButton.Enabled = true;
+            _cursorButton.Checked = true;
+        }
+
+        // disable control
+        private void DisableControl()
+        {
+            _canvas.BackColor = Color.Gray;
+            _canvas.Enabled = false;
+            _shapeGridView.Enabled = false;
+            _lineAddButton.Enabled = false;
+            _rectangleAddButton.Enabled = false;
+            _ellipseAddButton.Enabled = false;
+            _cursorButton.Enabled = false;
+            _cursorButton.Checked = false;
+            _buttonInsertShape.Enabled = false;
+            _shapeGridView.DataSource = new BindingList<Shape>();
+        }
+
+        // process add page
+        private void ProcessAddPage(int index)
+        {
+            if (SlideIndex == -1)
+            {
+                EnableControl();
+            }
+            SlideIndex = index;
+            Button button = GetNewSlideButton();
+            _flowLayoutPanel.Controls.Add(button);
+            _flowLayoutPanel.Controls.SetChildIndex(button, index);
+            button.Focus();
+            _presentationModel.SlideIndex = SlideIndex;
+            _shapeGridView.DataSource = _presentationModel.Shapes;
+        }
+
+        // get new slide button
+        public Button GetNewSlideButton()
+        {
+            Button button = new Button();
+            double panel1Width = _flowLayoutPanel.Width;
+            button.Width = (int)panel1Width - (_flowLayoutPanel.Padding.Horizontal + button.Margin.Horizontal);
+            button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
+            button.BackColor = Color.White;
+            button.BackgroundImageLayout = ImageLayout.Stretch;
+            button.Name = Constant.SLIDE;
+            button.Click += HandleSlideButtonClick;
+            return button;
+        }
+
+        // process move page
+        private void ProcessRemovePage(int index)
+        {
+            if (SlideIndex == _flowLayoutPanel.Controls.Count - 1)
+                SlideIndex--;
+            _flowLayoutPanel.Controls.RemoveAt(index);
+            _presentationModel.SlideIndex = SlideIndex;
+            if (SlideIndex == -1)
+            {
+                DisableControl();
+                return;
+            }
+            _flowLayoutPanel.Controls[SlideIndex].Focus();
+            _shapeGridView.DataSource = _presentationModel.Shapes;
+        }
+
+        // process switch page
+        private void ProcessSwitchPage(int index)
+        {
+            SlideIndex = index;
+            _presentationModel.SlideIndex = SlideIndex;
+            _shapeGridView.DataSource = _presentationModel.Shapes;
+            _flowLayoutPanel.Controls[SlideIndex].Focus();
+
+        }
+
         // handle page changed
         private void ProcessPageChanged(int index, Page.Action action)
         {
             switch (action)
             {
                 case Page.Action.Add:
-                    if (SlideIndex == -1)
-                    {
-                        _canvas.BackColor = Color.White;
-                        _canvas.Enabled = true;
-                        _shapeGridView.Enabled = true;
-                        _lineAddButton.Enabled = true;
-                        _rectangleAddButton.Enabled = true;
-                        _ellipseAddButton.Enabled = true;
-                        _buttonInsertShape.Enabled = true;
-                        _cursorButton.Enabled = true;
-                        _cursorButton.Checked = true;
-                    }
-                    SlideIndex = index;
-                    Button button = new Button();
-                    double panel1Width = _flowLayoutPanel.Width;
-                    button.Width = (int)panel1Width - (_flowLayoutPanel.Padding.Horizontal + button.Margin.Horizontal);
-                    button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
-                    button.BackColor = Color.White;
-                    button.BackgroundImageLayout = ImageLayout.Stretch;
-                    button.Name = "Slide";
-                    button.Click += HandleSlideButtonClick;
-                    _flowLayoutPanel.Controls.Add(button);
-                    _flowLayoutPanel.Controls.SetChildIndex(button, index);
-                    button.Focus();
-                    _presentationModel.SlideIndex = SlideIndex;
-                    _shapeGridView.DataSource = _presentationModel.Shapes;
+                    ProcessAddPage(index);
                     break;
                 case Page.Action.Remove:
-                    if (SlideIndex == _flowLayoutPanel.Controls.Count - 1)
-                        SlideIndex--;
-                    _flowLayoutPanel.Controls.RemoveAt(index);
-                    _presentationModel.SlideIndex = SlideIndex;
-                    if (SlideIndex == -1)
-                    {
-                        _canvas.BackColor = Color.Gray;
-                        _canvas.Enabled = false;
-                        _shapeGridView.Enabled = false;
-                        _lineAddButton.Enabled = false;
-                        _rectangleAddButton.Enabled = false;
-                        _ellipseAddButton.Enabled = false;
-                        _cursorButton.Enabled = false;
-                        _cursorButton.Checked = false;
-                        _buttonInsertShape.Enabled = false;
-                        _shapeGridView.DataSource = new BindingList<Shape>();
-                        return;
-                    }
-                    _flowLayoutPanel.Controls[SlideIndex].Focus();
-                    _shapeGridView.DataSource = _presentationModel.Shapes;
+                    ProcessRemovePage(index);
                     break;
                 case Page.Action.Switch:
-                    SlideIndex = index;
-                    _presentationModel.SlideIndex = SlideIndex;
-                    _shapeGridView.DataSource = _presentationModel.Shapes;
-                    _flowLayoutPanel.Controls[SlideIndex].Focus();
+                    ProcessSwitchPage(index);
                     break;
             }
             _flowLayoutPanel.PerformLayout();
@@ -339,19 +389,13 @@ namespace WindowPowerPoint
         private void InitializeSlide()
         {
             SlideIndex = 0;
-            Button button = new Button();
-            double panel1Width = _flowLayoutPanel.Width;
-            button.Width = (int)panel1Width - _flowLayoutPanel.Margin.Horizontal;
-            button.Height = (int)(button.Width / Constant.SLIDE_RATIO);
-            button.Click += HandleSlideButtonClick;
-            button.BackColor = Color.White;
-            button.BackgroundImageLayout = ImageLayout.Stretch;
-            button.Name = "Slide";
+            Button button = GetNewSlideButton();
             _flowLayoutPanel.Controls.Add(button);
             _flowLayoutPanel.Controls.SetChildIndex(button, SlideIndex);
             _presentationModel.SlideIndex = 0;
             GenerateBrief();
         }
+
         // handle slide buttin click
         private void HandleSlideButtonClick(object sender, EventArgs e)
         {
@@ -363,13 +407,13 @@ namespace WindowPowerPoint
         }
 
         // handle save button click
-        private void _saveButtonClick(object sender, EventArgs e)
+        private void HandleSaveButtonClick(object sender, EventArgs e)
         {
             _saveDialog.ShowDialog();
         }
 
         // handle load button click
-        private void _loadButtonClick(object sender, EventArgs e)
+        private void HandleLoadButtonClick(object sender, EventArgs e)
         {
             _loadDialog.ShowDialog();
         }

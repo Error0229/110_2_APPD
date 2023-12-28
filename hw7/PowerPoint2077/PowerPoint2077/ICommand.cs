@@ -6,6 +6,6 @@
         void Execute();
 
         // unexecute command
-        void Unexecute();
+        void Withdraw();
     }
 }

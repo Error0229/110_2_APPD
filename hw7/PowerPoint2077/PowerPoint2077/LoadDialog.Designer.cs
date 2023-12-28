@@ -32,8 +32,8 @@ namespace WindowPowerPoint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadDialog));
             this._loadButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this._pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this._pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // _loadButton
@@ -45,7 +45,7 @@ namespace WindowPowerPoint
             this._loadButton.TabIndex = 2;
             this._loadButton.Text = "Load";
             this._loadButton.UseVisualStyleBackColor = true;
-            this._loadButton.Click += new System.EventHandler(this._loadButtonClick);
+            this._loadButton.Click += new System.EventHandler(this.HandleLoadButtonClick);
             // 
             // _cancelButton
             // 
@@ -56,35 +56,35 @@ namespace WindowPowerPoint
             this._cancelButton.TabIndex = 3;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
-            this._cancelButton.Click += new System.EventHandler(this._cancelButtonClick);
+            this._cancelButton.Click += new System.EventHandler(this.HandleCancelButtonClick);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(82, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this._pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this._pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this._pictureBox1.Location = new System.Drawing.Point(82, 26);
+            this._pictureBox1.Name = "pictureBox1";
+            this._pictureBox1.Size = new System.Drawing.Size(79, 77);
+            this._pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._pictureBox1.TabIndex = 4;
+            this._pictureBox1.TabStop = false;
             // 
             // LoadDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(248, 185);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this._pictureBox1);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._loadButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoadDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LoadDialog";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -93,6 +93,6 @@ namespace WindowPowerPoint
 
         private System.Windows.Forms.Button _loadButton;
         private System.Windows.Forms.Button _cancelButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox _pictureBox1;
     }
 }

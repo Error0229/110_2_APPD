@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowPowerPoint
@@ -13,6 +6,8 @@ namespace WindowPowerPoint
     public partial class LoadDialog : Form
     {
         PowerPointPresentationModel _model;
+
+        // constructor
         public LoadDialog(PowerPointPresentationModel model)
         {
             InitializeComponent();
@@ -20,13 +15,13 @@ namespace WindowPowerPoint
         }
 
         // cancel button click
-        private void _cancelButtonClick(object sender, EventArgs e)
+        private void HandleCancelButtonClick(object sender, EventArgs e)
         {
             Close();
         }
 
         // load button click
-        private void _loadButtonClick(object sender, EventArgs e)
+        private void HandleLoadButtonClick(object sender, EventArgs e)
         {
             _model.ProcessLoad();
             Close();

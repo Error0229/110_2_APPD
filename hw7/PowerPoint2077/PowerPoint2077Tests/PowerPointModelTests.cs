@@ -62,7 +62,6 @@ namespace WindowPowerPoint.Tests
             };
             _privateModel = new PrivateObject(_model);
             Assert.IsNotNull(_model);
-            Assert.IsNotNull(_model.Slides);
             Assert.IsNotNull(_privateModel.GetField("_state"));
         }
 
@@ -73,16 +72,16 @@ namespace WindowPowerPoint.Tests
             _model.AddPage(_slideIndex + 1, new Page());
             _slideIndex = 0;
             _model.InsertShape(new Circle(), _slideIndex);
-            Assert.AreEqual(1, _model.Slides[_slideIndex].Shapes.Count);
+            Assert.AreEqual(1, GetShapesCount());
         }
 
         // test get current shapes
         [TestMethod()]
         public void GetCurrentShapesTest()
         {
-            _model.Slides[_slideIndex].Shapes.Add(new Circle());
-            _model.Slides[_slideIndex].Shapes.Add(new Line());
-            _model.Slides[_slideIndex].Shapes.Add(new Rectangle());
+            _model.InsertShape(new Circle(), _slideIndex);
+            _model.InsertShape(new Line(), _slideIndex);
+            _model.InsertShape(new Rectangle(), _slideIndex);
             var shapes = _model.GetCurrentShapes();
             Assert.AreEqual(3, shapes.Count);
         }
@@ -103,7 +102,7 @@ namespace WindowPowerPoint.Tests
             var shape = new Circle();
             _model.AddPage(1, new Page());
             _slideIndex = 0;
-            _model.Slides[_slideIndex].Shapes.Add(shape);
+            _model.InsertShape(shape, _slideIndex);
             _model.ResizeShape(shape, new PointF(100, 100), new PointF(200, 200), 0);
             Assert.AreEqual("(100, 100), (200, 200)", shape.GetInfo());
         }
@@ -139,7 +138,7 @@ namespace WindowPowerPoint.Tests
         public void AddPageTest()
         {
             _model.AddPage(_slideIndex, new Page());
-            Assert.AreEqual(2, _model.Slides.Count);
+            Assert.AreEqual(2, (_privateModel.GetField("_slides") as Pages).Count);
         }
 
         // test handle delete page
@@ -155,10 +154,10 @@ namespace WindowPowerPoint.Tests
         public void DeletePageTest()
         {
             Page page = new Page();
-            _model.Slides.Add(page);
+            _model.AddPage(_slideIndex, page);
             _model.SlideIndex = 1;
             _model.DeletePage(0, page);
-            Assert.AreEqual(0, _model.SlideIndex);
+            Assert.AreEqual(1, (_privateModel.GetField("_slides") as Pages).Count);
         }
 
         // test handle switch page
@@ -178,9 +177,9 @@ namespace WindowPowerPoint.Tests
             var shape = new Circle();
             _model.AddPage(1, new Page());
             _slideIndex = 0;
-            _model.Slides[_slideIndex].Shapes.Add(shape);
+            _model.InsertShape(shape, _slideIndex);
             _model.RemoveShape(shape, _slideIndex);
-            Assert.AreEqual(0, _model.Slides[_slideIndex].Shapes.Count);
+            Assert.AreEqual(0, GetShapesCount());
         }
 
         // test model handle insert shape
@@ -224,7 +223,7 @@ namespace WindowPowerPoint.Tests
         public void HandleRemoveShapeTest1()
         {
             var shape = new Circle();
-            _model.Slides[_slideIndex].Shapes.Add(shape);
+            _model.InsertShape(shape, _slideIndex);
             _model.HandleRemoveShape(_slideIndex, 0);
             _commandManager.Verify(manager => manager.Execute(It.IsAny<DeleteCommand>()), Times.Once());
         }
@@ -235,7 +234,7 @@ namespace WindowPowerPoint.Tests
         {
             var size = new Size(600, 800);
             var shape = new Circle();
-            _model.Slides[_slideIndex].Shapes.Add(shape);
+            _model.InsertShape(shape, _slideIndex);
             _model.SetCanvasSize(size);
             Assert.AreEqual(size, _model.CanvasSize);
         }
@@ -321,9 +320,9 @@ namespace WindowPowerPoint.Tests
             Bitmap bitmap = new Bitmap(800, 600);
             Graphics graphics = Graphics.FromImage(bitmap);
             var mockAdaptor = new Mock<WindowsFormsGraphicsAdaptor>(graphics);
-            _model.Slides[_slideIndex].Shapes.Add(new Circle());
-            _model.Slides[_slideIndex].Shapes.Add(new Line());
-            _model.Slides[_slideIndex].Shapes.Add(new Rectangle());
+            _model.InsertShape(new Circle(), _slideIndex);
+            _model.InsertShape(new Line(), _slideIndex);
+            _model.InsertShape(new Rectangle(), _slideIndex);
             _model.DrawShapes(mockAdaptor.Object);
             mockAdaptor.Verify(adaptor => adaptor.DrawCircle(It.IsAny<System.Drawing.Rectangle>()), Times.Once());
             mockAdaptor.Verify(adaptor => adaptor.DrawLine(It.IsAny<System.Drawing.Point>(), It.IsAny<System.Drawing.Point>()), Times.Once());
@@ -336,7 +335,7 @@ namespace WindowPowerPoint.Tests
         {
             var shape1 = new Mock<Shape>();
             shape1.Setup(shape => shape.Selected).Returns(true);
-            _model.Slides[_slideIndex].Shapes.Add(shape1.Object);
+            _model.InsertShape(shape1.Object, _slideIndex);
             _model.ClearSelectedShape();
             shape1.VerifySet(shape => shape.Selected = false, Times.Once());
         }
@@ -349,8 +348,8 @@ namespace WindowPowerPoint.Tests
             var shape2 = new Mock<Shape>();
             shape1.Setup(shape => shape.Selected).Returns(true);
             shape2.Setup(shape => shape.Selected).Returns(false);
-            _model.Slides[_slideIndex].Shapes.Add(shape1.Object);
-            _model.Slides[_slideIndex].Shapes.Add(shape2.Object);
+            _model.InsertShape(shape1.Object, _slideIndex);
+            _model.InsertShape(shape2.Object, _slideIndex);
             _model.HandleMoveShape(new Point(10, 10));
             _commandManager.Verify(manager => manager.Execute(It.IsAny<MoveCommand>()), Times.Once());
         }
@@ -425,6 +424,12 @@ namespace WindowPowerPoint.Tests
             _privateModel.SetField("_hint", new Circle());
             _model.AddShapeWithHint();
             _commandManager.Verify(manager => manager.Execute(It.IsAny<DrawCommand>()), Times.Once());
+        }
+
+        // get shapes count
+        private int GetShapesCount()
+        {
+            return _model.GetCurrentShapes().Count;
         }
     }
 }
