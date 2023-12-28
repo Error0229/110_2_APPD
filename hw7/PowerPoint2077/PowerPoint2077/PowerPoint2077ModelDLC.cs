@@ -47,11 +47,11 @@ namespace WindowPowerPoint
             System.IO.File.WriteAllText(fileName, _slides.Convert());
             if (string.IsNullOrEmpty(_fileID))
             {
-                _fileID = await _drive.Save(fileName);
+                _fileID = await _drive.Save(fileName, Constant.SAVE_FILE_NAME);
                 if (string.IsNullOrEmpty(_fileID))
                     return false;
             }
-            else if (!await _drive.UpdateFile(fileName, _fileID))
+            else if (!await _drive.UpdateFile(fileName, Constant.SAVE_FILE_NAME, _fileID))
             {
                 return false;
             }

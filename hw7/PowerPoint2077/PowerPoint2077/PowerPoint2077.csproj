@@ -138,8 +138,8 @@
     <Compile Include="PageFactory.cs" />
     <Compile Include="Pages.cs" />
     <Compile Include="PointState.cs" />
-    <Compile Include="PowerPoint2077ModelDownloadableContent.cs" />
-    <Compile Include="PowerPoint2077PresentationModelDownloadableContent.cs" />
+    <Compile Include="PowerPoint2077ModelDLC.cs" />
+    <Compile Include="PowerPoint2077PresentationModelDLC.cs" />
     <Compile Include="PowerPointModel.cs" />
     <Compile Include="PowerPointPresentationModel.cs" />
     <Compile Include="Program.cs" />

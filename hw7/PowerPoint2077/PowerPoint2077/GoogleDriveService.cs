@@ -114,13 +114,13 @@ namespace WindowPowerPoint
         }
 
         // save file
-        public async Task<string> Save(string fileName)
+        public async Task<string> Save(string fileName, string remoteName)
         {
             CheckCredentialTimeStamp();
             var parentFolderId = "root";
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = "save.txt",
+                Name = remoteName,
                 Parents = new List<string> { parentFolderId }
             };
 
@@ -143,12 +143,12 @@ namespace WindowPowerPoint
         }
 
         // update file
-        public async Task<bool> UpdateFile(string fileName, string fileId)
+        public async Task<bool> UpdateFile(string fileName, string remoteName, string fileId)
         {
             CheckCredentialTimeStamp();
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = Constant.SAVE_FILE_NAME
+                Name = remoteName
             };
             FilesResource.UpdateMediaUpload request;
             using (var stream = new FileStream(fileName, FileMode.Open))

@@ -33,7 +33,7 @@ namespace WindowPowerPoint.Tests
         public void SearchFileTest()
         {
             CreateLocalTestFile();
-            string fileId = _service.Save(TEST_FILE_NAME).Result;
+            string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             var result = _service.SearchFile(TEST_FILE_NAME).Result;
             Assert.AreEqual(fileId, result[0].Id);
         }
@@ -42,7 +42,7 @@ namespace WindowPowerPoint.Tests
         public void LoadTest()
         {
             CreateLocalTestFile();
-            string fileId = _service.Save(TEST_FILE_NAME).Result;
+            string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             Assert.IsTrue(_service.Load(fileId, TEST_FILE_NAME));
         }
 
@@ -51,7 +51,7 @@ namespace WindowPowerPoint.Tests
         public void SaveTest()
         {
             CreateLocalTestFile();
-            string fileId = _service.Save(TEST_FILE_NAME).Result;
+            string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             Assert.AreNotEqual(string.Empty, fileId);
         }
 
@@ -59,8 +59,8 @@ namespace WindowPowerPoint.Tests
         public void UpdateFileTest()
         {
             CreateLocalTestFile();
-            string fileId = _service.Save(TEST_FILE_NAME).Result;
-            Assert.IsTrue(_service.UpdateFile(TEST_FILE_NAME, fileId).Result);
+            string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
+            Assert.IsTrue(_service.UpdateFile(TEST_FILE_NAME, TEST_FILE_NAME, fileId).Result);
         }
     }
 }
