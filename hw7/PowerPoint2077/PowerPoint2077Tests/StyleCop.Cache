@@ -27,7 +27,7 @@
     </violations>
   </sourcecode>
   <project key="1684540793">
-    <configuration>DEBUG;TRACE</configuration>
+    <configuration>TRACE;DEBUG;UNITTEST</configuration>
   </project>
   <sourcecode name="AddCommandTests.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -66,7 +66,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/28 23:56:46.857</sourceFile>
+      <sourceFile>2023/12/29 02:49:16.329</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -117,6 +117,17 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="GoogleDriveServiceTests.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/29 23:22:30.953</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="LineTests.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
@@ -150,11 +161,22 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="PagesTests.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/29 02:34:28.178</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="PageTests.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/28 23:12:23.462</sourceFile>
+      <sourceFile>2023/12/29 02:44:17.732</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -208,7 +230,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/28 23:51:30.019</sourceFile>
+      <sourceFile>2023/12/30 02:23:26.556</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -219,7 +241,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 01:40:27.100</sourceFile>
+      <sourceFile>2023/12/30 03:18:25.840</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -285,7 +307,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/23 01:13:11.924</sourceFile>
+      <sourceFile>2023/12/29 02:13:53.054</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -296,15 +318,15 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 01:21:52.734</sourceFile>
+      <sourceFile>2023/12/30 06:55:10.745</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\UITests.cs on line 241.</context>
-        <line>241</line>
+        <context>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\UITests.cs on line 240.</context>
+        <line>240</line>
         <warning>False</warning>
       </violation>
     </violations>

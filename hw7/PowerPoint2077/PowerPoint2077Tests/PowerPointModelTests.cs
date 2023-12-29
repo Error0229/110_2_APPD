@@ -4,8 +4,10 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace WindowPowerPoint.Tests
 {
+    using System.Threading.Tasks;
     using WindowPowerPoint;
     [TestClass()]
     public class PowerPointModelTests
@@ -101,9 +103,9 @@ namespace WindowPowerPoint.Tests
         {
             var shape = new Circle();
             _model.AddPage(1, new Page());
-            _slideIndex = 0;
             _model.InsertShape(shape, _slideIndex);
-            _model.ResizeShape(shape, new PointF(100, 100), new PointF(200, 200), 0);
+            _slideIndex = 0;
+            _model.ResizeShape(shape, new PointF(100, 100), new PointF(200, 200), 1);
             Assert.AreEqual("(100, 100), (200, 200)", shape.GetInfo());
         }
 
@@ -176,9 +178,9 @@ namespace WindowPowerPoint.Tests
         {
             var shape = new Circle();
             _model.AddPage(1, new Page());
-            _slideIndex = 0;
-            _model.InsertShape(shape, _slideIndex);
-            _model.RemoveShape(shape, _slideIndex);
+            _model.InsertShape(shape, 1);
+            _model.SlideIndex = 0;
+            _model.RemoveShape(shape, 1);
             Assert.AreEqual(0, GetShapesCount());
         }
 
@@ -424,6 +426,88 @@ namespace WindowPowerPoint.Tests
             _privateModel.SetField("_hint", new Circle());
             _model.AddShapeWithHint();
             _commandManager.Verify(manager => manager.Execute(It.IsAny<DrawCommand>()), Times.Once());
+        }
+
+        // handle save test
+        [TestMethod]
+        public async Task HandleSaveTest()
+        {
+            var mockDrive = new Mock<GoogleDriveService>("PowePoint2077Test", "credential", new Mock<IMessageBox>().Object);
+            _privateModel.SetField("_drive", mockDrive.Object);
+            _privateModel.SetField("_fileID", null);
+            mockDrive.Setup(service => service.Save(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(string.Empty);
+            Assert.IsFalse(await _model.HandleSave());
+            _privateModel.SetField("_fileID", "file ID");
+            mockDrive.Setup(service => service.UpdateFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(false);
+            Assert.IsFalse(await _model.HandleSave());
+            mockDrive.Setup(service => service.UpdateFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(true);
+            Assert.IsTrue(await _model.HandleSave());
+        }
+
+        // handle load test
+        [TestMethod]
+        public void HandleLoadTest()
+        {
+
+            var mockDrive = new Mock<GoogleDriveService>("PowePoint2077Test", "credential", new Mock<IMessageBox>().Object);
+            _privateModel.SetField("_drive", mockDrive.Object);
+            _privateModel.SetField("_fileID", null);
+            _privateModel.SetField("_messageBox", new Mock<IMessageBox>().Object);
+            mockDrive.Setup(service => service.Load(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
+            _model.HandleLoad();
+            System.IO.File.WriteAllText(Constant.LOAD_FILE_NAME, "{RECTANGLE,(0.3143275,0.4012987,0.6681287,0.7155844)} \n");
+            mockDrive.Setup(service => service.Load(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            _model.SlideIndex = -1;
+            _model.HandleLoad();
+        }
+
+        // check saves exist test
+        [TestMethod]
+        public void CheckSavesExistTest()
+        {
+            var mockDrive = new Mock<GoogleDriveService>("PowePoint2077Test", "credential", new Mock<IMessageBox>().Object);
+            _privateModel.SetField("_drive", mockDrive.Object);
+            mockDrive.Setup(service => service.SearchFile(It.IsAny<string>())).ReturnsAsync(new System.Collections.Generic.List<Google.Apis.Drive.v3.Data.File>());
+            _model.CheckSavesExist();
+            Assert.AreEqual(_privateModel.GetField("_fileID"), string.Empty);
+            mockDrive.Setup(service => service.SearchFile(It.IsAny<string>())).ReturnsAsync(new System.Collections.Generic.List<Google.Apis.Drive.v3.Data.File>() { new Google.Apis.Drive.v3.Data.File() });
+            _model.CheckSavesExist();
+            Assert.AreNotEqual(_privateModel.GetField("_fileID"), string.Empty);
+        }
+
+        // test clear slide
+        [TestMethod]
+        public void ClearSlideTest()
+        {
+            _model.AddPage(0, new Page());
+            _model.AddPage(1, new Page());
+            // set command manager when call delete page make _model.SlideIndex-=1;
+            _commandManager.Setup(manager => manager.Execute(It.IsAny<DeletePageCommand>())).Callback(() => _model.SlideIndex -= 1);
+            _model.ClearSlide();
+            Assert.AreEqual(-1, _model.SlideIndex);
+        }
+
+        // interpret pages test
+        [TestMethod]
+        public void InterpretPagesTest()
+        {
+            var data = "{RECTANGLE,(0.3143275,0.4012987,0.6681287,0.7155844)} \n";
+            var result = _privateModel.Invoke("InterpretPages", data) as System.Collections.Generic.List<string>;
+            Assert.AreEqual(2, result.Count);
+        }
+
+        // check save file exist test
+        [TestMethod]
+        public void CheckSaveFileExistTest()
+        {
+            var mockDrive = new Mock<GoogleDriveService>("PowePoint2077Test", "credential", new Mock<IMessageBox>().Object);
+            _privateModel.SetField("_drive", mockDrive.Object);
+            mockDrive.Setup(service => service.SearchFile(It.IsAny<string>())).ReturnsAsync(new System.Collections.Generic.List<Google.Apis.Drive.v3.Data.File>());
+            _model.CheckSavesExist();
+            Assert.AreEqual(_privateModel.GetField("_fileID"), string.Empty);
+            mockDrive.Setup(service => service.SearchFile(It.IsAny<string>())).ReturnsAsync(new System.Collections.Generic.List<Google.Apis.Drive.v3.Data.File>() { new Google.Apis.Drive.v3.Data.File() });
+            _model.CheckSavesExist();
+            Assert.AreNotEqual(_privateModel.GetField("_fileID"), string.Empty);
         }
 
         // get shapes count

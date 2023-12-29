@@ -1,5 +1,4 @@
-﻿#define UNITTEST
-using Google.Apis.Drive.v3;
+﻿using Google.Apis.Drive.v3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 namespace WindowPowerPoint.Tests
@@ -9,8 +8,9 @@ namespace WindowPowerPoint.Tests
     {
         GoogleDriveService _service;
         PrivateObject _privateService;
-
+        Mock<IMessageBox> _messageBox;
         const string TEST_FILE_NAME = "ILOVEUNITTEST.txt";
+        const string CONNECTION_FAILED_MESSAGE = "Fail to connect Google Drive";
         // create local test file
         public void CreateLocalTestFile()
         {
@@ -22,7 +22,9 @@ namespace WindowPowerPoint.Tests
         [TestInitialize]
         public void Initialize()
         {
-            _service = new GoogleDriveService(Constant.PROJECT_NAME, Constant.SECRET_FILE_NAME);
+            _messageBox = new Mock<IMessageBox>();
+            _messageBox.Setup(messageBox => messageBox.Show(It.IsAny<string>()));
+            _service = new GoogleDriveService(Constant.PROJECT_NAME, Constant.SECRET_FILE_NAME, _messageBox.Object);
             _privateService = new PrivateObject(_service);
         }
 
@@ -61,6 +63,7 @@ namespace WindowPowerPoint.Tests
             _service.SetDriveService(mockDriveService.Object);
             mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
             Assert.IsNull(_service.SearchFile(TEST_FILE_NAME).Result);
+            _messageBox.Verify(messageBox => messageBox.Show(CONNECTION_FAILED_MESSAGE), Times.Once);
         }
 
         // load file test
@@ -81,6 +84,7 @@ namespace WindowPowerPoint.Tests
             _service.SetDriveService(mockDriveService.Object);
             mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
             Assert.IsFalse(_service.Load("1", TEST_FILE_NAME));
+            _messageBox.Verify(messageBox => messageBox.Show(CONNECTION_FAILED_MESSAGE), Times.Once);
         }
 
         // save test
@@ -101,6 +105,7 @@ namespace WindowPowerPoint.Tests
             _service.SetDriveService(mockDriveService.Object);
             mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
             Assert.IsNull(_service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result);
+            _messageBox.Verify(messageBox => messageBox.Show(CONNECTION_FAILED_MESSAGE), Times.Once);
         }
 
         // update file test
@@ -121,6 +126,7 @@ namespace WindowPowerPoint.Tests
             _service.SetDriveService(mockDriveService.Object);
             mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
             Assert.IsFalse(_service.UpdateFile(TEST_FILE_NAME, TEST_FILE_NAME, "1").Result);
+            _messageBox.Verify(messageBox => messageBox.Show(CONNECTION_FAILED_MESSAGE), Times.Once);
         }
 
         // delete file test
@@ -140,6 +146,7 @@ namespace WindowPowerPoint.Tests
             _service.SetDriveService(mockDriveService.Object);
             mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
             Assert.IsFalse(_service.DeleteFile("1").Result);
+            _messageBox.Verify(messageBox => messageBox.Show(CONNECTION_FAILED_MESSAGE), Times.Once);
         }
     }
 }

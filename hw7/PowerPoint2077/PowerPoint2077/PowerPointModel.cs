@@ -24,7 +24,7 @@ namespace WindowPowerPoint
         // constructor
         public PowerPointModel()
         {
-            _drive = new GoogleDriveService(Constant.PROJECT_NAME, Constant.SECRET_FILE_NAME);
+            _drive = new GoogleDriveService(Constant.PROJECT_NAME, Constant.SECRET_FILE_NAME, new MessageBoxService());
             CheckSavesExist();
             _factory = new ShapeFactory();
             _pageFactory = new PageFactory();
@@ -32,6 +32,7 @@ namespace WindowPowerPoint
             _slides.Add(_pageFactory.GetPage());
             _state = new PointState(this);
             CanvasSize = new Size(0, 0);
+            _messageBox = new MessageBoxService();
             _handleToCursor = new Dictionary<HandleType, Cursor>();
             _handleToCursor.Add(HandleType.TopLeft, Cursors.SizeNWSE);
             _handleToCursor.Add(HandleType.Top, Cursors.SizeNS);

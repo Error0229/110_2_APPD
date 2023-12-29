@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Interactions;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using System;
@@ -8,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Forms;
-using PointerInputDevice = OpenQA.Selenium.Appium.Interactions.PointerInputDevice;
+using PointerInputDevice = OpenQA.Selenium.Interactions.PointerInputDevice;
 
 namespace WindowPowerPoint.Tests
 {
@@ -79,9 +78,9 @@ namespace WindowPowerPoint.Tests
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
             actionBuilder
             .AddAction(CreateMoveTo(device, coordinate.Left, coordinate.Top))
-            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+             .AddAction(device.CreatePointerDown(MouseButton.Left))
             .AddAction(CreateMoveTo(device, coordinate.Right, coordinate.Bottom))
-            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
+            .AddAction(device.CreatePointerUp(MouseButton.Left));
             _session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
@@ -174,16 +173,16 @@ namespace WindowPowerPoint.Tests
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
             actionBuilder.AddAction(CreateMoveTo(device, (originCoordinate.Left + originCoordinate.Right) / 2, (originCoordinate.Top + originCoordinate.Bottom) / 2))
-            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
-            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerDown(MouseButton.Left))
+            .AddAction(device.CreatePointerUp(MouseButton.Left))
             .AddAction(CreateMoveTo(device, originCoordinate.Left, originCoordinate.Top))
-            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerDown(MouseButton.Left))
             .AddAction(CreateMoveTo(device, targetCoordinate.Left, targetCoordinate.Top))
-            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerUp(MouseButton.Left))
             .AddAction(CreateMoveTo(device, originCoordinate.Right, originCoordinate.Bottom))
-            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerDown(MouseButton.Left))
             .AddAction(CreateMoveTo(device, targetCoordinate.Right, targetCoordinate.Bottom))
-            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
+            .AddAction(device.CreatePointerUp(MouseButton.Left));
             _session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
@@ -193,9 +192,9 @@ namespace WindowPowerPoint.Tests
             ActionBuilder actionBuilder = new ActionBuilder();
             PointerInputDevice device = new PointerInputDevice(PointerKind.Pen);
             actionBuilder.AddAction(CreateMoveTo(device, (coordinate.Left + coordinate.Right) / 2, (coordinate.Top + coordinate.Bottom) / 2))
-            .AddAction(device.CreatePointerDown(PointerButton.LeftMouse))
+            .AddAction(device.CreatePointerDown(MouseButton.Left))
             .AddAction(CreateMoveTo(device, targetX, targetY))
-            .AddAction(device.CreatePointerUp(PointerButton.LeftMouse));
+            .AddAction(device.CreatePointerUp(MouseButton.Left));
             _session.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
@@ -267,6 +266,26 @@ namespace WindowPowerPoint.Tests
             textBox4.SendKeys(coordinate.Bottom.ToString());
             buttonOK.Click();
             return coordinate;
+        }
+
+        // insert shape with given coordinate
+        public void InsertShape(string shapeName, ShapeCoordinate coordinate)
+        {
+            ClickByElementID(insertShapeComboBox);
+            ClickByElementName(shapeName);
+            ClickByElementName(insertShapeButtonName);
+            var dialogBox = _session.FindElementByAccessibilityId("Dialog");
+            var textBox1 = dialogBox.FindElementByAccessibilityId("textBox1");
+            var textBox2 = dialogBox.FindElementByAccessibilityId("textBox2");
+            var textBox3 = dialogBox.FindElementByAccessibilityId("textBox3");
+            var textBox4 = dialogBox.FindElementByAccessibilityId("textBox4");
+            var buttonOK = dialogBox.FindElementByAccessibilityId("buttonOK");
+            textBox1.SendKeys(coordinate.Left.ToString());
+            textBox2.SendKeys(coordinate.Top.ToString());
+            textBox3.SendKeys(coordinate.Right.ToString());
+            textBox4.SendKeys(coordinate.Bottom.ToString());
+            buttonOK.Click();
+            return;
         }
 
         // random shape
@@ -741,5 +760,230 @@ namespace WindowPowerPoint.Tests
             var rowCount = _dataGrid.FindElementsByName("Row").Count;
             ClickByElementName(DataGridColumnName[0] + " Row " + rowCount);
         }
+
+        // draw beautiful scene
+        public void DrawBeautifulScene()
+        {
+            // Sun
+            ShapeCoordinate sun = new ShapeCoordinate(300, 50, 350, 100); // Position and size for the sun
+            DrawShape(circleButtonName, sun); // Assuming yellow color is default
+
+            // Clouds (using circles to approximate fluffy clouds)
+            ShapeCoordinate[] clouds = new ShapeCoordinate[]
+            {
+                new ShapeCoordinate(100, 50, 150, 100),
+                new ShapeCoordinate(130, 70, 180, 120),
+                new ShapeCoordinate(400, 100, 450, 150),
+                new ShapeCoordinate(430, 120, 480, 170)
+            };
+            foreach (var cloud in clouds)
+            {
+                DrawShape(circleButtonName, cloud); // Assuming white color is default
+            }
+
+            // Grass (using a green rectangle)
+            ShapeCoordinate grass = new ShapeCoordinate(0, 300, 500, 350); // Assume canvas height is 350
+            DrawShape(rectangleButtonName, grass); // Assuming green color is set for grass
+
+            // House
+            // House Base
+            ShapeCoordinate houseBase = new ShapeCoordinate(200, 200, 300, 300);
+            DrawShape(rectangleButtonName, houseBase); // Assuming brown color for the house
+
+            // House Roof
+            ShapeCoordinate[] roofLines = new ShapeCoordinate[]
+            {
+                new ShapeCoordinate(200, 200, 250, 150), // Left side of roof
+                new ShapeCoordinate(250, 150, 300, 200)  // Right side of roof
+            };
+            foreach (var line in roofLines)
+            {
+                DrawShape(lineButtonName, line); // Assuming red color for the roof
+            }
+        }
+
+        // assert beautiful scene
+        public void AssertBeautifulScene()
+        {
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(1, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(2, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(3, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(4, 1));
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(5, 1));
+            Assert.AreEqual(Constant.RECTANGLE_CHINESE, GetDataGridViewCellText(6, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(7, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(8, 1));
+
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(300, 50, 350, 100)), GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(100, 50, 150, 100)), GetDataGridViewCellText(1, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(130, 70, 180, 120)), GetDataGridViewCellText(2, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(400, 100, 450, 150)), GetDataGridViewCellText(3, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(430, 120, 480, 170)), GetDataGridViewCellText(4, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(0, 300, 500, 350)), GetDataGridViewCellText(5, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(200, 200, 300, 300)), GetDataGridViewCellText(6, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(200, 200, 250, 150)), GetDataGridViewCellText(7, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(250, 150, 300, 200)), GetDataGridViewCellText(8, 2));
+
+        }
+
+        // adjust scene
+        public void AdjustScene()
+        {
+            // Adjust the scene to make it more beautiful
+            // For example, add a tree, a river, a mountain, etc.
+
+            // make cloud more oval
+            ShapeCoordinate[] clouds = new ShapeCoordinate[]
+            {
+                new ShapeCoordinate(130, 70, 180, 120),
+                new ShapeCoordinate(100, 50, 150, 100),
+                new ShapeCoordinate(430, 120, 480, 170),
+                new ShapeCoordinate(400, 100, 450, 150)
+            };
+            foreach (var cloud in clouds)
+            {
+                ResizeShape(cloud, new ShapeCoordinate(cloud.Left, cloud.Top, cloud.Right + 50, cloud.Bottom));
+            }
+
+            // move sun slowly close to house
+            ShapeCoordinate sun = new ShapeCoordinate(300, 50, 350, 100); // Position and size for the sun
+            for (int i = 0; i < 5; i++)
+            {
+                MoveShape(sun, sun.Left, sun.Bottom);
+                sun = new ShapeCoordinate(sun.Left - 25, sun.Top + 25, sun.Right - 25, sun.Bottom + 25);
+            }
+        }
+
+        // draw snowman
+        public void DrawSnowman()
+        {
+            // Snowman circles (bottom, middle, top)
+            ShapeCoordinate bottomCircle = new ShapeCoordinate(100, 200, 200, 300); // Large circle for bottom
+            ShapeCoordinate middleCircle = new ShapeCoordinate(125, 125, 175, 175); // Medium circle for middle
+            ShapeCoordinate topCircle = new ShapeCoordinate(140, 60, 160, 80); // Small circle for head
+
+            // Draw the circles for the snowman's body
+            DrawShape(circleButtonName, bottomCircle);
+            DrawShape(circleButtonName, middleCircle);
+            DrawShape(circleButtonName, topCircle);
+
+            // Snowman eyes (using small circles or dots)
+            ShapeCoordinate leftEye = new ShapeCoordinate(145, 70, 147, 72);
+            ShapeCoordinate rightEye = new ShapeCoordinate(153, 70, 155, 72);
+
+            // Draw the eyes
+            InsertShape(Constant.CIRCLE_CHINESE, leftEye);
+            InsertShape(Constant.CIRCLE_CHINESE, rightEye);
+
+            // Snowman nose (using a small triangle - can be approximated with lines)
+            ShapeCoordinate[] noseLines = new ShapeCoordinate[]
+            {
+                new ShapeCoordinate(150, 75, 155, 78),
+                new ShapeCoordinate(150, 78, 155, 78),
+                new ShapeCoordinate(150, 75, 150, 78)
+            };
+
+            // Draw the nose
+            foreach (var line in noseLines)
+            {
+                InsertShape(Constant.LINE_CHINESE, line);
+            }
+
+            // Snowman buttons (using small circles)
+            ShapeCoordinate[] buttons = new ShapeCoordinate[]
+            {
+                new ShapeCoordinate(150, 140, 152, 142),
+                new ShapeCoordinate(150, 150, 152, 152),
+                new ShapeCoordinate(150, 160, 152, 162)
+            };
+
+            // Draw the buttons
+            foreach (var button in buttons)
+            {
+                InsertShape(Constant.CIRCLE_CHINESE, button);
+            }
+
+            // Add additional details like arms, hat, etc., if desired
+        }
+
+        // assert snowman
+        public void AssertSnowman()
+        {
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(0, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(1, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(2, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(3, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(4, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(5, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(6, 1));
+            Assert.AreEqual(Constant.LINE_CHINESE, GetDataGridViewCellText(7, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(8, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(9, 1));
+            Assert.AreEqual(Constant.CIRCLE_CHINESE, GetDataGridViewCellText(10, 1));
+
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(100, 200, 200, 300)), GetDataGridViewCellText(0, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(125, 125, 175, 175)), GetDataGridViewCellText(1, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(140, 60, 160, 80)), GetDataGridViewCellText(2, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(145, 70, 147, 72)), GetDataGridViewCellText(3, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(153, 70, 155, 72)), GetDataGridViewCellText(4, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(150, 75, 155, 78)), GetDataGridViewCellText(5, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(150, 78, 155, 78)), GetDataGridViewCellText(6, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(150, 75, 150, 78)), GetDataGridViewCellText(7, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(150, 140, 152, 142)), GetDataGridViewCellText(8, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(150, 150, 152, 152)), GetDataGridViewCellText(9, 2));
+            Assert.AreEqual(GetCoordinateString(new ShapeCoordinate(150, 160, 152, 162)), GetDataGridViewCellText(10, 2));
+
+        }
+
+        // save 
+        public void Save()
+        {
+            ClickByElementName(saveButtonName);
+            var dialogBox = _session.FindElementByName("SaveDialog");
+            dialogBox.FindElementByName("Save").Click();
+        }
+
+        // load
+        public void Load()
+        {
+            ClickByElementName(loadButtonName);
+            var dialogBox = _session.FindElementByName("LoadDialog");
+            dialogBox.FindElementByName("Load").Click();
+        }
+
+        // 整合測試
+        [TestMethod]
+        public void TestIntegration()
+        {
+            DrawSnowman();
+            AddPage();
+            DrawBeautifulScene();
+            AddPage();
+            DrawSuspicious();
+            Save();
+            AssertSuspicious();
+            DeleteSuspicious();
+            DeletePage();
+            DeletePage();
+            Load();
+            DeletePage();
+            AdjustScene();
+            DeletePage();
+            DeletePage();
+            Load();
+            System.Threading.Thread.Sleep(1500);
+            AssertSuspicious();
+            DeletePage();
+            System.Threading.Thread.Sleep(1500);
+            AssertBeautifulScene();
+            DeletePage();
+            System.Threading.Thread.Sleep(1500);
+            AssertSnowman();
+            DeletePage();
+            DeletePage();
+            AddPage();
+        }
+
     }
 }

@@ -110,7 +110,7 @@ namespace WindowPowerPoint
                 _top >= 0 && _top <= _canvasSize.Height &&
                 _right >= 0 && _right <= _canvasSize.Width &&
                 _bottom >= 0 && _bottom <= _canvasSize.Height &&
-                _left < _right && _top < _bottom)
+                _left <= _right && _top <= _bottom)
             {
                 _buttonOK.Enabled = true;
             }

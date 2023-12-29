@@ -35,6 +35,7 @@ namespace WindowPowerPoint
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+
         static void Main()
         {
             var model = new PowerPointModel();

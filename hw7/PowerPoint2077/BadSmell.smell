@@ -188,12 +188,12 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\GoogleDriveService.cs on line 61.</SmellType>
+              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\GoogleDriveService.cs on line 57.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077</Project>
               <File>GoogleDriveService.cs</File>
-              <Line>61</Line>
+              <Line>57</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -252,7 +252,7 @@
             <Smell>
               <Id>5</Id>
               <SmellType>Static method and fields(濫用Static)</SmellType>
-              <HashCode>StaticMethodAndFields 60703502</HashCode>
+              <HashCode>StaticMethodAndFields 20643933</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077Tests</Project>
@@ -268,7 +268,7 @@
             <Smell>
               <Id>6</Id>
               <SmellType>Static method and fields(濫用Static)</SmellType>
-              <HashCode>StaticMethodAndFields 59737243</HashCode>
+              <HashCode>StaticMethodAndFields 56561770</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077Tests</Project>
@@ -284,7 +284,7 @@
             <Smell>
               <Id>7</Id>
               <SmellType>Static method and fields(濫用Static)</SmellType>
-              <HashCode>StaticMethodAndFields 22213456</HashCode>
+              <HashCode>StaticMethodAndFields 62251708</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077Tests</Project>
@@ -300,7 +300,7 @@
             <Smell>
               <Id>8</Id>
               <SmellType>Static method and fields(濫用Static)</SmellType>
-              <HashCode>StaticMethodAndFields 52231010</HashCode>
+              <HashCode>StaticMethodAndFields 49863469</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077Tests</Project>
@@ -315,12 +315,12 @@
             </Smell>
             <Smell>
               <Id>9</Id>
-              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\UITests.cs on line 241.</SmellType>
+              <SmellType>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077Tests\UITests.cs on line 240.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>PowerPoint2077Tests</Project>
               <File>UITests.cs</File>
-              <Line>241</Line>
+              <Line>240</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -330,6 +330,54 @@
             </Smell>
             <Smell>
               <Id>10</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.</SmellType>
+              <HashCode>PowerPoint2077\PowerPoint2077.PowerPointModel.cs.Unresolved warnings(忽視警告)-Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call..28</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077\PowerPoint2077</Project>
+              <File>PowerPointModel.cs</File>
+              <Line>28</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>102 目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PowerPoint2077ModelDLC.cs</File>
+              <Line>102</Line>
+              <StartLine>102</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>102</EndLine>
+              <EndCol>53</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>105 目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>PowerPoint2077</Project>
+              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PowerPoint2077ModelDLC.cs</File>
+              <Line>105</Line>
+              <StartLine>104</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>105</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>29 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetPoint(System.Drawing.PointF) 以及 WindowPowerPoint.Shape._handles</HashCode>
               <Severity>Warning</Severity>
@@ -345,7 +393,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>11</Id>
+              <Id>14</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>34 目前物件 WindowPowerPoint.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetPoint(System.Drawing.PointF) 以及 WindowPowerPoint.Shape._handles</HashCode>
               <Severity>Warning</Severity>
@@ -361,7 +409,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>12</Id>
+              <Id>15</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>35 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetFirstPoint() 以及 WindowPowerPoint.Shape.TryAdjustWhenMouseDown(System.Drawing.Point, out bool)</HashCode>
               <Severity>Warning</Severity>
@@ -377,7 +425,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>13</Id>
+              <Id>16</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>36 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.GetSecondPoint() 以及 WindowPowerPoint.Shape.TryAdjustWhenMouseDown(System.Drawing.Point, out bool)</HashCode>
               <Severity>Warning</Severity>
@@ -393,7 +441,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>14</Id>
+              <Id>17</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>95 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.Move(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
               <Severity>Warning</Severity>
@@ -409,7 +457,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>15</Id>
+              <Id>18</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>109 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
               <Severity>Warning</Severity>
@@ -425,7 +473,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>16</Id>
+              <Id>19</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>111 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.Shape.IsCloseToHandle(System.Drawing.Point) 以及 WindowPowerPoint.Shape.Selected</HashCode>
               <Severity>Warning</Severity>
@@ -441,7 +489,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>17</Id>
+              <Id>20</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>149 目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.PowerPointModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.PowerPointModel.GetCurrentShapes() 以及 WindowPowerPoint.PowerPointModel.HandleRemoveShape(WindowPowerPoint.Shape)</HashCode>
               <Severity>Warning</Severity>
@@ -454,38 +502,6 @@
               <EndLine>149</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 WindowPowerPoint.PointState，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.PowerPointModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.PowerPointModel.GetCurrentShapes() 以及 WindowPowerPoint.PowerPointModel.HandleRemoveShape(WindowPowerPoint.Shape)</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>18</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>103 目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PowerPoint2077ModelDownloadableContent.cs</File>
-              <Line>103</Line>
-              <StartLine>103</StartLine>
-              <StartCol>16</StartCol>
-              <EndLine>103</EndLine>
-              <EndCol>53</EndCol>
-              <Comment>目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>19</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>106 目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>PowerPoint2077</Project>
-              <File>D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\PowerPoint2077ModelDownloadableContent.cs</File>
-              <Line>106</Line>
-              <StartLine>105</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>106</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 WindowPowerPoint.PowerPointModel，使用物件的方法或屬性次數：0次，Envy到對象物件 WindowPowerPoint.GoogleDriveService，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string) 以及 WindowPowerPoint.GoogleDriveService.SearchFile(string)</Comment>
               <Auto>false</Auto>
             </Smell>
           </Reviews>
@@ -579,6 +595,11 @@
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>IMessageBox.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>InsertShapeDialog.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -614,6 +635,11 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>MessageBoxService.cs</RelativePath>
+                <ProjectName>PowerPoint2077</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>MoveCommand.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -639,12 +665,12 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>PowerPoint2077ModelDownloadableContent.cs</RelativePath>
+                <RelativePath>PowerPoint2077ModelDLC.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>PowerPoint2077PresentationModelDownloadableContent.cs</RelativePath>
+                <RelativePath>PowerPoint2077PresentationModelDLC.cs</RelativePath>
                 <ProjectName>PowerPoint2077</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -759,6 +785,11 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>GoogleDriveServiceTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>LineTests.cs</RelativePath>
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -770,6 +801,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>PageFactoryTests.cs</RelativePath>
+                <ProjectName>PowerPoint2077Tests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PagesTests.cs</RelativePath>
                 <ProjectName>PowerPoint2077Tests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -835,8 +871,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>4214</ProductionLoc>
-          <TestLoc>2306</TestLoc>
+          <ProductionLoc>4236</ProductionLoc>
+          <TestLoc>2740</TestLoc>
         </CodeReview>
       </Data>
     </div>

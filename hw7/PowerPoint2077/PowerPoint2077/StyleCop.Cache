@@ -105,6 +105,28 @@
       </violation>
     </violations>
   </sourcecode>
+  <sourcecode name="PowerPoint2077ModelDownloadableContent.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/29 01:18:40.939</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PowerPoint2077PresentationModelDownloadableContent.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/29 01:20:16.618</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <project key="-211946437">
     <configuration>DEBUG;TRACE</configuration>
   </project>
@@ -266,15 +288,15 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/28 22:51:46.884</sourceFile>
+      <sourceFile>2023/12/30 00:38:36.138</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\GoogleDriveService.cs on line 61.</context>
-        <line>61</line>
+        <context>A syntax error has been discovered in file D:\110_2_APPD\hw7\PowerPoint2077\PowerPoint2077\GoogleDriveService.cs on line 57.</context>
+        <line>57</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -301,11 +323,22 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="IMessageBox.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/29 23:03:12.135</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="InsertShapeDialog.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 00:19:44.130</sourceFile>
+      <sourceFile>2023/12/30 05:45:11.613</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -378,6 +411,17 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="MessageBoxService.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/15 22:34:47.777</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/29 23:05:47.275</sourceFile>
+      <parser>2023/09/15 22:34:47.777</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="MoveCommand.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
@@ -393,7 +437,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 00:47:39.378</sourceFile>
+      <sourceFile>2023/12/29 02:35:40.498</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -415,7 +459,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 00:14:14.233</sourceFile>
+      <sourceFile>2023/12/29 02:40:23.416</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -433,22 +477,22 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="PowerPoint2077ModelDownloadableContent.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="PowerPoint2077ModelDLC.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 01:18:40.939</sourceFile>
+      <sourceFile>2023/12/30 03:18:20.918</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="PowerPoint2077PresentationModelDownloadableContent.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="PowerPoint2077PresentationModelDLC.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 01:20:16.618</sourceFile>
+      <sourceFile>2023/12/30 03:43:47.545</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -459,7 +503,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 01:14:08.012</sourceFile>
+      <sourceFile>2023/12/30 00:44:27.799</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -591,7 +635,7 @@
     <timestamps>
       <styleCop>2023/09/15 22:34:47.777</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/12/29 01:11:16.428</sourceFile>
+      <sourceFile>2023/12/29 02:21:06.958</sourceFile>
       <parser>2023/09/15 22:34:47.777</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/15 22:34:47.777</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>

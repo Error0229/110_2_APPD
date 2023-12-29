@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
 
 namespace WindowPowerPoint
 {
@@ -39,9 +38,9 @@ namespace WindowPowerPoint
         }
         private GoogleDriveService _drive;
         private string _fileID;
-
+        private IMessageBox _messageBox;
         // save pages to drive
-        public async Task<bool> HandleSave()
+        public virtual async Task<bool> HandleSave()
         {
             var fileName = Guid.NewGuid().ToString() + Constant.TEXT_FILE;
             System.IO.File.WriteAllText(fileName, _slides.Convert());
@@ -61,11 +60,11 @@ namespace WindowPowerPoint
         }
 
         // load pages from drive
-        public void HandleLoad()
+        public virtual void HandleLoad()
         {
             if (_fileID == string.Empty || !_drive.Load(_fileID, Constant.LOAD_FILE_NAME))
             {
-                MessageBox.Show(Constant.ERROR_NO_LOAD_FILE);
+                _messageBox.Show(Constant.ERROR_NO_LOAD_FILE);
                 return;
             }
             ClearSlide();
@@ -92,15 +91,15 @@ namespace WindowPowerPoint
         }
 
         // Interpret pages
-        public List<string> InterpretPages(string data)
+        private List<string> InterpretPages(string data)
         {
             return new List<string>(data.Split(Constant.NEW_LINE));
         }
 
         // check save file exist
-        public async void CheckSavesExist()
+        public void CheckSavesExist()
         {
-            var results = await _drive.SearchFile(Constant.SAVE_FILE_NAME);
+            var results =  _drive.SearchFile(Constant.SAVE_FILE_NAME).Result;
             if (results != null && results.Count != 0)
             {
                 _fileID = results[0].Id; // get first match file

@@ -341,5 +341,36 @@ namespace WindowPowerPoint.Tests
             propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(12));
         }
 
+        // test save/load enabled
+        [TestMethod()]
+        public void IsSaveLoadEnabledTest()
+        {
+            var propertyChanged = new Mock<PropertyChangedEventHandler>();
+            _presentationModel.PropertyChanged += propertyChanged.Object;
+            _ = _presentationModel.IsSaveEnabled;
+            _ = _presentationModel.IsLoadEnabled;
+            _presentationModel.IsSaveEnabled = true;
+            _presentationModel.IsLoadEnabled = true;
+            propertyChanged.Verify(p => p(_presentationModel, It.IsAny<PropertyChangedEventArgs>()), Times.Exactly(2));
+        }
+
+        // test process save
+        [TestMethod()]
+        public void ProcessSaveTest()
+        {
+            _presentationModel.ProcessSave();
+            _model.Verify(model => model.HandleSave(), Times.Once());
+        }
+
+        // test process load
+        [TestMethod()]
+        public void ProcessLoadTest()
+        {
+            _presentationModel.ProcessLoad();
+            _model.Verify(model => model.HandleLoad(), Times.Once());
+        }
+
+
+
     }
 }

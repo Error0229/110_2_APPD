@@ -104,6 +104,7 @@
     <Compile Include="CursorManager.cs" />
     <Compile Include="DeleteCommand.cs" />
     <Compile Include="DeletePageCommand.cs" />
+    <Compile Include="IMessageBox.cs" />
     <Compile Include="InsertShapeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +134,7 @@
     <Compile Include="LoadDialog.Designer.cs">
       <DependentUpon>LoadDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxService.cs" />
     <Compile Include="MoveCommand.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="PageFactory.cs" />
