@@ -15,15 +15,16 @@ namespace WindowPowerPoint
     {
         private static readonly string[] SCOPES = new[] { DriveService.Scope.DriveFile, DriveService.Scope.Drive };
         private DriveService _service;
-        private int _timeStamp;
-        private string _applicationName;
-        private string _clientSecretFileName;
 
         public GoogleDriveService(string applicationName, string clientSecretFileName)
         {
-            _applicationName = applicationName;
-            _clientSecretFileName = clientSecretFileName;
             CreateNewService(applicationName, clientSecretFileName);
+        }
+
+        // dependcy injection
+        public void SetDriveService(DriveService service)
+        {
+            _service = service;
         }
 
 
@@ -46,8 +47,6 @@ namespace WindowPowerPoint
                 HttpClientInitializer = credential,
                 ApplicationName = applicationName
             });
-
-            _timeStamp = UNIXNowTimeStamp;
             _service = service;
         }
 
@@ -56,13 +55,12 @@ namespace WindowPowerPoint
         {
             string query = $"name = '{fileName}' and 'root' in parents and trashed = false";
 
-            var request = _service.Files.List();
-
-            request.Q = query;
-            request.Fields = "files(id, name)";
             Google.Apis.Drive.v3.Data.FileList response;
             try
             {
+                var request = _service.Files.List();
+                request.Q = query;
+                request.Fields = "files(id, name)";
                 response = await request.ExecuteAsync();
             }
             catch (System.Net.Http.HttpRequestException)
@@ -73,36 +71,14 @@ namespace WindowPowerPoint
             return response.Files;
         }
 
-        private int UNIXNowTimeStamp
-        {
-            get
-            {
-                const int UNIX_START_YEAR = 1970;
-                DateTime unixStartTime = new DateTime(UNIX_START_YEAR, 1, 1);
-                return Convert.ToInt32((DateTime.Now.Subtract(unixStartTime).TotalSeconds));
-            }
-        }
-
-        //Check and refresh the credential if credential is out-of-date
-        private void CheckCredentialTimeStamp()
-        {
-            const int ONE_HOUR_SECOND = 3600;
-            int nowTimeStamp = UNIXNowTimeStamp;
-
-            if ((nowTimeStamp - _timeStamp) > ONE_HOUR_SECOND)
-                CreateNewService(_applicationName, _clientSecretFileName);
-        }
-
         // load file
         public bool Load(string fileId, string fileName)
         {
-            CheckCredentialTimeStamp();
-            var request = _service.Files.Get(fileId);
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
                 try
                 {
-                    request.Download(stream);
+                    _service.Files.Get(fileId).Download(stream);
                 }
                 catch (System.Net.Http.HttpRequestException)
                 {
@@ -116,7 +92,6 @@ namespace WindowPowerPoint
         // save file
         public async Task<string> Save(string fileName, string remoteName)
         {
-            CheckCredentialTimeStamp();
             var parentFolderId = "root";
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
@@ -127,16 +102,17 @@ namespace WindowPowerPoint
             FilesResource.CreateMediaUpload request;
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
-                request = _service.Files.Create(fileMetadata, stream, "text/plain");
-                request.Fields = "id";
                 try
                 {
+                    request = _service.Files.Create(fileMetadata, stream, "text/plain");
                     await request.UploadAsync();
                 }
                 catch (System.Net.Http.HttpRequestException)
                 {
+#if !UNITTEST
                     MessageBox.Show("Fail to connect Google Drive");
-                    return string.Empty;
+#endif
+                    return null;
                 }
             }
             return request.ResponseBody.Id;
@@ -145,25 +121,36 @@ namespace WindowPowerPoint
         // update file
         public async Task<bool> UpdateFile(string fileName, string remoteName, string fileId)
         {
-            CheckCredentialTimeStamp();
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
                 Name = remoteName
             };
-            FilesResource.UpdateMediaUpload request;
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
-                request = _service.Files.Update(fileMetadata, fileId, stream, "text/plain");
-                request.Fields = "id";
                 try
                 {
-                    await request.UploadAsync();
+                    await _service.Files.Update(fileMetadata, fileId, stream, "text/plain").UploadAsync();
                 }
                 catch (System.Net.Http.HttpRequestException)
                 {
                     MessageBox.Show("Fail to connect Google Drive");
                     return false;
                 }
+            }
+            return true;
+        }
+
+        // delete file
+        public async Task<bool> DeleteFile(string fileId)
+        {
+            try
+            {
+                await _service.Files.Delete(fileId).ExecuteAsync();
+            }
+            catch (System.Net.Http.HttpRequestException)
+            {
+                MessageBox.Show("Fail to connect Google Drive");
+                return false;
             }
             return true;
         }

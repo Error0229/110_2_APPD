@@ -1,16 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#define UNITTEST
+using Google.Apis.Drive.v3;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 namespace WindowPowerPoint.Tests
 {
     [TestClass()]
     public class GoogleDriveServiceTests
     {
         GoogleDriveService _service;
+        PrivateObject _privateService;
 
         const string TEST_FILE_NAME = "ILOVEUNITTEST.txt";
         // create local test file
         public void CreateLocalTestFile()
         {
-            string data = "test data";
+            string data = "I love unit testing as much as I love the world.";
             System.IO.File.WriteAllText(TEST_FILE_NAME, data);
         }
 
@@ -19,6 +23,16 @@ namespace WindowPowerPoint.Tests
         public void Initialize()
         {
             _service = new GoogleDriveService(Constant.PROJECT_NAME, Constant.SECRET_FILE_NAME);
+            _privateService = new PrivateObject(_service);
+        }
+
+        // set drive service test
+        [TestMethod]
+        public void SetDriveServiceTest()
+        {
+            var mockDriveService = new Mock<DriveService>();
+            _service.SetDriveService(mockDriveService.Object);
+            Assert.IsNotNull(_privateService.GetField("_service"));
         }
 
         // test constructor
@@ -36,14 +50,37 @@ namespace WindowPowerPoint.Tests
             string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             var result = _service.SearchFile(TEST_FILE_NAME).Result;
             Assert.AreEqual(fileId, result[0].Id);
+            Assert.IsTrue(_service.DeleteFile(fileId).Result);
         }
 
+        // test search file exception
+        [TestMethod()]
+        public void SearchFileExceptionTest()
+        {
+            var mockDriveService = new Mock<DriveService>();
+            _service.SetDriveService(mockDriveService.Object);
+            mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
+            Assert.IsNull(_service.SearchFile(TEST_FILE_NAME).Result);
+        }
+
+        // load file test
         [TestMethod()]
         public void LoadTest()
         {
             CreateLocalTestFile();
             string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             Assert.IsTrue(_service.Load(fileId, TEST_FILE_NAME));
+            Assert.IsTrue(_service.DeleteFile(fileId).Result);
+        }
+
+        // load file exception test
+        [TestMethod()]
+        public void LoadExceptionTest()
+        {
+            var mockDriveService = new Mock<DriveService>();
+            _service.SetDriveService(mockDriveService.Object);
+            mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
+            Assert.IsFalse(_service.Load("1", TEST_FILE_NAME));
         }
 
         // save test
@@ -53,14 +90,56 @@ namespace WindowPowerPoint.Tests
             CreateLocalTestFile();
             string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             Assert.AreNotEqual(string.Empty, fileId);
+            Assert.IsTrue(_service.DeleteFile(fileId).Result);
         }
 
+        // save exception test
+        [TestMethod()]
+        public void SaveExceptionTest()
+        {
+            var mockDriveService = new Mock<DriveService>();
+            _service.SetDriveService(mockDriveService.Object);
+            mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
+            Assert.IsNull(_service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result);
+        }
+
+        // update file test
         [TestMethod()]
         public void UpdateFileTest()
         {
             CreateLocalTestFile();
             string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
             Assert.IsTrue(_service.UpdateFile(TEST_FILE_NAME, TEST_FILE_NAME, fileId).Result);
+            Assert.IsTrue(_service.DeleteFile(fileId).Result);
+        }
+
+        // update file exception test
+        [TestMethod()]
+        public void UpdateFileExceptionTest()
+        {
+            var mockDriveService = new Mock<DriveService>();
+            _service.SetDriveService(mockDriveService.Object);
+            mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
+            Assert.IsFalse(_service.UpdateFile(TEST_FILE_NAME, TEST_FILE_NAME, "1").Result);
+        }
+
+        // delete file test
+        [TestMethod()]
+        public void DeleteFileTest()
+        {
+            CreateLocalTestFile();
+            string fileId = _service.Save(TEST_FILE_NAME, TEST_FILE_NAME).Result;
+            Assert.IsTrue(_service.DeleteFile(fileId).Result);
+        }
+
+        // delete file exception test
+        [TestMethod()]
+        public void DeleteFileExceptionTest()
+        {
+            var mockDriveService = new Mock<DriveService>();
+            _service.SetDriveService(mockDriveService.Object);
+            mockDriveService.Setup(service => service.Files).Throws(new System.Net.Http.HttpRequestException());
+            Assert.IsFalse(_service.DeleteFile("1").Result);
         }
     }
 }
