@@ -56,8 +56,8 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
-      Solution_Name: .\hw6\PowerPoint2077\PowerPoint2077.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: .\hw6\PowerPoint2077PowerPoint2077Tests\PowerPoint2077Tests.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Solution_Name: .\hw7\PowerPoint2077\PowerPoint2077.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
+      Test_Project_Path: .\hw7\PowerPoint2077PowerPoint2077Tests\PowerPoint2077Tests.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       COVERAGE_RESULTS: coverage_results
       REPORT_RESULTS: report_results
     steps:
@@ -83,20 +83,20 @@ jobs:
       uses: NuGet/setup-nuget@v1.2.0
 
     - name: Restore NuGet packages
-      run: nuget restore .\hw6\PowerPoint2077\PowerPoint2077.sln
+      run: nuget restore .\hw7\PowerPoint2077\PowerPoint2077.sln
     
 
     - name: Build for ${{ matrix.configuration }}
-      run: msbuild .\hw6\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
+      run: msbuild .\hw7\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
 
     - name: Run Tests for ${{ matrix.configuration }} report
       run: >
-        vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
+        vstest.console.exe .\hw7\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
         /Logger:trx
         /ResultsDirectory:"${{ env.REPORT_RESULTS }}"
     - name: Run Tests for ${{ matrix.configuration }} coverage
       run: >
-        vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
+        vstest.console.exe .\hw7\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll 
         /EnableCodeCoverage
         /Collect:"Code Coverage;Format=Xml" 
         /ResultsDirectory:"${{ env.COVERAGE_RESULTS }}"
@@ -126,7 +126,7 @@ jobs:
       shell: powershell
       run: |
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"Error0229_110_2_APPD" /o:"mountainsea" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.cs.vscoveragexml.reportsPaths="**/*.xml" 
-        msbuild .\hw6\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
-        vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll /Logger:trx /ResultsDirectory:"${{ env.REPORT_RESULTS }}"   
-        vstest.console.exe .\hw6\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll /EnableCodeCoverage /Collect:"Code Coverage;Format=Xml" /ResultsDirectory:"${{ env.COVERAGE_RESULTS }}"
+        msbuild .\hw7\PowerPoint2077\PowerPoint2077.sln -property:Configuration=${{ matrix.configuration }} -property:platform="Any CPU"
+        vstest.console.exe .\hw7\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll /Logger:trx /ResultsDirectory:"${{ env.REPORT_RESULTS }}"   
+        vstest.console.exe .\hw7\PowerPoint2077\PowerPoint2077Tests\bin\${{ matrix.configuration }}\PowerPoint2077Tests.dll /EnableCodeCoverage /Collect:"Code Coverage;Format=Xml" /ResultsDirectory:"${{ env.COVERAGE_RESULTS }}"
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
