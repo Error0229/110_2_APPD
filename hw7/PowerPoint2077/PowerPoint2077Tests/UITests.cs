@@ -711,6 +711,8 @@ namespace WindowPowerPoint.Tests
             dialogBox = _session.FindElementByName("LoadDialog");
             dialogBox.FindElementByName("Load").Click();
             AssertSuspicious();
+            DeletePage();
+            AddPage();
         }
 
         // click by element name
